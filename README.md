@@ -1,52 +1,46 @@
-# Astro Starter Kit: Basics
+# MACOC - Mid-Atlantic Chamber Orchestra Competition
 
-```sh
-npm create astro@latest -- --template basics
-```
+A website displaying the winners of the Mid-Atlantic Chamber Orchestra Competition across all competition years (2021-2025).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Comprehensive Winners Database**: Complete historical data for all MACOC competition winners from 2021 to 2025
+- **Year-based Navigation**: Interactive year toggle to browse winners by competition year
+- **Division Organization**: Winners organized by competition divisions (Open, Junior, etc.)
+- **Responsive Design**: Beautiful, modern UI that works on all devices
+- **Performance Details**: Detailed information about winning performances including composers, pieces, and conductor details
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Competition Years
 
-## 🚀 Project Structure
+- **2025**: Current competition winners
+- **2024**: Previous year's champions  
+- **2023**: Historical winners
+- **2022**: Historical winners
+- **2021**: Historical winners
 
-Inside of your Astro project, you'll see the following folders and files:
+## Development
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+This website is built with [Astro](https://astro.build/) for optimal performance and SEO.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Commands
 
-## 🧞 Commands
+| Command | Action |
+|---------|--------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start local development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
 
-All commands are run from the root of the project, from a terminal:
+## Deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The site is automatically deployed to GitHub Pages using GitHub Actions.
 
-## 👀 Want to learn more?
+**Live Site**: https://pillsoon.github.io/macoc
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Contributing
+
+This website maintains the official record of MACOC competition winners. For corrections or updates to winner information, please contact the competition organizers.
+
+---
+
+*Mid-Atlantic Chamber Orchestra Competition - Celebrating Excellence in Chamber Orchestra Performance*
