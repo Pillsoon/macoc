@@ -1,6 +1,6 @@
-# MACOC - Mid-Atlantic Chamber Orchestra Competition
+# MACOC - Musical Arts Competition of Orange County
 
-A website displaying the winners of the Mid-Atlantic Chamber Orchestra Competition across all competition years (2021-2025).
+A website displaying the winners of the Musical Arts Competition of Orange County across all competition years (2021-2025).
 
 ## Features
 
@@ -43,4 +43,4 @@ This website maintains the official record of MACOC competition winners. For cor
 
 ---
 
-*Mid-Atlantic Chamber Orchestra Competition - Celebrating Excellence in Chamber Orchestra Performance*
+*Musical Arts Competition of Orange County - Celebrating Excellence in Musical Performance*
