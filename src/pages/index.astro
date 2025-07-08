@@ -1,11 +1,185 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Musical Arts Competition of Orange County">
+	<style>
+		.content-container {
+			min-height: calc(100vh - 350px);
+			padding: 2rem 0;
+		}
+		
+		.welcome-section {
+			background: white;
+			border-radius: 10px;
+			padding: 2rem;
+			margin-bottom: 2rem;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+		
+		.announcement-section {
+			background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+			border-radius: 10px;
+			padding: 2rem;
+			margin-bottom: 2rem;
+			border-left: 4px solid var(--primary-color);
+		}
+		
+		.dates-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 2rem;
+			margin: 2rem 0;
+		}
+
+		.date-card {
+			background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+			color: white;
+			padding: 2rem;
+			border-radius: 15px;
+			text-align: center;
+		}
+
+		.date-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.date-title {
+			font-size: 1.3rem;
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+		}
+
+		.date-value {
+			font-size: 1.1rem;
+			opacity: 0.9;
+		}
+		
+		.fee-section {
+			background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+			border-radius: 10px;
+			padding: 2rem;
+			margin-bottom: 2rem;
+		}
+		
+		.fee-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 1.5rem;
+			margin-top: 1.5rem;
+		}
+		
+		.fee-item {
+			background: white;
+			padding: 1.5rem;
+			border-radius: 10px;
+			text-align: center;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+		
+		.fee-amount {
+			font-size: 2rem;
+			font-weight: bold;
+			color: var(--primary-color);
+			margin-bottom: 0.5rem;
+		}
+		
+		.fee-label {
+			font-weight: 600;
+			color: var(--secondary-color);
+		}
+		
+		.president-message {
+			background: white;
+			border-radius: 10px;
+			padding: 2rem;
+			margin-bottom: 2rem;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+
+		@media (max-width: 768px) {
+			.dates-grid {
+				grid-template-columns: 1fr;
+			}
+			
+			.fee-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+
+	<div class="content-container">
+		<h1 style="text-align: center; margin-bottom: 2rem; color: var(--secondary-color);">Musical Arts Competition of Orange County</h1>
+		
+		<!-- Welcome Message -->
+		<div class="announcement-section">
+			<p>This year, we provide the online registration forms for the membership and competition entries. Please see the following for more information.</p>
+		</div>
+		
+		<!-- Important Dates Section -->
+		<div class="welcome-section">
+			<h2 style="text-align: center; margin-bottom: 2rem; color: var(--secondary-color);">Important Dates 2025</h2>
+			
+			<div class="dates-grid">
+				<div class="date-card">
+					<div class="date-icon">🎵</div>
+					<div class="date-title">Competition</div>
+					<div class="date-value">Saturday, May 17, 2025<br>California State University, Long Beach</div>
+				</div>
+				<div class="date-card">
+					<div class="date-icon">📝</div>
+					<div class="date-title">Registrations Open</div>
+					<div class="date-value">March 17, 2025 to April 17, 2025</div>
+				</div>
+				<div class="date-card">
+					<div class="date-icon">⏰</div>
+					<div class="date-title">Late Application</div>
+					<div class="date-value">April 23, 2025<br>Age as of April 30, 2025</div>
+				</div>
+				<div class="date-card">
+					<div class="date-icon">🏆</div>
+					<div class="date-title">Winners' Concert</div>
+					<div class="date-value">Saturday, June 7, 2025<br>Richard Nixon Library - Yorba Linda</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Fee Information Section -->
+		<div class="fee-section">
+			<h2 style="text-align: center; margin-bottom: 1rem; color: var(--secondary-color);">Fee and Payments</h2>
+			
+			<div class="fee-grid">
+				<div class="fee-item">
+					<div class="fee-amount">$40</div>
+					<div class="fee-label">Teacher's Membership</div>
+				</div>
+				<div class="fee-item">
+					<div class="fee-amount">$50</div>
+					<div class="fee-label">Student Competition Entry Registration Fees</div>
+				</div>
+				<div class="fee-item">
+					<div class="fee-amount">$70</div>
+					<div class="fee-label">Late Fee</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Presidential Message -->
+		<div class="president-message">
+			<p>We are looking forward to another exciting year of MACOC in 2025, the oldest and most prestigious competition in Orange County.</p>
+			
+			<p>Thank you for your support.</p>
+			
+			<p style="margin-top: 2rem;">
+				<strong>Best Regards,<br><br>
+				<span style="font-family: 'Mr De Haviland', cursive; font-size: 1.2em;">Marie Djang</span><br>
+				President, Musical Arts Competition of Orange County</strong>
+			</p>
+		</div>
+	</div>
+
 </Layout>

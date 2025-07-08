@@ -1,0 +1,279 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GoogleDocEmbed from '../components/GoogleDocEmbed.astro';
+---
+
+<Layout title="Regulation | Musical Arts Competition of Orange County">
+	<style>
+		.content-container {
+			min-height: calc(100vh - 350px);
+			padding: 2rem 0;
+		}
+		
+		.regulation-section {
+			background: white;
+			border-radius: 10px;
+			padding: 2rem;
+			margin-bottom: 2rem;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+		
+		.division-title {
+			color: var(--primary-color);
+			font-size: 1.5rem;
+			font-weight: 600;
+			margin-bottom: 1rem;
+			border-bottom: 2px solid var(--primary-color);
+			padding-bottom: 0.5rem;
+		}
+		
+		.section-header {
+			color: var(--secondary-color);
+			font-weight: 600;
+			margin: 1.5rem 0 0.5rem 0;
+		}
+		
+		.time-limit {
+			background: #f8f9fa;
+			padding: 0.5rem 1rem;
+			border-radius: 5px;
+			margin: 0.5rem 0;
+			font-weight: 500;
+		}
+		
+		.rule-list {
+			margin: 1rem 0;
+		}
+		
+		.rule-list li {
+			margin-bottom: 0.5rem;
+		}
+	</style>
+
+	<div class="content-container">
+		<h1 style="text-align: center; margin-bottom: 2rem; color: var(--secondary-color);">Competition Regulation</h1>
+		
+		<div style="max-width: 1000px; margin: 0 auto;">
+			
+			<!-- Piano Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Piano</h2>
+				<ul class="rule-list">
+					<li>Select two pieces representing different periods and styles.</li>
+					<li>All works must be performed by memory in the Divisions.</li>
+					<li>Age cut off date is April 30, 2024.</li>
+					<li>Within reason, works should avoid repeats.</li>
+					<li>No changes to the competition program are permitted once the application form has been received.</li>
+					<li>The decisions of the Jury are final and not subject to review or appeal.</li>
+					<li>The Jury is permitted to award the same numerical ranking to several contestants. In the event of a tie, the Jury may divide the monetary prize equally between the prizewinners.</li>
+					<li>Performer should bring the original copy of repertoires in their performance.</li>
+				</ul>
+				
+				<h3 class="section-header">Division and Time Limit</h3>
+				<div class="time-limit">• Division I Age 7 and under: Time limit 4 minutes</div>
+				<div class="time-limit">• Division II Age 8 and under: Time limit 4 minutes</div>
+				<div class="time-limit">• Division III Age 9 and under: Time limit 5 minutes</div>
+				<div class="time-limit">• Division IV Age 10 and under: Time limit 5 minutes</div>
+				<div class="time-limit">• Division V Age 11 and under: Time limit 5 minutes</div>
+				<div class="time-limit">• Division VI Age 12 and under: Time limit 6 minutes</div>
+				<div class="time-limit">• Division VII Age 13 and under: Time limit 7 minutes</div>
+				<div class="time-limit">• Division VIII Age 14 and under: Time limit 8 minutes</div>
+				<div class="time-limit">• Division IX Age 15 and under: Time limit 8 minutes</div>
+				<div class="time-limit">• Division X Age 16 and under: Time limit 10 minutes</div>
+				<div class="time-limit">• Division XI Age 18 and under: Time limit 12 minutes</div>
+			</div>
+
+			<!-- Vocal: Classical Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Vocal: Classical</h2>
+				<p>Choose one selection from Group A and Group B* in contrasting style. You may cut the accompaniment to meet the time limit. If it is longer than the suggested time, the judges might cut your performance short to meet the time limit.</p>
+				
+				<ul class="rule-list">
+					<li>You could cut the long piano part to fit in the time frame.</li>
+					<li>All original scores or sheet music purchased online and downloaded/printed must be accompanied by a receipt. These are required.</li>
+					<li>Vocal participants must provide their own accompanist. Teachers may not accompany their vocal students.</li>
+				</ul>
+				
+				<h3 class="section-header">Section I : Age 8 and under (6 minutes)</h3>
+				<p>A. One English Art song or folk song<br>
+				B. One English Art song</p>
+				
+				<h3 class="section-header">Section II : Age 9-10 (6 minutes)</h3>
+				<p>A. One English song by a British or American composer<br>
+				B. Any classical Italian art song from the 17th or 18th Century</p>
+				
+				<h3 class="section-header">Section III : Age 11-12 (8 minutes)</h3>
+				<p>A. One English song by a British or American composer<br>
+				B. Any classical Italian art song from the 17th or 18th Century</p>
+				
+				<h3 class="section-header">Section IV : Age 13-14 (8 minutes)</h3>
+				<p>A. One classical art song in any language (original language)<br>
+				B. One English song by a British or American composer</p>
+				
+				<h3 class="section-header">Section V : Age 15-16 (8 minutes)</h3>
+				<p>A. One classical art song in any language (original language)<br>
+				B. One English song by a British or American composer</p>
+				
+				<h3 class="section-header">Section VI : Age 17-18 (10 minutes)</h3>
+				<p>A. One classical art song in any language<br>
+				B. (1) An Oratorio Aria or an aria from the standard operatic repertoire in the original language and key. (2) One French art song or lied in the original language.</p>
+				
+				<h3 class="section-header">Section VII : Age 19-22 (10 minutes)</h3>
+				<p>A/B. Any classical repertoire. ( Should include at least one Opera aria in the original key and the language it's written in)</p>
+				
+				<h3 class="section-header">Section VIII : Age 21 and above (12 minutes)</h3>
+				<p>A/B. Any classical repertoire. ( Should include at least one Opera aria in original key and the language it's written in)</p>
+			</div>
+
+			<!-- Vocal: Musical Theater Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Vocal: Musical Theater</h2>
+				<p>Please be prepared with an age-appropriate two contrasting songs from this list of musical theater shows or anything from "The Singer's Musical Theater Anthology," "The Musical Theater Anthology for Teens," "The First Book of Broadway Solos," "The Kids Broadway Book," "The Big Book of Broadway" by Hal Leonard Publishing, or "Broadway Showstoppers" by Hal Leonard Publishing.</p>
+				
+				<p>Singers may also want to choose works by the following composers: Irving Berlin, Stephen, Flaherty, George Gershwin, Jerry Herman, Frank Loesser, Alan Menken, Cole Porter, Rodgers and Hammerstein, Stephen Schwartz, Charles Strouse, or Jules Styne (you are not limited to these composers).</p>
+				
+				<p>Again, there is so much new literature coming out regularly that we ask that you use your discretion in choosing repertoire in the older categories. If you have any questions about appropriate repertoire, check with the Chairman.</p>
+				
+				<ul class="rule-list">
+					<li>You could cut the long piano part to fit in the time frame.</li>
+					<li>All original scores or sheet music purchased online and downloaded/printed must be accompanied by a receipt. These are required.</li>
+					<li>Vocal participants must provide their own accompanist. Teachers may not accompany their vocal students.</li>
+				</ul>
+				
+				<div class="time-limit">Section I : Age 8 and under (6 minutes)</div>
+				<div class="time-limit">Section II : Age 9-10 (6 minutes)</div>
+				<div class="time-limit">Section III : Age 11-12 (8 minutes)</div>
+				<div class="time-limit">Section IV : Age 13-14 (8 minutes)</div>
+				<div class="time-limit">Section V : Age 15-16 (8 minutes)</div>
+				<div class="time-limit">Section VI : Age 17-18 (10 minutes)</div>
+				<div class="time-limit">Section VII : Age 19-20 (10 minutes)</div>
+				<div class="time-limit">Section VIII : Age 21 and above (10 minutes)</div>
+			</div>
+
+			<!-- Strings + Piano Chamber Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Strings + Piano Chamber</h2>
+				
+				<h3 class="section-header">Eligibility</h3>
+				<p>More than 2 and up to 5 members in a group</p>
+				<p>Strings only: String Duo, String Trio, String Quartet, String Quintet</p>
+				<p>Strings + Piano: Piano trio, Piano quartet, Piano quintet</p>
+				
+				<h3 class="section-header">RULES</h3>
+				<ul class="rule-list">
+					<li>Memorization is NOT required.</li>
+					<li>Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique.</li>
+					<li>No change in the repertoire is allowed following submission of the application</li>
+					<li>At least ONE Score needs to be given to the judges</li>
+					<li>All members of the group can use an original copy or sheet music from the public domain.</li>
+					<li>Taking pictures or video recording is NOT allowed inside the competition room.</li>
+					<li>Judges decision is FINAL</li>
+				</ul>
+				
+				<h3 class="section-header">AGE GROUPS</h3>
+				<p>Eligibility: Section is determined by the age of the OLDEST MEMBER in a group as of April 30 of the current year.</p>
+				
+				<div class="time-limit">Section I      Age 8 and under        Time limit 6 minutes</div>
+				<div class="time-limit">Section II     Age 10 and under      Time limit 7 minutes</div>
+				<div class="time-limit">Section III    Age 13 and under      Time limit 8 minutes</div>
+				<div class="time-limit">Section IV    Age 16 and under      Time limit 9 minutes</div>
+				<div class="time-limit">Section V     Age 19 and under      Time limit 10 minutes</div>
+			</div>
+
+			<!-- Strings Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Strings</h2>
+				<ul class="rule-list">
+					<li>Memorization is REQUIRED.</li>
+					<li>Each entrant must provide his or her own accompanist.</li>
+					<li>Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique.</li>
+					<li>Only ONE movement or ONE piece is required.</li>
+					<li>Cut is allowed however it needs to be clearly marked in the original score for the judges.</li>
+					<li>No change in the repertoire is allowed following submission of the application</li>
+					<li>At least ONE ORIGINAL Score needs to be given to the judges.</li>
+					<li>Accompanists are allowed to use a photocopy of the original score or the music from the public domain. Failure to do so will result in disqualification.</li>
+					<li>Taking pictures or video recording is NOT allowed inside the competition room.</li>
+					<li>Judges decision is FINAL</li>
+				</ul>
+				
+				<h3 class="section-header">Division and Time Limit</h3>
+				<div class="time-limit">• Division I Age 6 and under: Time limit 3 minutes</div>
+				<div class="time-limit">• Division II Age 7 -8 : Time limit 3 minutes</div>
+				<div class="time-limit">• Division III Age 9 - 10: Time limit 4 minutes</div>
+				<div class="time-limit">• Division IV Age 11: Time limit 4 minutes</div>
+				<div class="time-limit">• Division V Age 12 : Time limit 5 minutes</div>
+				<div class="time-limit">• Division VI Age 13 : Time limit 5 minutes</div>
+				<div class="time-limit">• Division VII Age 14 : Time limit 6 minutes</div>
+				<div class="time-limit">• Division VIII Age 15 : Time limit 6 minutes</div>
+				<div class="time-limit">• Division IX Age 16 - 17 : Time limit 7 minutes</div>
+				<div class="time-limit">• Division X Age 18 - 19: Time limit 7 minutes</div>
+			</div>
+
+			<!-- Guitar: Chamber Music Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Guitar: Chamber Music</h2>
+				<ul class="rule-list">
+					<li>Up to 5 members in the chamber music ensemble</li>
+					<li>Memorization is NOT required.</li>
+					<li>Category is determined by age of the oldest member</li>
+					<li>Each ensemble should present TWO contrasting pieces.</li>
+					<li>Repertoire may be freely chosen and should demonstrate excellent musicianship and proper technique.</li>
+					<li>No changes in repertoire are allowed following submission of the application</li>
+					<li>All members of the group must use original (not photocopied) sheet music</li>
+					<li>Use the Classical Guitar Division Application for Solo Guitar Applications</li>
+				</ul>
+				
+				<h3 class="section-header">TIME LIMITS:</h3>
+				<div class="time-limit">• Section I Age 7 and under: Time limit 3 minutes</div>
+				<div class="time-limit">• Section II Age 8 - 10:  Time limit 5 minutes</div>
+				<div class="time-limit">• Section III Age 11 - 14:  Time limit 7 minutes</div>
+				<div class="time-limit">• Section IV Age 15 - 18:  Time limit 10 minutes</div>
+				<div class="time-limit">• Section V Age 19-22:  Time limit 12 minutes</div>
+			</div>
+
+			<!-- Classical Guitar Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Classical Guitar</h2>
+				<ul class="rule-list">
+					<li>Memorization is required for all divisions</li>
+					<li>Each participant should present TWO contrasting pieces.</li>
+					<li>Repertoire may be freely chosen and should demonstrate excellent musicianship and proper technique.</li>
+					<li>No changes in repertoire are allowed following submission of the application</li>
+					<li>Use the Guitar Chamber Music Division Application for Guitar Ensembles</li>
+				</ul>
+				
+				<h3 class="section-header">TIME LIMITS:</h3>
+				<div class="time-limit">• Section I Age 7 and under: Time limit 3 minutes</div>
+				<div class="time-limit">• Section II Age 8 - 10:  Time limit 5 minutes</div>
+				<div class="time-limit">• Section III Age 11 - 14:  Time limit 7 minutes</div>
+				<div class="time-limit">• Section IV Age 15 - 18:  Time limit 10 minutes</div>
+				<div class="time-limit">• Section V Age 19-22:  Time limit 12 minutes</div>
+			</div>
+
+			<!-- Woodwinds Division -->
+			<div class="regulation-section">
+				<h2 class="division-title">Woodwinds</h2>
+				<ul class="rule-list">
+					<li>Memorization is required.</li>
+					<li>Only one piece OR one movement of a multi-movement work is required.(ex: one movement of a standard concerto, sonata, or a concert-piece).</li>
+					<li>Repertoire must be chosen from the standard literature, and should demonstrate excellent musicianship and proper technique.</li>
+					<li>No cutting or rearranged the music is permitted, except for the piano part.</li>
+					<li>No changes in repertoire are allowed following submission of the application.</li>
+					<li>Each entrant must provide his or her own pianist.</li>
+				</ul>
+				
+				<h3 class="section-header">TIME LIMITS:</h3>
+				<div class="time-limit">• Section I Age 11 and under: Time limit 5 minutes</div>
+				<div class="time-limit">• Section II Age 12-13:  Time limit 5 minutes</div>
+				<div class="time-limit">• Section III Age 14-15:  Time limit 8 minutes</div>
+				<div class="time-limit">• Section IV Age 16-18:  Time limit 10 minutes</div>
+				<div class="time-limit">• Section V Age 19-21:  Time limit 10 minutes</div>
+			</div>
+
+			<div style="text-align: center; margin-top: 2rem; color: var(--text-medium); font-size: 0.9rem;">
+				© 2021 Musical Arts Competition of Orange County
+			</div>
+		</div>
+	</div>
+
+</Layout> 
