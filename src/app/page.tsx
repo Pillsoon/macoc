@@ -1,5 +1,8 @@
 import Link from 'next/link'
-import config from '@/content/config.json'
+import configData from '@/content/config.json'
+import type { SiteConfig } from '@/types/config'
+
+const config = configData as SiteConfig
 
 export default function Home() {
   const { competition, winnersConcert, fees, currentYear } = config

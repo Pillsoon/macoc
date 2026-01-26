@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import config from '@/content/config.json'
+import configData from '@/content/config.json'
+import type { SiteConfig } from '@/types/config'
+
+const config = configData as SiteConfig
 
 export const metadata: Metadata = {
   title: config.site.name,
