@@ -1,8 +1,5 @@
 import Link from 'next/link'
-import configData from '@/content/config.json'
-import type { SiteConfig } from '@/types/config'
-
-const config = configData as SiteConfig
+import { config } from '@/lib/config'
 
 const divisions = [
   { icon: '🎹', name: 'Piano', desc: 'Classical & Jazz', sections: '11 sections' },

@@ -1,8 +1,5 @@
 import Link from 'next/link'
-import configData from '@/content/config.json'
-import type { SiteConfig } from '@/types/config'
-
-const config = configData as SiteConfig
+import { config } from '@/lib/config'
 
 const footerLinks = {
   explore: [
