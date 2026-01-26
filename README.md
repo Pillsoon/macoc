@@ -1,46 +1,73 @@
 # MACOC - Musical Arts Competition of Orange County
 
-A website displaying the winners of the Musical Arts Competition of Orange County across all competition years (2021-2025).
+Official website for the Musical Arts Competition of Orange County, the oldest and most prestigious music competition in Orange County since 1932.
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS
+- **Deployment**: Static export (GitHub Pages ready)
 
 ## Features
 
-- **Comprehensive Winners Database**: Complete historical data for all MACOC competition winners from 2021 to 2025
-- **Year-based Navigation**: Interactive year toggle to browse winners by competition year
-- **Division Organization**: Winners organized by competition divisions (Open, Junior, etc.)
-- **Responsive Design**: Beautiful, modern UI that works on all devices
-- **Performance Details**: Detailed information about winning performances including composers, pieces, and conductor details
+- Competition information and registration
+- Past winners database (2021-2025)
+- Member directory
+- Responsive design
 
-## Competition Years
+## Project Structure
 
-- **2025**: Current competition winners
-- **2024**: Previous year's champions  
-- **2023**: Historical winners
-- **2022**: Historical winners
-- **2021**: Historical winners
+```
+src/
+├── app/                    # Next.js pages
+│   ├── about/
+│   ├── competition/
+│   │   ├── registration/
+│   │   ├── regulation/
+│   │   └── schedule/
+│   ├── contact/
+│   ├── directory/
+│   └── winners/
+├── components/             # Reusable components
+├── content/                # Content data (JSON)
+│   ├── config.json         # Site configuration
+│   └── winners/            # Winners by year
+└── lib/                    # Utilities
+```
 
 ## Development
 
-This website is built with [Astro](https://astro.build/) for optimal performance and SEO.
+```bash
+# Install dependencies
+npm install
 
-### Commands
+# Start dev server
+npm run dev
 
-| Command | Action |
-|---------|--------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start local development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+## Content Management
+
+### Updating Site Configuration
+Edit `src/content/config.json` for:
+- Competition dates
+- Registration periods
+- Fee amounts
+- Contact information
+
+### Adding Winners
+Add new JSON file in `src/content/winners/` following the existing format.
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages using GitHub Actions.
+The site exports as static HTML and can be deployed to any static hosting:
 
-**Live Site**: https://pillsoon.github.io/macoc
-
-## Contributing
-
-This website maintains the official record of MACOC competition winners. For corrections or updates to winner information, please contact the competition organizers.
-
----
-
-*Musical Arts Competition of Orange County - Celebrating Excellence in Musical Performance*
+```bash
+npm run build
+# Output in 'out/' directory
+```

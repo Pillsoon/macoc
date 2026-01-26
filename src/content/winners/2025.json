@@ -1,0 +1,409 @@
+{
+  "year": 2025,
+  "divisions": [
+    {
+      "name": "Piano Division",
+      "icon": "🎹",
+      "sections": [
+        {
+          "name": "Section 1",
+          "winners": [
+            { "place": "1st", "name": "Chloe Yang" },
+            { "place": "2nd", "name": "Daniel Tan" },
+            { "place": "3rd", "name": "Oriana Wang" },
+            { "place": "HM", "name": "Matthew Alex Yu" }
+          ]
+        },
+        {
+          "name": "Section 2",
+          "winners": [
+            { "place": "1st", "name": "Ellie Yang" },
+            { "place": "2nd", "name": "XiaoYun Pang, Zachary Eshagpoor" },
+            { "place": "3rd", "name": "Natalie Grace Jin, Mia Mezo" },
+            { "place": "HM", "name": "Preston Chek" }
+          ]
+        },
+        {
+          "name": "Section 3",
+          "winners": [
+            { "place": "1st", "name": "Aiden Shi" },
+            { "place": "2nd", "name": "Leslie Alexa Woo" },
+            { "place": "HM", "name": "Corey Tran, Wilson Liu, Gavin Yuan" }
+          ]
+        },
+        {
+          "name": "Section 4A",
+          "winners": [
+            { "place": "1st", "name": "Youone Song" },
+            { "place": "2nd", "name": "David Wong" },
+            { "place": "3rd", "name": "Aria Cohl" }
+          ]
+        },
+        {
+          "name": "Section 4B",
+          "winners": [
+            { "place": "1st", "name": "Kamil Ray Sokulski" },
+            { "place": "2nd", "name": "Caden Zhang" },
+            { "place": "3rd", "name": "Clara Shi" },
+            { "place": "HM", "name": "Joshua Tan, Maya Claire Kaji" }
+          ]
+        },
+        {
+          "name": "Section 5",
+          "winners": [
+            { "place": "1st", "name": "Jessica Wang" },
+            { "place": "2nd", "name": "Zoey Poon, Emily Wang" },
+            { "place": "3rd", "name": "Amadeus Wilmoth" }
+          ]
+        },
+        {
+          "name": "Section 6",
+          "winners": [
+            { "place": "1st", "name": "Divyansh Joshi, Anthony Truong" },
+            { "place": "2nd", "name": "Qianer Cheng, Jadon Zhang" },
+            { "place": "3rd", "name": "Lorien Chen, Justice Lin-Tsai" },
+            { "place": "HM", "name": "Stephanie Xu" }
+          ]
+        },
+        {
+          "name": "Section 7",
+          "winners": [
+            { "place": "1st", "name": "Jayden Jiho Choi" },
+            { "place": "2nd", "name": "Phoebe Tsai" },
+            { "place": "3rd", "name": "Yude Andy Li" },
+            { "place": "HM", "name": "Ellie Oh" }
+          ]
+        },
+        {
+          "name": "Section 8",
+          "winners": [
+            { "place": "1st", "name": "Chicago Hamada, Jina Ju" },
+            { "place": "2nd", "name": "Sophie Liu, Gavin Ho" },
+            { "place": "3rd", "name": "Jaden Lee, Zachary Zheng" },
+            { "place": "HM", "name": "Ialy Liu" }
+          ]
+        },
+        {
+          "name": "Section 9",
+          "winners": [
+            { "place": "1st", "name": "Yihan Hannah Hu" },
+            { "place": "2nd", "name": "Emma Brull" },
+            { "place": "3rd", "name": "Aidan Chew" },
+            { "place": "HM", "name": "Mozhan Afagh" }
+          ]
+        },
+        {
+          "name": "Section 10",
+          "winners": [
+            { "place": "1st", "name": "Jonathan Zixiang Zhou" },
+            { "place": "2nd", "name": "Lois Xu" },
+            { "place": "3rd", "name": "Yuxuan Pan" },
+            { "place": "HM", "name": "Karen Nishioka" }
+          ]
+        },
+        {
+          "name": "Section 11",
+          "winners": [
+            { "place": "2nd", "name": "DANG HI PHAM, Leona Lee" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Voice Division",
+      "icon": "🎤",
+      "subsections": [
+        {
+          "name": "Musical Theater",
+          "sections": [
+            {
+              "name": "Section 1",
+              "winners": [
+                { "place": "1st", "name": "Anay Poddar" },
+                { "place": "2nd", "name": "Sofia Dailey" },
+                { "place": "3rd", "name": "Isabelle Illy Lin" }
+              ]
+            },
+            {
+              "name": "Section 2",
+              "winners": [
+                { "place": "1st", "name": "Aiden Baltazar" },
+                { "place": "2nd", "name": "Ella Grace Larsen" }
+              ]
+            },
+            {
+              "name": "Section 4",
+              "winners": [
+                { "place": "1st", "name": "Erin Choi" },
+                { "place": "2nd", "name": "Lily Elizabeth Larsen" },
+                { "place": "3rd", "name": "Xinyuan Zhang" }
+              ]
+            },
+            {
+              "name": "Section 6",
+              "winners": [
+                { "place": "1st", "name": "Maddox Feemster" },
+                { "place": "2nd", "name": "Abigail A-In Cho" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Classical Voice",
+          "sections": [
+            {
+              "name": "Section 2",
+              "winners": [
+                { "place": "1st", "name": "Pietà Myka Baca" }
+              ]
+            },
+            {
+              "name": "Section 3",
+              "winners": [
+                { "place": "1st", "name": "Naomi Leewon Kim" },
+                { "place": "2nd", "name": "Ka-on Kim" },
+                { "place": "3rd", "name": "Jace Jaehee Yoo" }
+              ]
+            },
+            {
+              "name": "Section 4",
+              "winners": [
+                { "place": "1st", "name": "John Oh" },
+                { "place": "2nd", "name": "Sophia Hasom Kim" }
+              ]
+            },
+            {
+              "name": "Section 6",
+              "winners": [
+                { "place": "1st", "name": "Jaden Jaehyung Yoo" },
+                { "place": "2nd", "name": "Yewon Jang" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Strings Division",
+      "icon": "🎻",
+      "subsections": [
+        {
+          "name": "Violin",
+          "sections": [
+            {
+              "name": "Section 1",
+              "winners": [
+                { "place": "1st", "name": "Caroline Zhang" }
+              ]
+            },
+            {
+              "name": "Section 2",
+              "winners": [
+                { "place": "1st", "name": "Emmett David Paik" },
+                { "place": "2nd", "name": "Kingstone Lu" },
+                { "place": "3rd", "name": "Emily Luo" },
+                { "place": "HM", "name": "Amelie H Dela Cruz" }
+              ]
+            },
+            {
+              "name": "Section 3",
+              "winners": [
+                { "place": "1st", "name": "Scarlett Lin" },
+                { "place": "2nd", "name": "Kyle Poon" },
+                { "place": "3rd", "name": "Kaylee Park" },
+                { "place": "HM", "name": "William Wu" }
+              ]
+            },
+            {
+              "name": "Section 4",
+              "winners": [
+                { "place": "1st", "name": "Alicia Huang" },
+                { "place": "2nd", "name": "Zackary Lee" },
+                { "place": "3rd", "name": "Jihoo Seok" },
+                { "place": "HM", "name": "Amber Wang" }
+              ]
+            },
+            {
+              "name": "Section 5",
+              "winners": [
+                { "place": "1st", "name": "Ryan Noda" },
+                { "place": "2nd", "name": "Katherine Zhang" },
+                { "place": "3rd", "name": "Owen Lo" },
+                { "place": "HM", "name": "Harmonie Fu" }
+              ]
+            },
+            {
+              "name": "Section 6",
+              "winners": [
+                { "place": "1st", "name": "Cayla Elle Kim" },
+                { "place": "2nd", "name": "William Lin" },
+                { "place": "3rd", "name": "Abigail Chung" },
+                { "place": "HM", "name": "Katelyn Blessing Chou" }
+              ]
+            },
+            {
+              "name": "Section 7",
+              "winners": [
+                { "place": "1st", "name": "Wayne T Wang" },
+                { "place": "2nd", "name": "Wesley Tsai" },
+                { "place": "3rd", "name": "Eric Shin" },
+                { "place": "HM", "name": "Haoqi Wang" }
+              ]
+            },
+            {
+              "name": "Section 8",
+              "winners": [
+                { "place": "1st", "name": "Adam Liu" },
+                { "place": "2nd", "name": "Audrey Lee" },
+                { "place": "3rd", "name": "KariAnne Chien" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Viola",
+          "sections": [
+            {
+              "name": "Section 3",
+              "winners": [
+                { "place": "1st", "name": "Logan Huynh" },
+                { "place": "2nd", "name": "Leo Lo" }
+              ]
+            },
+            {
+              "name": "Section 5",
+              "winners": [
+                { "place": "1st", "name": "Owen Lo" },
+                { "place": "2nd", "name": "Aiden Xu" }
+              ]
+            },
+            {
+              "name": "Section 8",
+              "winners": [
+                { "place": "1st", "name": "Sara Ning" },
+                { "place": "2nd", "name": "Anabelle Jin" },
+                { "place": "HM", "name": "Andrew S Jeon" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cello",
+          "sections": [
+            {
+              "name": "Section 1",
+              "winners": [
+                { "place": "1st", "name": "Wyatt Wang" },
+                { "place": "2nd", "name": "Raymond Zhou" }
+              ]
+            },
+            {
+              "name": "Section 2",
+              "winners": [
+                { "place": "1st", "name": "Mia Ai Mezo" },
+                { "place": "2nd", "name": "Aaron Zhang" }
+              ]
+            },
+            {
+              "name": "Section 4",
+              "winners": [
+                { "place": "1st", "name": "Micah Lee" },
+                { "place": "2nd", "name": "Jamie Chang" },
+                { "place": "3rd", "name": "Azrael Lin" },
+                { "place": "HM", "name": "Joe Yu" }
+              ]
+            },
+            {
+              "name": "Section 6",
+              "winners": [
+                { "place": "1st", "name": "Audrey Ma" },
+                { "place": "2nd", "name": "Theodore Kim" },
+                { "place": "3rd", "name": "Anastasia Joy Cantanus" },
+                { "place": "HM", "name": "Hyein Jeong" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Woodwinds Division",
+      "icon": "🎺",
+      "subsections": [
+        {
+          "name": "Flute",
+          "sections": [
+            {
+              "name": "Section 2",
+              "winners": [
+                { "place": "1st", "name": "Ellie Kim" },
+                { "place": "2nd", "name": "Qianer Cheng" },
+                { "place": "3rd", "name": "Chloe Park" }
+              ]
+            },
+            {
+              "name": "Section 3",
+              "winners": [
+                { "place": "1st", "name": "Kaya Baird" },
+                { "place": "2nd", "name": "Ziling Cheng, Sarah Feigenbaum" }
+              ]
+            },
+            {
+              "name": "Section 4",
+              "winners": [
+                { "place": "1st", "name": "Jia Kim" },
+                { "place": "2nd", "name": "Ouyue Yu" },
+                { "place": "3rd", "name": "Manas Bhushan" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Clarinet",
+          "sections": [
+            {
+              "name": "Section 1",
+              "winners": [
+                { "place": "1st", "name": "Alex Zhang" }
+              ]
+            },
+            {
+              "name": "Sections 2-4",
+              "winners": [
+                { "place": "1st", "name": "Daniel Cui, Gavin Liu, Sydney Yang" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chamber Music Division",
+      "icon": "🎼",
+      "sections": [
+        {
+          "name": "Section 3",
+          "winners": [
+            { "place": "1st", "name": "Micah Lee, Katherine Zhang, Ming Chun NG" },
+            { "place": "2nd", "name": "Alexis Lee, Victoria Shung, Kaitlyn Lee" },
+            { "place": "3rd", "name": "Angelina Sun, William Wu, Caroline Chen" }
+          ]
+        },
+        {
+          "name": "Section 4",
+          "winners": [
+            { "place": "1st", "name": "Adam Liu, Kevin Wu, Sean Yeh, Bernard Zhang" },
+            { "place": "2nd", "name": "Albert Hacker, Sylvie Kim, Lucas Lee" }
+          ]
+        },
+        {
+          "name": "Section 5",
+          "winners": [
+            { "place": "1st", "name": "Brandon Phan, Hayden Park, Mattea Kim" },
+            { "place": "2nd", "name": "Esther Huynh, Annabella Luo, Anabelle Jin" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "site": {
+    "name": "Musical Arts Competition of Orange County",
+    "shortName": "MACOC",
+    "description": "The oldest and most prestigious music competition in Orange County",
+    "url": "https://www.musicalartsoc.org"
+  },
+  "president": {
+    "name": "Marie Djang",
+    "title": "President, Musical Arts Competition of Orange County"
+  },
+  "currentYear": 2026,
+  "competition": {
+    "date": "Saturday, May 16, 2026",
+    "location": "California State University, Long Beach",
+    "registration": {
+      "open": "March 16, 2026",
+      "close": "April 16, 2026",
+      "lateDeadline": "April 23, 2026",
+      "ageAsOf": "April 30, 2026"
+    }
+  },
+  "winnersConcert": {
+    "date": "Saturday, June 6, 2026",
+    "location": "Richard Nixon Library - Yorba Linda",
+    "time": "7:00 PM"
+  },
+  "fees": {
+    "membership": {
+      "amount": 40,
+      "label": "Teacher's Membership"
+    },
+    "entry": {
+      "amount": 50,
+      "label": "Student Competition Entry"
+    },
+    "lateFee": {
+      "amount": 70,
+      "label": "Late Registration Fee"
+    }
+  },
+  "contact": {
+    "email": "info@musicalartsoc.org"
+  },
+  "divisionContacts": [
+    {
+      "division": "Piano",
+      "chair": "Dr. Hyunjoo Choi",
+      "email": "musicalartsoc@gmail.com"
+    },
+    {
+      "division": "Vocal",
+      "chair": "Dr. SuJung Kim",
+      "email": "sjsoprano1@gmail.com"
+    },
+    {
+      "division": "Strings",
+      "chair": "Sorah Myung",
+      "email": "strings@musicalartsoc.org"
+    },
+    {
+      "division": "Winds",
+      "chair": "Alice Yu",
+      "email": "ayuhsiu@gmail.com"
+    },
+    {
+      "division": "Classical Guitar",
+      "chair": "Nikola Chekardzhikov",
+      "email": "guitar@musicalartsoc.org"
+    }
+  ],
+  "socialLinks": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "history": {
+    "founded": 1932,
+    "story": "Initially organized in 1932, as the Orange County Chapter of Musical Arts Club, the original objective was to establish a rapport among performing and teaching colleagues. During the late 1940's, a competition for piano, organ and voice students became an annual event. It has continued to develop through the years, with the organ category being replaced with the instrumental divisions. In 1974, Musical Arts Club of Orange County was incorporated as a non-profit corporation, which invests all proceeds in an endowment fund, a legacy left by one of the founders, Clarence Gustlin. It accepts donations to this fund for investment only, with the interest used to increase the annual awards. The organization officially changed its name to Musical Arts Competition of Orange County in 2011."
+  }
+}
