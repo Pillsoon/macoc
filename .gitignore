@@ -18,6 +18,9 @@ dist/
 .DS_Store
 *.pem
 
+# exports (temporary CSV files)
+exports/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
