@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MACOC New Website Proposal</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #222;
+    line-height: 1.7;
+    font-size: 11pt;
+  }
+  h1 {
+    font-size: 20pt;
+    color: #1a1a1a;
+    border-bottom: 2px solid #333;
+    padding-bottom: 8px;
+    margin-top: 30px;
+  }
+  h2 {
+    font-size: 16pt;
+    color: #1a1a1a;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+    margin-top: 36px;
+  }
+  h3 {
+    font-size: 13pt;
+    color: #333;
+    margin-top: 24px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 20px 0;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 10pt;
+  }
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .highlight-row td {
+    font-weight: bold;
+    background-color: #e8f5e9;
+  }
+  .cost-old td {
+    background-color: #f5f5f5;
+  }
+  .cost-new td {
+    background-color: #e8f5e9;
+  }
+  .cost-save td {
+    background-color: #c8e6c9;
+    font-weight: bold;
+    font-size: 12pt;
+  }
+  .step-box {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 12px 0 20px 0;
+  }
+  .step-box p {
+    margin: 4px 0;
+  }
+  .key-point {
+    background-color: #e3f2fd;
+    border-left: 4px solid #1976d2;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 10.5pt;
+  }
+  .key-point strong {
+    color: #1565c0;
+  }
+  .dev-link {
+    background-color: #fff3e0;
+    border: 1px solid #ffb74d;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 10.5pt;
+  }
+  .qa {
+    margin: 8px 0;
+  }
+  .qa-q {
+    font-weight: bold;
+    margin-top: 16px;
+  }
+  .qa-a {
+    margin-left: 0;
+    color: #444;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+  }
+  ul {
+    margin: 6px 0;
+    padding-left: 24px;
+  }
+  li {
+    margin: 4px 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>MACOC New Website &mdash; Proposal</h1>
+<p><strong>Musical Arts Competition of Orange County</strong><br>
+Current website: https://www.musicalartsoc.org</p>
+
+<div class="dev-link">
+  <strong>Preview (In Development):</strong> A working preview of the new website is available at
+  <a href="https://macoc.vercel.app">https://macoc.vercel.app</a><br>
+  This is a development version for review purposes only. Content, design, and features are still being finalized.
+</div>
+
+<hr>
+
+<h2>What Is This Document?</h2>
+
+<p>We are proposing a new website system for MACOC. Before we finalize anything, we would like to share the plan and get your feedback.</p>
+
+<p>The current website uses <strong>Wix</strong> for the website and <strong>Jotform</strong> for registration forms. These services have served us well, but we believe there is an opportunity to <strong>simplify management</strong> and <strong>reduce costs</strong> by moving to a new setup.</p>
+
+<p>This document outlines the proposed plan in three areas:</p>
+<ol>
+  <li><strong>Website Content</strong> &mdash; How content would be managed going forward</li>
+  <li><strong>Registration Form</strong> &mdash; How the registration and data tracking would work</li>
+  <li><strong>Billing</strong> &mdash; How payments would be processed</li>
+</ol>
+
+<p><strong>Nothing is final yet.</strong> We welcome your questions, suggestions, and feedback so we can build the best solution for everyone.</p>
+
+<hr>
+
+<h2>1. Website Content Management</h2>
+
+<h3>What could you change?</h3>
+
+<table>
+  <tr><th>Item</th><th>Example</th></tr>
+  <tr><td>Competition date</td><td>Saturday, May 16, 2026</td></tr>
+  <tr><td>Competition location</td><td>California State University, Long Beach</td></tr>
+  <tr><td>Registration period</td><td>Open date, close date, late deadline</td></tr>
+  <tr><td>Winners Concert</td><td>Date, location, time</td></tr>
+  <tr><td>Fees</td><td>Membership $40, Entry $50, Late Fee $70</td></tr>
+  <tr><td>Contact info</td><td>Email addresses, division chairs</td></tr>
+  <tr><td>Past winners</td><td>Winners list by year</td></tr>
+  <tr><td>Teacher directory</td><td>Teacher list by instrument</td></tr>
+</table>
+
+<h3>How would you change it?</h3>
+
+<p><strong>Through Google Sheets (similar to Excel)</strong></p>
+
+<p>All website content would be organized in a Google Sheets spreadsheet.<br>
+When you edit the spreadsheet, the website would update automatically.</p>
+
+<div class="step-box">
+  <p><strong>Proposed update process:</strong></p>
+  <p>1. Open the Google Sheets spreadsheet</p>
+  <p>2. Find the cell you want to change</p>
+  <p>3. Type the new information</p>
+  <p>4. It saves automatically</p>
+  <p>5. The website updates automatically</p>
+</div>
+
+<p><strong>Example: Changing the competition date</strong></p>
+
+<table>
+  <tr><th>Key</th><th>Value</th></tr>
+  <tr><td>competition.date</td><td>Saturday, May 16, 2026</td></tr>
+</table>
+
+<p>You would simply change "Saturday, May 16, 2026" to the new date. That's it.</p>
+
+<p><strong>Example: Adding this year's winners</strong></p>
+<p>Go to the Winners tab, add a new row, and enter the year, division, place, and name.</p>
+
+<div class="key-point">
+  <strong>Key Point:</strong> Instead of using a separate website editor, you would manage everything through a Google Sheets spreadsheet &mdash; which works just like Excel.
+</div>
+
+<hr>
+
+<h2>2. Registration Form Management</h2>
+
+<h3>How would the registration process work?</h3>
+
+<p>The proposed registration form would guide students through 3 simple steps:</p>
+
+<div class="step-box">
+  <p><strong>Step 1: Student &amp; Teacher Information</strong></p>
+  <ul>
+    <li>Teacher: Name, email, phone number</li>
+    <li>Student: Name, email, date of birth, age, address</li>
+    <li>Proof of age upload (birth certificate or passport)</li>
+  </ul>
+  <p><strong>Step 2: Repertoire Information</strong></p>
+  <ul>
+    <li>Select division (e.g., Piano)</li>
+    <li>Select section (based on age)</li>
+    <li>Two pieces: Title, composer, time period</li>
+  </ul>
+  <p><strong>Step 3: Review &amp; Submit</strong></p>
+  <ul>
+    <li>Review all entered information</li>
+    <li>Click the Submit button</li>
+    <li>Proceed to the payment page</li>
+  </ul>
+</div>
+
+<h3>Where would you view registrations?</h3>
+
+<p><strong>Directly in Google Sheets.</strong></p>
+
+<p>Every time someone registers, a new row would be automatically added to a Google Sheets spreadsheet. For example:</p>
+
+<table>
+  <tr><th>Time</th><th>Payment</th><th>Teacher</th><th>Student</th><th>Division</th><th>Section</th><th>Repertoire</th></tr>
+  <tr><td>2026-03-20</td><td>Pending</td><td>Kim, Jane</td><td>Park, David</td><td>Piano</td><td>Section III</td><td>Sonata...</td></tr>
+  <tr><td>2026-03-21</td><td>Pending</td><td>Lee, Sarah</td><td>Choi, Emily</td><td>Piano</td><td>Section V</td><td>Prelude...</td></tr>
+</table>
+
+<p>At a glance, you would be able to see:</p>
+<ul>
+  <li><strong>Who registered</strong> (student name, teacher name)</li>
+  <li><strong>When they registered</strong> (date and time)</li>
+  <li><strong>Whether they paid</strong> (Payment Status: Pending = not yet, Paid = done)</li>
+  <li><strong>Which division</strong> (Piano, Strings, etc.)</li>
+  <li><strong>What pieces they will perform</strong></li>
+  <li><strong>Proof of age document</strong> (click the link to view it instantly)</li>
+</ul>
+
+<div class="key-point">
+  <strong>Key Point:</strong> Instead of logging into a separate service, all registration data would be available in Google Sheets &mdash; a tool many of us already use.
+</div>
+
+<h3>Where would proof-of-age documents be stored?</h3>
+
+<p>Documents uploaded by students (birth certificates, passports) would be stored securely in <strong>Cloudinary</strong>, a safe file storage service.<br>
+You would click the link in Google Sheets to view any document instantly.</p>
+
+<hr>
+
+<h2>3. Billing Management</h2>
+
+<h3>How would the payment process work?</h3>
+
+<div class="step-box">
+  <p>1. Student fills out the registration form and submits it</p>
+  <p>2. A "Complete Payment" button appears</p>
+  <p>3. Clicking the button takes them to a Stripe payment page</p>
+  <p>4. Student (or parent) enters their card information and pays</p>
+  <p>5. Payment is recorded in Google Sheets</p>
+</div>
+
+<h3>What is Stripe?</h3>
+
+<p>Stripe is one of the most widely used online payment services in the world.<br>
+Major companies like Amazon and Google use it. It is safe and reliable.</p>
+
+<h3>Where would you check payment status?</h3>
+
+<p>You would be able to check in two places:</p>
+<ol>
+  <li><strong>Google Sheets</strong> &mdash; Check the "Payment Status" column in the registrations list</li>
+  <li><strong>Stripe Dashboard</strong> (stripe.com) &mdash; View payment amounts, dates, and details</li>
+</ol>
+
+<hr>
+
+<h2>Cost Comparison</h2>
+
+<h3>Current System (Wix + Jotform Gold)</h3>
+
+<table>
+  <tr><th>Service</th><th>Monthly Cost</th><th>Annual Cost</th></tr>
+  <tr class="cost-old"><td>Wix (Core Plan)</td><td>$29/month</td><td>$348/year</td></tr>
+  <tr class="cost-old"><td>Jotform Gold</td><td>$99/month</td><td>$1,188/year</td></tr>
+  <tr><td><strong>Total</strong></td><td><strong>$128/month</strong></td><td><strong>$1,536/year</strong></td></tr>
+</table>
+
+<p>* In addition, PayPal (integrated with Jotform for payment processing) charges transaction fees of approximately 2.9% + $0.30 per transaction on each registration payment.</p>
+
+<h3>Proposed New System</h3>
+
+<table>
+  <tr><th>Service</th><th>Monthly Cost</th><th>Annual Cost</th><th>Notes</th></tr>
+  <tr class="cost-new"><td>GitHub Pages (website hosting)</td><td>$0</td><td>$0</td><td>Free</td></tr>
+  <tr class="cost-new"><td>Google Sheets (data storage)</td><td>$0</td><td>$0</td><td>Free</td></tr>
+  <tr class="cost-new"><td>Cloudinary (file storage)</td><td>$0</td><td>$0</td><td>Free (more than enough capacity)</td></tr>
+  <tr class="cost-new"><td>Stripe (payments)</td><td>$0</td><td>$0</td><td>No monthly fee</td></tr>
+  <tr><td>Domain (musicalartsoc.org)</td><td>&mdash;</td><td>~$12/year</td><td>Already in use</td></tr>
+  <tr class="highlight-row"><td><strong>Total</strong></td><td><strong>$0/month</strong></td><td><strong>~$12/year</strong></td><td></td></tr>
+</table>
+
+<p>* Stripe charges a transaction fee of 2.9% + $0.30 per payment, similar to what PayPal currently charges through Jotform. This is only charged when a transaction occurs &mdash; there is no monthly fee.</p>
+
+<h3>Estimated Savings</h3>
+
+<table>
+  <tr><th></th><th>Annual Cost</th></tr>
+  <tr class="cost-old"><td>Current System (Wix $348 + Jotform $1,188)</td><td>~$1,536/year</td></tr>
+  <tr class="cost-new"><td>Proposed System (domain cost only)</td><td>~$12/year</td></tr>
+  <tr class="cost-save"><td>Estimated Savings</td><td>~$1,524/year</td></tr>
+</table>
+
+<hr>
+
+<h2>How Would Management Change?</h2>
+
+<h3>Current setup</h3>
+
+<table>
+  <tr><th>Area</th><th>How it works today</th></tr>
+  <tr><td>Website content</td><td>Managed through the Wix editor</td></tr>
+  <tr><td>Registration forms</td><td>Managed separately in Jotform</td></tr>
+  <tr><td>Payment processing</td><td>Handled through PayPal (via Jotform)</td></tr>
+  <tr><td>Registration data</td><td>Stored in Jotform; requires login to view</td></tr>
+</table>
+
+<h3>Proposed new setup</h3>
+
+<table>
+  <tr><th>Area</th><th>How it would work</th></tr>
+  <tr><td>Website content</td><td>Edit in Google Sheets (like Excel)</td></tr>
+  <tr><td>Registration forms</td><td>Built into the website &mdash; no separate service</td></tr>
+  <tr><td>Payment processing</td><td>Handled through Stripe</td></tr>
+  <tr><td>Registration data</td><td>Automatically saved to Google Sheets &mdash; viewable anytime</td></tr>
+</table>
+
+<h3>Side-by-Side Comparison</h3>
+
+<table>
+  <tr><th>Category</th><th>Current</th><th>Proposed</th></tr>
+  <tr><td>Cost</td><td>$128/month ($1,536/year)</td><td><strong>$0/month (~$12/year)</strong></td></tr>
+  <tr><td>Edit content</td><td>Wix editor</td><td><strong>Google Sheets</strong></td></tr>
+  <tr><td>View registrations</td><td>Log into Jotform</td><td><strong>View directly in Google Sheets</strong></td></tr>
+  <tr><td>Payment tracking</td><td>Check PayPal</td><td><strong>Stripe + Google Sheets</strong></td></tr>
+  <tr><td>Where is data?</td><td>Wix, Jotform, PayPal</td><td><strong>Google Sheets (one place)</strong></td></tr>
+  <tr><td>Sharing with others</td><td>Separate logins for each service</td><td><strong>Share one Google Sheets link</strong></td></tr>
+</table>
+
+<hr>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="qa">
+  <p class="qa-q">Q: I'm not familiar with Google Sheets. Is that okay?</p>
+  <p class="qa-a">A: If you've ever used Excel, it's almost the same. Just click a cell and type. It saves automatically.</p>
+</div>
+
+<div class="qa">
+  <p class="qa-q">Q: Is the new website reliable?</p>
+  <p class="qa-a">A: The website would be hosted on GitHub Pages, a very stable and widely used hosting service. If there's ever an issue, contact the developer.</p>
+</div>
+
+<div class="qa">
+  <p class="qa-q">Q: What if we want to change the registration form?</p>
+  <p class="qa-a">A: To change the form fields or questions, please ask the developer. Simple changes can be made quickly.</p>
+</div>
+
+<div class="qa">
+  <p class="qa-q">Q: Where does the payment money go?</p>
+  <p class="qa-a">A: It goes directly to the bank account linked to the Stripe account. You can check everything in the Stripe Dashboard.</p>
+</div>
+
+<div class="qa">
+  <p class="qa-q">Q: Will all divisions be available (Strings, Voice, etc.)?</p>
+  <p class="qa-a">A: We plan to add all divisions. The initial launch would start with Piano, and other divisions would follow.</p>
+</div>
+
+<hr>
+
+<h2>Next Steps</h2>
+
+<p>This is a proposal. Here is what we would like to do next:</p>
+<ol>
+  <li><strong>Review this document</strong> and the preview site at <a href="https://macoc.vercel.app">macoc.vercel.app</a></li>
+  <li><strong>Share your feedback</strong> &mdash; questions, concerns, or suggestions are all welcome</li>
+  <li><strong>Finalize the plan</strong> based on your input</li>
+  <li><strong>Build and launch</strong> the new website</li>
+</ol>
+
+<p>We want to make sure this works well for everyone before moving forward. Please don't hesitate to share your thoughts.</p>
+
+<hr>
+
+<p><em>This document was prepared in January 2026.</em></p>
+
+</body>
+</html>
