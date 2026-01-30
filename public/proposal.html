@@ -133,7 +133,7 @@ Current website: https://www.musicalartsoc.org</p>
 
 <p>We are proposing a new website system for MACOC. Before we finalize anything, we would like to share the plan and get your feedback.</p>
 
-<p>The current website uses <strong>Wix</strong> for the website and <strong>Jotform</strong> for registration forms. These services have served us well, but we believe there is an opportunity to <strong>simplify management</strong> and <strong>reduce costs</strong> by moving to a new setup.</p>
+<p>The current website uses <a href="https://www.wix.com">Wix</a> for the website and <a href="https://www.jotform.com">Jotform</a> for registration forms. These services have served us well, but we believe there is an opportunity to <strong>simplify management</strong> and <strong>reduce costs</strong> by moving to a new setup.</p>
 
 <p>This document outlines the proposed plan in three areas:</p>
 <ol>
@@ -215,11 +215,12 @@ When you edit the spreadsheet, the website would update automatically.</p>
     <li>Select section (based on age)</li>
     <li>Two pieces: Title, composer, time period</li>
   </ul>
-  <p><strong>Step 3: Review &amp; Submit</strong></p>
+  <p><strong>Step 3: Review, Submit &amp; Pay</strong></p>
   <ul>
     <li>Review all entered information</li>
     <li>Click the Submit button</li>
-    <li>Proceed to the payment page</li>
+    <li>Complete payment on the Stripe payment page</li>
+    <li>Automatic confirmation email sent to student/parent after successful registration and payment</li>
   </ul>
 </div>
 
@@ -263,14 +264,15 @@ You would click the link in Google Sheets to view any document instantly.</p>
 <div class="step-box">
   <p>1. Student fills out the registration form and submits it</p>
   <p>2. A "Complete Payment" button appears</p>
-  <p>3. Clicking the button takes them to a Stripe payment page</p>
+  <p>3. Clicking the button takes them to a <a href="https://stripe.com">Stripe</a> payment page</p>
   <p>4. Student (or parent) enters their card information and pays</p>
   <p>5. Payment is recorded in Google Sheets</p>
+  <p>6. Confirmation email is sent to the student/parent</p>
 </div>
 
 <h3>What is Stripe?</h3>
 
-<p>Stripe is one of the most widely used online payment services in the world.<br>
+<p><a href="https://stripe.com">Stripe</a> is one of the most widely used online payment services in the world.<br>
 Major companies like Amazon and Google use it. It is safe and reliable.</p>
 
 <h3>Where would you check payment status?</h3>
@@ -283,9 +285,31 @@ Major companies like Amazon and Google use it. It is safe and reliable.</p>
 
 <hr>
 
+<h2>Who Manages What?</h2>
+
+<p>To keep things clear, here is who would be responsible for what:</p>
+
+<table>
+  <tr><th>Task</th><th>Who handles it</th></tr>
+  <tr><td>Update dates, fees, winners, contact info</td><td><strong>Chairs / Designated admin(s)</strong></td></tr>
+  <tr><td>View registrations and payment status</td><td><strong>Chairs / Designated admin(s)</strong></td></tr>
+  <tr><td>Review proof-of-age documents</td><td><strong>Chairs / Designated admin(s)</strong></td></tr>
+  <tr><td>Change form fields or add new divisions</td><td><strong>Developer</strong></td></tr>
+  <tr><td>Fix technical issues or bugs</td><td><strong>Developer</strong></td></tr>
+  <tr><td>Major design or layout changes</td><td><strong>Developer</strong></td></tr>
+</table>
+
+<p>Designated admin(s) would be given edit access to the Google Sheets and the Stripe dashboard. The developer would support initial setup and major changes, but day-to-day updates (dates, fees, winners, etc.) can be handled by chairs without any technical knowledge.</p>
+
+<div class="key-point">
+  <strong>Ownership:</strong> All data and accounts &mdash; including the domain, Google Sheets, and Stripe &mdash; would be owned by MACOC, not by the developer. MACOC retains full control at all times.
+</div>
+
+<hr>
+
 <h2>Cost Comparison</h2>
 
-<h3>Current System (Wix + Jotform Gold)</h3>
+<h3>Current System (<a href="https://www.wix.com">Wix</a> + <a href="https://www.jotform.com">Jotform</a> Gold)</h3>
 
 <table>
   <tr><th>Service</th><th>Monthly Cost</th><th>Annual Cost</th></tr>
@@ -294,29 +318,31 @@ Major companies like Amazon and Google use it. It is safe and reliable.</p>
   <tr><td><strong>Total</strong></td><td><strong>$128/month</strong></td><td><strong>$1,536/year</strong></td></tr>
 </table>
 
-<p>* In addition, PayPal (integrated with Jotform for payment processing) charges transaction fees of approximately 2.9% + $0.30 per transaction on each registration payment.</p>
+<p>* In addition, <a href="https://www.paypal.com">PayPal</a> (integrated with Jotform for payment processing) charges transaction fees of approximately 2.9% + $0.30 per transaction on each registration payment.</p>
 
 <h3>Proposed New System</h3>
 
 <table>
   <tr><th>Service</th><th>Monthly Cost</th><th>Annual Cost</th><th>Notes</th></tr>
-  <tr class="cost-new"><td>GitHub Pages (website hosting)</td><td>$0</td><td>$0</td><td>Free</td></tr>
+  <tr class="cost-new"><td>Website hosting (powered by Vercel)</td><td>$0</td><td>$0</td><td>Free</td></tr>
   <tr class="cost-new"><td>Google Sheets (data storage)</td><td>$0</td><td>$0</td><td>Free</td></tr>
   <tr class="cost-new"><td>Cloudinary (file storage)</td><td>$0</td><td>$0</td><td>Free (more than enough capacity)</td></tr>
   <tr class="cost-new"><td>Stripe (payments)</td><td>$0</td><td>$0</td><td>No monthly fee</td></tr>
-  <tr><td>Domain (musicalartsoc.org)</td><td>&mdash;</td><td>~$12/year</td><td>Already in use</td></tr>
-  <tr class="highlight-row"><td><strong>Total</strong></td><td><strong>$0/month</strong></td><td><strong>~$12/year</strong></td><td></td></tr>
+  <tr><td>Domain (musicalartsoc.org)</td><td>&mdash;</td><td>~$15&ndash;20/year</td><td>Transfer from Wix to a domain registrar</td></tr>
+  <tr class="highlight-row"><td><strong>Total</strong></td><td><strong>$0/month</strong></td><td><strong>~$15&ndash;20/year</strong></td><td></td></tr>
 </table>
 
 <p>* Stripe charges a transaction fee of 2.9% + $0.30 per payment, similar to what PayPal currently charges through Jotform. This is only charged when a transaction occurs &mdash; there is no monthly fee.</p>
+
+<p>* The domain (musicalartsoc.org) is currently managed through Wix. As part of this transition, the domain would be transferred to a separate domain registrar (such as Namecheap or Google Domains), which typically costs around $15&ndash;20 per year.</p>
 
 <h3>Estimated Savings</h3>
 
 <table>
   <tr><th></th><th>Annual Cost</th></tr>
   <tr class="cost-old"><td>Current System (Wix $348 + Jotform $1,188)</td><td>~$1,536/year</td></tr>
-  <tr class="cost-new"><td>Proposed System (domain cost only)</td><td>~$12/year</td></tr>
-  <tr class="cost-save"><td>Estimated Savings</td><td>~$1,524/year</td></tr>
+  <tr class="cost-new"><td>Proposed System (domain cost only)</td><td>~$15&ndash;20/year</td></tr>
+  <tr class="cost-save"><td>Estimated Savings</td><td>~$1,500+/year</td></tr>
 </table>
 
 <hr>
@@ -347,7 +373,7 @@ Major companies like Amazon and Google use it. It is safe and reliable.</p>
 
 <table>
   <tr><th>Category</th><th>Current</th><th>Proposed</th></tr>
-  <tr><td>Cost</td><td>$128/month ($1,536/year)</td><td><strong>$0/month (~$12/year)</strong></td></tr>
+  <tr><td>Cost</td><td>$128/month ($1,536/year)</td><td><strong>$0/month (~$15&ndash;20/year)</strong></td></tr>
   <tr><td>Edit content</td><td>Wix editor</td><td><strong>Google Sheets</strong></td></tr>
   <tr><td>View registrations</td><td>Log into Jotform</td><td><strong>View directly in Google Sheets</strong></td></tr>
   <tr><td>Payment tracking</td><td>Check PayPal</td><td><strong>Stripe + Google Sheets</strong></td></tr>
@@ -365,23 +391,38 @@ Major companies like Amazon and Google use it. It is safe and reliable.</p>
 </div>
 
 <div class="qa">
+  <p class="qa-q">Q: Is student data secure?</p>
+  <p class="qa-a">A: Yes. Access to Google Sheets would be restricted to authorized MACOC staff only. Uploaded documents (such as proof of age) are stored securely in Cloudinary and are not publicly accessible. Payments are handled entirely by Stripe, and credit card information is never stored on the MACOC website.</p>
+</div>
+
+<div class="qa">
+  <p class="qa-q">Q: What if someone accidentally changes something in Google Sheets?</p>
+  <p class="qa-a">A: Google Sheets keeps automatic version history, so any accidental changes can be reviewed and rolled back easily.</p>
+</div>
+
+<div class="qa">
   <p class="qa-q">Q: Is the new website reliable?</p>
-  <p class="qa-a">A: The website would be hosted on GitHub Pages, a very stable and widely used hosting service. If there's ever an issue, contact the developer.</p>
+  <p class="qa-a">A: The website would be hosted on Vercel, a professional hosting platform used by millions of websites worldwide. If there is ever an issue, you can reach out to the developer for support.</p>
 </div>
 
 <div class="qa">
   <p class="qa-q">Q: What if we want to change the registration form?</p>
-  <p class="qa-a">A: To change the form fields or questions, please ask the developer. Simple changes can be made quickly.</p>
+  <p class="qa-a">A: To change the form fields or questions, please ask the developer. Simple changes can usually be made quickly.</p>
 </div>
 
 <div class="qa">
   <p class="qa-q">Q: Where does the payment money go?</p>
-  <p class="qa-a">A: It goes directly to the bank account linked to the Stripe account. You can check everything in the Stripe Dashboard.</p>
+  <p class="qa-a">A: It goes directly to the bank account linked to MACOC's Stripe account. You can check everything in the Stripe Dashboard.</p>
 </div>
 
 <div class="qa">
   <p class="qa-q">Q: Will all divisions be available (Strings, Voice, etc.)?</p>
   <p class="qa-a">A: We plan to add all divisions. The initial launch would start with Piano, and other divisions would follow.</p>
+</div>
+
+<div class="qa">
+  <p class="qa-q">Q: What if the developer is no longer available?</p>
+  <p class="qa-a">A: All data and accounts &mdash; including the domain, Google Sheets, and Stripe &mdash; would be owned by MACOC. Day-to-day content updates can be done by anyone with Google Sheets access. If a new developer is ever needed, they can pick up where things left off since all code and data belong to MACOC.</p>
 </div>
 
 <hr>
