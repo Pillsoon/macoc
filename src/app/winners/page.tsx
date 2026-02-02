@@ -20,7 +20,12 @@ const years = ['2025', '2024', '2023', '2022', '2021']
 
 export default function WinnersPage() {
   const [selectedYear, setSelectedYear] = useState('2025')
+  const [selectedDivision, setSelectedDivision] = useState<string | null>(null)
   const currentData = winnersData[selectedYear]
+  const divisions = currentData?.divisions ?? []
+  const filteredDivisions = selectedDivision
+    ? divisions.filter(d => d.name === selectedDivision)
+    : divisions
 
   return (
     <div>
@@ -50,7 +55,12 @@ export default function WinnersPage() {
             {years.map((year) => (
               <button
                 key={year}
-                onClick={() => winnersData[year] && setSelectedYear(year)}
+                onClick={() => {
+                  if (winnersData[year]) {
+                    setSelectedYear(year)
+                    setSelectedDivision(null)
+                  }
+                }}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   selectedYear === year
                     ? 'bg-navy text-white shadow-md'
@@ -64,6 +74,35 @@ export default function WinnersPage() {
               </button>
             ))}
           </div>
+
+          {/* Division Filters */}
+          {divisions.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-2 pb-4">
+              <button
+                onClick={() => setSelectedDivision(null)}
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  selectedDivision === null
+                    ? 'bg-gold text-navy-dark shadow-sm'
+                    : 'bg-gray-50 text-text-secondary hover:bg-gold/10'
+                }`}
+              >
+                All Divisions
+              </button>
+              {divisions.map((d) => (
+                <button
+                  key={d.name}
+                  onClick={() => setSelectedDivision(d.name)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    selectedDivision === d.name
+                      ? 'bg-gold text-navy-dark shadow-sm'
+                      : 'bg-gray-50 text-text-secondary hover:bg-gold/10'
+                  }`}
+                >
+                  {d.icon} {d.name}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -72,7 +111,7 @@ export default function WinnersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {currentData ? (
             <div className="space-y-12">
-              {currentData.divisions.map((division) => (
+              {filteredDivisions.map((division) => (
                 <DivisionSection key={division.name} division={division} />
               ))}
 

@@ -5,16 +5,15 @@ export default function Home() {
   const { competition, winnersConcert, fees, currentYear } = config
 
   const keyDates = [
+    { icon: '🎹', date: competition.date, title: 'Competition Day', desc: competition.location, highlight: true },
     { icon: '📝', date: competition.registration.open, title: 'Registration Opens', desc: 'Begin submitting entries' },
     { icon: '📅', date: competition.registration.close, title: 'Registration Closes', desc: 'Last day for regular registration' },
-    { icon: '🎹', date: competition.date, title: 'Competition Day', desc: competition.location, highlight: true },
     { icon: '🏆', date: winnersConcert.date, title: "Winners' Concert", desc: winnersConcert.location, highlight: true },
   ]
 
   const highlights = [
-    { icon: '🏅', title: 'Scholarships', desc: '$50k+ in prizes awarded annually' },
     { icon: '👨‍⚖️', title: 'Elite Judges', desc: 'Renowned maestros & professors' },
-    { icon: '🎭', title: 'Gala Concert', desc: 'Perform at prestigious venues' },
+    { icon: '🎭', title: "Winners' Concert", desc: 'Perform at prestigious venues' },
     { icon: '🌐', title: 'Alumni Network', desc: 'Join a global community' },
   ]
 
@@ -31,7 +30,7 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-3xl">
             <span className="badge badge-gold mb-6">
-              Celebrating 90+ Years
+              {competition.date} &bull; {competition.location}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6">
               Musical Arts Competition <span className="text-gold">of Orange County</span>
@@ -88,7 +87,7 @@ export default function Home() {
             <p className="section-subtitle mx-auto">What makes MACOC special</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {highlights.map((item, idx) => (
               <div key={idx} className="text-center">
                 <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -110,7 +109,7 @@ export default function Home() {
             <p className="section-subtitle mx-auto">Choose your path to musical excellence</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Teacher Membership */}
             <div className="pricing-card pricing-card-featured">
               <h3 className="font-heading text-xl text-charcoal mb-2">Teacher Membership</h3>
@@ -143,11 +142,11 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Student Entry */}
+            {/* Solo Entry */}
             <div className="pricing-card">
-              <h3 className="font-heading text-xl text-charcoal mb-2">Student Entry</h3>
+              <h3 className="font-heading text-xl text-charcoal mb-2">Solo Entry</h3>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-heading font-bold text-navy">${fees.entry.amount}</span>
+                <span className="text-4xl font-heading font-bold text-navy">${fees.solo.amount}</span>
                 <span className="text-text-muted">/entry</span>
               </div>
               <ul className="space-y-3 mb-8">
@@ -177,6 +176,58 @@ export default function Home() {
                 Late fee: ${fees.lateFee.amount} after {competition.registration.close}
               </p>
             </div>
+
+            {/* Chamber Entry */}
+            <div className="pricing-card">
+              <h3 className="font-heading text-xl text-charcoal mb-2">Chamber Entry</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-heading font-bold text-navy">${fees.chamber.amount}</span>
+                <span className="text-text-muted">/entry</span>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3 text-sm">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Professional adjudication</span>
+                </li>
+                <li className="flex items-center gap-3 text-sm">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Certificate of participation</span>
+                </li>
+                <li className="flex items-center gap-3 text-sm">
+                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Medal eligibility & awards</span>
+                </li>
+              </ul>
+              <Link href="/competition/registration" className="btn btn-secondary w-full">
+                Register Student
+              </Link>
+            </div>
+          </div>
+
+          {/* Non-Participation Fee */}
+          <div className="mt-8 max-w-5xl mx-auto">
+            <div className="p-6 bg-cream rounded-xl text-center">
+              <h3 className="font-heading text-lg text-charcoal mb-2">Non-Participation Fee</h3>
+              <p className="text-text-muted text-sm mb-3">
+                For member teachers who do not enter students in the competition
+              </p>
+              <div className="flex justify-center gap-8">
+                <div>
+                  <span className="text-2xl font-heading font-bold text-navy">${fees.nonParticipation.small.amount}</span>
+                  <p className="text-text-muted text-xs mt-1">{fees.nonParticipation.small.label}</p>
+                </div>
+                <div>
+                  <span className="text-2xl font-heading font-bold text-navy">${fees.nonParticipation.large.amount}</span>
+                  <p className="text-text-muted text-xs mt-1">{fees.nonParticipation.large.label}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -184,14 +235,10 @@ export default function Home() {
       {/* Stats Section */}
       <section className="bg-navy py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">90+</div>
               <div className="text-white/70 text-sm">Years of Excellence</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">$50k+</div>
-              <div className="text-white/70 text-sm">Annual Prizes</div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">9</div>

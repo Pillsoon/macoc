@@ -31,7 +31,12 @@ const defaultConfig: SiteConfig = {
   },
   fees: {
     membership: { amount: 40, label: "Teacher's Membership" },
-    entry: { amount: 50, label: 'Student Competition Entry' },
+    solo: { amount: 60, label: 'Solo Entry' },
+    chamber: { amount: 30, label: 'Chamber Entry' },
+    nonParticipation: {
+      small: { amount: 50, label: '1–5 students' },
+      large: { amount: 100, label: '6+ students' },
+    },
     lateFee: { amount: 70, label: 'Late Registration Fee' }
   },
   contact: {
@@ -67,7 +72,12 @@ function mergeConfig(loaded: Partial<SiteConfig> | null | undefined): SiteConfig
     winnersConcert: { ...defaultConfig.winnersConcert, ...loaded.winnersConcert },
     fees: {
       membership: { ...defaultConfig.fees.membership, ...loaded.fees?.membership },
-      entry: { ...defaultConfig.fees.entry, ...loaded.fees?.entry },
+      solo: { ...defaultConfig.fees.solo, ...loaded.fees?.solo },
+      chamber: { ...defaultConfig.fees.chamber, ...loaded.fees?.chamber },
+      nonParticipation: {
+        small: { ...defaultConfig.fees.nonParticipation.small, ...loaded.fees?.nonParticipation?.small },
+        large: { ...defaultConfig.fees.nonParticipation.large, ...loaded.fees?.nonParticipation?.large },
+      },
       lateFee: { ...defaultConfig.fees.lateFee, ...loaded.fees?.lateFee }
     },
     contact: { ...defaultConfig.contact, ...loaded.contact },

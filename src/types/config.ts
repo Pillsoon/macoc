@@ -30,9 +30,17 @@ export interface SiteConfig {
       amount: number
       label: string
     }
-    entry: {
+    solo: {
       amount: number
       label: string
+    }
+    chamber: {
+      amount: number
+      label: string
+    }
+    nonParticipation: {
+      small: { amount: number; label: string }
+      large: { amount: number; label: string }
     }
     lateFee: {
       amount: number

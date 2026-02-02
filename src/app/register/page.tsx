@@ -71,7 +71,7 @@ export default function RegisterPage() {
             {config.currentYear} Competition Registration
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Select your division below to begin registration. Entry fee is ${config.fees.entry.amount} per entry.
+            Select your division below to begin registration. Solo entry: ${config.fees.solo.amount} | Chamber: ${config.fees.chamber.amount}.
           </p>
         </div>
       </section>

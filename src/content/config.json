@@ -30,9 +30,17 @@
       "amount": 40,
       "label": "Teacher's Membership"
     },
-    "entry": {
-      "amount": 50,
-      "label": "Student Competition Entry"
+    "solo": {
+      "amount": 60,
+      "label": "Solo Entry"
+    },
+    "chamber": {
+      "amount": 30,
+      "label": "Chamber Entry"
+    },
+    "nonParticipation": {
+      "small": { "amount": 50, "label": "1–5 students" },
+      "large": { "amount": 100, "label": "6+ students" }
     },
     "lateFee": {
       "amount": 70,

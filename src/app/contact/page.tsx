@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { config } from '@/lib/config'
 
@@ -116,73 +119,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="card">
-              <h2 className="font-heading text-xl text-charcoal mb-6">Send a Message</h2>
-
-              <form className="space-y-5">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="input"
-                    placeholder="Full name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="input"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-charcoal mb-2">
-                    Subject
-                  </label>
-                  <select id="subject" className="input">
-                    <option value="">Select a topic</option>
-                    <option value="registration">Registration Question</option>
-                    <option value="membership">Membership Inquiry</option>
-                    <option value="competition">Competition Information</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="input resize-none"
-                    placeholder="How can we help you?"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn btn-primary w-full opacity-50 cursor-not-allowed"
-                  disabled
-                >
-                  Send Message (Coming Soon)
-                </button>
-
-                <p className="text-xs text-text-muted text-center">
-                  We typically respond within 24-48 hours
-                </p>
-              </form>
-            </div>
+            {/* Contact by Department */}
+            <DepartmentContact />
           </div>
         </div>
       </section>
@@ -229,6 +167,84 @@ export default function ContactPage() {
           </Link>
         </div>
       </section>
+    </div>
+  )
+}
+
+function DepartmentContact() {
+  const [selectedDivision, setSelectedDivision] = useState('')
+  const contact = config.divisionContacts.find(c => c.division === selectedDivision)
+
+  return (
+    <div className="card">
+      <h2 className="font-heading text-xl text-charcoal mb-6">Contact a Department</h2>
+      <p className="text-text-muted text-sm mb-6">
+        Select a department to reach the division chair directly.
+      </p>
+
+      <div className="space-y-5">
+        <div>
+          <label htmlFor="department" className="block text-sm font-medium text-charcoal mb-2">
+            Department
+          </label>
+          <select
+            id="department"
+            className="input"
+            value={selectedDivision}
+            onChange={(e) => setSelectedDivision(e.target.value)}
+          >
+            <option value="">Select a department</option>
+            {config.divisionContacts.map((dc) => (
+              <option key={dc.division} value={dc.division}>
+                {dc.division}
+              </option>
+            ))}
+            <option value="general">General Inquiry</option>
+          </select>
+        </div>
+
+        {contact && (
+          <div className="p-4 bg-cream rounded-lg space-y-3">
+            <div>
+              <p className="text-sm text-text-muted">Division Chair</p>
+              <p className="font-medium text-charcoal">{contact.chair}</p>
+            </div>
+            <div>
+              <p className="text-sm text-text-muted">Email</p>
+              <a
+                href={`mailto:${contact.email}`}
+                className="font-medium text-navy hover:text-gold transition-colors"
+              >
+                {contact.email}
+              </a>
+            </div>
+          </div>
+        )}
+
+        {selectedDivision === 'general' && (
+          <div className="p-4 bg-cream rounded-lg space-y-3">
+            <div>
+              <p className="text-sm text-text-muted">General Contact</p>
+              <p className="font-medium text-charcoal">{config.president.name}</p>
+            </div>
+            <div>
+              <p className="text-sm text-text-muted">Email</p>
+              <a
+                href={`mailto:${config.contact.email}`}
+                className="font-medium text-navy hover:text-gold transition-colors"
+              >
+                {config.contact.email}
+              </a>
+            </div>
+          </div>
+        )}
+
+        {!selectedDivision && (
+          <p className="text-xs text-text-muted text-center">
+            We typically respond within 24-48 hours
+          </p>
+        )}
+      </div>
     </div>
   )
 }

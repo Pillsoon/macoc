@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import FileUpload from './FileUpload'
+import { config } from '@/lib/config'
 
 interface RegistrationFormProps {
   division: string
@@ -96,7 +97,7 @@ export default function RegistrationForm({ division, sections, timePeriods }: Re
           href={submitResult.paymentUrl}
           className="btn btn-gold inline-flex items-center gap-2"
         >
-          Complete Payment ($50)
+          Complete Payment (${config.fees.solo.amount})
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -542,7 +543,7 @@ export default function RegistrationForm({ division, sections, timePeriods }: Re
 
               <div className="p-4 bg-gold/10 border border-gold/30 rounded-lg">
                 <h3 className="font-semibold text-navy mb-2">Entry Fee</h3>
-                <p className="text-2xl font-heading font-bold text-gold-dark">$50.00</p>
+                <p className="text-2xl font-heading font-bold text-gold-dark">${config.fees.solo.amount}.00</p>
                 <p className="text-sm text-text-muted mt-1">
                   Payment will be processed after submission via Stripe.
                 </p>
