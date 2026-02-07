@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getAllDivisionSummaries } from '@/content/divisions'
 
 const history = [
   {
@@ -24,31 +25,21 @@ const history = [
   {
     year: 'Today',
     title: 'Continuing Legacy',
-    desc: 'Over 250 students compete annually across 9 divisions, with winners performing at the Nixon Library.',
+    desc: 'Over 250 students compete annually across 10 divisions, with winners performing at the Nixon Library.',
     highlight: true,
   },
 ]
 
 const offerings = [
-  { icon: '🎓', title: 'Scholarships', desc: 'Full tuition support for exceptional talent' },
-  { icon: '🎭', title: 'Performance', desc: 'Opportunities at prestigious global venues' },
+  { icon: '🏆', title: 'Awards', desc: 'Cash prizes and recognition for top performers' },
+  { icon: '🎭', title: 'Performance', desc: 'Opportunities at prestigious venues' },
   { icon: '👨‍🏫', title: 'Mentorship', desc: 'Guidance from world-class masters' },
   { icon: '📰', title: 'Recognition', desc: 'International press coverage for winners' },
 ]
 
-const divisions = [
-  { name: 'Classical Piano', sections: '11 sections' },
-  { name: 'Classical Voice', sections: '8 sections' },
-  { name: 'Musical Theater', sections: '6 sections' },
-  { name: 'Violin', sections: '10 sections' },
-  { name: 'Viola', sections: '8 sections' },
-  { name: 'Cello', sections: '8 sections' },
-  { name: 'Flute', sections: '4 sections' },
-  { name: 'Clarinet', sections: '4 sections' },
-  { name: 'Chamber Music', sections: '3 sections' },
-]
-
 export default function AboutPage() {
+  const divisions = getAllDivisionSummaries()
+
   return (
     <div>
       {/* Hero Section */}
@@ -133,17 +124,17 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-title">Competition Divisions</h2>
-            <p className="section-subtitle mx-auto">Nine divisions spanning all major instruments and voice</p>
+            <p className="section-subtitle mx-auto">Ten divisions spanning all major instruments and voice</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {divisions.map((division, idx) => (
+            {divisions.map((division) => (
               <div
-                key={idx}
+                key={division.id}
                 className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-100 hover:border-gold/30 transition-colors"
               >
                 <span className="font-medium text-charcoal">{division.name}</span>
-                <span className="text-sm text-text-muted">{division.sections}</span>
+                <span className="text-sm text-text-muted">{division.sectionCount}</span>
               </div>
             ))}
           </div>

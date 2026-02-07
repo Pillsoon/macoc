@@ -8,6 +8,7 @@ interface RegistrationFormProps {
   division: string
   sections: { value: string; label: string }[]
   timePeriods: { value: string; label: string }[]
+  feeType?: 'solo' | 'chamber'
 }
 
 const initialFormData = {
@@ -42,7 +43,8 @@ const initialFormData = {
   repertoire2TimePeriod: '',
 }
 
-export default function RegistrationForm({ division, sections, timePeriods }: RegistrationFormProps) {
+export default function RegistrationForm({ division, sections, timePeriods, feeType = 'solo' }: RegistrationFormProps) {
+  const entryFee = feeType === 'chamber' ? config.fees.chamber.amount : config.fees.solo.amount
   const [formData, setFormData] = useState({ ...initialFormData, division })
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -97,7 +99,7 @@ export default function RegistrationForm({ division, sections, timePeriods }: Re
           href={submitResult.paymentUrl}
           className="btn btn-gold inline-flex items-center gap-2"
         >
-          Complete Payment (${config.fees.solo.amount})
+          Complete Payment (${entryFee})
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -543,7 +545,7 @@ export default function RegistrationForm({ division, sections, timePeriods }: Re
 
               <div className="p-4 bg-gold/10 border border-gold/30 rounded-lg">
                 <h3 className="font-semibold text-navy mb-2">Entry Fee</h3>
-                <p className="text-2xl font-heading font-bold text-gold-dark">${config.fees.solo.amount}.00</p>
+                <p className="text-2xl font-heading font-bold text-gold-dark">${entryFee}.00</p>
                 <p className="text-sm text-text-muted mt-1">
                   Payment will be processed after submission via Stripe.
                 </p>

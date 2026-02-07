@@ -1,16 +1,5 @@
 import Link from 'next/link'
-
-const divisions = [
-  { name: 'Classical Piano', sections: 'Sections 1-11', icon: '🎹' },
-  { name: 'Classical Voice', sections: 'Sections 1-8', icon: '🎤' },
-  { name: 'Musical Theater', sections: 'Sections 1-6', icon: '🎭' },
-  { name: 'Violin', sections: 'Sections 1-10', icon: '🎻' },
-  { name: 'Viola', sections: 'Sections 2-9', icon: '🎻' },
-  { name: 'Cello', sections: 'Sections 1-8', icon: '🎻' },
-  { name: 'Flute', sections: 'Sections 1-4', icon: '🎷' },
-  { name: 'Clarinet', sections: 'Sections 1-4', icon: '🎷' },
-  { name: 'Chamber Music', sections: 'Sections 3-5', icon: '👥' },
-]
+import { getAllDivisions } from '@/content/divisions'
 
 const eligibility = [
   'Participants must reside in Southern California or study with a teacher from Southern California',
@@ -35,6 +24,8 @@ const awards = [
 ]
 
 export default function RegulationPage() {
+  const divisions = getAllDivisions()
+
   return (
     <div>
       {/* Header */}
@@ -98,13 +89,13 @@ export default function RegulationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-title">Competition Divisions</h2>
-            <p className="section-subtitle mx-auto">Nine divisions spanning all major instruments and voice</p>
+            <p className="section-subtitle mx-auto">Ten divisions spanning all major instruments and voice</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {divisions.map((division) => (
               <div
-                key={division.name}
+                key={division.id}
                 className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all"
               >
                 <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -112,7 +103,7 @@ export default function RegulationPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-heading text-charcoal">{division.name}</h3>
-                  <p className="text-text-muted text-sm">{division.sections}</p>
+                  <p className="text-text-muted text-sm">{division.sections.length} sections</p>
                 </div>
               </div>
             ))}

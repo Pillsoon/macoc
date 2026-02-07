@@ -85,9 +85,9 @@ export default function RegistrationPage() {
                 </li>
               </ul>
 
-              <button className="btn btn-primary w-full opacity-50 cursor-not-allowed" disabled>
-                Coming Soon
-              </button>
+              <Link href="/register" className="btn btn-primary w-full text-center">
+                Register Now
+              </Link>
             </div>
 
             {/* Solo Entry */}
@@ -126,9 +126,9 @@ export default function RegistrationPage() {
                 </li>
               </ul>
 
-              <button className="btn btn-secondary w-full opacity-50 cursor-not-allowed" disabled>
-                Coming Soon
-              </button>
+              <Link href="/register" className="btn btn-secondary w-full text-center">
+                Register Now
+              </Link>
 
               <p className="text-center text-xs text-text-muted mt-4">
                 Late fee: ${fees.lateFee.amount} after {competition.registration.close}

@@ -1,17 +1,6 @@
 import Link from 'next/link'
 import { config } from '@/lib/config'
-
-const divisions = [
-  { icon: '🎹', name: 'Piano', desc: 'Classical & Jazz', sections: '11 sections' },
-  { icon: '🎤', name: 'Voice', desc: 'Solo & Choral', sections: '8 sections' },
-  { icon: '🎭', name: 'Musical Theater', desc: 'Broadway & Contemporary', sections: '6 sections' },
-  { icon: '🎻', name: 'Violin', desc: 'Classical', sections: '10 sections' },
-  { icon: '🎻', name: 'Viola', desc: 'Classical', sections: '8 sections' },
-  { icon: '🎻', name: 'Cello', desc: 'Classical', sections: '8 sections' },
-  { icon: '🎷', name: 'Flute', desc: 'Classical', sections: '4 sections' },
-  { icon: '🎷', name: 'Clarinet', desc: 'Classical', sections: '4 sections' },
-  { icon: '👥', name: 'Chamber Music', desc: 'Ensembles', sections: '3 sections' },
-]
+import { getAllDivisionSummaries } from '@/content/divisions'
 
 const quickLinks = [
   {
@@ -39,6 +28,7 @@ const quickLinks = [
 
 export default function CompetitionPage() {
   const { currentYear, competition } = config
+  const divisions = getAllDivisionSummaries()
 
   return (
     <div>
@@ -103,9 +93,9 @@ export default function CompetitionPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {divisions.map((division, idx) => (
+            {divisions.map((division) => (
               <div
-                key={idx}
+                key={division.id}
                 className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all cursor-pointer"
               >
                 <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -113,10 +103,10 @@ export default function CompetitionPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
-                  <p className="text-text-muted text-sm">{division.desc}</p>
+                  <p className="text-text-muted text-sm">{division.description}</p>
                 </div>
                 <span className="text-xs text-navy font-medium bg-navy/5 px-2 py-1 rounded">
-                  {division.sections}
+                  {division.sectionCount}
                 </span>
               </div>
             ))}
@@ -173,7 +163,7 @@ export default function CompetitionPage() {
                   <div className="text-white/70 text-sm">Annual Prizes</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-heading font-bold text-gold">9</div>
+                  <div className="text-3xl font-heading font-bold text-gold">10</div>
                   <div className="text-white/70 text-sm">Divisions</div>
                 </div>
                 <div>

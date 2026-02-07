@@ -1,0 +1,300 @@
+export interface DivisionSection {
+  value: string
+  label: string
+}
+
+export interface Division {
+  id: string
+  name: string
+  icon: string
+  description: string
+  sections: DivisionSection[]
+  timePeriods: { value: string; label: string }[]
+  requirements: string[]
+  feeType: 'solo' | 'chamber'
+  memorization: boolean
+  available: boolean
+}
+
+export interface DivisionSummary {
+  id: string
+  name: string
+  icon: string
+  description: string
+  sectionCount: string
+  feeType: 'solo' | 'chamber'
+  available: boolean
+}
+
+const classicalTimePeriods = [
+  { value: 'baroque', label: 'Baroque (1600-1750)' },
+  { value: 'classical', label: 'Classical (1750-1820)' },
+  { value: 'romantic', label: 'Romantic (1820-1900)' },
+  { value: 'modern', label: 'Modern/Contemporary (1900-present)' },
+]
+
+const divisions: Division[] = [
+  {
+    id: 'piano',
+    name: 'Classical Piano',
+    icon: '🎹',
+    description: 'Classical piano solo performance',
+    available: true,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 7 and under (4 min)' },
+      { value: 'section-2', label: 'Section II - Age 8 and under (4 min)' },
+      { value: 'section-3', label: 'Section III - Age 9 and under (5 min)' },
+      { value: 'section-4', label: 'Section IV - Age 10 and under (5 min)' },
+      { value: 'section-5', label: 'Section V - Age 11 and under (5 min)' },
+      { value: 'section-6', label: 'Section VI - Age 12 and under (6 min)' },
+      { value: 'section-7', label: 'Section VII - Age 13 and under (7 min)' },
+      { value: 'section-8', label: 'Section VIII - Age 14 and under (8 min)' },
+      { value: 'section-9', label: 'Section IX - Age 15 and under (8 min)' },
+      { value: 'section-10', label: 'Section X - Age 16 and under (10 min)' },
+      { value: 'section-11', label: 'Section XI - Age 18 and under (12 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'violin',
+    name: 'Violin',
+    icon: '🎻',
+    description: 'Classical violin solo performance',
+    available: false,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 7 and under (4 min)' },
+      { value: 'section-2', label: 'Section II - Age 8 and under (4 min)' },
+      { value: 'section-3', label: 'Section III - Age 9 and under (5 min)' },
+      { value: 'section-4', label: 'Section IV - Age 10 and under (5 min)' },
+      { value: 'section-5', label: 'Section V - Age 11 and under (5 min)' },
+      { value: 'section-6', label: 'Section VI - Age 12 and under (6 min)' },
+      { value: 'section-7', label: 'Section VII - Age 13 and under (7 min)' },
+      { value: 'section-8', label: 'Section VIII - Age 14 and under (8 min)' },
+      { value: 'section-9', label: 'Section IX - Age 16 and under (10 min)' },
+      { value: 'section-10', label: 'Section X - Age 18 and under (12 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'viola',
+    name: 'Viola',
+    icon: '🎻',
+    description: 'Classical viola solo performance',
+    available: false,
+    sections: [
+      { value: 'section-2', label: 'Section II - Age 8 and under (4 min)' },
+      { value: 'section-3', label: 'Section III - Age 9 and under (5 min)' },
+      { value: 'section-4', label: 'Section IV - Age 10 and under (5 min)' },
+      { value: 'section-5', label: 'Section V - Age 11 and under (5 min)' },
+      { value: 'section-6', label: 'Section VI - Age 12 and under (6 min)' },
+      { value: 'section-7', label: 'Section VII - Age 13 and under (7 min)' },
+      { value: 'section-8', label: 'Section VIII - Age 14 and under (8 min)' },
+      { value: 'section-9', label: 'Section IX - Age 18 and under (10 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'cello',
+    name: 'Cello',
+    icon: '🎻',
+    description: 'Classical cello solo performance',
+    available: false,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 7 and under (4 min)' },
+      { value: 'section-2', label: 'Section II - Age 8 and under (4 min)' },
+      { value: 'section-3', label: 'Section III - Age 9 and under (5 min)' },
+      { value: 'section-4', label: 'Section IV - Age 10 and under (5 min)' },
+      { value: 'section-5', label: 'Section V - Age 11 and under (5 min)' },
+      { value: 'section-6', label: 'Section VI - Age 12 and under (6 min)' },
+      { value: 'section-7', label: 'Section VII - Age 14 and under (8 min)' },
+      { value: 'section-8', label: 'Section VIII - Age 18 and under (10 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'voice',
+    name: 'Classical Voice',
+    icon: '🎤',
+    description: 'Classical vocal solo performance',
+    available: false,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 9 and under (4 min)' },
+      { value: 'section-2', label: 'Section II - Age 10 and under (4 min)' },
+      { value: 'section-3', label: 'Section III - Age 11 and under (5 min)' },
+      { value: 'section-4', label: 'Section IV - Age 12 and under (5 min)' },
+      { value: 'section-5', label: 'Section V - Age 14 and under (6 min)' },
+      { value: 'section-6', label: 'Section VI - Age 16 and under (7 min)' },
+      { value: 'section-7', label: 'Section VII - Age 18 and under (8 min)' },
+      { value: 'section-8', label: 'Section VIII - Age 19+ (10 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'musical-theater',
+    name: 'Musical Theater',
+    icon: '🎭',
+    description: 'Broadway & Contemporary performance',
+    available: false,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 10 and under (4 min)' },
+      { value: 'section-2', label: 'Section II - Age 12 and under (5 min)' },
+      { value: 'section-3', label: 'Section III - Age 14 and under (6 min)' },
+      { value: 'section-4', label: 'Section IV - Age 16 and under (7 min)' },
+      { value: 'section-5', label: 'Section V - Age 18 and under (8 min)' },
+      { value: 'section-6', label: 'Section VI - Age 19+ (10 min)' },
+    ],
+    timePeriods: [
+      { value: 'classic', label: 'Classic Broadway (pre-1970)' },
+      { value: 'contemporary', label: 'Contemporary Musical Theater (1970-present)' },
+    ],
+    requirements: [
+      'Select two contrasting pieces from different shows',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'flute',
+    name: 'Flute',
+    icon: '🎵',
+    description: 'Classical flute solo performance',
+    available: false,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 10 and under (5 min)' },
+      { value: 'section-2', label: 'Section II - Age 13 and under (7 min)' },
+      { value: 'section-3', label: 'Section III - Age 16 and under (8 min)' },
+      { value: 'section-4', label: 'Section IV - Age 18 and under (10 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'clarinet',
+    name: 'Clarinet',
+    icon: '🎵',
+    description: 'Classical clarinet solo performance',
+    available: false,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 10 and under (5 min)' },
+      { value: 'section-2', label: 'Section II - Age 13 and under (7 min)' },
+      { value: 'section-3', label: 'Section III - Age 16 and under (8 min)' },
+      { value: 'section-4', label: 'Section IV - Age 18 and under (10 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'guitar',
+    name: 'Classical Guitar',
+    icon: '🎸',
+    description: 'Classical guitar solo performance',
+    available: false,
+    sections: [
+      { value: 'section-1', label: 'Section I - Age 8 and under (4 min)' },
+      { value: 'section-2', label: 'Section II - Age 10 and under (5 min)' },
+      { value: 'section-3', label: 'Section III - Age 12 and under (6 min)' },
+      { value: 'section-4', label: 'Section IV - Age 14 and under (7 min)' },
+      { value: 'section-5', label: 'Section V - Age 16 and under (8 min)' },
+      { value: 'section-6', label: 'Section VI - Age 18 and under (10 min)' },
+      { value: 'section-7', label: 'Section VII - Age 19 and under (10 min)' },
+      { value: 'section-8', label: 'Section VIII - Age 20+ (12 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select two pieces representing different periods and styles',
+      'Time limits must be observed (see section selection)',
+      'All pieces must be memorized',
+    ],
+    feeType: 'solo',
+    memorization: true,
+  },
+  {
+    id: 'chamber',
+    name: 'Chamber Music',
+    icon: '👥',
+    description: 'Ensemble performance (2-6 players)',
+    available: false,
+    sections: [
+      { value: 'section-3', label: 'Section III - Age 12 and under (8 min)' },
+      { value: 'section-4', label: 'Section IV - Age 15 and under (10 min)' },
+      { value: 'section-5', label: 'Section V - Age 18 and under (12 min)' },
+    ],
+    timePeriods: classicalTimePeriods,
+    requirements: [
+      'Select one or two pieces within the time limit',
+      'Time limits must be observed (see section selection)',
+      'Music does not need to be memorized',
+    ],
+    feeType: 'chamber',
+    memorization: false,
+  },
+]
+
+export function getDivisionById(id: string): Division | undefined {
+  return divisions.find((d) => d.id === id)
+}
+
+export function getAllDivisions(): Division[] {
+  return divisions
+}
+
+export function getAllDivisionSummaries(): DivisionSummary[] {
+  return divisions.map((d) => ({
+    id: d.id,
+    name: d.name,
+    icon: d.icon,
+    description: d.description,
+    sectionCount: `${d.sections.length} sections`,
+    feeType: d.feeType,
+    available: d.available,
+  }))
+}

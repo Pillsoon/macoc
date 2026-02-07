@@ -1,66 +1,20 @@
 import Link from 'next/link'
 import { config } from '@/lib/config'
+import { getAllDivisionSummaries } from '@/content/divisions'
 
-const divisions = [
-  {
-    id: 'piano',
-    name: 'Piano',
-    icon: '🎹',
-    description: 'Classical piano solo performance',
-    sections: '11 sections (Age 7-18)',
-    available: true,
-  },
-  {
-    id: 'strings',
-    name: 'Strings',
-    icon: '🎻',
-    description: 'Violin, Viola, Cello',
-    sections: '8 sections each',
-    available: false, // Coming soon
-  },
-  {
-    id: 'voice-classical',
-    name: 'Voice (Classical)',
-    icon: '🎤',
-    description: 'Classical vocal performance',
-    sections: '4 sections',
-    available: false,
-  },
-  {
-    id: 'voice-musical-theater',
-    name: 'Musical Theater',
-    icon: '🎭',
-    description: 'Broadway & Contemporary',
-    sections: '4 sections',
-    available: false,
-  },
-  {
-    id: 'woodwinds',
-    name: 'Woodwinds',
-    icon: '🎵',
-    description: 'Flute, Clarinet',
-    sections: '8 sections each',
-    available: false,
-  },
-  {
-    id: 'guitar',
-    name: 'Classical Guitar',
-    icon: '🎸',
-    description: 'Classical guitar solo',
-    sections: '8 sections',
-    available: false,
-  },
-  {
-    id: 'chamber',
-    name: 'Chamber Music',
-    icon: '👥',
-    description: 'Ensemble performance',
-    sections: '4 sections',
-    available: false,
-  },
+const categories: { label: string; ids: string[] }[] = [
+  { label: 'Keyboard', ids: ['piano'] },
+  { label: 'Strings', ids: ['violin', 'viola', 'cello'] },
+  { label: 'Voice', ids: ['voice', 'musical-theater'] },
+  { label: 'Winds', ids: ['flute', 'clarinet'] },
+  { label: 'Guitar', ids: ['guitar'] },
+  { label: 'Ensemble', ids: ['chamber'] },
 ]
 
 export default function RegisterPage() {
+  const summaries = getAllDivisionSummaries()
+  const summaryMap = new Map(summaries.map((s) => [s.id, s]))
+
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero */}
@@ -99,49 +53,62 @@ export default function RegisterPage() {
             Select Your Division
           </h2>
 
-          <div className="grid gap-4">
-            {divisions.map((division) => (
-              <div
-                key={division.id}
-                className={`bg-white rounded-xl p-6 shadow-sm border-2 transition-all ${
-                  division.available
-                    ? 'border-transparent hover:border-gold cursor-pointer'
-                    : 'border-transparent opacity-60'
-                }`}
-              >
-                {division.available ? (
-                  <Link href={`/register/${division.id}`} className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-3xl">{division.icon}</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
-                      <p className="text-sm text-text-muted">{division.description}</p>
-                      <p className="text-xs text-navy mt-1">{division.sections}</p>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <span className="btn btn-gold text-sm py-2 px-4">
-                        Register
-                      </span>
-                    </div>
-                  </Link>
-                ) : (
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-3xl grayscale">{division.icon}</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
-                      <p className="text-sm text-text-muted">{division.description}</p>
-                      <p className="text-xs text-navy mt-1">{division.sections}</p>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <span className="text-sm text-text-muted bg-gray-100 py-2 px-4 rounded-lg">
-                        Coming Soon
-                      </span>
-                    </div>
-                  </div>
-                )}
+          <div className="space-y-8">
+            {categories.map((category) => (
+              <div key={category.label}>
+                <h3 className="text-sm font-semibold text-navy uppercase tracking-wider mb-3">
+                  {category.label}
+                </h3>
+                <div className="grid gap-4">
+                  {category.ids.map((id) => {
+                    const division = summaryMap.get(id)
+                    if (!division) return null
+                    return (
+                      <div
+                        key={division.id}
+                        className={`bg-white rounded-xl p-6 shadow-sm border-2 transition-all ${
+                          division.available
+                            ? 'border-transparent hover:border-gold cursor-pointer'
+                            : 'border-transparent opacity-60'
+                        }`}
+                      >
+                        {division.available ? (
+                          <Link href={`/register/${division.id}`} className="flex items-center gap-4">
+                            <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                              <span className="text-3xl">{division.icon}</span>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
+                              <p className="text-sm text-text-muted">{division.description}</p>
+                              <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
+                            </div>
+                            <div className="flex-shrink-0">
+                              <span className="btn btn-gold text-sm py-2 px-4">
+                                Register
+                              </span>
+                            </div>
+                          </Link>
+                        ) : (
+                          <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                              <span className="text-3xl grayscale">{division.icon}</span>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
+                              <p className="text-sm text-text-muted">{division.description}</p>
+                              <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
+                            </div>
+                            <div className="flex-shrink-0">
+                              <span className="text-sm text-text-muted bg-gray-100 py-2 px-4 rounded-lg">
+                                Coming Soon
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             ))}
           </div>
