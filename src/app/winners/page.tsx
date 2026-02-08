@@ -80,10 +80,10 @@ export default function WinnersPage() {
             <div className="flex flex-wrap justify-center gap-2 pb-4">
               <button
                 onClick={() => setSelectedDivision(null)}
-                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedDivision === null
                     ? 'bg-gold text-navy-dark shadow-sm'
-                    : 'bg-gray-50 text-text-secondary hover:bg-gold/10'
+                    : 'bg-gray-100 text-text-secondary hover:bg-gold/10 border border-gray-200'
                 }`}
               >
                 All Divisions
@@ -92,10 +92,10 @@ export default function WinnersPage() {
                 <button
                   key={d.name}
                   onClick={() => setSelectedDivision(d.name)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                     selectedDivision === d.name
                       ? 'bg-gold text-navy-dark shadow-sm'
-                      : 'bg-gray-50 text-text-secondary hover:bg-gold/10'
+                      : 'bg-gray-100 text-text-secondary hover:bg-gold/10 border border-gray-200'
                   }`}
                 >
                   {d.icon} {d.name}

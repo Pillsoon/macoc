@@ -65,7 +65,7 @@ export default function Home() {
             {keyDates.map((item, idx) => (
               <div
                 key={idx}
-                className={`card text-center ${item.highlight ? 'border-gold border-2' : ''}`}
+                className={`bg-white rounded-xl border p-6 text-center ${item.highlight ? 'border-gold border-2' : 'border-gray-100'}`}
               >
                 <span className="text-3xl mb-4 block">{item.icon}</span>
                 <p className={`text-sm font-semibold mb-1 ${item.highlight ? 'text-gold-dark' : 'text-navy'}`}>
@@ -137,7 +137,7 @@ export default function Home() {
                   <span>Vote on competition matters</span>
                 </li>
               </ul>
-              <Link href="/competition/registration" className="btn btn-primary w-full">
+              <Link href="/register" className="btn btn-primary w-full">
                 Join as Teacher
               </Link>
             </div>
@@ -169,7 +169,7 @@ export default function Home() {
                   <span>Medal eligibility & awards</span>
                 </li>
               </ul>
-              <Link href="/competition/registration" className="btn btn-secondary w-full">
+              <Link href="/register" className="btn btn-secondary w-full">
                 Register Student
               </Link>
               <p className="text-center text-xs text-text-muted mt-4">
@@ -204,7 +204,7 @@ export default function Home() {
                   <span>Medal eligibility & awards</span>
                 </li>
               </ul>
-              <Link href="/competition/registration" className="btn btn-secondary w-full">
+              <Link href="/register" className="btn btn-secondary w-full">
                 Register Student
               </Link>
             </div>
