@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { getAllDivisions } from '@/content/divisions'
 
 const eligibility = [
   'Participants must reside in Southern California or study with a teacher from Southern California',
@@ -24,8 +23,6 @@ const awards = [
 ]
 
 export default function RegulationPage() {
-  const divisions = getAllDivisions()
-
   return (
     <div>
       {/* Header */}
@@ -84,33 +81,6 @@ export default function RegulationPage() {
         </div>
       </section>
 
-      {/* Divisions Section */}
-      <section className="section bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Competition Divisions</h2>
-            <p className="section-subtitle mx-auto">Ten divisions spanning all major instruments and voice</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {divisions.map((division) => (
-              <div
-                key={division.id}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all"
-              >
-                <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">{division.icon}</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-heading text-charcoal">{division.name}</h3>
-                  <p className="text-text-muted text-sm">{division.sections.length} sections</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Awards Section */}
       <section className="section bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -121,7 +91,7 @@ export default function RegulationPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {awards.map((award) => (
-              <div key={award.place} className="card flex items-center gap-4">
+              <div key={award.place} className="bg-white rounded-xl border border-gray-100 p-6 flex items-center gap-4">
                 <span className="text-4xl">{award.icon}</span>
                 <div>
                   <h3 className={`font-heading text-lg ${award.color}`}>{award.place}</h3>
