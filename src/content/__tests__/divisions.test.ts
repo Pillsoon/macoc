@@ -3,15 +3,16 @@ import {
   getDivisionById,
   getAllDivisions,
   getAllDivisionSummaries,
-  type Division,
 } from '../divisions'
 
 describe('getDivisionById', () => {
-  it('returns the Piano division for id "piano"', () => {
-    const piano = getDivisionById('piano')
-    expect(piano).toBeDefined()
-    expect(piano!.id).toBe('piano')
-    expect(piano!.name).toBe('Classical Piano')
+  it('returns a division for a valid id', () => {
+    const divisions = getAllDivisions()
+    if (divisions.length === 0) return
+    const first = divisions[0]
+    const found = getDivisionById(first.id)
+    expect(found).toBeDefined()
+    expect(found!.id).toBe(first.id)
   })
 
   it('returns undefined for an invalid id', () => {
@@ -24,33 +25,37 @@ describe('getDivisionById', () => {
 })
 
 describe('getAllDivisions', () => {
-  it('returns all 10 divisions', () => {
+  it('returns an array of divisions', () => {
     const divisions = getAllDivisions()
-    expect(divisions).toHaveLength(10)
+    expect(Array.isArray(divisions)).toBe(true)
+    expect(divisions.length).toBeGreaterThan(0)
   })
 
-  it('includes expected division ids', () => {
+  it('each division has a unique id', () => {
     const ids = getAllDivisions().map((d) => d.id)
-    expect(ids).toContain('piano')
-    expect(ids).toContain('violin')
-    expect(ids).toContain('chamber')
+    expect(new Set(ids).size).toBe(ids.length)
   })
 })
 
 describe('getAllDivisionSummaries', () => {
-  it('returns summaries for all divisions', () => {
+  it('returns summaries matching division count', () => {
+    const divisions = getAllDivisions()
     const summaries = getAllDivisionSummaries()
-    expect(summaries).toHaveLength(10)
+    expect(summaries).toHaveLength(divisions.length)
   })
 
   it('formats sectionCount correctly', () => {
+    const divisions = getAllDivisions()
     const summaries = getAllDivisionSummaries()
-    const piano = summaries.find((s) => s.id === 'piano')!
-    expect(piano.sectionCount).toBe('11 sections')
+    for (const div of divisions) {
+      const summary = summaries.find((s) => s.id === div.id)!
+      expect(summary.sectionCount).toBe(`${div.sections.length} sections`)
+    }
   })
 
   it('contains only summary fields (no sections, requirements, etc.)', () => {
     const summaries = getAllDivisionSummaries()
+    if (summaries.length === 0) return
     const first = summaries[0] as Record<string, unknown>
     expect(first).toHaveProperty('id')
     expect(first).toHaveProperty('name')
@@ -82,22 +87,23 @@ describe('data integrity', () => {
     }
   })
 
-  it('only Piano is currently available', () => {
+  it('section values and labels are non-empty', () => {
     const divisions = getAllDivisions()
-    const available = divisions.filter((d) => d.available)
-    expect(available).toHaveLength(1)
-    expect(available[0].id).toBe('piano')
+    for (const d of divisions) {
+      for (const s of d.sections) {
+        expect(s.value).toBeTruthy()
+        expect(s.label).toBeTruthy()
+      }
+    }
   })
 
-  it('only Chamber uses "chamber" feeType', () => {
+  it('timePeriod values and labels are non-empty', () => {
     const divisions = getAllDivisions()
-    const chamber = divisions.filter((d) => d.feeType === 'chamber')
-    expect(chamber).toHaveLength(1)
-    expect(chamber[0].id).toBe('chamber')
-  })
-
-  it('Chamber does not require memorization', () => {
-    const chamber = getDivisionById('chamber')!
-    expect(chamber.memorization).toBe(false)
+    for (const d of divisions) {
+      for (const tp of d.timePeriods) {
+        expect(tp.value).toBeTruthy()
+        expect(tp.label).toBeTruthy()
+      }
+    }
   })
 })

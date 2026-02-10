@@ -84,6 +84,58 @@ async function fetchSheet(sheetName: string): Promise<Record<string, string>[]> 
   }
 }
 
+// Divisions + Sections는 별도 처리 (merge 필요)
+async function fetchDivisionsAndSections(contentDir: string) {
+  console.log('📄 Processing Divisions + Sections...')
+
+  const divisionRows = await fetchSheet('Divisions')
+  const sectionRows = await fetchSheet('Sections')
+
+  if (divisionRows.length === 0) {
+    console.log('   ⏭️  No Divisions data, skipping\n')
+    return
+  }
+
+  // Transform division rows
+  const divisions = divisionRows.map(row => ({
+    id: row.id || '',
+    name: row.name || '',
+    icon: row.icon || '',
+    description: row.description || '',
+    available: row.available === 'TRUE' || row.available === 'true',
+    sections: [] as { value: string; label: string }[],
+    timePeriods: (row.timePeriods || '').split('|').filter(Boolean).map(pair => {
+      const [value, label] = pair.split(':')
+      return { value: value?.trim() || '', label: label?.trim() || '' }
+    }),
+    requirements: (row.requirements || '').split('|').filter(Boolean).map(r => r.trim()),
+    feeType: row.feeType || 'solo',
+    memorization: row.memorization === 'TRUE' || row.memorization === 'true',
+  }))
+
+  // Group sections by divisionId and merge into divisions
+  const sectionsByDivision: Record<string, { value: string; label: string }[]> = {}
+  sectionRows.forEach(row => {
+    const divId = row.divisionId || ''
+    if (!divId) return
+    if (!sectionsByDivision[divId]) sectionsByDivision[divId] = []
+    sectionsByDivision[divId].push({
+      value: row.value || '',
+      label: row.label || '',
+    })
+  })
+
+  divisions.forEach(div => {
+    if (sectionsByDivision[div.id]) {
+      div.sections = sectionsByDivision[div.id]
+    }
+  })
+
+  const filePath = path.join(contentDir, 'divisions.json')
+  fs.writeFileSync(filePath, JSON.stringify(divisions, null, 2))
+  console.log('   ✅ Saved divisions.json\n')
+}
+
 // Sheet 변환 함수들
 const sheets: SheetConfig[] = [
   {
@@ -122,18 +174,6 @@ const sheets: SheetConfig[] = [
       description: row.description || '',
       type: row.type || 'event', // deadline, event, etc.
       highlight: row.highlight === 'true' || row.highlight === 'TRUE'
-    }))
-  },
-  {
-    name: 'Divisions',
-    output: 'divisions.json',
-    transform: (rows) => rows.map(row => ({
-      name: row.name || '',
-      icon: row.icon || '',
-      description: row.description || '',
-      sections: row.sections || '',
-      chairName: row.chairName || '',
-      chairEmail: row.chairEmail || ''
     }))
   },
   {
@@ -295,6 +335,9 @@ async function main() {
   console.log('📥 Fetching data from Google Sheets...\n')
 
   const contentDir = path.join(process.cwd(), 'src/content')
+
+  // Divisions + Sections (special merge logic)
+  await fetchDivisionsAndSections(contentDir)
 
   for (const sheet of sheets) {
     console.log(`📄 Processing ${sheet.name}...`)
