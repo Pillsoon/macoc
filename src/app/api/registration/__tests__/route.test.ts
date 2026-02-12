@@ -27,7 +27,6 @@ vi.mock('google-auth-library', () => ({
 process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL = 'test@test.iam.gserviceaccount.com'
 process.env.GOOGLE_PRIVATE_KEY = 'test-key'
 process.env.GOOGLE_REGISTRATION_SHEET_ID = 'test-sheet-id'
-process.env.STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/test'
 
 import { POST } from '../route'
 
@@ -72,15 +71,14 @@ describe('POST /api/registration', () => {
     mockAddRow.mockResolvedValue({ rowNumber: 2 })
   })
 
-  it('returns 200 with registrationId and paymentUrl on valid data', async () => {
+  it('returns 200 with registrationId on valid data', async () => {
     const res = await POST(createRequest(makeValidData()))
     const json = await res.json()
 
     expect(res.status).toBe(200)
     expect(json.success).toBe(true)
     expect(json.registrationId).toBe(2)
-    expect(json.paymentUrl).toContain('client_reference_id=2')
-    expect(json.paymentUrl).toContain('prefilled_email=john%40example.com')
+    expect(json).not.toHaveProperty('paymentUrl')
   })
 
   it('returns 400 when a required field is missing', async () => {

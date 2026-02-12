@@ -141,12 +141,11 @@ export async function POST(request: NextRequest) {
       'Repertoire 2 Time Period': data.repertoire2TimePeriod,
     })
 
-    // Return success with row number for payment tracking
+    // Return success with row number for PayPal payment
     return NextResponse.json({
       success: true,
       registrationId: newRow.rowNumber,
       message: 'Registration submitted successfully',
-      paymentUrl: `${process.env.STRIPE_PAYMENT_LINK}?client_reference_id=${newRow.rowNumber}&prefilled_email=${encodeURIComponent(data.studentEmail)}`
     })
 
   } catch (error) {

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import FileUpload from './FileUpload'
+import PayPalButton from './PayPalButton'
 import { config } from '@/lib/config'
 
 interface RegistrationFormProps {
@@ -48,7 +49,8 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
   const [formData, setFormData] = useState({ ...initialFormData, division })
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitResult, setSubmitResult] = useState<{ success: boolean; paymentUrl?: string; error?: string } | null>(null)
+  const [submitResult, setSubmitResult] = useState<{ success: boolean; registrationId?: number; error?: string } | null>(null)
+  const [paymentComplete, setPaymentComplete] = useState(false)
   const [agreedToTerms, setAgreedToTerms] = useState(false)
 
   const updateField = (field: string, value: string) => {
@@ -69,7 +71,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
       const result = await response.json()
 
       if (response.ok) {
-        setSubmitResult({ success: true, paymentUrl: result.paymentUrl })
+        setSubmitResult({ success: true, registrationId: result.registrationId })
       } else {
         setSubmitResult({ success: false, error: result.error })
       }
@@ -82,31 +84,46 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
 
   // Success screen
   if (submitResult?.success) {
-    return (
-      <div className="max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-lg text-center">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
+    if (paymentComplete) {
+      return (
+        <div className="max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-lg text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-heading font-bold text-charcoal mb-4">
+            Payment Complete!
+          </h2>
+          <p className="text-text-muted">
+            Your registration and payment have been received. You will receive a confirmation email shortly.
+          </p>
         </div>
-        <h2 className="text-2xl font-heading font-bold text-charcoal mb-4">
-          Registration Submitted!
-        </h2>
-        <p className="text-text-muted mb-8">
-          Your registration has been received. Please complete your payment to finalize your entry.
-        </p>
-        <a
-          href={submitResult.paymentUrl}
-          className="btn btn-gold inline-flex items-center gap-2"
-        >
-          Complete Payment (${entryFee})
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-        <p className="text-sm text-text-muted mt-4">
-          You can also pay later using the link sent to your email.
-        </p>
+      )
+    }
+
+    return (
+      <div className="max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-lg">
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-heading font-bold text-charcoal mb-4">
+            Registration Submitted!
+          </h2>
+          <p className="text-text-muted mb-2">
+            Please complete your payment below to finalize your entry.
+          </p>
+          <p className="text-2xl font-heading font-bold text-gold-dark">${entryFee}.00</p>
+        </div>
+        <PayPalButton
+          registrationId={submitResult.registrationId!}
+          amount={entryFee}
+          description={`MACOC ${division} Entry`}
+          onSuccess={() => setPaymentComplete(true)}
+        />
       </div>
     )
   }
@@ -547,7 +564,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                 <h3 className="font-semibold text-navy mb-2">Entry Fee</h3>
                 <p className="text-2xl font-heading font-bold text-gold-dark">${entryFee}.00</p>
                 <p className="text-sm text-text-muted mt-1">
-                  Payment will be processed after submission via Stripe.
+                  Payment will be processed after submission via PayPal.
                 </p>
               </div>
             </div>

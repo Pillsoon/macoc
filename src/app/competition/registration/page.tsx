@@ -232,15 +232,11 @@ export default function RegistrationPage() {
           <div className="flex flex-wrap justify-center gap-6">
             <div className="flex items-center gap-2 px-6 py-3 bg-gray-50 rounded-lg">
               <span className="text-2xl">💳</span>
-              <span className="text-sm font-medium text-charcoal">Credit Card</span>
+              <span className="text-sm font-medium text-charcoal">Credit / Debit Card</span>
             </div>
             <div className="flex items-center gap-2 px-6 py-3 bg-gray-50 rounded-lg">
               <span className="text-2xl">🅿️</span>
               <span className="text-sm font-medium text-charcoal">PayPal</span>
-            </div>
-            <div className="flex items-center gap-2 px-6 py-3 bg-gray-50 rounded-lg">
-              <span className="text-2xl">📱</span>
-              <span className="text-sm font-medium text-charcoal">Venmo</span>
             </div>
           </div>
 
