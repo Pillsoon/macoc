@@ -137,7 +137,7 @@ export default function Home() {
                   <span>Vote on competition matters</span>
                 </li>
               </ul>
-              <Link href="/competition/registration" className="btn btn-primary w-full">
+              <Link href="/register/teacher" className="btn btn-primary w-full">
                 Join as Teacher
               </Link>
             </div>

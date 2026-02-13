@@ -85,7 +85,7 @@ export default function RegistrationPage() {
                 </li>
               </ul>
 
-              <Link href="/register" className="btn btn-primary w-full text-center">
+              <Link href="/register/teacher" className="btn btn-primary w-full text-center">
                 Register Now
               </Link>
             </div>

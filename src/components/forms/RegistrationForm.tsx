@@ -57,6 +57,22 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
+  const step1Fields = [
+    'teacherFirstName', 'teacherLastName', 'teacherEmail', 'teacherPhone',
+    'studentFirstName', 'studentLastName', 'studentEmail',
+    'dateOfBirth', 'studentAge',
+    'streetAddress', 'city', 'state', 'zipCode',
+  ] as const
+
+  const step2Fields = [
+    'section',
+    'repertoire1Title', 'repertoire1Composer', 'repertoire1TimePeriod',
+    'repertoire2Title', 'repertoire2Composer', 'repertoire2TimePeriod',
+  ] as const
+
+  const canAdvance = (fields: readonly (keyof typeof formData)[]) =>
+    fields.every((f) => formData[f].trim() !== '')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -374,7 +390,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                disabled={!agreedToTerms}
+                disabled={!agreedToTerms || !canAdvance(step1Fields)}
                 className="btn btn-gold disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Next: Repertoire
@@ -508,7 +524,8 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
               <button
                 type="button"
                 onClick={() => setStep(3)}
-                className="btn btn-gold"
+                disabled={!canAdvance(step2Fields)}
+                className="btn btn-gold disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Next: Review
               </button>
