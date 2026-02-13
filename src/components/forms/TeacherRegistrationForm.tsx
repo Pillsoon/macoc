@@ -2,49 +2,14 @@
 
 import { useState } from 'react'
 import PayPalButton from './PayPalButton'
-
-const INSTRUMENTS = [
-  'Piano',
-  'Vocal: Classical',
-  'Vocal: Musical Theater',
-  'Strings + Piano Chamber',
-  'Strings',
-  'Guitar Chamber Music',
-  'Classical Guitar',
-  'Woodwinds',
-] as const
-
-const STRING_INSTRUMENTS = [
-  'Violin',
-  'Viola',
-  'Violin & Viola',
-  'Cello',
-  'None',
-] as const
-
-const HELP_PREFERENCES = [
-  'Morning Help',
-  'Afternoon Help',
-  'Morning and Afternoon Help',
-  'Non-available: pay non-involvement fee ($60)',
-] as const
-
-const SUB_DIVISIONS = [
-  'Strings',
-  'Vocal',
-  'Woodwinds',
-  'Guitar',
-  'Chamber Music',
-] as const
-
-const MEMBERSHIP_PRODUCTS = [
-  { label: 'Regular Member', price: 40, description: 'Regular Member' },
-  { label: 'Patron Member', price: 50, description: 'Patron Member' },
-  { label: 'Contributing Member', price: 60, description: 'Contributing Member' },
-  { label: 'Sponsor Member', price: 100, description: 'Sponsor Member' },
-  { label: 'Emeritus Member', price: 20, description: 'Emeritus Member Age 70+' },
-  { label: 'Non-Available Fee', price: 60, description: 'If you are unable to help out on the day of competition please pay a fee of $60 on top of your membership fee.' },
-] as const
+import {
+  INSTRUMENTS,
+  STRING_INSTRUMENT_TRIGGERS,
+  STRING_INSTRUMENTS,
+  HELP_PREFERENCES,
+  SUB_DIVISIONS,
+  MEMBERSHIP_PRODUCTS,
+} from '@/content/teacher-form'
 
 const initialFormData = {
   firstName: '',
@@ -94,6 +59,10 @@ export default function TeacherRegistrationForm() {
     return sum + (product?.price ?? 0)
   }, 0)
 
+  const isStringInstrument = (STRING_INSTRUMENT_TRIGGERS as readonly string[]).includes(
+    formData.instrument
+  )
+
   const step1Required = [
     'firstName',
     'lastName',
@@ -105,13 +74,12 @@ export default function TeacherRegistrationForm() {
     'mobileNumber',
     'phoneNumber',
     'instrument',
-    'stringInstrument',
     'helpPreference',
   ] as const
 
-  const canAdvanceStep1 = step1Required.every(
-    (f) => formData[f].trim() !== ''
-  )
+  const canAdvanceStep1 =
+    step1Required.every((f) => formData[f].trim() !== '') &&
+    (!isStringInstrument || formData.stringInstrument.trim() !== '')
 
   const hasNonFeeProduct = formData.selectedProducts.some(
     (p) => p !== 'Non-Available Fee'
@@ -425,38 +393,39 @@ export default function TeacherRegistrationForm() {
               </div>
             </fieldset>
 
-            {/* String Teacher Instrument */}
-            <fieldset className="space-y-3">
-              <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
-                String Teacher Instrument{' '}
-                <span className="text-red-500">*</span>
-              </legend>
-              <p className="text-xs text-text-muted">
-                If you are a string teacher pick your instrument based on your
-                student&apos;s entry form for Solo division (if you are a
-                non-string teacher, pick &quot;None&quot;)
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                {STRING_INSTRUMENTS.map((inst) => (
-                  <label
-                    key={inst}
-                    className="flex items-center gap-2 cursor-pointer text-sm"
-                  >
-                    <input
-                      type="radio"
-                      name="stringInstrument"
-                      value={inst}
-                      checked={formData.stringInstrument === inst}
-                      onChange={(e) =>
-                        updateField('stringInstrument', e.target.value)
-                      }
-                      className="text-gold focus:ring-gold"
-                    />
-                    {inst}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
+            {/* String Teacher Instrument - only shown for string instruments */}
+            {isStringInstrument && (
+              <fieldset className="space-y-3">
+                <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
+                  String Teacher Instrument{' '}
+                  <span className="text-red-500">*</span>
+                </legend>
+                <p className="text-xs text-text-muted">
+                  Pick your instrument based on your student&apos;s entry form
+                  for Solo division.
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  {STRING_INSTRUMENTS.map((inst) => (
+                    <label
+                      key={inst}
+                      className="flex items-center gap-2 cursor-pointer text-sm"
+                    >
+                      <input
+                        type="radio"
+                        name="stringInstrument"
+                        value={inst}
+                        checked={formData.stringInstrument === inst}
+                        onChange={(e) =>
+                          updateField('stringInstrument', e.target.value)
+                        }
+                        className="text-gold focus:ring-gold"
+                      />
+                      {inst}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            )}
 
             {/* Help Preference */}
             <fieldset className="space-y-3">
@@ -582,7 +551,8 @@ export default function TeacherRegistrationForm() {
                 <p className="text-sm text-text-secondary">
                   Instrument: {formData.instrument}
                   <br />
-                  String Instrument: {formData.stringInstrument}
+                  String Instrument:{' '}
+                  {formData.stringInstrument || 'N/A'}
                   <br />
                   Help Preference: {formData.helpPreference}
                   {formData.subDivision && (
