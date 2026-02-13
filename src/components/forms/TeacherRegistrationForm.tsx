@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import PayPalButton from './PayPalButton'
-import { config } from '@/lib/config'
 
 const INSTRUMENTS = [
   'Piano',
@@ -26,8 +25,8 @@ const STRING_INSTRUMENTS = [
 const HELP_PREFERENCES = [
   'Morning Help',
   'Afternoon Help',
-  'Both',
-  'Non-available ($60)',
+  'Morning and Afternoon Help',
+  'Non-available: pay non-involvement fee ($60)',
 ] as const
 
 const SUB_DIVISIONS = [
@@ -38,15 +37,14 @@ const SUB_DIVISIONS = [
   'Chamber Music',
 ] as const
 
-const MEMBERSHIP_TIERS = [
-  { label: 'Regular Member', price: 40 },
-  { label: 'Patron Member', price: 50 },
-  { label: 'Contributing Member', price: 60 },
-  { label: 'Sponsor Member', price: 100 },
-  { label: 'Emeritus Member (70+)', price: 20 },
+const MEMBERSHIP_PRODUCTS = [
+  { label: 'Regular Member', price: 40, description: 'Regular Member' },
+  { label: 'Patron Member', price: 50, description: 'Patron Member' },
+  { label: 'Contributing Member', price: 60, description: 'Contributing Member' },
+  { label: 'Sponsor Member', price: 100, description: 'Sponsor Member' },
+  { label: 'Emeritus Member', price: 20, description: 'Emeritus Member Age 70+' },
+  { label: 'Non-Available Fee', price: 60, description: 'If you are unable to help out on the day of competition please pay a fee of $60 on top of your membership fee.' },
 ] as const
-
-const NON_AVAILABLE_FEE = 60
 
 const initialFormData = {
   firstName: '',
@@ -63,8 +61,8 @@ const initialFormData = {
   instrument: '',
   stringInstrument: '',
   helpPreference: '',
-  subDivisions: [] as string[],
-  membershipTier: '',
+  subDivision: '',
+  selectedProducts: [] as string[],
 }
 
 export default function TeacherRegistrationForm() {
@@ -82,22 +80,19 @@ export default function TeacherRegistrationForm() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  const toggleSubDivision = (div: string) => {
+  const toggleProduct = (label: string) => {
     setFormData((prev) => ({
       ...prev,
-      subDivisions: prev.subDivisions.includes(div)
-        ? prev.subDivisions.filter((d) => d !== div)
-        : [...prev.subDivisions, div],
+      selectedProducts: prev.selectedProducts.includes(label)
+        ? prev.selectedProducts.filter((p) => p !== label)
+        : [...prev.selectedProducts, label],
     }))
   }
 
-  const isNonAvailable = formData.helpPreference === 'Non-available ($60)'
-
-  const selectedTier = MEMBERSHIP_TIERS.find(
-    (t) => t.label === formData.membershipTier
-  )
-  const tierPrice = selectedTier?.price ?? 0
-  const totalAmount = tierPrice + (isNonAvailable ? NON_AVAILABLE_FEE : 0)
+  const totalAmount = formData.selectedProducts.reduce((sum, label) => {
+    const product = MEMBERSHIP_PRODUCTS.find((p) => p.label === label)
+    return sum + (product?.price ?? 0)
+  }, 0)
 
   const step1Required = [
     'firstName',
@@ -108,6 +103,7 @@ export default function TeacherRegistrationForm() {
     'zipCode',
     'email',
     'mobileNumber',
+    'phoneNumber',
     'instrument',
     'stringInstrument',
     'helpPreference',
@@ -117,7 +113,10 @@ export default function TeacherRegistrationForm() {
     (f) => formData[f].trim() !== ''
   )
 
-  const canSubmit = formData.membershipTier !== ''
+  const hasNonFeeProduct = formData.selectedProducts.some(
+    (p) => p !== 'Non-Available Fee'
+  )
+  const canSubmit = hasNonFeeProduct
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -129,7 +128,6 @@ export default function TeacherRegistrationForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          nonAvailableFee: isNonAvailable,
           totalAmount,
         }),
       })
@@ -259,12 +257,12 @@ export default function TeacherRegistrationForm() {
             {/* Name */}
             <fieldset className="space-y-4">
               <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
-                Name
+                Name <span className="text-red-500">*</span>
               </legend>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-charcoal mb-1">
-                    First Name <span className="text-red-500">*</span>
+                    First Name
                   </label>
                   <input
                     type="text"
@@ -287,7 +285,7 @@ export default function TeacherRegistrationForm() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-charcoal mb-1">
-                    Last Name <span className="text-red-500">*</span>
+                    Last Name
                   </label>
                   <input
                     type="text"
@@ -303,7 +301,7 @@ export default function TeacherRegistrationForm() {
             {/* Mailing Address */}
             <fieldset className="space-y-4">
               <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
-                Mailing Address
+                Mailing Address <span className="text-red-500">*</span>
               </legend>
               <input
                 type="text"
@@ -331,7 +329,7 @@ export default function TeacherRegistrationForm() {
                 />
                 <input
                   type="text"
-                  placeholder="State"
+                  placeholder="State / Province"
                   value={formData.state}
                   onChange={(e) => updateField('state', e.target.value)}
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
@@ -339,7 +337,7 @@ export default function TeacherRegistrationForm() {
                 />
                 <input
                   type="text"
-                  placeholder="Zip Code"
+                  placeholder="Postal / Zip Code"
                   value={formData.zipCode}
                   onChange={(e) => updateField('zipCode', e.target.value)}
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
@@ -355,12 +353,13 @@ export default function TeacherRegistrationForm() {
               </legend>
               <div>
                 <label className="block text-sm font-medium text-charcoal mb-1">
-                  Email <span className="text-red-500">*</span>
+                  Email
                 </label>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => updateField('email', e.target.value)}
+                  placeholder="example@example.com"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
                   required
                 />
@@ -376,13 +375,14 @@ export default function TeacherRegistrationForm() {
                     onChange={(e) =>
                       updateField('mobileNumber', e.target.value)
                     }
+                    placeholder="(000) 000-0000"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
                     required
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-charcoal mb-1">
-                    Phone Number
+                    Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="tel"
@@ -390,7 +390,9 @@ export default function TeacherRegistrationForm() {
                     onChange={(e) =>
                       updateField('phoneNumber', e.target.value)
                     }
+                    placeholder="(000) 000-0000"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    required
                   />
                 </div>
               </div>
@@ -429,6 +431,11 @@ export default function TeacherRegistrationForm() {
                 String Teacher Instrument{' '}
                 <span className="text-red-500">*</span>
               </legend>
+              <p className="text-xs text-text-muted">
+                If you are a string teacher pick your instrument based on your
+                student&apos;s entry form for Solo division (if you are a
+                non-string teacher, pick &quot;None&quot;)
+              </p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {STRING_INSTRUMENTS.map((inst) => (
                   <label
@@ -456,7 +463,11 @@ export default function TeacherRegistrationForm() {
               <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
                 Help Preference <span className="text-red-500">*</span>
               </legend>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <p className="text-xs text-text-muted">
+                MACOC would appreciate your help! Please check your preference
+                out of the following:
+              </p>
+              <div className="grid grid-cols-1 gap-2">
                 {HELP_PREFERENCES.map((pref) => (
                   <label
                     key={pref}
@@ -476,12 +487,6 @@ export default function TeacherRegistrationForm() {
                   </label>
                 ))}
               </div>
-              {isNonAvailable && (
-                <p className="text-sm text-amber-700 bg-amber-50 p-3 rounded-lg">
-                  A non-available fee of ${NON_AVAILABLE_FEE}.00 will be added
-                  to your membership.
-                </p>
-              )}
             </fieldset>
 
             {/* Sub Division */}
@@ -492,6 +497,10 @@ export default function TeacherRegistrationForm() {
                   (optional)
                 </span>
               </legend>
+              <p className="text-xs text-text-muted">
+                If you are submitting students with more than one
+                division/instrument.
+              </p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {SUB_DIVISIONS.map((div) => (
                   <label
@@ -499,10 +508,14 @@ export default function TeacherRegistrationForm() {
                     className="flex items-center gap-2 cursor-pointer text-sm"
                   >
                     <input
-                      type="checkbox"
-                      checked={formData.subDivisions.includes(div)}
-                      onChange={() => toggleSubDivision(div)}
-                      className="text-gold focus:ring-gold rounded"
+                      type="radio"
+                      name="subDivision"
+                      value={div}
+                      checked={formData.subDivision === div}
+                      onChange={(e) =>
+                        updateField('subDivision', e.target.value)
+                      }
+                      className="text-gold focus:ring-gold"
                     />
                     {div}
                   </label>
@@ -542,13 +555,8 @@ export default function TeacherRegistrationForm() {
                   <br />
                   {formData.email}
                   <br />
-                  Mobile: {formData.mobileNumber}
-                  {formData.phoneNumber && (
-                    <>
-                      {' '}
-                      | Phone: {formData.phoneNumber}
-                    </>
-                  )}
+                  Mobile: {formData.mobileNumber} | Phone:{' '}
+                  {formData.phoneNumber}
                 </p>
               </div>
 
@@ -577,49 +585,54 @@ export default function TeacherRegistrationForm() {
                   String Instrument: {formData.stringInstrument}
                   <br />
                   Help Preference: {formData.helpPreference}
-                  {formData.subDivisions.length > 0 && (
+                  {formData.subDivision && (
                     <>
                       <br />
-                      Sub Divisions: {formData.subDivisions.join(', ')}
+                      Sub Division: {formData.subDivision}
                     </>
                   )}
                 </p>
               </div>
             </div>
 
-            {/* Membership Tier Selection */}
+            {/* Membership Product Selection */}
             <fieldset className="space-y-3">
               <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
-                Select Membership Tier{' '}
+                Membership Products{' '}
                 <span className="text-red-500">*</span>
               </legend>
               <div className="space-y-2">
-                {MEMBERSHIP_TIERS.map((tier) => (
+                {MEMBERSHIP_PRODUCTS.map((product) => (
                   <label
-                    key={tier.label}
+                    key={product.label}
                     className={`flex items-center justify-between p-4 rounded-lg border cursor-pointer transition-colors ${
-                      formData.membershipTier === tier.label
+                      formData.selectedProducts.includes(product.label)
                         ? 'border-gold bg-gold/5'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <input
-                        type="radio"
-                        name="membershipTier"
-                        value={tier.label}
-                        checked={formData.membershipTier === tier.label}
-                        onChange={(e) =>
-                          updateField('membershipTier', e.target.value)
-                        }
-                        className="text-gold focus:ring-gold"
+                        type="checkbox"
+                        checked={formData.selectedProducts.includes(
+                          product.label
+                        )}
+                        onChange={() => toggleProduct(product.label)}
+                        className="text-gold focus:ring-gold rounded"
                       />
-                      <span className="text-sm font-medium text-charcoal">
-                        {tier.label}
-                      </span>
+                      <div>
+                        <span className="text-sm font-medium text-charcoal">
+                          {product.label}
+                        </span>
+                        {product.label !== product.description && (
+                          <p className="text-xs text-text-muted mt-0.5">
+                            {product.description}
+                          </p>
+                        )}
+                      </div>
                     </div>
                     <span className="text-sm font-bold text-navy">
-                      ${tier.price}.00
+                      ${product.price}.00
                     </span>
                   </label>
                 ))}
@@ -629,18 +642,19 @@ export default function TeacherRegistrationForm() {
             {/* Total */}
             <div className="p-4 bg-gold/10 border border-gold/30 rounded-lg">
               <h3 className="font-semibold text-navy mb-2">Total</h3>
-              {selectedTier && (
+              {formData.selectedProducts.length > 0 ? (
                 <div className="text-sm text-text-secondary space-y-1">
-                  <div className="flex justify-between">
-                    <span>{selectedTier.label}</span>
-                    <span>${selectedTier.price}.00</span>
-                  </div>
-                  {isNonAvailable && (
-                    <div className="flex justify-between">
-                      <span>Non-Available Fee</span>
-                      <span>${NON_AVAILABLE_FEE}.00</span>
-                    </div>
-                  )}
+                  {formData.selectedProducts.map((label) => {
+                    const product = MEMBERSHIP_PRODUCTS.find(
+                      (p) => p.label === label
+                    )
+                    return (
+                      <div key={label} className="flex justify-between">
+                        <span>{label}</span>
+                        <span>${product?.price}.00</span>
+                      </div>
+                    )
+                  })}
                   <div className="border-t border-gold/30 pt-1 mt-1">
                     <div className="flex justify-between">
                       <span className="font-semibold text-charcoal">
@@ -652,10 +666,9 @@ export default function TeacherRegistrationForm() {
                     </div>
                   </div>
                 </div>
-              )}
-              {!selectedTier && (
+              ) : (
                 <p className="text-sm text-text-muted">
-                  Please select a membership tier above.
+                  Please select a membership product above.
                 </p>
               )}
               <p className="text-sm text-text-muted mt-2">

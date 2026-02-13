@@ -41,13 +41,12 @@ function makeValidData() {
     zipCode: '92620',
     email: 'jane@example.com',
     mobileNumber: '555-0100',
-    phoneNumber: '',
+    phoneNumber: '555-0200',
     instrument: 'Piano',
     stringInstrument: 'None',
     helpPreference: 'Morning Help',
-    subDivisions: ['Strings', 'Vocal'],
-    membershipTier: 'Regular Member',
-    nonAvailableFee: false,
+    subDivision: 'Strings',
+    selectedProducts: ['Regular Member'],
     totalAmount: 40,
   }
 }

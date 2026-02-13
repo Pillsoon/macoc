@@ -13,13 +13,12 @@ interface TeacherRegistrationData {
   zipCode: string
   email: string
   mobileNumber: string
-  phoneNumber?: string
+  phoneNumber: string
   instrument: string
   stringInstrument: string
   helpPreference: string
-  subDivisions: string[]
-  membershipTier: string
-  nonAvailableFee: boolean
+  subDivision?: string
+  selectedProducts: string[]
   totalAmount: number
 }
 
@@ -36,10 +35,10 @@ export async function POST(request: NextRequest) {
       'zipCode',
       'email',
       'mobileNumber',
+      'phoneNumber',
       'instrument',
       'stringInstrument',
       'helpPreference',
-      'membershipTier',
     ]
 
     for (const field of requiredFields) {
@@ -49,6 +48,13 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         )
       }
+    }
+
+    if (!data.selectedProducts?.length) {
+      return NextResponse.json(
+        { error: 'Missing required field: selectedProducts' },
+        { status: 400 }
+      )
     }
 
     const serviceAccountAuth = new JWT({
@@ -85,9 +91,8 @@ export async function POST(request: NextRequest) {
           'Instrument',
           'String Instrument',
           'Help Preference',
-          'Sub Divisions',
-          'Membership Tier',
-          'Non-Available Fee',
+          'Sub Division',
+          'Selected Products',
           'Total Amount',
         ],
       })
@@ -106,13 +111,12 @@ export async function POST(request: NextRequest) {
       'Zip Code': data.zipCode,
       'Email': data.email,
       'Mobile Number': data.mobileNumber,
-      'Phone Number': data.phoneNumber || '',
+      'Phone Number': data.phoneNumber,
       'Instrument': data.instrument,
       'String Instrument': data.stringInstrument,
       'Help Preference': data.helpPreference,
-      'Sub Divisions': (data.subDivisions || []).join(', '),
-      'Membership Tier': data.membershipTier,
-      'Non-Available Fee': data.nonAvailableFee ? 'Yes' : 'No',
+      'Sub Division': data.subDivision || '',
+      'Selected Products': data.selectedProducts.join(', '),
       'Total Amount': String(data.totalAmount),
     })
 
