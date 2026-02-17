@@ -110,7 +110,7 @@ export default function RegulationPage() {
             <h3 className="font-heading text-2xl text-white mb-4">Age Sections</h3>
             <p className="text-white/70 mb-6">
               Each division has multiple age-based sections to ensure fair competition.
-              Ages are calculated as of January 1st of the competition year.
+              Ages are calculated as of April 30th of the competition year.
             </p>
             <div className="inline-flex flex-wrap justify-center gap-3">
               {['5-6', '7-8', '9-10', '11-12', '13-14', '15-16', '17-18', '19+'].map((age) => (
