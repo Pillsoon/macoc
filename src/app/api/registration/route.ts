@@ -75,11 +75,12 @@ export async function POST(request: NextRequest) {
 
     await doc.loadInfo()
 
-    // Get or create the registrations sheet
-    let sheet = doc.sheetsByTitle['Registrations']
+    // Get or create the division-specific sheet
+    const sheetTitle = data.division
+    let sheet = doc.sheetsByTitle[sheetTitle]
     if (!sheet) {
       sheet = await doc.addSheet({
-        title: 'Registrations',
+        title: sheetTitle,
         headerValues: [
           'Timestamp',
           'Payment Status',
@@ -141,10 +142,11 @@ export async function POST(request: NextRequest) {
       'Repertoire 2 Time Period': data.repertoire2TimePeriod,
     })
 
-    // Return success with row number for PayPal payment
+    // Return success with row number and sheet name for PayPal payment
     return NextResponse.json({
       success: true,
       registrationId: newRow.rowNumber,
+      sheetName: sheetTitle,
       message: 'Registration submitted successfully',
     })
 

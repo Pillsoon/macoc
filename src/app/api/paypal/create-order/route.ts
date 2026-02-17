@@ -22,7 +22,7 @@ async function getAccessToken() {
 
 export async function POST(request: NextRequest) {
   try {
-    const { registrationId, amount, description } = await request.json()
+    const { registrationId, sheetName, amount, description } = await request.json()
 
     if (!registrationId || !amount) {
       return NextResponse.json(
@@ -32,6 +32,11 @@ export async function POST(request: NextRequest) {
     }
 
     const accessToken = await getAccessToken()
+
+    // Encode sheet name and row number in custom_id for capture lookup
+    const customId = sheetName
+      ? `${sheetName}:${registrationId}`
+      : String(registrationId)
 
     const res = await fetch(`${PAYPAL_API}/v2/checkout/orders`, {
       method: 'POST',
@@ -43,7 +48,7 @@ export async function POST(request: NextRequest) {
         intent: 'CAPTURE',
         purchase_units: [
           {
-            custom_id: String(registrationId),
+            custom_id: customId,
             description: description || 'MACOC Registration',
             amount: {
               currency_code: 'USD',

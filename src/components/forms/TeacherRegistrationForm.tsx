@@ -44,6 +44,7 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
   const [submitResult, setSubmitResult] = useState<{
     success: boolean
     registrationId?: number
+    sheetName?: string
     error?: string
   } | null>(null)
   const [paymentComplete, setPaymentComplete] = useState(false)
@@ -113,6 +114,7 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
         setSubmitResult({
           success: true,
           registrationId: result.registrationId,
+          sheetName: result.sheetName,
         })
       } else {
         setSubmitResult({ success: false, error: result.error })
@@ -189,6 +191,7 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
         </div>
         <PayPalButton
           registrationId={submitResult.registrationId!}
+          sheetName={submitResult.sheetName || 'Teacher Memberships'}
           amount={totalAmount}
           description="MACOC Teacher Membership"
           onSuccess={() => setPaymentComplete(true)}

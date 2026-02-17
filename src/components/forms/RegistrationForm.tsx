@@ -49,7 +49,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
   const [formData, setFormData] = useState({ ...initialFormData, division })
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitResult, setSubmitResult] = useState<{ success: boolean; registrationId?: number; error?: string } | null>(null)
+  const [submitResult, setSubmitResult] = useState<{ success: boolean; registrationId?: number; sheetName?: string; error?: string } | null>(null)
   const [paymentComplete, setPaymentComplete] = useState(false)
   const [agreedToTerms, setAgreedToTerms] = useState(false)
 
@@ -87,7 +87,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
       const result = await response.json()
 
       if (response.ok) {
-        setSubmitResult({ success: true, registrationId: result.registrationId })
+        setSubmitResult({ success: true, registrationId: result.registrationId, sheetName: result.sheetName })
       } else {
         setSubmitResult({ success: false, error: result.error })
       }
@@ -136,6 +136,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
         </div>
         <PayPalButton
           registrationId={submitResult.registrationId!}
+          sheetName={submitResult.sheetName || division}
           amount={entryFee}
           description={`MACOC ${division} Entry`}
           onSuccess={() => setPaymentComplete(true)}

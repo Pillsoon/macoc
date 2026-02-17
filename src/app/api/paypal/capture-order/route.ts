@@ -56,12 +56,24 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Extract custom_id (registration row number) from capture
+    // Extract custom_id from capture — format: "sheetName:rowNumber" or just "rowNumber"
     const customId =
       captureData.purchase_units?.[0]?.payments?.captures?.[0]?.custom_id
 
     if (customId) {
       try {
+        let sheetName: string
+        let rowNumber: number
+
+        if (customId.includes(':')) {
+          const colonIdx = customId.lastIndexOf(':')
+          sheetName = customId.slice(0, colonIdx)
+          rowNumber = parseInt(customId.slice(colonIdx + 1), 10)
+        } else {
+          sheetName = 'Registrations'
+          rowNumber = parseInt(customId, 10)
+        }
+
         const serviceAccountAuth = new JWT({
           email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
           key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
@@ -75,12 +87,10 @@ export async function POST(request: NextRequest) {
 
         await doc.loadInfo()
 
-        const sheet = doc.sheetsByTitle['Registrations']
+        const sheet = doc.sheetsByTitle[sheetName]
         if (sheet) {
           const rows = await sheet.getRows()
-          const row = rows.find(
-            (r) => r.rowNumber === parseInt(customId, 10)
-          )
+          const row = rows.find((r) => r.rowNumber === rowNumber)
 
           if (row && row.get('Payment Status') !== 'Paid') {
             row.set('Payment Status', 'Paid')

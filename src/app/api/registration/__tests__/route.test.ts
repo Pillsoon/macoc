@@ -10,7 +10,7 @@ vi.mock('google-spreadsheet', () => ({
     return {
       loadInfo: mockLoadInfo,
       sheetsByTitle: {
-        Registrations: {
+        piano: {
           addRow: mockAddRow,
         },
       },
@@ -78,7 +78,7 @@ describe('POST /api/registration', () => {
     expect(res.status).toBe(200)
     expect(json.success).toBe(true)
     expect(json.registrationId).toBe(2)
-    expect(json).not.toHaveProperty('paymentUrl')
+    expect(json.sheetName).toBe('piano')
   })
 
   it('returns 400 when a required field is missing', async () => {

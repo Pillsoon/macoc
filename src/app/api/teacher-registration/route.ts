@@ -122,6 +122,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       registrationId: newRow.rowNumber,
+      sheetName: 'Teacher Memberships',
       message: 'Teacher membership submitted successfully',
     })
   } catch (error) {

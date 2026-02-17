@@ -1,8 +1,19 @@
 import Link from 'next/link'
 import { config } from '@/lib/config'
+import { getAllDivisionSummaries } from '@/content/divisions'
+
+const divisionCategories = [
+  { label: 'Keyboard', ids: ['piano'] },
+  { label: 'Vocal', ids: ['vocal-classical', 'vocal-musical-theater'] },
+  { label: 'Strings', ids: ['strings', 'strings-piano-chamber'] },
+  { label: 'Guitar', ids: ['classical-guitar', 'guitar-chamber-music'] },
+  { label: 'Woodwinds', ids: ['woodwinds', 'woodwinds-ensemble'] },
+]
 
 export default function Home() {
   const { competition, winnersConcert, fees, currentYear } = config
+  const summaries = getAllDivisionSummaries()
+  const summaryMap = new Map(summaries.map((s) => [s.id, s]))
 
   const keyDates = [
     { icon: '🎹', date: competition.date, title: 'Competition Day', desc: competition.location, highlight: true },
@@ -101,133 +112,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Membership & Fees */}
+      {/* Registration by Division */}
       <section className="section bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="section-title">Membership & Fees</h2>
-            <p className="section-subtitle mx-auto">Choose your path to musical excellence</p>
+            <h2 className="section-title">Register by Division</h2>
+            <p className="section-subtitle mx-auto">
+              Select your division to register as a teacher or enter a student.
+              Solo: ${fees.solo.amount}/entry | Chamber: ${fees.chamber.amount}/entry | Teacher Membership: ${fees.membership.amount}/year
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Teacher Membership */}
-            <div className="pricing-card pricing-card-featured">
-              <h3 className="font-heading text-xl text-charcoal mb-2">Teacher Membership</h3>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-heading font-bold text-navy">${fees.membership.amount}</span>
-                <span className="text-text-muted">/year</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Submit unlimited students</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Access member directory</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Vote on competition matters</span>
-                </li>
-              </ul>
-              <Link href="/register" className="btn btn-primary w-full">
-                Join as Teacher
-              </Link>
-            </div>
-
-            {/* Solo Entry */}
-            <div className="pricing-card">
-              <h3 className="font-heading text-xl text-charcoal mb-2">Solo Entry</h3>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-heading font-bold text-navy">${fees.solo.amount}</span>
-                <span className="text-text-muted">/entry</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Professional adjudication</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Certificate of participation</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Medal eligibility & awards</span>
-                </li>
-              </ul>
-              <Link href="/register" className="btn btn-secondary w-full">
-                Register Student
-              </Link>
-              <p className="text-center text-xs text-text-muted mt-4">
-                Late fee: ${fees.lateFee.amount} after {competition.registration.close}
-              </p>
-            </div>
-
-            {/* Chamber Entry */}
-            <div className="pricing-card">
-              <h3 className="font-heading text-xl text-charcoal mb-2">Chamber Entry</h3>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-heading font-bold text-navy">${fees.chamber.amount}</span>
-                <span className="text-text-muted">/entry</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Professional adjudication</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Certificate of participation</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Medal eligibility & awards</span>
-                </li>
-              </ul>
-              <Link href="/register" className="btn btn-secondary w-full">
-                Register Student
-              </Link>
-            </div>
+          <div className="max-w-4xl mx-auto space-y-6">
+            {divisionCategories.map((category) => {
+              const divisions = category.ids
+                .map((id) => summaryMap.get(id))
+                .filter(Boolean)
+              return (
+                <div key={category.label}>
+                  <h3 className="text-sm font-semibold text-navy uppercase tracking-wider mb-3">
+                    {category.label}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {divisions.map((d) => d && (
+                      <Link
+                        key={d.id}
+                        href={`/register/${d.id}`}
+                        className="flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-100 hover:border-gold transition-colors group"
+                      >
+                        <span className="text-2xl">{d.icon}</span>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-heading text-charcoal group-hover:text-navy truncate">{d.name}</h4>
+                          <p className="text-xs text-text-muted">{d.sectionCount}</p>
+                        </div>
+                        <svg className="w-5 h-5 text-gray-300 group-hover:text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
-          {/* Non-Participation Fee */}
-          <div className="mt-8 max-w-5xl mx-auto">
-            <div className="p-6 bg-cream rounded-xl text-center">
-              <h3 className="font-heading text-lg text-charcoal mb-2">Non-Participation Fee</h3>
-              <p className="text-text-muted text-sm mb-3">
-                For member teachers who do not enter students in the competition
-              </p>
-              <div className="flex justify-center gap-8">
-                <div>
-                  <span className="text-2xl font-heading font-bold text-navy">${fees.nonParticipation.small.amount}</span>
-                  <p className="text-text-muted text-xs mt-1">{fees.nonParticipation.small.label}</p>
-                </div>
-                <div>
-                  <span className="text-2xl font-heading font-bold text-navy">${fees.nonParticipation.large.amount}</span>
-                  <p className="text-text-muted text-xs mt-1">{fees.nonParticipation.large.label}</p>
-                </div>
-              </div>
-            </div>
+          <div className="text-center mt-8">
+            <Link href="/register" className="btn btn-gold">
+              View All Divisions
+            </Link>
           </div>
         </div>
       </section>

@@ -4,6 +4,7 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 
 interface PayPalButtonProps {
   registrationId: number
+  sheetName: string
   amount: number
   description: string
   onSuccess: () => void
@@ -11,6 +12,7 @@ interface PayPalButtonProps {
 
 export default function PayPalButton({
   registrationId,
+  sheetName,
   amount,
   description,
   onSuccess,
@@ -42,7 +44,7 @@ export default function PayPalButton({
           const res = await fetch('/api/paypal/create-order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ registrationId, amount, description }),
+            body: JSON.stringify({ registrationId, sheetName, amount, description }),
           })
           const data = await res.json()
           return data.id
