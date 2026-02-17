@@ -30,8 +30,15 @@ const initialFormData = {
   selectedProducts: [] as string[],
 }
 
-export default function TeacherRegistrationForm() {
-  const [formData, setFormData] = useState({ ...initialFormData })
+interface TeacherRegistrationFormProps {
+  defaultInstrument?: string
+}
+
+export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRegistrationFormProps = {}) {
+  const [formData, setFormData] = useState({
+    ...initialFormData,
+    ...(defaultInstrument ? { instrument: defaultInstrument } : {}),
+  })
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{
@@ -367,31 +374,40 @@ export default function TeacherRegistrationForm() {
             </fieldset>
 
             {/* Instrument */}
-            <fieldset className="space-y-3">
-              <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
-                Instrument <span className="text-red-500">*</span>
-              </legend>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                {INSTRUMENTS.map((inst) => (
-                  <label
-                    key={inst}
-                    className="flex items-center gap-2 cursor-pointer text-sm"
-                  >
-                    <input
-                      type="radio"
-                      name="instrument"
-                      value={inst}
-                      checked={formData.instrument === inst}
-                      onChange={(e) =>
-                        updateField('instrument', e.target.value)
-                      }
-                      className="text-gold focus:ring-gold"
-                    />
-                    {inst}
-                  </label>
-                ))}
+            {defaultInstrument ? (
+              <div className="p-4 bg-cream/50 rounded-lg">
+                <p className="text-sm font-semibold text-navy uppercase tracking-wider mb-1">
+                  Instrument
+                </p>
+                <p className="text-charcoal font-medium">{defaultInstrument}</p>
               </div>
-            </fieldset>
+            ) : (
+              <fieldset className="space-y-3">
+                <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
+                  Instrument <span className="text-red-500">*</span>
+                </legend>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {INSTRUMENTS.map((inst) => (
+                    <label
+                      key={inst}
+                      className="flex items-center gap-2 cursor-pointer text-sm"
+                    >
+                      <input
+                        type="radio"
+                        name="instrument"
+                        value={inst}
+                        checked={formData.instrument === inst}
+                        onChange={(e) =>
+                          updateField('instrument', e.target.value)
+                        }
+                        className="text-gold focus:ring-gold"
+                      />
+                      {inst}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            )}
 
             {/* String Teacher Instrument - only shown for string instruments */}
             {isStringInstrument && (

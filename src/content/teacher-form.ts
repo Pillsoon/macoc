@@ -10,6 +10,7 @@ export const INSTRUMENTS = [
   'Guitar Chamber Music',
   'Classical Guitar',
   'Woodwinds',
+  'Woodwinds Ensemble',
 ] as const
 
 // Instruments that trigger the String Teacher Instrument field

@@ -124,7 +124,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-title">Competition Divisions</h2>
-            <p className="section-subtitle mx-auto">Ten divisions spanning all major instruments and voice</p>
+            <p className="section-subtitle mx-auto">Nine divisions spanning all major instruments and voice</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">

@@ -1,22 +1,22 @@
 [
   {
     "id": "piano",
-    "name": "Classical Piano",
+    "name": "Piano",
     "icon": "🎹",
     "description": "Classical piano solo performance",
     "available": true,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 7 and under (4 min)" },
-      { "value": "section-2", "label": "Section II - Age 8 and under (4 min)" },
-      { "value": "section-3", "label": "Section III - Age 9 and under (5 min)" },
-      { "value": "section-4", "label": "Section IV - Age 10 and under (5 min)" },
-      { "value": "section-5", "label": "Section V - Age 11 and under (5 min)" },
-      { "value": "section-6", "label": "Section VI - Age 12 and under (6 min)" },
-      { "value": "section-7", "label": "Section VII - Age 13 and under (7 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 14 and under (8 min)" },
-      { "value": "section-9", "label": "Section IX - Age 15 and under (8 min)" },
-      { "value": "section-10", "label": "Section X - Age 16 and under (10 min)" },
-      { "value": "section-11", "label": "Section XI - Age 18 and under (12 min)" }
+      { "value": "section-1", "label": "Division I - Age 7 and under (4 min)" },
+      { "value": "section-2", "label": "Division II - Age 8 and under (4 min)" },
+      { "value": "section-3", "label": "Division III - Age 9 and under (5 min)" },
+      { "value": "section-4", "label": "Division IV - Age 10 and under (5 min)" },
+      { "value": "section-5", "label": "Division V - Age 11 and under (5 min)" },
+      { "value": "section-6", "label": "Division VI - Age 12 and under (6 min)" },
+      { "value": "section-7", "label": "Division VII - Age 13 and under (7 min)" },
+      { "value": "section-8", "label": "Division VIII - Age 14 and under (8 min)" },
+      { "value": "section-9", "label": "Division IX - Age 15 and under (8 min)" },
+      { "value": "section-10", "label": "Division X - Age 16 and under (10 min)" },
+      { "value": "section-11", "label": "Division XI - Age 18 and under (12 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -26,119 +26,28 @@
     ],
     "requirements": [
       "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
+      "All works must be performed by memory",
+      "Performer should bring the original copy of repertoires",
+      "No changes to the competition program are permitted once the application form has been received"
     ],
     "feeType": "solo",
     "memorization": true
   },
   {
-    "id": "violin",
-    "name": "Violin",
-    "icon": "🎻",
-    "description": "Classical violin solo performance",
-    "available": false,
-    "sections": [
-      { "value": "section-1", "label": "Section I - Age 7 and under (4 min)" },
-      { "value": "section-2", "label": "Section II - Age 8 and under (4 min)" },
-      { "value": "section-3", "label": "Section III - Age 9 and under (5 min)" },
-      { "value": "section-4", "label": "Section IV - Age 10 and under (5 min)" },
-      { "value": "section-5", "label": "Section V - Age 11 and under (5 min)" },
-      { "value": "section-6", "label": "Section VI - Age 12 and under (6 min)" },
-      { "value": "section-7", "label": "Section VII - Age 13 and under (7 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 14 and under (8 min)" },
-      { "value": "section-9", "label": "Section IX - Age 16 and under (10 min)" },
-      { "value": "section-10", "label": "Section X - Age 18 and under (12 min)" }
-    ],
-    "timePeriods": [
-      { "value": "baroque", "label": "Baroque (1600-1750)" },
-      { "value": "classical", "label": "Classical (1750-1820)" },
-      { "value": "romantic", "label": "Romantic (1820-1900)" },
-      { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
-    ],
-    "requirements": [
-      "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
-    ],
-    "feeType": "solo",
-    "memorization": true
-  },
-  {
-    "id": "viola",
-    "name": "Viola",
-    "icon": "🎻",
-    "description": "Classical viola solo performance",
-    "available": false,
-    "sections": [
-      { "value": "section-2", "label": "Section II - Age 8 and under (4 min)" },
-      { "value": "section-3", "label": "Section III - Age 9 and under (5 min)" },
-      { "value": "section-4", "label": "Section IV - Age 10 and under (5 min)" },
-      { "value": "section-5", "label": "Section V - Age 11 and under (5 min)" },
-      { "value": "section-6", "label": "Section VI - Age 12 and under (6 min)" },
-      { "value": "section-7", "label": "Section VII - Age 13 and under (7 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 14 and under (8 min)" },
-      { "value": "section-9", "label": "Section IX - Age 18 and under (10 min)" }
-    ],
-    "timePeriods": [
-      { "value": "baroque", "label": "Baroque (1600-1750)" },
-      { "value": "classical", "label": "Classical (1750-1820)" },
-      { "value": "romantic", "label": "Romantic (1820-1900)" },
-      { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
-    ],
-    "requirements": [
-      "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
-    ],
-    "feeType": "solo",
-    "memorization": true
-  },
-  {
-    "id": "cello",
-    "name": "Cello",
-    "icon": "🎻",
-    "description": "Classical cello solo performance",
-    "available": false,
-    "sections": [
-      { "value": "section-1", "label": "Section I - Age 7 and under (4 min)" },
-      { "value": "section-2", "label": "Section II - Age 8 and under (4 min)" },
-      { "value": "section-3", "label": "Section III - Age 9 and under (5 min)" },
-      { "value": "section-4", "label": "Section IV - Age 10 and under (5 min)" },
-      { "value": "section-5", "label": "Section V - Age 11 and under (5 min)" },
-      { "value": "section-6", "label": "Section VI - Age 12 and under (6 min)" },
-      { "value": "section-7", "label": "Section VII - Age 14 and under (8 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 18 and under (10 min)" }
-    ],
-    "timePeriods": [
-      { "value": "baroque", "label": "Baroque (1600-1750)" },
-      { "value": "classical", "label": "Classical (1750-1820)" },
-      { "value": "romantic", "label": "Romantic (1820-1900)" },
-      { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
-    ],
-    "requirements": [
-      "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
-    ],
-    "feeType": "solo",
-    "memorization": true
-  },
-  {
-    "id": "voice",
-    "name": "Classical Voice",
+    "id": "vocal-classical",
+    "name": "Vocal: Classical",
     "icon": "🎤",
     "description": "Classical vocal solo performance",
     "available": false,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 9 and under (4 min)" },
-      { "value": "section-2", "label": "Section II - Age 10 and under (4 min)" },
-      { "value": "section-3", "label": "Section III - Age 11 and under (5 min)" },
-      { "value": "section-4", "label": "Section IV - Age 12 and under (5 min)" },
-      { "value": "section-5", "label": "Section V - Age 14 and under (6 min)" },
-      { "value": "section-6", "label": "Section VI - Age 16 and under (7 min)" },
-      { "value": "section-7", "label": "Section VII - Age 18 and under (8 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 19+ (10 min)" }
+      { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
+      { "value": "section-2", "label": "Section II - Age 9-10 (6 min)" },
+      { "value": "section-3", "label": "Section III - Age 11-12 (8 min)" },
+      { "value": "section-4", "label": "Section IV - Age 13-14 (8 min)" },
+      { "value": "section-5", "label": "Section V - Age 15-16 (8 min)" },
+      { "value": "section-6", "label": "Section VI - Age 17-18 (10 min)" },
+      { "value": "section-7", "label": "Section VII - Age 19-22 (10 min)" },
+      { "value": "section-8", "label": "Section VIII - Age 21 and above (12 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -147,50 +56,55 @@
       { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
     ],
     "requirements": [
-      "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
+      "Choose one selection from Group A and Group B in contrasting style",
+      "All original scores or sheet music purchased online must be accompanied by a receipt",
+      "Vocal participants must provide their own accompanist",
+      "Teachers may not accompany their vocal students"
     ],
     "feeType": "solo",
     "memorization": true
   },
   {
-    "id": "musical-theater",
-    "name": "Musical Theater",
+    "id": "vocal-musical-theater",
+    "name": "Vocal: Musical Theater",
     "icon": "🎭",
-    "description": "Broadway & Contemporary performance",
+    "description": "Broadway & musical theater vocal performance",
     "available": false,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 10 and under (4 min)" },
-      { "value": "section-2", "label": "Section II - Age 12 and under (5 min)" },
-      { "value": "section-3", "label": "Section III - Age 14 and under (6 min)" },
-      { "value": "section-4", "label": "Section IV - Age 16 and under (7 min)" },
-      { "value": "section-5", "label": "Section V - Age 18 and under (8 min)" },
-      { "value": "section-6", "label": "Section VI - Age 19+ (10 min)" }
+      { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
+      { "value": "section-2", "label": "Section II - Age 9-10 (6 min)" },
+      { "value": "section-3", "label": "Section III - Age 11-12 (8 min)" },
+      { "value": "section-4", "label": "Section IV - Age 13-14 (8 min)" },
+      { "value": "section-5", "label": "Section V - Age 15-16 (8 min)" },
+      { "value": "section-6", "label": "Section VI - Age 17-18 (10 min)" },
+      { "value": "section-7", "label": "Section VII - Age 19-20 (10 min)" },
+      { "value": "section-8", "label": "Section VIII - Age 21 and above (10 min)" }
     ],
     "timePeriods": [
       { "value": "classic", "label": "Classic Broadway (pre-1970)" },
       { "value": "contemporary", "label": "Contemporary Musical Theater (1970-present)" }
     ],
     "requirements": [
-      "Select two contrasting pieces from different shows",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
+      "Prepare two contrasting age-appropriate songs from approved musical theater repertoire",
+      "All original scores or sheet music purchased online must be accompanied by a receipt",
+      "Vocal participants must provide their own accompanist",
+      "Teachers may not accompany their vocal students"
     ],
     "feeType": "solo",
     "memorization": true
   },
   {
-    "id": "flute",
-    "name": "Flute",
-    "icon": "🎵",
-    "description": "Classical flute solo performance",
+    "id": "strings-piano-chamber",
+    "name": "Strings + Piano Chamber",
+    "icon": "👥",
+    "description": "String and piano ensemble (2-5 players)",
     "available": false,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 10 and under (5 min)" },
-      { "value": "section-2", "label": "Section II - Age 13 and under (7 min)" },
-      { "value": "section-3", "label": "Section III - Age 16 and under (8 min)" },
-      { "value": "section-4", "label": "Section IV - Age 18 and under (10 min)" }
+      { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
+      { "value": "section-2", "label": "Section II - Age 10 and under (7 min)" },
+      { "value": "section-3", "label": "Section III - Age 13 and under (8 min)" },
+      { "value": "section-4", "label": "Section IV - Age 16 and under (9 min)" },
+      { "value": "section-5", "label": "Section V - Age 19 and under (10 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -199,24 +113,32 @@
       { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
     ],
     "requirements": [
-      "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
+      "More than 2 and up to 5 members in a group",
+      "Memorization is NOT required",
+      "Repertoire must be chosen from the standard literature",
+      "At least ONE score needs to be given to the judges",
+      "Section is determined by the age of the OLDEST MEMBER as of April 30"
     ],
-    "feeType": "solo",
-    "memorization": true
+    "feeType": "chamber",
+    "memorization": false
   },
   {
-    "id": "clarinet",
-    "name": "Clarinet",
-    "icon": "🎵",
-    "description": "Classical clarinet solo performance",
+    "id": "strings",
+    "name": "Strings",
+    "icon": "🎻",
+    "description": "String instrument solo performance",
     "available": false,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 10 and under (5 min)" },
-      { "value": "section-2", "label": "Section II - Age 13 and under (7 min)" },
-      { "value": "section-3", "label": "Section III - Age 16 and under (8 min)" },
-      { "value": "section-4", "label": "Section IV - Age 18 and under (10 min)" }
+      { "value": "section-1", "label": "Division I - Age 6 and under (3 min)" },
+      { "value": "section-2", "label": "Division II - Age 7-8 (3 min)" },
+      { "value": "section-3", "label": "Division III - Age 9-10 (4 min)" },
+      { "value": "section-4", "label": "Division IV - Age 11 (4 min)" },
+      { "value": "section-5", "label": "Division V - Age 12 (5 min)" },
+      { "value": "section-6", "label": "Division VI - Age 13 (5 min)" },
+      { "value": "section-7", "label": "Division VII - Age 14 (6 min)" },
+      { "value": "section-8", "label": "Division VIII - Age 15 (6 min)" },
+      { "value": "section-9", "label": "Division IX - Age 16-17 (7 min)" },
+      { "value": "section-10", "label": "Division X - Age 18-19 (7 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -225,28 +147,56 @@
       { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
     ],
     "requirements": [
-      "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
+      "Memorization is REQUIRED",
+      "Each entrant must provide his or her own accompanist",
+      "Only ONE movement or ONE piece is required",
+      "Cut is allowed but must be clearly marked in the original score for the judges",
+      "At least ONE ORIGINAL score needs to be given to the judges"
     ],
     "feeType": "solo",
     "memorization": true
   },
   {
-    "id": "guitar",
+    "id": "guitar-chamber-music",
+    "name": "Guitar Chamber Music",
+    "icon": "🎸",
+    "description": "Guitar ensemble (up to 5 players)",
+    "available": false,
+    "sections": [
+      { "value": "section-1", "label": "Section I - Age 7 and under (3 min)" },
+      { "value": "section-2", "label": "Section II - Age 8-10 (5 min)" },
+      { "value": "section-3", "label": "Section III - Age 11-14 (7 min)" },
+      { "value": "section-4", "label": "Section IV - Age 15-18 (10 min)" },
+      { "value": "section-5", "label": "Section V - Age 19-22 (12 min)" }
+    ],
+    "timePeriods": [
+      { "value": "baroque", "label": "Baroque (1600-1750)" },
+      { "value": "classical", "label": "Classical (1750-1820)" },
+      { "value": "romantic", "label": "Romantic (1820-1900)" },
+      { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
+    ],
+    "requirements": [
+      "Up to 5 members in the ensemble",
+      "Memorization is NOT required",
+      "Each ensemble should present TWO contrasting pieces",
+      "All members must use original (not photocopied) sheet music",
+      "Section is determined by the age of the OLDEST MEMBER"
+    ],
+    "feeType": "chamber",
+    "memorization": false
+  },
+  {
+    "id": "classical-guitar",
     "name": "Classical Guitar",
     "icon": "🎸",
     "description": "Classical guitar solo performance",
     "available": false,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 8 and under (4 min)" },
-      { "value": "section-2", "label": "Section II - Age 10 and under (5 min)" },
-      { "value": "section-3", "label": "Section III - Age 12 and under (6 min)" },
-      { "value": "section-4", "label": "Section IV - Age 14 and under (7 min)" },
-      { "value": "section-5", "label": "Section V - Age 16 and under (8 min)" },
-      { "value": "section-6", "label": "Section VI - Age 18 and under (10 min)" },
-      { "value": "section-7", "label": "Section VII - Age 19 and under (10 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 20+ (12 min)" }
+      { "value": "section-1", "label": "Section I - Age 7 and under (3 min)" },
+      { "value": "section-2", "label": "Section II - Age 8-10 (5 min)" },
+      { "value": "section-3", "label": "Section III - Age 11-14 (7 min)" },
+      { "value": "section-4", "label": "Section IV - Age 15-18 (10 min)" },
+      { "value": "section-5", "label": "Section V - Age 19-22 (12 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -255,23 +205,25 @@
       { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
     ],
     "requirements": [
-      "Select two pieces representing different periods and styles",
-      "Time limits must be observed (see section selection)",
-      "All pieces must be memorized"
+      "Memorization is required for all divisions",
+      "Each participant should present TWO contrasting pieces",
+      "No changes in repertoire are allowed following submission of the application"
     ],
     "feeType": "solo",
     "memorization": true
   },
   {
-    "id": "chamber",
-    "name": "Chamber Music",
-    "icon": "👥",
-    "description": "Ensemble performance (2-6 players)",
+    "id": "woodwinds",
+    "name": "Woodwinds",
+    "icon": "🎵",
+    "description": "Woodwind instrument solo performance",
     "available": false,
     "sections": [
-      { "value": "section-3", "label": "Section III - Age 12 and under (8 min)" },
-      { "value": "section-4", "label": "Section IV - Age 15 and under (10 min)" },
-      { "value": "section-5", "label": "Section V - Age 18 and under (12 min)" }
+      { "value": "section-1", "label": "Section I - Age 11 and under (5 min)" },
+      { "value": "section-2", "label": "Section II - Age 12-13 (5 min)" },
+      { "value": "section-3", "label": "Section III - Age 14-15 (8 min)" },
+      { "value": "section-4", "label": "Section IV - Age 16-18 (10 min)" },
+      { "value": "section-5", "label": "Section V - Age 19-21 (10 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -280,10 +232,28 @@
       { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
     ],
     "requirements": [
-      "Select one or two pieces within the time limit",
-      "Time limits must be observed (see section selection)",
-      "Music does not need to be memorized"
+      "Memorization is required",
+      "Only one piece OR one movement of a multi-movement work is required",
+      "No cutting or rearranging the music is permitted, except for the piano part",
+      "Each entrant must provide his or her own pianist"
     ],
+    "feeType": "solo",
+    "memorization": true
+  },
+  {
+    "id": "woodwinds-ensemble",
+    "name": "Woodwinds Ensemble",
+    "icon": "🎵",
+    "description": "Woodwind ensemble performance",
+    "available": false,
+    "sections": [],
+    "timePeriods": [
+      { "value": "baroque", "label": "Baroque (1600-1750)" },
+      { "value": "classical", "label": "Classical (1750-1820)" },
+      { "value": "romantic", "label": "Romantic (1820-1900)" },
+      { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
+    ],
+    "requirements": [],
     "feeType": "chamber",
     "memorization": false
   }

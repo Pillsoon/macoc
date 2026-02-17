@@ -4,11 +4,10 @@ import { getAllDivisionSummaries } from '@/content/divisions'
 
 const categories: { label: string; ids: string[] }[] = [
   { label: 'Keyboard', ids: ['piano'] },
-  { label: 'Strings', ids: ['violin', 'viola', 'cello'] },
-  { label: 'Voice', ids: ['voice', 'musical-theater'] },
-  { label: 'Winds', ids: ['flute', 'clarinet'] },
-  { label: 'Guitar', ids: ['guitar'] },
-  { label: 'Ensemble', ids: ['chamber'] },
+  { label: 'Vocal', ids: ['vocal-classical', 'vocal-musical-theater'] },
+  { label: 'Strings', ids: ['strings', 'strings-piano-chamber'] },
+  { label: 'Guitar', ids: ['classical-guitar', 'guitar-chamber-music'] },
+  { label: 'Woodwinds', ids: ['woodwinds', 'woodwinds-ensemble'] },
 ]
 
 export default function RegisterPage() {
@@ -66,45 +65,23 @@ export default function RegisterPage() {
                     return (
                       <div
                         key={division.id}
-                        className={`bg-white rounded-xl p-6 shadow-sm border-2 transition-all ${
-                          division.available
-                            ? 'border-transparent hover:border-gold cursor-pointer'
-                            : 'border-transparent opacity-60'
-                        }`}
+                        className="bg-white rounded-xl p-6 shadow-sm border-2 border-transparent hover:border-gold cursor-pointer transition-all"
                       >
-                        {division.available ? (
-                          <Link href={`/register/${division.id}`} className="flex items-center gap-4">
-                            <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                              <span className="text-3xl">{division.icon}</span>
-                            </div>
-                            <div className="flex-1">
-                              <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
-                              <p className="text-sm text-text-muted">{division.description}</p>
-                              <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
-                            </div>
-                            <div className="flex-shrink-0">
-                              <span className="btn btn-gold text-sm py-2 px-4">
-                                Register
-                              </span>
-                            </div>
-                          </Link>
-                        ) : (
-                          <div className="flex items-center gap-4">
-                            <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                              <span className="text-3xl grayscale">{division.icon}</span>
-                            </div>
-                            <div className="flex-1">
-                              <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
-                              <p className="text-sm text-text-muted">{division.description}</p>
-                              <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
-                            </div>
-                            <div className="flex-shrink-0">
-                              <span className="text-sm text-text-muted bg-gray-100 py-2 px-4 rounded-lg">
-                                Coming Soon
-                              </span>
-                            </div>
+                        <Link href={`/register/${division.id}`} className="flex items-center gap-4">
+                          <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span className="text-3xl">{division.icon}</span>
                           </div>
-                        )}
+                          <div className="flex-1">
+                            <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
+                            <p className="text-sm text-text-muted">{division.description}</p>
+                            <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
+                          </div>
+                          <div className="flex-shrink-0">
+                            <span className="btn btn-gold text-sm py-2 px-4">
+                              Register
+                            </span>
+                          </div>
+                        </Link>
                       </div>
                     )
                   })}

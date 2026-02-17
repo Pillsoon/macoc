@@ -78,12 +78,20 @@ describe('data integrity', () => {
       expect(d.name).toBeTruthy()
       expect(d.icon).toBeTruthy()
       expect(d.description).toBeTruthy()
-      expect(d.sections.length).toBeGreaterThan(0)
+      expect(Array.isArray(d.sections)).toBe(true)
       expect(d.timePeriods.length).toBeGreaterThan(0)
-      expect(d.requirements.length).toBeGreaterThan(0)
+      expect(Array.isArray(d.requirements)).toBe(true)
       expect(['solo', 'chamber']).toContain(d.feeType)
       expect(typeof d.memorization).toBe('boolean')
       expect(typeof d.available).toBe('boolean')
+    }
+  })
+
+  it('available divisions have sections and requirements', () => {
+    const divisions = getAllDivisions().filter((d) => d.available)
+    for (const d of divisions) {
+      expect(d.sections.length).toBeGreaterThan(0)
+      expect(d.requirements.length).toBeGreaterThan(0)
     }
   })
 
