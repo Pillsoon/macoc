@@ -11,7 +11,7 @@ const footerLinks = {
   competition: [
     { name: 'Registration', href: '/competition/registration' },
     { name: 'Schedule', href: '/competition/schedule' },
-    { name: 'Divisions', href: '/competition' },
+    { name: 'Divisions', href: '/register' },
   ],
 }
 
