@@ -85,8 +85,8 @@ export default function RegistrationPage() {
                 </li>
               </ul>
 
-              <Link href="/register/teacher" className="btn btn-primary w-full text-center">
-                Join as Teacher
+              <Link href="/register" className="btn btn-primary w-full text-center">
+                Select Division
               </Link>
             </div>
 
@@ -127,12 +127,10 @@ export default function RegistrationPage() {
               </ul>
 
               <Link href="/register" className="btn btn-secondary w-full text-center">
-                Select Division & Register
+                Select Division
               </Link>
 
               <p className="text-center text-xs text-text-muted mt-4">
-                Students must be registered by a MACOC member teacher.
-                <br />
                 Late fee: ${fees.lateFee.amount} after {competition.registration.close}
               </p>
             </div>
