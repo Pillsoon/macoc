@@ -44,7 +44,7 @@ export function getAllDivisionSummaries(): DivisionSummary[] {
     name: d.name,
     icon: d.icon,
     description: d.description,
-    sectionCount: `${d.sections.length} sections`,
+    sectionCount: d.sections.length > 0 ? `${d.sections.length} sections` : 'Coming Soon',
     feeType: d.feeType,
     available: d.available,
   }))

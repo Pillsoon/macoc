@@ -173,13 +173,12 @@ export default function ContactPage() {
 
 function DepartmentContact() {
   const [selectedDivision, setSelectedDivision] = useState('')
-  const contact = config.divisionContacts.find(c => c.division === selectedDivision)
 
   return (
     <div className="card">
       <h2 className="font-heading text-xl text-charcoal mb-6">Contact a Department</h2>
       <p className="text-text-muted text-sm mb-6">
-        Select a department to reach the division chair directly.
+        Select a department or browse all contacts below.
       </p>
 
       <div className="space-y-5">
@@ -193,7 +192,7 @@ function DepartmentContact() {
             value={selectedDivision}
             onChange={(e) => setSelectedDivision(e.target.value)}
           >
-            <option value="">Select a department</option>
+            <option value="">All departments</option>
             {config.divisionContacts.map((dc) => (
               <option key={dc.division} value={dc.division}>
                 {dc.division}
@@ -203,47 +202,60 @@ function DepartmentContact() {
           </select>
         </div>
 
-        {contact && (
-          <div className="p-4 bg-cream rounded-lg space-y-3">
-            <div>
-              <p className="text-sm text-text-muted">Division Chair</p>
-              <p className="font-medium text-charcoal">{contact.chair}</p>
+        <div className="space-y-2">
+          {config.divisionContacts.map((dc) => (
+            <div
+              key={dc.division}
+              className={`p-3 rounded-lg transition-colors ${
+                selectedDivision === dc.division
+                  ? 'bg-gold/10 border border-gold'
+                  : selectedDivision && selectedDivision !== dc.division
+                    ? 'hidden'
+                    : 'bg-cream'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-charcoal">{dc.division}</p>
+                  <p className="text-xs text-text-muted">{dc.chair}</p>
+                </div>
+                <a
+                  href={`mailto:${dc.email}`}
+                  className="text-xs text-navy hover:text-gold transition-colors"
+                >
+                  {dc.email}
+                </a>
+              </div>
             </div>
-            <div>
-              <p className="text-sm text-text-muted">Email</p>
-              <a
-                href={`mailto:${contact.email}`}
-                className="font-medium text-navy hover:text-gold transition-colors"
-              >
-                {contact.email}
-              </a>
-            </div>
-          </div>
-        )}
+          ))}
 
-        {selectedDivision === 'general' && (
-          <div className="p-4 bg-cream rounded-lg space-y-3">
-            <div>
-              <p className="text-sm text-text-muted">General Contact</p>
-              <p className="font-medium text-charcoal">{config.president.name}</p>
-            </div>
-            <div>
-              <p className="text-sm text-text-muted">Email</p>
+          <div
+            className={`p-3 rounded-lg transition-colors ${
+              selectedDivision === 'general'
+                ? 'bg-gold/10 border border-gold'
+                : selectedDivision && selectedDivision !== 'general'
+                  ? 'hidden'
+                  : 'bg-cream'
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-charcoal">General Inquiry</p>
+                <p className="text-xs text-text-muted">{config.president.name}</p>
+              </div>
               <a
                 href={`mailto:${config.contact.email}`}
-                className="font-medium text-navy hover:text-gold transition-colors"
+                className="text-xs text-navy hover:text-gold transition-colors"
               >
                 {config.contact.email}
               </a>
             </div>
           </div>
-        )}
+        </div>
 
-        {!selectedDivision && (
-          <p className="text-xs text-text-muted text-center">
-            We typically respond within 24-48 hours
-          </p>
-        )}
+        <p className="text-xs text-text-muted text-center">
+          We typically respond within 24-48 hours
+        </p>
       </div>
     </div>
   )

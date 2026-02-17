@@ -16,16 +16,16 @@ export default function Home() {
   const summaryMap = new Map(summaries.map((s) => [s.id, s]))
 
   const keyDates = [
-    { icon: '🎹', date: competition.date, title: 'Competition Day', desc: competition.location, highlight: true },
     { icon: '📝', date: competition.registration.open, title: 'Registration Opens', desc: 'Begin submitting entries' },
     { icon: '📅', date: competition.registration.close, title: 'Registration Closes', desc: 'Last day for regular registration' },
+    { icon: '🎹', date: competition.date, title: 'Competition Day', desc: competition.location, highlight: true },
     { icon: '🏆', date: winnersConcert.date, title: "Winners' Concert", desc: winnersConcert.location, highlight: true },
   ]
 
   const highlights = [
-    { icon: '👨‍⚖️', title: 'Elite Judges', desc: 'Renowned maestros & professors' },
-    { icon: '🎭', title: "Winners' Concert", desc: 'Perform at prestigious venues' },
-    { icon: '🌐', title: 'Alumni Network', desc: 'Join a global community' },
+    { icon: '👨‍⚖️', title: 'Elite Judges', desc: 'Adjudicated by university professors and concert artists' },
+    { icon: '🎭', title: "Winners' Concert", desc: 'Top winners perform at the Richard Nixon Library' },
+    { icon: '🌐', title: 'Alumni Network', desc: 'Join 5,000+ alumni from over 90 years of competition' },
   ]
 
   return (
@@ -117,10 +117,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-title">Register by Division</h2>
-            <p className="section-subtitle mx-auto">
+            <p className="section-subtitle mx-auto mb-4">
               Select your division to register as a teacher or enter a student.
-              Solo: ${fees.solo.amount}/entry | Chamber: ${fees.chamber.amount}/entry | Teacher Membership: ${fees.membership.amount}/year
             </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-navy/10 text-navy">
+                Solo: ${fees.solo.amount}/entry
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-navy/10 text-navy">
+                Chamber: ${fees.chamber.amount}/entry
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gold/10 text-gold-dark">
+                Teacher: ${fees.membership.amount}/year
+              </span>
+            </div>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
@@ -133,7 +143,7 @@ export default function Home() {
                   <h3 className="text-sm font-semibold text-navy uppercase tracking-wider mb-3">
                     {category.label}
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className={`grid grid-cols-1 ${divisions.length > 1 ? 'md:grid-cols-2' : ''} gap-3`}>
                     {divisions.map((d) => d && (
                       <Link
                         key={d.id}
@@ -156,11 +166,6 @@ export default function Home() {
             })}
           </div>
 
-          <div className="text-center mt-8">
-            <Link href="/register" className="btn btn-gold">
-              View All Divisions
-            </Link>
-          </div>
         </div>
       </section>
 

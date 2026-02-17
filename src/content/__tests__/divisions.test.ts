@@ -49,7 +49,8 @@ describe('getAllDivisionSummaries', () => {
     const summaries = getAllDivisionSummaries()
     for (const div of divisions) {
       const summary = summaries.find((s) => s.id === div.id)!
-      expect(summary.sectionCount).toBe(`${div.sections.length} sections`)
+      const expected = div.sections.length > 0 ? `${div.sections.length} sections` : 'Coming Soon'
+      expect(summary.sectionCount).toBe(expected)
     }
   })
 

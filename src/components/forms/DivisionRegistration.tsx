@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import RegistrationForm from './RegistrationForm'
 import TeacherRegistrationForm from './TeacherRegistrationForm'
+import { config } from '@/lib/config'
 
 type Role = 'select' | 'teacher' | 'student'
 
@@ -50,6 +51,9 @@ export default function DivisionRegistration({
               <p className="text-sm text-text-muted">
                 Annual membership registration for teachers
               </p>
+              <p className="text-xs font-medium text-gold-dark mt-2">
+                ${config.fees.membership.amount}/year
+              </p>
             </button>
 
             {/* Student */}
@@ -76,6 +80,13 @@ export default function DivisionRegistration({
                   ? 'Competition entry registration for students'
                   : 'Coming soon'}
               </p>
+              {available && (
+                <p className="text-xs font-medium text-gold-dark mt-2">
+                  {feeType === 'solo'
+                    ? `$${config.fees.solo.amount}/entry`
+                    : `$${config.fees.chamber.amount}/entry`}
+                </p>
+              )}
             </button>
           </div>
         </div>

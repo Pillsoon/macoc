@@ -50,7 +50,7 @@ export default function RegistrationPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Teacher Membership */}
-            <div className="pricing-card pricing-card-featured">
+            <div className="pricing-card">
               <h3 className="font-heading text-xl text-charcoal mb-2">Teacher Membership</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="text-4xl font-heading font-bold text-navy">${fees.membership.amount}</span>
@@ -91,7 +91,7 @@ export default function RegistrationPage() {
             </div>
 
             {/* Solo Entry */}
-            <div className="pricing-card">
+            <div className="pricing-card pricing-card-featured">
               <h3 className="font-heading text-xl text-charcoal mb-2">Solo Entry</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="text-4xl font-heading font-bold text-navy">${fees.solo.amount}</span>
