@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getAllDivisions } from '@/content/divisions'
 
 const eligibility = [
   'Participants must reside in Southern California or study with a teacher from Southern California',
@@ -123,19 +124,32 @@ export default function RegulationPage() {
         </div>
       </section>
 
-      {/* Important Note */}
-      <section className="bg-amber-50 py-8">
+      {/* Division-Specific Regulations */}
+      <section className="section bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4">
-            <span className="text-2xl">📋</span>
-            <div>
-              <h3 className="font-heading text-lg text-amber-800 mb-2">Complete Regulations</h3>
-              <p className="text-amber-700 text-sm">
-                For complete and detailed regulations including specific repertoire requirements,
-                time limits, and section-specific rules, please contact MACOC directly.
-                Rules may be updated annually.
-              </p>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="section-title">Division Regulations</h2>
+            <p className="section-subtitle mx-auto">
+              View detailed rules, sections, and repertoire requirements for each division
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {getAllDivisions().map((d) => (
+              <Link
+                key={d.id}
+                href={`/competition/regulation/${d.id}`}
+                className="flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-100 hover:border-gold transition-colors group"
+              >
+                <span className="text-2xl">{d.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-heading text-charcoal group-hover:text-navy truncate">{d.name}</h4>
+                  <p className="text-xs text-text-muted">{d.sections.length} sections</p>
+                </div>
+                <svg className="w-5 h-5 text-gray-300 group-hover:text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
