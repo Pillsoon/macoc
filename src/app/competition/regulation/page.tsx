@@ -113,9 +113,9 @@ export default function RegulationPage() {
               Each division has multiple age-based sections to ensure fair competition.
               Ages are calculated as of April 30th of the competition year.
             </p>
-            <div className="inline-flex flex-wrap justify-center gap-3">
+            <div className="grid grid-cols-4 gap-3 max-w-lg mx-auto">
               {['5-6', '7-8', '9-10', '11-12', '13-14', '15-16', '17-18', '19+'].map((age) => (
-                <span key={age} className="px-4 py-2 bg-white/10 rounded-full text-white text-sm">
+                <span key={age} className="px-4 py-2 bg-white/10 rounded-full text-white text-sm text-center">
                   {age} years
                 </span>
               ))}
