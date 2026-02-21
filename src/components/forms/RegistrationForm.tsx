@@ -42,10 +42,13 @@ const initialFormData = {
   repertoire2Title: '',
   repertoire2Composer: '',
   repertoire2TimePeriod: '',
+  // Vocal-specific
+  needsAccompanist: '',
 }
 
 export default function RegistrationForm({ division, sections, timePeriods, feeType = 'solo' }: RegistrationFormProps) {
   const entryFee = feeType === 'chamber' ? config.fees.chamber.amount : config.fees.solo.amount
+  const isVocal = division.startsWith('Vocal')
   const [formData, setFormData] = useState({ ...initialFormData, division })
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -64,11 +67,18 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
     'streetAddress', 'city', 'state', 'zipCode',
   ] as const
 
-  const step2Fields = [
-    'section',
-    'repertoire1Title', 'repertoire1Composer', 'repertoire1TimePeriod',
-    'repertoire2Title', 'repertoire2Composer', 'repertoire2TimePeriod',
-  ] as const
+  const step2Fields = isVocal
+    ? [
+        'section',
+        'repertoire1Title', 'repertoire1Composer',
+        'repertoire2Title', 'repertoire2Composer',
+        'needsAccompanist',
+      ] as const
+    : [
+        'section',
+        'repertoire1Title', 'repertoire1Composer', 'repertoire1TimePeriod',
+        'repertoire2Title', 'repertoire2Composer', 'repertoire2TimePeriod',
+      ] as const
 
   const canAdvance = (fields: readonly (keyof typeof formData)[]) =>
     fields.every((f) => formData[f].trim() !== '')
@@ -409,7 +419,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
 
             <div>
               <label className="block text-sm font-medium text-charcoal mb-1">
-                Section <span className="text-red-500">*</span>
+                {isVocal ? 'Vocal Division' : division} Section <span className="text-red-500">*</span>
               </label>
               <select
                 value={formData.section}
@@ -424,9 +434,11 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
               </select>
             </div>
 
-            {/* Repertoire 1 */}
+            {/* Selection A / Repertoire 1 */}
             <fieldset className="space-y-4 p-4 bg-cream/50 rounded-lg">
-              <legend className="text-sm font-semibold text-navy">Repertoire No. 1</legend>
+              <legend className="text-sm font-semibold text-navy">
+                {isVocal ? 'Selection A' : 'Repertoire No. 1'}
+              </legend>
               <div>
                 <label className="block text-sm font-medium text-charcoal mb-1">
                   Title (with Opus/Key/Movement) <span className="text-red-500">*</span>
@@ -451,27 +463,31 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                   required
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-charcoal mb-1">
-                  Time Period <span className="text-red-500">*</span>
-                </label>
-                <select
-                  value={formData.repertoire1TimePeriod}
-                  onChange={(e) => updateField('repertoire1TimePeriod', e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
-                  required
-                >
-                  <option value="">Select time period</option>
-                  {timePeriods.map((tp) => (
-                    <option key={tp.value} value={tp.value}>{tp.label}</option>
-                  ))}
-                </select>
-              </div>
+              {!isVocal && (
+                <div>
+                  <label className="block text-sm font-medium text-charcoal mb-1">
+                    Time Period <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={formData.repertoire1TimePeriod}
+                    onChange={(e) => updateField('repertoire1TimePeriod', e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    required
+                  >
+                    <option value="">Select time period</option>
+                    {timePeriods.map((tp) => (
+                      <option key={tp.value} value={tp.value}>{tp.label}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </fieldset>
 
-            {/* Repertoire 2 */}
+            {/* Selection B / Repertoire 2 */}
             <fieldset className="space-y-4 p-4 bg-cream/50 rounded-lg">
-              <legend className="text-sm font-semibold text-navy">Repertoire No. 2</legend>
+              <legend className="text-sm font-semibold text-navy">
+                {isVocal ? 'Selection B' : 'Repertoire No. 2'}
+              </legend>
               <div>
                 <label className="block text-sm font-medium text-charcoal mb-1">
                   Title (with Opus/Key/Movement) <span className="text-red-500">*</span>
@@ -496,23 +512,58 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                   required
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-charcoal mb-1">
-                  Time Period <span className="text-red-500">*</span>
-                </label>
-                <select
-                  value={formData.repertoire2TimePeriod}
-                  onChange={(e) => updateField('repertoire2TimePeriod', e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
-                  required
-                >
-                  <option value="">Select time period</option>
-                  {timePeriods.map((tp) => (
-                    <option key={tp.value} value={tp.value}>{tp.label}</option>
-                  ))}
-                </select>
-              </div>
+              {!isVocal && (
+                <div>
+                  <label className="block text-sm font-medium text-charcoal mb-1">
+                    Time Period <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={formData.repertoire2TimePeriod}
+                    onChange={(e) => updateField('repertoire2TimePeriod', e.target.value)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    required
+                  >
+                    <option value="">Select time period</option>
+                    {timePeriods.map((tp) => (
+                      <option key={tp.value} value={tp.value}>{tp.label}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </fieldset>
+
+            {/* Accompanist (Vocal only) */}
+            {isVocal && (
+              <div className="p-4 bg-cream/50 rounded-lg">
+                <label className="block text-sm font-medium text-charcoal mb-2">
+                  Do you need an accompanist? <span className="text-red-500">*</span>
+                </label>
+                <div className="flex gap-4">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="needsAccompanist"
+                      value="Yes"
+                      checked={formData.needsAccompanist === 'Yes'}
+                      onChange={(e) => updateField('needsAccompanist', e.target.value)}
+                      className="w-4 h-4 text-gold border-gray-300 focus:ring-gold"
+                    />
+                    <span className="text-sm">Yes</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="needsAccompanist"
+                      value="No"
+                      checked={formData.needsAccompanist === 'No'}
+                      onChange={(e) => updateField('needsAccompanist', e.target.value)}
+                      className="w-4 h-4 text-gold border-gray-300 focus:ring-gold"
+                    />
+                    <span className="text-sm">No</span>
+                  </label>
+                </div>
+              </div>
+            )}
 
             <div className="flex justify-between pt-4">
               <button
@@ -570,11 +621,18 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                 <h3 className="font-semibold text-navy mb-2">Repertoire</h3>
                 <div className="text-sm text-text-secondary space-y-2">
                   <p>
-                    <strong>1.</strong> {formData.repertoire1Title} - {formData.repertoire1Composer} ({formData.repertoire1TimePeriod})
+                    <strong>{isVocal ? 'A.' : '1.'}</strong> {formData.repertoire1Title} - {formData.repertoire1Composer}
+                    {!isVocal && ` (${formData.repertoire1TimePeriod})`}
                   </p>
                   <p>
-                    <strong>2.</strong> {formData.repertoire2Title} - {formData.repertoire2Composer} ({formData.repertoire2TimePeriod})
+                    <strong>{isVocal ? 'B.' : '2.'}</strong> {formData.repertoire2Title} - {formData.repertoire2Composer}
+                    {!isVocal && ` (${formData.repertoire2TimePeriod})`}
                   </p>
+                  {isVocal && (
+                    <p>
+                      <strong>Accompanist needed:</strong> {formData.needsAccompanist}
+                    </p>
+                  )}
                 </div>
               </div>
 

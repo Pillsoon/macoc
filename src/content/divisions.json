@@ -38,7 +38,7 @@
     "name": "Vocal: Classical",
     "icon": "🎤",
     "description": "Classical vocal solo performance",
-    "available": false,
+    "available": true,
     "sections": [
       { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
       { "value": "section-2", "label": "Section II - Age 9-10 (6 min)" },
@@ -46,8 +46,8 @@
       { "value": "section-4", "label": "Section IV - Age 13-14 (8 min)" },
       { "value": "section-5", "label": "Section V - Age 15-16 (8 min)" },
       { "value": "section-6", "label": "Section VI - Age 17-18 (10 min)" },
-      { "value": "section-7", "label": "Section VII - Age 19-22 (10 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 21 and above (12 min)" }
+      { "value": "section-7", "label": "Section VII - Age 19-20 (10 min)" },
+      { "value": "section-8", "label": "Section VIII - Age 22 and above (12 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -69,7 +69,7 @@
     "name": "Vocal: Musical Theater",
     "icon": "🎭",
     "description": "Broadway & musical theater vocal performance",
-    "available": false,
+    "available": true,
     "sections": [
       { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
       { "value": "section-2", "label": "Section II - Age 9-10 (6 min)" },

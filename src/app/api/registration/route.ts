@@ -33,10 +33,13 @@ interface RegistrationData {
   // Repertoire
   repertoire1Title: string
   repertoire1Composer: string
-  repertoire1TimePeriod: string
+  repertoire1TimePeriod?: string
   repertoire2Title: string
   repertoire2Composer: string
-  repertoire2TimePeriod: string
+  repertoire2TimePeriod?: string
+
+  // Vocal-specific
+  needsAccompanist?: string
 }
 
 export async function POST(request: NextRequest) {
@@ -44,12 +47,14 @@ export async function POST(request: NextRequest) {
     const data: RegistrationData = await request.json()
 
     // Validate required fields
+    const isVocal = data.division?.startsWith('Vocal')
     const requiredFields = [
       'teacherFirstName', 'teacherLastName', 'teacherEmail', 'teacherPhone',
       'studentFirstName', 'studentLastName', 'studentEmail', 'dateOfBirth',
       'studentAge', 'division', 'section',
-      'repertoire1Title', 'repertoire1Composer', 'repertoire1TimePeriod',
-      'repertoire2Title', 'repertoire2Composer', 'repertoire2TimePeriod'
+      'repertoire1Title', 'repertoire1Composer',
+      'repertoire2Title', 'repertoire2Composer',
+      ...(isVocal ? ['needsAccompanist'] : ['repertoire1TimePeriod', 'repertoire2TimePeriod']),
     ]
 
     for (const field of requiredFields) {
@@ -108,6 +113,7 @@ export async function POST(request: NextRequest) {
           'Repertoire 2 Title',
           'Repertoire 2 Composer',
           'Repertoire 2 Time Period',
+          'Needs Accompanist',
         ]
       })
     }
@@ -136,10 +142,11 @@ export async function POST(request: NextRequest) {
       'Section': data.section,
       'Repertoire 1 Title': data.repertoire1Title,
       'Repertoire 1 Composer': data.repertoire1Composer,
-      'Repertoire 1 Time Period': data.repertoire1TimePeriod,
+      'Repertoire 1 Time Period': data.repertoire1TimePeriod || '',
       'Repertoire 2 Title': data.repertoire2Title,
       'Repertoire 2 Composer': data.repertoire2Composer,
-      'Repertoire 2 Time Period': data.repertoire2TimePeriod,
+      'Repertoire 2 Time Period': data.repertoire2TimePeriod || '',
+      'Needs Accompanist': data.needsAccompanist || '',
     })
 
     // Return success with row number and sheet name for PayPal payment
