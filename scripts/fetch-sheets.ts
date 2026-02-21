@@ -69,7 +69,7 @@ async function fetchSheet(sheetName: string): Promise<Record<string, string>[]> 
     return []
   }
 
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}&headers=1`
 
   try {
     const response = await fetch(url)
@@ -162,6 +162,20 @@ const sheets: SheetConfig[] = [
           current[keys[keys.length - 1]] = isNaN(Number(value)) ? value : Number(value)
         }
       })
+      // divisionContacts: 객체 → 배열 변환
+      if (config.divisionContacts && typeof config.divisionContacts === 'object' && !Array.isArray(config.divisionContacts)) {
+        const contacts = config.divisionContacts as Record<string, Record<string, string>>
+        config.divisionContacts = Object.entries(contacts).map(([division, data]) => ({
+          division,
+          ...data
+        }))
+      }
+
+      // socialLinks: 빈 값이면 기본값 보장
+      if (!config.socialLinks) {
+        config.socialLinks = { facebook: '', instagram: '' }
+      }
+
       return config
     }
   },
