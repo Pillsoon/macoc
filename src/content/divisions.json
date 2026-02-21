@@ -98,7 +98,7 @@
     "name": "Strings + Piano Chamber",
     "icon": "👥",
     "description": "String and piano ensemble (2-6 players)",
-    "available": false,
+    "available": true,
     "sections": [
       { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
       { "value": "section-2", "label": "Section II - Age 10 and under (7 min)" },
@@ -133,7 +133,7 @@
     "name": "Strings",
     "icon": "🎻",
     "description": "String instrument solo performance",
-    "available": false,
+    "available": true,
     "sections": [
       { "value": "section-1", "label": "Section I - Age 6 and under (3 min)" },
       { "value": "section-2", "label": "Section II - Age 7-8 (3 min)" },
