@@ -55,6 +55,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
   const [submitResult, setSubmitResult] = useState<{ success: boolean; registrationId?: number; sheetName?: string; error?: string } | null>(null)
   const [paymentComplete, setPaymentComplete] = useState(false)
   const [agreedToTerms, setAgreedToTerms] = useState(false)
+  const [showValidation, setShowValidation] = useState(false)
 
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
@@ -82,6 +83,12 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
 
   const canAdvance = (fields: readonly (keyof typeof formData)[]) =>
     fields.every((f) => formData[f].trim() !== '')
+
+  const isFieldEmpty = (field: keyof typeof formData) =>
+    showValidation && formData[field].trim() === ''
+
+  const validationBorder = (field: keyof typeof formData) =>
+    isFieldEmpty(field) ? 'border-red-400 ring-1 ring-red-400' : 'border-gray-300'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -184,7 +191,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
             </h2>
 
             {/* Agreement */}
-            <div className="p-4 bg-cream rounded-lg">
+            <div className={`p-4 rounded-lg ${showValidation && !agreedToTerms ? 'bg-red-50 ring-1 ring-red-400' : 'bg-cream'}`}>
               <label className="flex items-start gap-3 cursor-pointer">
                 <input
                   type="checkbox"
@@ -193,7 +200,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                   className="mt-1 w-4 h-4 text-gold border-gray-300 rounded focus:ring-gold"
                   required
                 />
-                <span className="text-sm text-text-secondary">
+                <span className={`text-sm ${showValidation && !agreedToTerms ? 'text-red-600 font-medium' : 'text-text-secondary'}`}>
                   I understand that students can only be entered by their teacher.
                   A student entered under another teacher&apos;s name will be disqualified.
                 </span>
@@ -214,7 +221,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     type="text"
                     value={formData.teacherFirstName}
                     onChange={(e) => updateField('teacherFirstName', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('teacherFirstName')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -226,7 +233,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     type="text"
                     value={formData.teacherLastName}
                     onChange={(e) => updateField('teacherLastName', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('teacherLastName')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -240,7 +247,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     type="email"
                     value={formData.teacherEmail}
                     onChange={(e) => updateField('teacherEmail', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('teacherEmail')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -252,7 +259,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     type="tel"
                     value={formData.teacherPhone}
                     onChange={(e) => updateField('teacherPhone', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('teacherPhone')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -273,7 +280,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     type="text"
                     value={formData.studentFirstName}
                     onChange={(e) => updateField('studentFirstName', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('studentFirstName')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -296,7 +303,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     type="text"
                     value={formData.studentLastName}
                     onChange={(e) => updateField('studentLastName', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('studentLastName')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -309,7 +316,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                   type="email"
                   value={formData.studentEmail}
                   onChange={(e) => updateField('studentEmail', e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                  className={`w-full px-4 py-2 border ${validationBorder('studentEmail')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                   required
                 />
               </div>
@@ -322,7 +329,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     type="date"
                     value={formData.dateOfBirth}
                     onChange={(e) => updateField('dateOfBirth', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('dateOfBirth')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -336,7 +343,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     max="25"
                     value={formData.studentAge}
                     onChange={(e) => updateField('studentAge', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`w-full px-4 py-2 border ${validationBorder('studentAge')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
@@ -358,7 +365,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                   placeholder="Street Address"
                   value={formData.streetAddress}
                   onChange={(e) => updateField('streetAddress', e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                  className={`w-full px-4 py-2 border ${validationBorder('streetAddress')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                   required
                 />
                 <input
@@ -374,7 +381,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     placeholder="City"
                     value={formData.city}
                     onChange={(e) => updateField('city', e.target.value)}
-                    className="col-span-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`col-span-2 px-4 py-2 border ${validationBorder('city')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                   <input
@@ -382,7 +389,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     placeholder="State"
                     value={formData.state}
                     onChange={(e) => updateField('state', e.target.value)}
-                    className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`px-4 py-2 border ${validationBorder('state')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                   <input
@@ -390,19 +397,29 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     placeholder="Zip Code"
                     value={formData.zipCode}
                     onChange={(e) => updateField('zipCode', e.target.value)}
-                    className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className={`px-4 py-2 border ${validationBorder('zipCode')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
                     required
                   />
                 </div>
               </div>
             </fieldset>
 
+            {showValidation && (!agreedToTerms || !canAdvance(step1Fields)) && (
+              <p className="text-sm text-red-600">Please fill in all required fields and check the agreement above.</p>
+            )}
+
             <div className="flex justify-end pt-4">
               <button
                 type="button"
-                onClick={() => setStep(2)}
-                disabled={!agreedToTerms || !canAdvance(step1Fields)}
-                className="btn btn-gold disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => {
+                  if (agreedToTerms && canAdvance(step1Fields)) {
+                    setShowValidation(false)
+                    setStep(2)
+                  } else {
+                    setShowValidation(true)
+                  }
+                }}
+                className="btn btn-gold"
               >
                 Next: Repertoire
               </button>
