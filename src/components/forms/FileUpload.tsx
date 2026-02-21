@@ -9,6 +9,11 @@ const CldUploadWidget = dynamic(
   { ssr: false }
 )
 
+const IMAGE_FORMATS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'heic']
+function isImageFormat(format: string | null): boolean {
+  return !!format && IMAGE_FORMATS.includes(format.toLowerCase())
+}
+
 interface FileUploadProps {
   onUpload: (url: string) => void
   label: string
@@ -18,6 +23,8 @@ interface FileUploadProps {
 export default function FileUpload({ onUpload, label, required }: FileUploadProps) {
   const [uploadedUrl, setUploadedUrl] = useState<string | null>(null)
   const [fileName, setFileName] = useState<string | null>(null)
+  const [fileFormat, setFileFormat] = useState<string | null>(null)
+  const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null)
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
   const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
@@ -56,9 +63,11 @@ export default function FileUpload({ onUpload, label, required }: FileUploadProp
         }}
         onSuccess={(result) => {
           if (typeof result.info === 'object' && result.info !== null) {
-            const info = result.info as { secure_url: string; original_filename: string }
+            const info = result.info as { secure_url: string; original_filename: string; format: string; thumbnail_url?: string }
             setUploadedUrl(info.secure_url)
             setFileName(info.original_filename)
+            setFileFormat(info.format)
+            setThumbnailUrl(info.thumbnail_url || null)
             onUpload(info.secure_url)
           }
         }}
@@ -66,18 +75,41 @@ export default function FileUpload({ onUpload, label, required }: FileUploadProp
         {({ open }) => (
           <div>
             {uploadedUrl ? (
-              <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-sm text-green-800 flex-1 truncate">{fileName}</span>
-                <button
-                  type="button"
-                  onClick={() => open()}
-                  className="text-sm text-green-600 hover:text-green-800 underline"
-                >
-                  Change
-                </button>
+              <div className="p-3 bg-green-50 border border-green-200 rounded-lg space-y-3">
+                {/* Preview */}
+                {isImageFormat(fileFormat) ? (
+                  <div className="flex justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={uploadedUrl}
+                      alt="Uploaded proof of age"
+                      className="max-h-40 rounded border border-green-200 object-contain"
+                    />
+                  </div>
+                ) : thumbnailUrl ? (
+                  <div className="flex justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={thumbnailUrl}
+                      alt="Uploaded document preview"
+                      className="max-h-40 rounded border border-green-200 object-contain"
+                    />
+                  </div>
+                ) : null}
+                {/* File info */}
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-green-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-green-800 flex-1 truncate">{fileName}.{fileFormat}</span>
+                  <button
+                    type="button"
+                    onClick={() => open()}
+                    className="text-sm text-green-600 hover:text-green-800 underline"
+                  >
+                    Change
+                  </button>
+                </div>
               </div>
             ) : (
               <button

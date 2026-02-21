@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import RegistrationForm from './RegistrationForm'
+import StringRegistrationForm from './StringRegistrationForm'
 import TeacherRegistrationForm from './TeacherRegistrationForm'
 import { config } from '@/lib/config'
 
@@ -23,6 +24,7 @@ export default function DivisionRegistration({
   available,
 }: DivisionRegistrationProps) {
   const [role, setRole] = useState<Role>('select')
+  const isStrings = divisionName === 'Strings' || divisionName === 'Strings + Piano Chamber'
 
   if (role === 'select') {
     return (
@@ -110,6 +112,12 @@ export default function DivisionRegistration({
 
       {role === 'teacher' ? (
         <TeacherRegistrationForm defaultInstrument={divisionName} />
+      ) : isStrings ? (
+        <StringRegistrationForm
+          division={divisionName}
+          sections={sections}
+          feeType={feeType}
+        />
       ) : (
         <RegistrationForm
           division={divisionName}

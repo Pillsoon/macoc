@@ -50,12 +50,15 @@ export default function PayPalButton({
           return data.id
         }}
         onApprove={async (data) => {
-          await fetch('/api/paypal/capture-order', {
+          const res = await fetch('/api/paypal/capture-order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ orderID: data.orderID }),
           })
-          onSuccess()
+          const result = await res.json()
+          if (res.ok && result.status === 'COMPLETED') {
+            onSuccess()
+          }
         }}
       />
     </PayPalScriptProvider>

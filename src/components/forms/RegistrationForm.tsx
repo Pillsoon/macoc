@@ -446,7 +446,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
               >
                 <option value="">Select your section</option>
                 {sections.map((s) => (
-                  <option key={s.value} value={s.value}>{s.label}</option>
+                  <option key={s.value} value={s.label}>{s.label}</option>
                 ))}
               </select>
             </div>

@@ -40,14 +40,14 @@
     "description": "Classical vocal solo performance",
     "available": true,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
-      { "value": "section-2", "label": "Section II - Age 9-10 (6 min)" },
-      { "value": "section-3", "label": "Section III - Age 11-12 (8 min)" },
-      { "value": "section-4", "label": "Section IV - Age 13-14 (8 min)" },
-      { "value": "section-5", "label": "Section V - Age 15-16 (8 min)" },
-      { "value": "section-6", "label": "Section VI - Age 17-18 (10 min)" },
-      { "value": "section-7", "label": "Section VII - Age 19-20 (10 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 22 and above (12 min)" }
+      { "value": "cv-section-1", "label": "CV Section I: Age 8 and under" },
+      { "value": "cv-section-2", "label": "CV Section II: Age 9-10" },
+      { "value": "cv-section-3", "label": "CV Section III: Age 11-12" },
+      { "value": "cv-section-4", "label": "CV Section IV: Age 13-14" },
+      { "value": "cv-section-5", "label": "CV Section V: Age 15-16" },
+      { "value": "cv-section-6", "label": "CV Section VI: Age 17-18" },
+      { "value": "cv-section-7", "label": "CV Section VII: Age 19-20" },
+      { "value": "cv-section-8", "label": "CV Section VIII: Age 21 and above" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -71,14 +71,14 @@
     "description": "Broadway & musical theater vocal performance",
     "available": true,
     "sections": [
-      { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
-      { "value": "section-2", "label": "Section II - Age 9-10 (6 min)" },
-      { "value": "section-3", "label": "Section III - Age 11-12 (8 min)" },
-      { "value": "section-4", "label": "Section IV - Age 13-14 (8 min)" },
-      { "value": "section-5", "label": "Section V - Age 15-16 (8 min)" },
-      { "value": "section-6", "label": "Section VI - Age 17-18 (10 min)" },
-      { "value": "section-7", "label": "Section VII - Age 19-20 (10 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 21 and above (10 min)" }
+      { "value": "mt-section-1", "label": "MT Section I: Age 8 and under" },
+      { "value": "mt-section-2", "label": "MT Section II: Age 9-10" },
+      { "value": "mt-section-3", "label": "MT Section III: Age 11-12" },
+      { "value": "mt-section-4", "label": "MT Section IV: Age 13-14" },
+      { "value": "mt-section-5", "label": "MT Section V: Age 15-16" },
+      { "value": "mt-section-6", "label": "MT Section VI: Age 17-18" },
+      { "value": "mt-section-7", "label": "MT Section VII: Age 19-20" },
+      { "value": "mt-section-8", "label": "MT Section VIII: Age 21 and above" }
     ],
     "timePeriods": [
       { "value": "classic", "label": "Classic Broadway (pre-1970)" },
@@ -97,7 +97,7 @@
     "id": "strings-piano-chamber",
     "name": "Strings + Piano Chamber",
     "icon": "👥",
-    "description": "String and piano ensemble (2-5 players)",
+    "description": "String and piano ensemble (2-6 players)",
     "available": false,
     "sections": [
       { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
@@ -113,10 +113,16 @@
       { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
     ],
     "requirements": [
-      "More than 2 and up to 5 members in a group",
+      "More than 2 and up to 6 members in a group",
+      "Strings only: String Duo, String Trio, String Quartet, String Quintet or Sextet",
+      "Strings + Piano: Piano Trio, Piano Quartet, Piano Quintet or Sextet",
       "Memorization is NOT required",
-      "Repertoire must be chosen from the standard literature",
-      "At least ONE score needs to be given to the judges",
+      "Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique",
+      "It is okay to finish the performance before the time limit",
+      "No change in the repertoire is allowed following submission of the application",
+      "At least ONE Score needs to be given to the judges",
+      "All members of the group can use an original copy or sheet music from the public domain",
+      "Taking pictures or video recording is NOT allowed inside the competition room",
       "Section is determined by the age of the OLDEST MEMBER as of April 30"
     ],
     "feeType": "chamber",
@@ -129,16 +135,16 @@
     "description": "String instrument solo performance",
     "available": false,
     "sections": [
-      { "value": "section-1", "label": "Division I - Age 6 and under (3 min)" },
-      { "value": "section-2", "label": "Division II - Age 7-8 (3 min)" },
-      { "value": "section-3", "label": "Division III - Age 9-10 (4 min)" },
-      { "value": "section-4", "label": "Division IV - Age 11 (4 min)" },
-      { "value": "section-5", "label": "Division V - Age 12 (5 min)" },
-      { "value": "section-6", "label": "Division VI - Age 13 (5 min)" },
-      { "value": "section-7", "label": "Division VII - Age 14 (6 min)" },
-      { "value": "section-8", "label": "Division VIII - Age 15 (6 min)" },
-      { "value": "section-9", "label": "Division IX - Age 16-17 (7 min)" },
-      { "value": "section-10", "label": "Division X - Age 18-19 (7 min)" }
+      { "value": "section-1", "label": "Section I - Age 6 and under (3 min)" },
+      { "value": "section-2", "label": "Section II - Age 7-8 (3 min)" },
+      { "value": "section-3", "label": "Section III - Age 9-10 (4 min)" },
+      { "value": "section-4", "label": "Section IV - Age 11 (4 min)" },
+      { "value": "section-5", "label": "Section V - Age 12 (5 min)" },
+      { "value": "section-6", "label": "Section VI - Age 13 (5 min)" },
+      { "value": "section-7", "label": "Section VII - Age 14 (6 min)" },
+      { "value": "section-8", "label": "Section VIII - Age 15 (6 min)" },
+      { "value": "section-9", "label": "Section IX - Age 16-17 (7 min)" },
+      { "value": "section-10", "label": "Section X - Age 18-19 (7 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -148,10 +154,16 @@
     ],
     "requirements": [
       "Memorization is REQUIRED",
-      "Each entrant must provide his or her own accompanist",
+      "A piece requires a piano accompaniment and each entrant must provide his or her own accompanist EXCEPT FOR the VIOLA division",
+      "Only VIOLA division allows a piece written for unaccompanied solo to be performed without accompaniment",
+      "Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique",
       "Only ONE movement or ONE piece is required",
-      "Cut is allowed but must be clearly marked in the original score for the judges",
-      "At least ONE ORIGINAL score needs to be given to the judges"
+      "Cut is allowed however it needs to be clearly marked in the original score for the judges",
+      "It is okay to finish the performance before the time limit",
+      "No change in the repertoire is allowed following submission of the application",
+      "At least ONE ORIGINAL Score needs to be given to the judges",
+      "Accompanists are allowed to use a photocopy of the original score or the music from the public domain",
+      "Taking pictures or video recording is NOT allowed inside the competition room"
     ],
     "feeType": "solo",
     "memorization": true
