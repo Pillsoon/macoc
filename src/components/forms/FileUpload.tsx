@@ -60,6 +60,8 @@ export default function FileUpload({ onUpload, label, required }: FileUploadProp
           maxFiles: 1,
           resourceType: 'auto',
           folder: 'macoc/proof-of-age',
+          clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'heic', 'heif', 'pdf', 'bmp'],
+          maxFileSize: 10485760,
         }}
         onSuccess={(result) => {
           if (typeof result.info === 'object' && result.info !== null) {
