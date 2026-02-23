@@ -77,7 +77,14 @@ export default function FileUpload({ onUpload, label, required }: FileUploadProp
         {({ open }) => (
           <div>
             {uploadedUrl ? (
-              <div className="p-3 bg-green-50 border border-green-200 rounded-lg space-y-3">
+              <div className="p-4 bg-green-50 border-2 border-green-400 rounded-lg space-y-3">
+                {/* Upload success banner */}
+                <div className="flex items-center gap-2 bg-green-100 rounded-md px-3 py-2">
+                  <svg className="w-6 h-6 text-green-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-green-800 font-semibold">File Uploaded Successfully</span>
+                </div>
                 {/* Preview */}
                 {isImageFormat(fileFormat) ? (
                   <div className="flex justify-center">
@@ -100,14 +107,11 @@ export default function FileUpload({ onUpload, label, required }: FileUploadProp
                 ) : null}
                 {/* File info */}
                 <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-green-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-sm text-green-800 flex-1 truncate">{fileName}.{fileFormat}</span>
+                  <span className="text-sm text-green-700 flex-1 truncate">{fileName}.{fileFormat}</span>
                   <button
                     type="button"
                     onClick={() => open()}
-                    className="text-sm text-green-600 hover:text-green-800 underline"
+                    className="text-sm text-green-600 hover:text-green-800 font-medium underline"
                   >
                     Change
                   </button>
