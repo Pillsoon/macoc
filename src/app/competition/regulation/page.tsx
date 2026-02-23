@@ -17,10 +17,9 @@ const requirements = [
 ]
 
 const awards = [
-  { place: '1st Place', desc: 'Cash award + invitation to Winners\' Concert', icon: '🥇', color: 'text-gold-dark' },
-  { place: '2nd Place', desc: 'Cash award', icon: '🥈', color: 'text-gray-500' },
-  { place: '3rd Place', desc: 'Cash award', icon: '🥉', color: 'text-amber-600' },
-  { place: 'Honorable Mention', desc: 'Certificate of recognition', icon: '⭐', color: 'text-navy' },
+  { place: '1st Place', desc: 'Cash award + Trophy + invitation to Winners\' Concert', icon: '🥇', color: 'text-gold-dark' },
+  { place: '2nd Place', desc: 'Trophy', icon: '🥈', color: 'text-gray-500' },
+  { place: '3rd Place', desc: 'Trophy', icon: '🥉', color: 'text-amber-600' },
 ]
 
 export default function RegulationPage() {
