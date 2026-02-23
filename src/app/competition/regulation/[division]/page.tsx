@@ -126,26 +126,6 @@ export default function DivisionRegulationPage({
         </section>
       )}
 
-      {/* Time Periods / Repertoire */}
-      <section className="section bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title">Repertoire Time Periods</h2>
-          <p className="section-subtitle mx-auto mb-8">
-            Accepted musical periods for this division
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {division.timePeriods.map((tp) => (
-              <div
-                key={tp.value}
-                className="px-6 py-3 bg-cream rounded-xl text-center"
-              >
-                <span className="font-heading font-semibold text-navy">{tp.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Division Contact */}
       {contact && (
         <section className="bg-navy py-8">
