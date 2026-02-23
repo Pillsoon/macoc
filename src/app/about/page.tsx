@@ -22,19 +22,6 @@ const history = [
     title: 'New Identity',
     desc: 'Officially renamed to Musical Arts Competition of Orange County, reflecting our evolved mission.',
   },
-  {
-    year: 'Today',
-    title: 'Continuing Legacy',
-    desc: 'Over 250 students compete annually across 10 divisions, with winners performing at the Nixon Library.',
-    highlight: true,
-  },
-]
-
-const offerings = [
-  { icon: '🏆', title: 'Awards', desc: 'Cash prizes and recognition for top performers' },
-  { icon: '🎭', title: 'Performance', desc: 'Opportunities at prestigious venues' },
-  { icon: '👨‍🏫', title: 'Mentorship', desc: 'Guidance from world-class masters' },
-  { icon: '📰', title: 'Recognition', desc: 'International press coverage for winners' },
 ]
 
 export default function AboutPage() {
@@ -53,21 +40,11 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <span className="badge badge-gold mb-4">About Us</span>
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-            90 Years of Musical Excellence
+            About MACOC
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Celebrating a legacy of discovering the world&apos;s finest classical talent
+            Established in 1932
           </p>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="section bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="section-title">Our Mission</h2>
-          <blockquote className="text-xl md:text-2xl text-text-secondary italic leading-relaxed">
-            &quot;To identify and support the world&apos;s most promising young musicians through competition, mentorship, and performance opportunities.&quot;
-          </blockquote>
         </div>
       </section>
 
@@ -76,16 +53,16 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-title">Our History</h2>
-            <p className="section-subtitle mx-auto">Tracing 90 years of artistic dedication</p>
+            <p className="section-subtitle mx-auto">Since 1932</p>
           </div>
 
           <div className="space-y-0">
             {history.map((item, idx) => (
               <div key={idx} className="timeline-item">
                 {idx !== history.length - 1 && <div className="timeline-line" />}
-                <div className={`timeline-dot ${item.highlight ? 'timeline-dot-gold' : 'border-gray-300'}`} />
+                <div className="timeline-dot border-gray-300" />
                 <div>
-                  <p className={`text-sm font-semibold ${item.highlight ? 'text-gold-dark' : 'text-navy'}`}>
+                  <p className="text-sm font-semibold text-navy">
                     {item.year}
                   </p>
                   <h3 className="font-heading text-lg text-charcoal">{item.title}</h3>
@@ -97,34 +74,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* What We Offer */}
-      <section className="section bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">What We Offer</h2>
-            <p className="section-subtitle mx-auto">Supporting young musicians on their journey</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {offerings.map((item, idx) => (
-              <div key={idx} className="card text-center">
-                <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">{item.icon}</span>
-                </div>
-                <h3 className="font-heading text-lg text-charcoal mb-2">{item.title}</h3>
-                <p className="text-text-muted text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Divisions */}
       <section className="section bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-title">Competition Divisions</h2>
-            <p className="section-subtitle mx-auto">Nine divisions spanning all major instruments and voice</p>
+            <p className="section-subtitle mx-auto">Spanning major instruments and voice</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -147,39 +102,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-navy py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">$1M+</div>
-              <div className="text-white/70 text-sm">Scholarships Awarded</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">5,000+</div>
-              <div className="text-white/70 text-sm">Alumni Community</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">90+</div>
-              <div className="text-white/70 text-sm">Years of Excellence</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">50+</div>
-              <div className="text-white/70 text-sm">Countries Represented</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="section bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="section-title">Join Our Team</h2>
+          <h2 className="section-title">Questions?</h2>
           <p className="section-subtitle mx-auto mb-8">
-            We are always looking for passionate individuals to join our board and volunteer team.
+            Reach out to us for more information.
           </p>
           <Link href="/contact" className="btn btn-primary">
-            Get in Touch
+            Contact Us
           </Link>
         </div>
       </section>

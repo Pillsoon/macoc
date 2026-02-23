@@ -136,14 +136,6 @@ export default function SchedulePage() {
           <ul className="space-y-2 text-amber-700 text-sm">
             <li className="flex items-start gap-2">
               <span>•</span>
-              <span>Competition schedules are sent to teachers approximately 2 weeks before the event</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span>•</span>
-              <span>Please arrive at least 30 minutes before your scheduled time</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span>•</span>
               <span>Age is calculated as of {competition.registration.ageAsOf}</span>
             </li>
           </ul>

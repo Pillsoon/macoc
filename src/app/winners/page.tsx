@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { config } from '@/lib/config'
 import winners2025 from '@/content/winners/2025.json'
 import winners2024 from '@/content/winners/2024.json'
 import winners2023 from '@/content/winners/2023.json'
@@ -120,7 +121,7 @@ export default function WinnersPage() {
                 <span className="text-4xl mb-4 block">🎭</span>
                 <h3 className="font-heading text-2xl text-white mb-3">Winners&apos; Concert</h3>
                 <p className="text-white/70 max-w-xl mx-auto mb-6">
-                  First-place winners from each division are invited to perform at the annual Winners&apos; Concert at the Richard Nixon Presidential Library.
+                  First-place winners from each division are invited to perform at the annual Winners&apos; Concert at the {config.winnersConcert.location}.
                 </p>
                 <Link href="/about" className="btn btn-gold">
                   Learn More

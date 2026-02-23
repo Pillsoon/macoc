@@ -46,7 +46,7 @@ export default function CompetitionPage() {
             {currentYear} Annual Competition
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Celebrating excellence in classical music performance. Join us for a historic season of artistry.
+            {competition.date} &bull; {competition.location}
           </p>
           <Link href="/competition/registration" className="btn btn-gold">
             Register Now
@@ -110,68 +110,6 @@ export default function CompetitionPage() {
                 </span>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Competition Info */}
-      <section className="section bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="section-title">Competition Details</h2>
-              <div className="space-y-4 text-text-secondary">
-                <p>
-                  The Musical Arts Competition of Orange County provides a platform for young musicians to showcase their talents before distinguished judges from leading conservatories and orchestras.
-                </p>
-                <p>
-                  Winners receive cash prizes and the opportunity to perform at the prestigious Winners&apos; Concert held at the Richard Nixon Library in Yorba Linda.
-                </p>
-              </div>
-
-              <div className="mt-8 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center">
-                    <span>📍</span>
-                  </div>
-                  <div>
-                    <p className="text-sm text-text-muted">Location</p>
-                    <p className="font-medium text-charcoal">{competition.location}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center">
-                    <span>📆</span>
-                  </div>
-                  <div>
-                    <p className="text-sm text-text-muted">Competition Date</p>
-                    <p className="font-medium text-charcoal">{competition.date}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-navy rounded-2xl p-8 text-white">
-              <h3 className="font-heading text-2xl mb-6">By the Numbers</h3>
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <div className="text-3xl font-heading font-bold text-gold">90+</div>
-                  <div className="text-white/70 text-sm">Years Legacy</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-heading font-bold text-gold">$50k+</div>
-                  <div className="text-white/70 text-sm">Annual Prizes</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-heading font-bold text-gold">10</div>
-                  <div className="text-white/70 text-sm">Divisions</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-heading font-bold text-gold">250+</div>
-                  <div className="text-white/70 text-sm">Annual Participants</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

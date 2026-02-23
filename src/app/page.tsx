@@ -22,12 +22,6 @@ export default function Home() {
     { icon: '🏆', date: winnersConcert.date, title: "Winners' Concert", desc: winnersConcert.location, highlight: true },
   ]
 
-  const highlights = [
-    { icon: '👨‍⚖️', title: 'Elite Judges', desc: 'Adjudicated by university professors and concert artists' },
-    { icon: '🎭', title: "Winners' Concert", desc: 'Top winners perform at the Richard Nixon Library' },
-    { icon: '🌐', title: 'Alumni Network', desc: 'Join 5,000+ alumni from over 90 years of competition' },
-  ]
-
   return (
     <div>
       {/* Hero Section */}
@@ -82,28 +76,6 @@ export default function Home() {
                 <p className={`text-sm font-semibold mb-1 ${item.highlight ? 'text-gold-dark' : 'text-navy'}`}>
                   {item.date}
                 </p>
-                <h3 className="font-heading text-lg text-charcoal mb-2">{item.title}</h3>
-                <p className="text-text-muted text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Competition Highlights */}
-      <section className="section bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Competition Highlights</h2>
-            <p className="section-subtitle mx-auto">What makes MACOC special</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {highlights.map((item, idx) => (
-              <div key={idx} className="text-center">
-                <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">{item.icon}</span>
-                </div>
                 <h3 className="font-heading text-lg text-charcoal mb-2">{item.title}</h3>
                 <p className="text-text-muted text-sm">{item.desc}</p>
               </div>
@@ -169,36 +141,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-navy py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">90+</div>
-              <div className="text-white/70 text-sm">Years of Excellence</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">9</div>
-              <div className="text-white/70 text-sm">Divisions</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-bold text-gold mb-2">5k+</div>
-              <div className="text-white/70 text-sm">Alumni Community</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="section bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="script-accent mb-4">&quot;Where musical dreams take flight&quot;</p>
-          <h2 className="section-title">Join Our Legacy</h2>
+          <h2 className="section-title">Ready to Register?</h2>
           <p className="section-subtitle mx-auto mb-8">
-            Be part of a 90-year tradition of nurturing musical excellence in Southern California.
+            Registration opens {competition.registration.open}
           </p>
           <Link href="/competition/registration" className="btn btn-gold">
-            Start Your Journey
+            Register Now
             <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

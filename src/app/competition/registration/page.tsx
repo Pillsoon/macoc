@@ -4,14 +4,7 @@ import { config } from '@/lib/config'
 export default function RegistrationPage() {
   const { competition, fees, currentYear } = config
 
-  const steps = [
-    { num: 1, title: 'Create Account', desc: 'Sign up with your email to start your application.' },
-    { num: 2, title: 'Pay Membership Fee', desc: 'Complete your annual membership payment securely.' },
-    { num: 3, title: 'Add Students', desc: 'Enter student details and select their repertoire.' },
-    { num: 4, title: 'Submit & Confirm', desc: 'Review your entries and receive confirmation.' },
-  ]
-
-  return (
+    return (
     <div>
       {/* Header */}
       <section className="bg-navy py-16">
@@ -58,32 +51,7 @@ export default function RegistrationPage() {
               </div>
               <p className="text-text-muted text-sm mb-6">Required for student registration</p>
 
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Submit unlimited students</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Access scores database</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Member directory access</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Voting rights</span>
-                </li>
-              </ul>
+              <div className="mb-8" />
 
               <Link href="/register" className="btn btn-primary w-full text-center">
                 Select Division
@@ -99,32 +67,7 @@ export default function RegistrationPage() {
               </div>
               <p className="text-text-muted text-sm mb-6">Per student, per division</p>
 
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Professional adjudication</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Detailed feedback form</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Certificate of participation</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Medal eligibility & awards</span>
-                </li>
-              </ul>
+              <div className="mb-8" />
 
               <Link href="/register" className="btn btn-secondary w-full text-center">
                 Select Division
@@ -144,32 +87,7 @@ export default function RegistrationPage() {
               </div>
               <p className="text-text-muted text-sm mb-6">Per group entry</p>
 
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Professional adjudication</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Detailed feedback form</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Certificate of participation</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Medal eligibility & awards</span>
-                </li>
-              </ul>
+              <div className="mb-8" />
 
               <button className="btn btn-secondary w-full opacity-50 cursor-not-allowed" disabled>
                 Coming Soon
@@ -198,28 +116,6 @@ export default function RegistrationPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How to Register */}
-      <section className="section bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">How to Register</h2>
-            <p className="section-subtitle mx-auto">Simple steps to get started</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {steps.map((step) => (
-              <div key={step.num} className="text-center">
-                <div className="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {step.num}
-                </div>
-                <h3 className="font-heading text-lg text-charcoal mb-2">{step.title}</h3>
-                <p className="text-text-muted text-sm">{step.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

@@ -4,25 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { config } from '@/lib/config'
 
-const faqs = [
-  {
-    q: 'How do I register my students?',
-    a: 'Teachers must first become MACOC members, then can register students through our online registration system.',
-  },
-  {
-    q: 'What are the age requirements?',
-    a: 'Age requirements vary by division and section. Please refer to the Regulations page for specific details.',
-  },
-  {
-    q: 'Where is the competition held?',
-    a: 'The competition takes place at California State University, Long Beach.',
-  },
-  {
-    q: 'When will I receive my schedule?',
-    a: 'Competition schedules are typically sent to teachers 2 weeks before the competition date.',
-  },
-]
-
 export default function ContactPage() {
   return (
     <div>
@@ -125,34 +106,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="section bg-cream">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Frequently Asked Questions</h2>
-            <p className="section-subtitle mx-auto">Quick answers to common questions</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="card">
-                <h3 className="font-heading text-lg text-charcoal mb-2">{faq.q}</h3>
-                <p className="text-text-muted text-sm">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <p className="text-text-secondary mb-4">
-              Can&apos;t find what you&apos;re looking for?
-            </p>
-            <Link href="/competition/regulation" className="btn btn-secondary">
-              View Full Regulations
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="bg-navy py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -160,7 +113,7 @@ export default function ContactPage() {
             Ready to Register?
           </h2>
           <p className="text-white/70 mb-6">
-            Join hundreds of talented musicians competing in MACOC.
+            Registration opens {config.competition.registration.open}
           </p>
           <Link href="/competition/registration" className="btn btn-gold">
             Start Registration
@@ -253,9 +206,6 @@ function DepartmentContact() {
           </div>
         </div>
 
-        <p className="text-xs text-text-muted text-center">
-          We typically respond within 24-48 hours
-        </p>
       </div>
     </div>
   )
