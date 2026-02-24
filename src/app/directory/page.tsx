@@ -1,6 +1,6 @@
 import staticData from '@/content/directory.json'
 
-export const revalidate = 3600 // 1시간마다 재검증
+export const revalidate = 0 // 매 요청마다 최신 데이터 fetch
 
 interface DirectoryData {
   title: string
@@ -40,7 +40,7 @@ async function fetchDirectory(): Promise<DirectoryData> {
   const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('Directory')}&headers=1`
 
   try {
-    const res = await fetch(url, { next: { revalidate: 3600 } })
+    const res = await fetch(url, { cache: 'no-store' })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
     const csv = await res.text()
