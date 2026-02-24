@@ -1,0 +1,37 @@
+[
+  {
+    "date": "March 16, 2026",
+    "title": "Registration Opens",
+    "description": "Begin your registration process",
+    "type": "deadline",
+    "highlight": true
+  },
+  {
+    "date": "April 16, 2026",
+    "title": "Regular Deadline",
+    "description": "Last day for $50 entry fee",
+    "type": "deadline",
+    "highlight": true
+  },
+  {
+    "date": "April 23, 2026",
+    "title": "Late Registration",
+    "description": "Final deadline - $70 late fee applies",
+    "type": "deadline",
+    "highlight": true
+  },
+  {
+    "date": "May 16, 2026",
+    "title": "Competition Day",
+    "description": "California State University, Long Beach",
+    "type": "event",
+    "highlight": true
+  },
+  {
+    "date": "June 6, 2026",
+    "title": "Winners' Concert",
+    "description": "Richard Nixon Library - Yorba Linda, 7:00 PM",
+    "type": "event",
+    "highlight": true
+  }
+]
