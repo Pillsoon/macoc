@@ -27,7 +27,7 @@ const defaultConfig: SiteConfig = {
   winnersConcert: {
     date: 'June 2026',
     location: 'Richard Nixon Library - Yorba Linda',
-    time: '7:00 PM'
+    time: '1:00 PM'
   },
   fees: {
     membership: { amount: 40, label: "Teacher's Membership" },
