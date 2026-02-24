@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { config } from '@/lib/config'
 
@@ -131,111 +130,57 @@ export default function ContactPage() {
 }
 
 function DepartmentContact() {
-  const [selectedDivision, setSelectedDivision] = useState('')
-
   return (
     <div className="card">
       <h2 className="font-heading text-xl text-charcoal mb-6">Contact a Department</h2>
-      <p className="text-text-muted text-sm mb-6">
-        Select a department or browse all contacts below.
-      </p>
 
-      <div className="space-y-5">
-        <div>
-          <label htmlFor="department" className="block text-sm font-medium text-charcoal mb-2">
-            Department
-          </label>
-          <select
-            id="department"
-            className="input"
-            value={selectedDivision}
-            onChange={(e) => setSelectedDivision(e.target.value)}
-          >
-            <option value="">All departments</option>
-            {config.divisionContacts.map((dc) => (
-              <option key={dc.division} value={dc.division}>
-                {dc.division}
-              </option>
-            ))}
-            <option value="accountant">Accountant</option>
-            <option value="general">General Inquiry</option>
-          </select>
-        </div>
+      <div className="space-y-2">
+        {config.divisionContacts.map((dc) => (
+          <div key={dc.division} className="p-3 rounded-lg bg-cream">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-charcoal">{dc.division}</p>
+                <p className="text-xs text-text-muted">{dc.chair}</p>
+              </div>
+              <a
+                href={`mailto:${dc.email}`}
+                className="text-xs text-navy hover:text-gold transition-colors"
+              >
+                {dc.email}
+              </a>
+            </div>
+          </div>
+        ))}
 
-        <div className="space-y-2">
-          {config.divisionContacts.map((dc) => (
-            <div
-              key={dc.division}
-              className={`p-3 rounded-lg transition-colors ${
-                selectedDivision === dc.division
-                  ? 'bg-gold/10 border border-gold'
-                  : selectedDivision && selectedDivision !== dc.division
-                    ? 'hidden'
-                    : 'bg-cream'
-              }`}
+        <div className="p-3 rounded-lg bg-cream">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-charcoal">Accountant</p>
+              <p className="text-xs text-text-muted">{config.accountant.name}</p>
+            </div>
+            <a
+              href={`mailto:${config.accountant.email}`}
+              className="text-xs text-navy hover:text-gold transition-colors"
             >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-charcoal">{dc.division}</p>
-                  <p className="text-xs text-text-muted">{dc.chair}</p>
-                </div>
-                <a
-                  href={`mailto:${dc.email}`}
-                  className="text-xs text-navy hover:text-gold transition-colors"
-                >
-                  {dc.email}
-                </a>
-              </div>
-            </div>
-          ))}
-
-          <div
-            className={`p-3 rounded-lg transition-colors ${
-              selectedDivision === 'accountant'
-                ? 'bg-gold/10 border border-gold'
-                : selectedDivision && selectedDivision !== 'accountant'
-                  ? 'hidden'
-                  : 'bg-cream'
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-charcoal">Accountant</p>
-                <p className="text-xs text-text-muted">{config.accountant.name}</p>
-              </div>
-              <a
-                href={`mailto:${config.accountant.email}`}
-                className="text-xs text-navy hover:text-gold transition-colors"
-              >
-                {config.accountant.email}
-              </a>
-            </div>
-          </div>
-
-          <div
-            className={`p-3 rounded-lg transition-colors ${
-              selectedDivision === 'general'
-                ? 'bg-gold/10 border border-gold'
-                : selectedDivision && selectedDivision !== 'general'
-                  ? 'hidden'
-                  : 'bg-cream'
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-charcoal">General Inquiry</p>
-                <p className="text-xs text-text-muted">{config.president.name}</p>
-              </div>
-              <a
-                href={`mailto:${config.contact.email}`}
-                className="text-xs text-navy hover:text-gold transition-colors"
-              >
-                {config.contact.email}
-              </a>
-            </div>
+              {config.accountant.email}
+            </a>
           </div>
         </div>
 
+        <div className="p-3 rounded-lg bg-cream">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-charcoal">General Inquiry</p>
+              <p className="text-xs text-text-muted">{config.president.name}</p>
+            </div>
+            <a
+              href={`mailto:${config.contact.email}`}
+              className="text-xs text-navy hover:text-gold transition-colors"
+            >
+              {config.contact.email}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )
