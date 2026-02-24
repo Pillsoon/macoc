@@ -37,7 +37,7 @@ async function fetchDirectory(): Promise<DirectoryData> {
   const sheetId = process.env.GOOGLE_SHEET_ID
   if (!sheetId) return staticData
 
-  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('Directory')}&headers=1`
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('Directory')}&headers=1&_=${Date.now()}`
 
   try {
     const res = await fetch(url, { cache: 'no-store' })
