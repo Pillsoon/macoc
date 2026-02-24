@@ -43,8 +43,8 @@ const defaultConfig: SiteConfig = {
     email: 'info@musicalartsoc.org'
   },
   accountant: {
-    name: '',
-    email: ''
+    name: 'Jane Ko',
+    email: 'Jungwonko@hotmail.com'
   },
   divisionContacts: [],
   socialLinks: {
