@@ -42,6 +42,10 @@ const defaultConfig: SiteConfig = {
   contact: {
     email: 'info@musicalartsoc.org'
   },
+  accountant: {
+    name: '',
+    email: ''
+  },
   divisionContacts: [],
   socialLinks: {
     facebook: '',
@@ -81,6 +85,7 @@ function mergeConfig(loaded: Partial<SiteConfig> | null | undefined): SiteConfig
       lateFee: { ...defaultConfig.fees.lateFee, ...loaded.fees?.lateFee }
     },
     contact: { ...defaultConfig.contact, ...loaded.contact },
+    accountant: { ...defaultConfig.accountant, ...loaded.accountant },
     divisionContacts: loaded.divisionContacts ?? defaultConfig.divisionContacts,
     socialLinks: { ...defaultConfig.socialLinks, ...loaded.socialLinks },
     history: { ...defaultConfig.history, ...loaded.history }

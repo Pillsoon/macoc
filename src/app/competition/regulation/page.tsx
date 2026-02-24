@@ -5,6 +5,7 @@ const awards = [
   { place: '1st Place', desc: 'Cash award + Trophy + invitation to Winners\' Concert', icon: '🥇', color: 'text-gold-dark' },
   { place: '2nd Place', desc: 'Trophy', icon: '🥈', color: 'text-gray-500' },
   { place: '3rd Place', desc: 'Trophy', icon: '🥉', color: 'text-amber-600' },
+  { place: 'Honorable Mention', desc: 'Ribbon', icon: '🎀', color: 'text-navy' },
 ]
 
 export default function RegulationPage() {

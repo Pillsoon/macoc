@@ -23,7 +23,7 @@
   "winnersConcert": {
     "date": "Saturday, June 6, 2026",
     "location": "Richard Nixon Library - Yorba Linda",
-    "time": "7:00 PM"
+    "time": "1:00 PM"
   },
   "fees": {
     "membership": {
@@ -49,6 +49,10 @@
   },
   "contact": {
     "email": "info@musicalartsoc.org"
+  },
+  "accountant": {
+    "name": "Jane Ko",
+    "email": "Jungwonko@hotmail.com"
   },
   "divisionContacts": [
     {

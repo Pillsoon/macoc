@@ -50,6 +50,10 @@ export interface SiteConfig {
   contact: {
     email: string
   }
+  accountant: {
+    name: string
+    email: string
+  }
   divisionContacts: {
     division: string
     chair: string

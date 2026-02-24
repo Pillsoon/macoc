@@ -61,11 +61,17 @@ export default function ContactPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl">🏛️</span>
+                    <span className="text-xl">💼</span>
                   </div>
                   <div>
-                    <p className="text-sm text-text-muted mb-1">Organization</p>
-                    <p className="font-medium text-charcoal">{config.site.name}</p>
+                    <p className="text-sm text-text-muted mb-1">Accountant</p>
+                    <p className="font-medium text-charcoal">{config.accountant.name}</p>
+                    <a
+                      href={`mailto:${config.accountant.email}`}
+                      className="text-sm text-navy hover:text-gold transition-colors"
+                    >
+                      {config.accountant.email}
+                    </a>
                   </div>
                 </div>
 
