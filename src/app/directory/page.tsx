@@ -1,6 +1,88 @@
-import directoryData from '@/content/directory.json'
+import staticData from '@/content/directory.json'
 
-export default function DirectoryPage() {
+export const revalidate = 3600 // 1시간마다 재검증
+
+interface DirectoryData {
+  title: string
+  year: number
+  categories: { name: string; teachers: string[] }[]
+}
+
+function parseCSVLine(line: string): string[] {
+  const result: string[] = []
+  let current = ''
+  let inQuotes = false
+
+  for (let i = 0; i < line.length; i++) {
+    const char = line[i]
+    if (char === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        current += '"'
+        i++
+      } else {
+        inQuotes = !inQuotes
+      }
+    } else if (char === ',' && !inQuotes) {
+      result.push(current)
+      current = ''
+    } else {
+      current += char
+    }
+  }
+  result.push(current)
+  return result.map(s => s.replace(/^"|"$/g, ''))
+}
+
+async function fetchDirectory(): Promise<DirectoryData> {
+  const sheetId = process.env.GOOGLE_SHEET_ID
+  if (!sheetId) return staticData
+
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('Directory')}&headers=1`
+
+  try {
+    const res = await fetch(url, { next: { revalidate: 3600 } })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+    const csv = await res.text()
+    const lines = csv.split('\n').filter(line => line.trim())
+    if (lines.length < 2) return staticData
+
+    const headers = parseCSVLine(lines[0])
+    const rows = lines.slice(1).map(line => {
+      const values = parseCSVLine(line)
+      const row: Record<string, string> = {}
+      headers.forEach((h, i) => { row[h.trim()] = values[i]?.trim() || '' })
+      return row
+    })
+
+    const categories: Record<string, string[]> = {}
+    rows.forEach(row => {
+      const category = row.category || 'Other'
+      const teacher = row.name || row.teacher || ''
+      if (teacher) {
+        if (!categories[category]) categories[category] = []
+        categories[category].push(teacher)
+      }
+    })
+
+    const year = rows[0]?.year || new Date().getFullYear().toString()
+
+    return {
+      title: 'Teachers Membership',
+      year: parseInt(year),
+      categories: Object.entries(categories).map(([name, teachers]) => ({
+        name,
+        teachers: teachers.sort(),
+      })),
+    }
+  } catch {
+    return staticData
+  }
+}
+
+export default async function DirectoryPage() {
+  const directoryData = await fetchDirectory()
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
       <div className="text-center space-y-4">
