@@ -1,14 +1,18 @@
 /**
  * Fetch data from Google Sheets and save to JSON files
- *
- * Google Sheets must be published to web as CSV
- * URL format: https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={SHEET_NAME}
+ * Uses Google Sheets API v4 via google-spreadsheet package
  */
 
 import * as fs from 'fs'
 import * as path from 'path'
+import { GoogleSpreadsheet } from 'google-spreadsheet'
+import { JWT } from 'google-auth-library'
 
 const SHEET_ID = process.env.GOOGLE_SHEET_ID || ''
+const SERVICE_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || ''
+const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY || ''
+
+let doc: GoogleSpreadsheet | null = null
 
 interface SheetConfig {
   name: string
@@ -16,68 +20,48 @@ interface SheetConfig {
   transform: (rows: Record<string, string>[]) => unknown
 }
 
-// CSV 파싱 함수
-function parseCSV(csv: string): Record<string, string>[] {
-  const lines = csv.split('\n').filter(line => line.trim())
-  if (lines.length === 0) return []
-
-  // 첫 줄은 헤더
-  const headers = parseCSVLine(lines[0])
-
-  return lines.slice(1).map(line => {
-    const values = parseCSVLine(line)
-    const row: Record<string, string> = {}
-    headers.forEach((header, i) => {
-      row[header.trim()] = values[i]?.trim() || ''
-    })
-    return row
-  })
-}
-
-// CSV 라인 파싱 (따옴표 처리)
-function parseCSVLine(line: string): string[] {
-  const result: string[] = []
-  let current = ''
-  let inQuotes = false
-
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i]
-
-    if (char === '"') {
-      if (inQuotes && line[i + 1] === '"') {
-        current += '"'
-        i++
-      } else {
-        inQuotes = !inQuotes
-      }
-    } else if (char === ',' && !inQuotes) {
-      result.push(current)
-      current = ''
-    } else {
-      current += char
-    }
+async function getDoc(): Promise<GoogleSpreadsheet | null> {
+  if (doc) return doc
+  if (!SHEET_ID || !SERVICE_EMAIL || !PRIVATE_KEY) {
+    console.log('⚠️  Missing env vars (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY)')
+    return null
   }
-  result.push(current)
 
-  return result.map(s => s.replace(/^"|"$/g, ''))
+  const auth = new JWT({
+    email: SERVICE_EMAIL,
+    key: PRIVATE_KEY.replace(/\\n/g, '\n'),
+    scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+  })
+
+  doc = new GoogleSpreadsheet(SHEET_ID, auth)
+  await doc.loadInfo()
+  return doc
 }
 
-// Google Sheet에서 CSV 가져오기
 async function fetchSheet(sheetName: string): Promise<Record<string, string>[]> {
-  if (!SHEET_ID) {
-    console.log(`⚠️  GOOGLE_SHEET_ID not set, skipping ${sheetName}`)
+  const d = await getDoc()
+  if (!d) {
+    console.log(`⚠️  No connection, skipping ${sheetName}`)
     return []
   }
 
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}&headers=1`
-
   try {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`)
+    const sheet = d.sheetsByTitle[sheetName]
+    if (!sheet) {
+      console.log(`⚠️  Sheet "${sheetName}" not found`)
+      return []
     }
-    const csv = await response.text()
-    return parseCSV(csv)
+
+    const rows = await sheet.getRows()
+    const headers = sheet.headerValues
+
+    return rows.map(row => {
+      const record: Record<string, string> = {}
+      headers.forEach(h => {
+        record[h] = row.get(h) ?? ''
+      })
+      return record
+    })
   } catch (error) {
     console.error(`❌ Failed to fetch ${sheetName}:`, error)
     return []
