@@ -157,6 +157,7 @@ function DepartmentContact() {
                 {dc.division}
               </option>
             ))}
+            <option value="accountant">Accountant</option>
             <option value="general">General Inquiry</option>
           </select>
         </div>
@@ -187,6 +188,29 @@ function DepartmentContact() {
               </div>
             </div>
           ))}
+
+          <div
+            className={`p-3 rounded-lg transition-colors ${
+              selectedDivision === 'accountant'
+                ? 'bg-gold/10 border border-gold'
+                : selectedDivision && selectedDivision !== 'accountant'
+                  ? 'hidden'
+                  : 'bg-cream'
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-charcoal">Accountant</p>
+                <p className="text-xs text-text-muted">{config.accountant.name}</p>
+              </div>
+              <a
+                href={`mailto:${config.accountant.email}`}
+                className="text-xs text-navy hover:text-gold transition-colors"
+              >
+                {config.accountant.email}
+              </a>
+            </div>
+          </div>
 
           <div
             className={`p-3 rounded-lg transition-colors ${
