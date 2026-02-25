@@ -227,8 +227,7 @@
       { "value": "section-5", "label": "Section V - Age 13-14 (8 min)" },
       { "value": "section-6", "label": "Section VI - Age 15-16 (8 min)" },
       { "value": "section-7", "label": "Section VII - Age 17-18 (10 min)" },
-      { "value": "section-8", "label": "Section VIII - Age 19-20 (10 min)" },
-      { "value": "section-9", "label": "Section IX - Age 21 and above (12 min)" }
+      { "value": "section-8", "label": "Section VIII - Age 19-22 (12 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -249,13 +248,13 @@
     "name": "Woodwinds",
     "icon": "🎵",
     "description": "Woodwind instrument solo performance",
-    "available": false,
+    "available": true,
     "sections": [
       { "value": "section-1", "label": "Section I - Age 11 and under (5 min)" },
       { "value": "section-2", "label": "Section II - Age 12-13 (5 min)" },
-      { "value": "section-3", "label": "Section III - Age 14-15 (8 min)" },
-      { "value": "section-4", "label": "Section IV - Age 16-18 (10 min)" },
-      { "value": "section-5", "label": "Section V - Age 19-21 (10 min)" }
+      { "value": "section-3", "label": "Section III - Age 14-15 (6 min)" },
+      { "value": "section-4", "label": "Section IV - Age 16-18 (6 min)" },
+      { "value": "section-5", "label": "Section V - Age 19-21 (8 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
@@ -267,7 +266,9 @@
       "Memorization is required",
       "Only one piece OR one movement of a multi-movement work is required",
       "No cutting or rearranging the music is permitted, except for the piano part",
-      "Each entrant must provide his or her own pianist"
+      "Each entrant must provide his or her own pianist",
+      "At least ONE Original score needs to be given to the judges",
+      "Accompanists must have original music"
     ],
     "feeType": "solo",
     "memorization": true
@@ -276,16 +277,25 @@
     "id": "woodwinds-ensemble",
     "name": "Woodwinds Ensemble",
     "icon": "🎵",
-    "description": "Woodwind ensemble performance",
-    "available": false,
-    "sections": [],
+    "description": "Woodwind ensemble (2-5 players)",
+    "available": true,
+    "sections": [
+      { "value": "section-1", "label": "Category I - Age 13 and under (5 min)" },
+      { "value": "section-2", "label": "Category II - Age 19 and under (5 min)" }
+    ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
       { "value": "classical", "label": "Classical (1750-1820)" },
       { "value": "romantic", "label": "Romantic (1820-1900)" },
       { "value": "modern", "label": "Modern/Contemporary (1900-present)" }
     ],
-    "requirements": [],
+    "requirements": [
+      "Ensembles of 2 to 5 performers on any combination of instruments",
+      "Memorization is NOT required",
+      "A score must be provided for the judges",
+      "Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique",
+      "Category is determined by the age of the OLDEST MEMBER as of April 30"
+    ],
     "feeType": "chamber",
     "memorization": false
   }
