@@ -111,7 +111,7 @@
   },
   {
     "id": "strings-piano-chamber",
-    "name": "Strings + Piano Chamber",
+    "name": "String + Piano Chamber Music",
     "icon": "👥",
     "description": "String and piano ensemble (2-6 players)",
     "available": true,
@@ -146,7 +146,7 @@
   },
   {
     "id": "strings",
-    "name": "Strings",
+    "name": "String",
     "icon": "🎻",
     "description": "String instrument solo performance",
     "available": true,
