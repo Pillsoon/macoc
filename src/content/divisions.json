@@ -113,7 +113,7 @@
     "id": "strings-piano-chamber",
     "name": "String + Piano Chamber Music",
     "icon": "👥",
-    "description": "String and piano ensemble (2-6 players)",
+    "description": "String and piano chamber music ensemble (2-6 players)",
     "available": true,
     "sections": [
       { "value": "section-1", "label": "Section I - Age 8 and under (6 min)" },
@@ -139,7 +139,8 @@
       "At least ONE Score needs to be given to the judges",
       "All members of the group can use an original copy or sheet music from the public domain",
       "Taking pictures or video recording is NOT allowed inside the competition room",
-      "Section is determined by the age of the OLDEST MEMBER as of April 30"
+      "Section is determined by the age of the OLDEST MEMBER as of April 30",
+      "Judges decision is FINAL"
     ],
     "feeType": "chamber",
     "memorization": false
