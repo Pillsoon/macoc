@@ -68,6 +68,19 @@ async function fetchSheet(sheetName: string): Promise<Record<string, string>[]> 
   }
 }
 
+// Icons managed in code (images/emojis not suited for Google Sheets)
+const DIVISION_ICONS: Record<string, string> = {
+  'piano': '🎹',
+  'vocal-classical': '/images/divisions/vocal-classical.jpeg',
+  'vocal-musical-theater': '🎭',
+  'strings-piano-chamber': '🎻🎹',
+  'strings': '🎻',
+  'guitar-chamber-music': '🎸',
+  'classical-guitar': '🎸',
+  'woodwinds': '/images/divisions/woodwinds.jpeg',
+  'woodwinds-ensemble': '🎵',
+}
+
 // Divisions + Sections는 별도 처리 (merge 필요)
 async function fetchDivisionsAndSections(contentDir: string) {
   console.log('📄 Processing Divisions + Sections...')
@@ -84,7 +97,7 @@ async function fetchDivisionsAndSections(contentDir: string) {
   const divisions = divisionRows.map(row => ({
     id: row.id || '',
     name: row.name || '',
-    icon: row.icon || '',
+    icon: DIVISION_ICONS[row.id || ''] || row.icon || '',
     description: row.description || '',
     available: row.available === 'TRUE' || row.available === 'true',
     sections: [] as { value: string; label: string }[],
