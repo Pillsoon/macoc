@@ -75,7 +75,7 @@ export default function RegisterPage() {
                             </div>
                           ) : (
                             <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                              <span className="text-3xl">{division.icon}</span>
+                              <span className={division.icon.length > 2 ? 'text-xl' : 'text-3xl'}>{division.icon}</span>
                             </div>
                           )}
                           <div className="flex-1">

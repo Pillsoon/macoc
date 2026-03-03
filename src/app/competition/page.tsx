@@ -106,7 +106,7 @@ export default function CompetitionPage() {
                   </div>
                 ) : (
                   <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl">{division.icon}</span>
+                    <span className={division.icon.length > 2 ? 'text-base' : 'text-2xl'}>{division.icon}</span>
                   </div>
                 )}
                 <div className="flex-1">

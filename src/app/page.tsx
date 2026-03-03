@@ -128,7 +128,7 @@ export default function Home() {
                             <Image src={d.icon} alt={d.name} width={40} height={40} className="w-full h-full object-cover" />
                           </div>
                         ) : (
-                          <span className="text-2xl">{d.icon}</span>
+                          <span className={d.icon.length > 2 ? 'text-sm' : 'text-2xl'}>{d.icon}</span>
                         )}
                         <div className="flex-1 min-w-0">
                           <h4 className="font-heading text-charcoal group-hover:text-navy truncate">{d.name}</h4>
