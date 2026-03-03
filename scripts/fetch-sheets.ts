@@ -71,7 +71,7 @@ async function fetchSheet(sheetName: string): Promise<Record<string, string>[]> 
 // Icons managed in code (images/emojis not suited for Google Sheets)
 const DIVISION_ICONS: Record<string, string> = {
   'piano': '🎹',
-  'vocal-classical': '/images/divisions/vocal-classical.jpeg',
+  // vocal-classical: uses icon from Google Sheets
   'vocal-musical-theater': '🎭',
   'strings-piano-chamber': '🎻🎹',
   'strings': '🎻',

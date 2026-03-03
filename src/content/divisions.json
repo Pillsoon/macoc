@@ -36,7 +36,7 @@
   {
     "id": "vocal-classical",
     "name": "Vocal: Classical",
-    "icon": "/images/divisions/vocal-classical.jpeg",
+    "icon": "🎤",
     "description": "Classical vocal solo performance",
     "available": true,
     "sections": [
