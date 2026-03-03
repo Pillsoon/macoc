@@ -105,7 +105,7 @@ export default function CompetitionPage() {
                     <Image src={division.icon} alt={division.name} width={48} height={48} className="w-full h-full object-contain" />
                   </div>
                 ) : (
-                  <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
                     <span className={division.icon.length > 2 ? 'text-base' : 'text-2xl'}>{division.icon}</span>
                   </div>
                 )}

@@ -74,7 +74,7 @@ export default function RegisterPage() {
                               <Image src={division.icon} alt={division.name} width={56} height={56} className="w-full h-full object-contain" />
                             </div>
                           ) : (
-                            <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
                               <span className={division.icon.length > 2 ? 'text-xl' : 'text-3xl'}>{division.icon}</span>
                             </div>
                           )}
