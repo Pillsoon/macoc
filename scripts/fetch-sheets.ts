@@ -78,7 +78,7 @@ const DIVISION_ICONS: Record<string, string> = {
   'guitar-chamber-music': '🎸',
   'classical-guitar': '🎸',
   'woodwinds': '/images/divisions/woodwinds.jpeg',
-  'woodwinds-ensemble': '🎵',
+  'woodwinds-ensemble': '/images/divisions/woodwinds.jpeg',
 }
 
 // Divisions + Sections는 별도 처리 (merge 필요)

@@ -277,7 +277,7 @@
   {
     "id": "woodwinds-ensemble",
     "name": "Woodwinds Ensemble",
-    "icon": "🎵",
+    "icon": "/images/divisions/woodwinds.jpeg",
     "description": "Woodwind ensemble (2-5 players)",
     "available": true,
     "sections": [

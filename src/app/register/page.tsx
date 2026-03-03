@@ -71,7 +71,7 @@ export default function RegisterPage() {
                         <Link href={`/register/${division.id}`} className="flex items-center gap-4">
                           {division.icon.startsWith('/') ? (
                             <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
-                              <Image src={division.icon} alt={division.name} width={56} height={56} className="w-full h-full object-cover" />
+                              <Image src={division.icon} alt={division.name} width={56} height={56} className="w-full h-full object-contain" />
                             </div>
                           ) : (
                             <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">

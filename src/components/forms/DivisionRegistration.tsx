@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import ChamberRegistrationForm from './ChamberRegistrationForm'
 import RegistrationForm from './RegistrationForm'
 import StringRegistrationForm from './StringRegistrationForm'
 import TeacherRegistrationForm from './TeacherRegistrationForm'
@@ -24,7 +25,8 @@ export default function DivisionRegistration({
   available,
 }: DivisionRegistrationProps) {
   const [role, setRole] = useState<Role>('select')
-  const isStrings = divisionName === 'String Solo' || divisionName === 'String + Piano Chamber Music'
+  const isStringSolo = divisionName === 'String Solo'
+  const isChamber = divisionName === 'String + Piano Chamber Music'
 
   if (role === 'select') {
     return (
@@ -112,7 +114,12 @@ export default function DivisionRegistration({
 
       {role === 'teacher' ? (
         <TeacherRegistrationForm defaultInstrument={divisionName} />
-      ) : isStrings ? (
+      ) : isChamber ? (
+        <ChamberRegistrationForm
+          division={divisionName}
+          sections={sections}
+        />
+      ) : isStringSolo ? (
         <StringRegistrationForm
           division={divisionName}
           sections={sections}
