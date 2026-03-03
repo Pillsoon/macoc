@@ -265,7 +265,9 @@
     ],
     "requirements": [
       "Memorization is required",
-      "Only one piece OR one movement of a multi-movement work is required",
+      "Only one piece OR one movement of a multi-movement work is required (ex: one movement of a standard concerto, sonata, or a concert-piece)",
+      "Repertoire must be chosen from the standard literature, and should demonstrate excellent musicianship and proper technique",
+      "No changes in repertoire are allowed following application submission",
       "No cutting or rearranging the music is permitted, except for the piano part",
       "Each entrant must provide his or her own pianist",
       "At least ONE Original score needs to be given to the judges",
@@ -282,7 +284,7 @@
     "available": true,
     "sections": [
       { "value": "section-1", "label": "Category I - Age 13 and under (5 min)" },
-      { "value": "section-2", "label": "Category II - Age 19 and under (5 min)" }
+      { "value": "section-2", "label": "Category II - Age 19 and under (7 min)" }
     ],
     "timePeriods": [
       { "value": "baroque", "label": "Baroque (1600-1750)" },
