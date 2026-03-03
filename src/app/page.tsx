@@ -124,7 +124,9 @@ export default function Home() {
                         className="flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-100 hover:border-gold transition-colors group"
                       >
                         {d.icon.startsWith('/') ? (
-                          <Image src={d.icon} alt={d.name} width={28} height={28} className="w-7 h-7 object-contain" />
+                          <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+                            <Image src={d.icon} alt={d.name} width={40} height={40} className="w-full h-full object-cover" />
+                          </div>
                         ) : (
                           <span className="text-2xl">{d.icon}</span>
                         )}

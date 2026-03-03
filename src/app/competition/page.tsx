@@ -100,13 +100,15 @@ export default function CompetitionPage() {
                 href={`/register/${division.id}`}
                 className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all"
               >
-                <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  {division.icon.startsWith('/') ? (
-                    <Image src={division.icon} alt={division.name} width={32} height={32} className="w-8 h-8 object-contain" />
-                  ) : (
+                {division.icon.startsWith('/') ? (
+                  <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+                    <Image src={division.icon} alt={division.name} width={48} height={48} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <span className="text-2xl">{division.icon}</span>
-                  )}
-                </div>
+                  </div>
+                )}
                 <div className="flex-1">
                   <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
                   <p className="text-text-muted text-sm">{division.description}</p>

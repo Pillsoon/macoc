@@ -69,13 +69,15 @@ export default function RegisterPage() {
                         className="bg-white rounded-xl p-6 shadow-sm border-2 border-transparent hover:border-gold cursor-pointer transition-all"
                       >
                         <Link href={`/register/${division.id}`} className="flex items-center gap-4">
-                          <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            {division.icon.startsWith('/') ? (
-                              <Image src={division.icon} alt={division.name} width={40} height={40} className="w-10 h-10 object-contain" />
-                            ) : (
+                          {division.icon.startsWith('/') ? (
+                            <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+                              <Image src={division.icon} alt={division.name} width={56} height={56} className="w-full h-full object-cover" />
+                            </div>
+                          ) : (
+                            <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
                               <span className="text-3xl">{division.icon}</span>
-                            )}
-                          </div>
+                            </div>
+                          )}
                           <div className="flex-1">
                             <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
                             <p className="text-sm text-text-muted">{division.description}</p>
