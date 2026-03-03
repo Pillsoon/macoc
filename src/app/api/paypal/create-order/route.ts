@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const PAYPAL_API = 'https://api-m.paypal.com'
+const PAYPAL_API = process.env.PAYPAL_MODE === 'sandbox'
+  ? 'https://api-m.sandbox.paypal.com'
+  : 'https://api-m.paypal.com'
 
 async function getAccessToken() {
   const auth = Buffer.from(
