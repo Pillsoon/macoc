@@ -81,6 +81,35 @@ const DIVISION_ICONS: Record<string, string> = {
   'woodwinds-ensemble': '/images/divisions/woodwinds.jpeg',
 }
 
+// Woodwinds requirements managed in code (chair-provided, not in Google Sheets)
+const WOODWINDS_REQUIREMENTS: Record<string, string[]> = {
+  'woodwinds': [
+    'Memorization is required',
+    'Only one piece OR one movement of a multi-movement work is required (ex: one movement of a standard concerto, sonata, or a concert-piece)',
+    'Repertoire must be chosen from the standard literature, and should demonstrate excellent musicianship and proper technique',
+    'No changes in repertoire are allowed following application submission',
+    'No cutting or rearranging the music is permitted, except for the piano part',
+    'Each entrant must provide his or her own pianist',
+    'At least ONE Original score needs to be given to the judges',
+    'Accompanists must have original music',
+  ],
+}
+
+// Woodwinds sections managed in code (chair-provided)
+const WOODWINDS_SECTIONS: Record<string, { value: string; label: string }[]> = {
+  'woodwinds': [
+    { value: 'section-1', label: 'Section I - Age 11 and under (5 min)' },
+    { value: 'section-2', label: 'Section II - Age 12-13 (5 min)' },
+    { value: 'section-3', label: 'Section III - Age 14-15 (6 min)' },
+    { value: 'section-4', label: 'Section IV - Age 16-18 (6 min)' },
+    { value: 'section-5', label: 'Section V - Age 19-21 (8 min)' },
+  ],
+  'woodwinds-ensemble': [
+    { value: 'section-1', label: 'Category I - Age 13 and under (5 min)' },
+    { value: 'section-2', label: 'Category II - Age 19 and under (7 min)' },
+  ],
+}
+
 // Divisions + Sections는 별도 처리 (merge 필요)
 async function fetchDivisionsAndSections(contentDir: string) {
   console.log('📄 Processing Divisions + Sections...')
@@ -123,8 +152,15 @@ async function fetchDivisionsAndSections(contentDir: string) {
   })
 
   divisions.forEach(div => {
-    if (sectionsByDivision[div.id]) {
+    // Use code-managed sections if available, otherwise use Google Sheets data
+    if (WOODWINDS_SECTIONS[div.id]) {
+      div.sections = WOODWINDS_SECTIONS[div.id]
+    } else if (sectionsByDivision[div.id]) {
       div.sections = sectionsByDivision[div.id]
+    }
+    // Use code-managed requirements if available
+    if (WOODWINDS_REQUIREMENTS[div.id]) {
+      div.requirements = WOODWINDS_REQUIREMENTS[div.id]
     }
   })
 
