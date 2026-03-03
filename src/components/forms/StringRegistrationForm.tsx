@@ -364,7 +364,7 @@ export default function StringRegistrationForm({
             {/* Cross-division */}
             <fieldset className="space-y-3 p-4 bg-cream/50 rounded-lg">
               <legend className="text-sm font-semibold text-navy">
-                Will you compete in a different division other than Strings? <span className="text-red-500">*</span>
+                Will you compete in a different division other than String? <span className="text-red-500">*</span>
               </legend>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 cursor-pointer text-sm">

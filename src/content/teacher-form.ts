@@ -5,8 +5,8 @@ export const INSTRUMENTS = [
   'Piano',
   'Vocal: Classical',
   'Vocal: Musical Theater',
-  'Strings + Piano Chamber',
-  'Strings',
+  'String + Piano Chamber Music',
+  'String Solo',
   'Guitar Chamber Music',
   'Classical Guitar',
   'Woodwinds',
@@ -15,8 +15,8 @@ export const INSTRUMENTS = [
 
 // Instruments that trigger the String Teacher Instrument field
 export const STRING_INSTRUMENT_TRIGGERS = [
-  'Strings',
-  'Strings + Piano Chamber',
+  'String Solo',
+  'String + Piano Chamber Music',
 ] as const
 
 export const STRING_INSTRUMENTS = [
@@ -35,7 +35,7 @@ export const HELP_PREFERENCES = [
 ] as const
 
 export const SUB_DIVISIONS = [
-  'Strings',
+  'String',
   'Vocal',
   'Woodwinds',
   'Guitar',
