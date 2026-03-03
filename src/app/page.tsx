@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { config } from '@/lib/config'
 import { getAllDivisionSummaries } from '@/content/divisions'
 
 const divisionCategories = [
   { label: 'Keyboard', ids: ['piano'] },
   { label: 'Vocal', ids: ['vocal-classical', 'vocal-musical-theater'] },
-  { label: 'Strings', ids: ['strings', 'strings-piano-chamber'] },
+  { label: 'String', ids: ['strings', 'strings-piano-chamber'] },
   { label: 'Guitar', ids: ['classical-guitar', 'guitar-chamber-music'] },
   { label: 'Woodwinds', ids: ['woodwinds', 'woodwinds-ensemble'] },
 ]
@@ -122,7 +123,11 @@ export default function Home() {
                         href={`/register/${d.id}`}
                         className="flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-100 hover:border-gold transition-colors group"
                       >
-                        <span className="text-2xl">{d.icon}</span>
+                        {d.icon.startsWith('/') ? (
+                          <Image src={d.icon} alt={d.name} width={28} height={28} className="w-7 h-7 object-contain" />
+                        ) : (
+                          <span className="text-2xl">{d.icon}</span>
+                        )}
                         <div className="flex-1 min-w-0">
                           <h4 className="font-heading text-charcoal group-hover:text-navy truncate">{d.name}</h4>
                           <p className="text-xs text-text-muted">{d.sectionCount}</p>

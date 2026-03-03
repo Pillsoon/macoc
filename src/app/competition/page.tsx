@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { config } from '@/lib/config'
 import { getAllDivisionSummaries } from '@/content/divisions'
 
@@ -94,12 +95,17 @@ export default function CompetitionPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {divisions.map((division) => (
-              <div
+              <Link
                 key={division.id}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all cursor-pointer"
+                href={`/register/${division.id}`}
+                className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all"
               >
                 <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">{division.icon}</span>
+                  {division.icon.startsWith('/') ? (
+                    <Image src={division.icon} alt={division.name} width={32} height={32} className="w-8 h-8 object-contain" />
+                  ) : (
+                    <span className="text-2xl">{division.icon}</span>
+                  )}
                 </div>
                 <div className="flex-1">
                   <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
@@ -108,7 +114,7 @@ export default function CompetitionPage() {
                 <span className="text-xs text-navy font-medium bg-navy/5 px-2 py-1 rounded">
                   {division.sectionCount}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { config } from '@/lib/config'
 import { getAllDivisionSummaries } from '@/content/divisions'
 
 const categories: { label: string; ids: string[] }[] = [
   { label: 'Keyboard', ids: ['piano'] },
   { label: 'Vocal', ids: ['vocal-classical', 'vocal-musical-theater'] },
-  { label: 'Strings', ids: ['strings', 'strings-piano-chamber'] },
+  { label: 'String', ids: ['strings', 'strings-piano-chamber'] },
   { label: 'Guitar', ids: ['classical-guitar', 'guitar-chamber-music'] },
   { label: 'Woodwinds', ids: ['woodwinds', 'woodwinds-ensemble'] },
 ]
@@ -69,7 +70,11 @@ export default function RegisterPage() {
                       >
                         <Link href={`/register/${division.id}`} className="flex items-center gap-4">
                           <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <span className="text-3xl">{division.icon}</span>
+                            {division.icon.startsWith('/') ? (
+                              <Image src={division.icon} alt={division.name} width={40} height={40} className="w-10 h-10 object-contain" />
+                            ) : (
+                              <span className="text-3xl">{division.icon}</span>
+                            )}
                           </div>
                           <div className="flex-1">
                             <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>

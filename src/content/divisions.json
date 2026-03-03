@@ -36,7 +36,7 @@
   {
     "id": "vocal-classical",
     "name": "Vocal: Classical",
-    "icon": "🎤",
+    "icon": "/images/divisions/vocal-classical.jpeg",
     "description": "Classical vocal solo performance",
     "available": true,
     "sections": [
@@ -112,7 +112,7 @@
   {
     "id": "strings-piano-chamber",
     "name": "String + Piano Chamber Music",
-    "icon": "👥",
+    "icon": "🎻🎹",
     "description": "String and piano chamber music ensemble (2-6 players)",
     "available": true,
     "sections": [
@@ -247,7 +247,7 @@
   {
     "id": "woodwinds",
     "name": "Woodwinds",
-    "icon": "🎵",
+    "icon": "/images/divisions/woodwinds.jpeg",
     "description": "Woodwind instrument solo performance",
     "available": true,
     "sections": [
