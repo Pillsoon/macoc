@@ -64,7 +64,11 @@ export default function RegulationPage() {
                 href={`/competition/regulation/${d.id}`}
                 className="flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-gray-100 hover:border-gold transition-colors group"
               >
-                <span className="text-2xl">{d.icon}</span>
+                {d.icon.startsWith('/') ? (
+                  <img src={d.icon} alt={d.name} className="w-8 h-8 object-contain" />
+                ) : (
+                  <span className="text-2xl">{d.icon}</span>
+                )}
                 <div className="flex-1 min-w-0">
                   <h4 className="font-heading text-charcoal group-hover:text-navy truncate">{d.name}</h4>
                   <p className="text-xs text-text-muted">{d.sections.length} sections</p>

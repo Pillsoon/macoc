@@ -99,7 +99,7 @@ export default function WinnersPage() {
                       : 'bg-gray-100 text-text-secondary hover:bg-gold/10 border border-gray-200'
                   }`}
                 >
-                  {d.icon} {d.name}
+                  {d.icon.startsWith('/') ? <img src={d.icon} alt={d.name} className="w-5 h-5 inline object-contain" /> : d.icon} {d.name}
                 </button>
               ))}
             </div>
@@ -181,7 +181,11 @@ function DivisionSection({ division }: { division: Division }) {
     <div>
       <div className="flex items-center gap-3 mb-6 pb-3 border-b-2 border-gold/30">
         <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center">
-          <span className="text-2xl">{division.icon}</span>
+          {division.icon.startsWith('/') ? (
+            <img src={division.icon} alt={division.name} className="w-8 h-8 object-contain" />
+          ) : (
+            <span className="text-2xl">{division.icon}</span>
+          )}
         </div>
         <h2 className="text-2xl font-heading text-charcoal">{division.name}</h2>
       </div>
