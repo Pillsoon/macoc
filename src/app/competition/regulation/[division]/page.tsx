@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getDivisionById, getAllDivisions } from '@/content/divisions'
 import { config } from '@/lib/config'
@@ -31,7 +32,15 @@ export default function DivisionRegulationPage({
             >
               &larr; All Regulations
             </Link>
-            <div className="text-5xl mb-4">{division.icon}</div>
+            <div className="text-5xl mb-4">
+              {division.icon.startsWith('/') ? (
+                <div className="w-16 h-16 mx-auto rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
+                  <Image src={division.icon} alt={division.name} width={64} height={64} className="w-full h-full object-contain" />
+                </div>
+              ) : (
+                division.icon
+              )}
+            </div>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
               {division.name}
             </h1>
