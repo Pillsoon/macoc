@@ -34,7 +34,7 @@ export default function DivisionRegulationPage({
             </Link>
             <div className="text-5xl mb-4">
               {division.icon.startsWith('/') ? (
-                <div className="w-16 h-16 mx-auto rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
+                <div className="w-16 h-16 mx-auto rounded-full bg-white flex items-center justify-center overflow-hidden">
                   <Image src={division.icon} alt={division.name} width={64} height={64} className="w-full h-full object-contain" />
                 </div>
               ) : (
