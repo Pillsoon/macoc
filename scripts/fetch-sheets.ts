@@ -237,10 +237,12 @@ const sheets: SheetConfig[] = [
         }
       })
       // divisionContacts: 객체 → 배열 변환
+      // Fix "Strings" → "String" (singular, per chair request Rev.2026)
+      const DIVISION_NAME_FIXES: Record<string, string> = { 'Strings': 'String' }
       if (config.divisionContacts && typeof config.divisionContacts === 'object' && !Array.isArray(config.divisionContacts)) {
         const contacts = config.divisionContacts as Record<string, Record<string, string>>
         config.divisionContacts = Object.entries(contacts).map(([division, data]) => ({
-          division,
+          division: DIVISION_NAME_FIXES[division] || division,
           ...data
         }))
       }
