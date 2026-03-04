@@ -81,6 +81,38 @@ const DIVISION_ICONS: Record<string, string> = {
   'woodwinds-ensemble': '/images/divisions/woodwinds.jpeg',
 }
 
+// String requirements managed in code (chair-provided Rev.2026, not in Google Sheets)
+const STRING_REQUIREMENTS: Record<string, string[]> = {
+  'strings': [
+    'Memorization is REQUIRED',
+    'A piece requires a piano accompaniment and each entrant must provide his or her own accompanist EXCEPT FOR the VIOLA division',
+    'Only VIOLA division allows a piece written for unaccompanied solo to be performed without accompaniment (ex. Vieuxtemps Capriccioso or solo Bach work)',
+    'Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique',
+    'Only ONE movement or ONE piece is required',
+    'Cut is allowed however it needs to be clearly marked in the original score for the judges',
+    'It is okay to finish the performance before the time limit',
+    'No change in the repertoire is allowed following submission of the application',
+    'At least ONE ORIGINAL Score needs to be given to the judges',
+    'Accompanists are allowed to use a photocopy of the original score or the music from the public domain. Failure to do so will result in disqualification',
+    'Taking pictures or video recording is NOT allowed inside the competition room',
+    'Judges decision is FINAL',
+  ],
+  'strings-piano-chamber': [
+    'More than 2 and up to 6 members in a group',
+    'String only: String Duo, String Trio, String Quartet, String Quintet or Sextet',
+    'String + Piano: Piano Trio, Piano Quartet, Piano Quintet or Sextet',
+    'Memorization is NOT required',
+    'Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique',
+    'It is okay to finish the performance before the time limit',
+    'No change in the repertoire is allowed following submission of the application',
+    'At least ONE Score needs to be given to the judges',
+    'All members of the group can use an original copy or sheet music from the public domain',
+    'Taking pictures or video recording is NOT allowed inside the competition room',
+    'Section is determined by the age of the OLDEST MEMBER as of April 30',
+    'Judges decision is FINAL',
+  ],
+}
+
 // Woodwinds requirements managed in code (chair-provided, not in Google Sheets)
 const WOODWINDS_REQUIREMENTS: Record<string, string[]> = {
   'woodwinds': [
@@ -166,7 +198,9 @@ async function fetchDivisionsAndSections(contentDir: string) {
       div.sections = sectionsByDivision[div.id]
     }
     // Use code-managed requirements if available
-    if (WOODWINDS_REQUIREMENTS[div.id]) {
+    if (STRING_REQUIREMENTS[div.id]) {
+      div.requirements = STRING_REQUIREMENTS[div.id]
+    } else if (WOODWINDS_REQUIREMENTS[div.id]) {
       div.requirements = WOODWINDS_REQUIREMENTS[div.id]
     }
   })
