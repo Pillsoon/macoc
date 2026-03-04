@@ -93,6 +93,13 @@ const WOODWINDS_REQUIREMENTS: Record<string, string[]> = {
     'At least ONE Original score needs to be given to the judges',
     'Accompanists must have original music',
   ],
+  'woodwinds-ensemble': [
+    'Ensembles of 2 to 5 performers on any combination of instruments',
+    'Memorization is NOT required',
+    'A score must be provided for the judges',
+    'Repertoire must be chosen from the standard literature and should demonstrate excellent musicianship and proper technique',
+    'Section is determined by the age of the OLDEST MEMBER as of April 30',
+  ],
 }
 
 // Woodwinds sections managed in code (chair-provided)
