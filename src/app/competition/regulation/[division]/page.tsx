@@ -61,7 +61,7 @@ export default function DivisionRegulationPage({
               <span className="font-semibold text-navy">Fee:</span>
               <span className="text-text-secondary">
                 ${division.feeType === 'chamber' ? config.fees.chamber.amount : config.fees.solo.amount}
-                /{division.feeType === 'chamber' ? (isString ? 'member' : 'group') : 'entry'}
+                {isString ? '/per person' : `/${division.feeType === 'chamber' ? 'group' : 'entry'}`}
               </span>
             </div>
             <div className="flex items-center gap-2">

@@ -117,11 +117,9 @@ export default function DivisionRegistrationPage({
           <h1 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mt-4">
             {division.name} Registration
           </h1>
-          {!isString && (
-            <p className="text-text-muted mt-2">
-              {config.currentYear} Musical Arts Competition of Orange County
-            </p>
-          )}
+          <p className="text-text-muted mt-2">
+            {!isString && `${config.currentYear} `}Musical Arts Competition of Orange County
+          </p>
         </div>
 
         {/* Vocal Repertoire Requirements */}

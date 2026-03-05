@@ -25,7 +25,7 @@ const INSTRUMENTATIONS = [
 
 const MAX_MEMBERS = 6
 
-function getRequiredMemberCount(instrumentation: string): number {
+export function getRequiredMemberCount(instrumentation: string): number {
   const lower = instrumentation.toLowerCase()
   if (lower.includes('sextet')) return 6
   if (lower.includes('quintet')) return 5

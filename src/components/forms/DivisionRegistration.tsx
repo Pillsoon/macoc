@@ -86,9 +86,11 @@ export default function DivisionRegistration({
               </p>
               {available && (
                 <p className="text-xs font-medium text-gold-dark mt-2">
-                  {feeType === 'solo'
-                    ? `$${config.fees.solo.amount}/entry`
-                    : `$${config.fees.chamber.amount}/entry`}
+                  {isStringSolo || isChamber
+                    ? `$${feeType === 'solo' ? config.fees.solo.amount : config.fees.chamber.amount}/per person`
+                    : feeType === 'solo'
+                      ? `$${config.fees.solo.amount}/entry`
+                      : `$${config.fees.chamber.amount}/entry`}
                 </p>
               )}
             </button>
