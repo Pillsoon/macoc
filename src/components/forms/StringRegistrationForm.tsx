@@ -173,11 +173,11 @@ export default function StringRegistrationForm({
         {/* Step 1: Student Info & Piece */}
         {step === 1 && (
           <div className="space-y-6">
-            <h2 className="text-xl font-heading font-semibold text-charcoal mb-6">Student & Competition Information</h2>
+            <h2 className="text-xl font-heading font-semibold text-charcoal mb-6">Applicant & Competition Information</h2>
 
-            {/* Student Name */}
+            {/* Applicant Name */}
             <fieldset className="space-y-4">
-              <legend className="text-sm font-semibold text-navy uppercase tracking-wider">Student Name</legend>
+              <legend className="text-sm font-semibold text-navy uppercase tracking-wider">Applicant Name</legend>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-charcoal mb-1">First Name <span className="text-red-500">*</span></label>
@@ -255,7 +255,7 @@ export default function StringRegistrationForm({
                   className={`w-full px-4 py-2 border ${validationBorder('pieceTitle')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required />
               </div>
               <div>
-                <label className="block text-sm font-medium text-charcoal mb-1">Duration <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-medium text-charcoal mb-1">Duration (min) <span className="text-red-500">*</span></label>
                 <input type="text" placeholder="e.g. 5 min" value={formData.duration} onChange={(e) => updateField('duration', e.target.value)}
                   className={`w-full px-4 py-2 border ${validationBorder('duration')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required />
               </div>
@@ -381,9 +381,9 @@ export default function StringRegistrationForm({
               {formData.crossDivision === 'Yes' && (
                 <div className="pt-2">
                   <label className="block text-sm font-medium text-charcoal mb-1">
-                    Which division, instrument & section?
+                    Which division? : Instrument & Section
                   </label>
-                  <input type="text" placeholder="e.g. Piano, Division V" value={formData.crossDivisionDetails}
+                  <input type="text" placeholder="e.g. Piano V" value={formData.crossDivisionDetails}
                     onChange={(e) => updateField('crossDivisionDetails', e.target.value)}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent" />
                 </div>
@@ -412,7 +412,7 @@ export default function StringRegistrationForm({
 
             <div className="space-y-4">
               <div className="p-4 bg-cream/50 rounded-lg">
-                <h3 className="font-semibold text-navy mb-2">Student</h3>
+                <h3 className="font-semibold text-navy mb-2">Applicant</h3>
                 <p className="text-sm text-text-secondary">
                   {formData.studentFirstName} {formData.studentMiddleName} {formData.studentLastName}<br />
                   {formData.instrument} | Age: {formData.studentAge} | DOB: {formData.dateOfBirth}
@@ -423,7 +423,7 @@ export default function StringRegistrationForm({
                 <h3 className="font-semibold text-navy mb-2">Competition</h3>
                 <p className="text-sm text-text-secondary">
                   {division} - {formData.section}<br />
-                  {formData.composer} — {formData.pieceTitle} ({formData.duration})
+                  {formData.composer} — {formData.pieceTitle} ({formData.duration}{!formData.duration.includes('min') ? ' min' : ''})
                 </p>
               </div>
 

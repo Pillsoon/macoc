@@ -14,6 +14,7 @@ interface ChamberRegistrationData {
   instrumentation: string
   composer: string
   pieceTitle: string
+  noKeyMovement: string
   duration: string
   members: MemberData[]
   coachName: string
@@ -30,7 +31,7 @@ export async function POST(request: NextRequest) {
     const data: ChamberRegistrationData = await request.json()
 
     const requiredFields = [
-      'section', 'instrumentation', 'composer', 'pieceTitle', 'duration',
+      'section', 'instrumentation', 'composer', 'pieceTitle', 'noKeyMovement', 'duration',
       'coachName', 'coachPhone', 'coachEmail',
       'contactName', 'contactPhone', 'contactEmail',
     ]
@@ -94,6 +95,7 @@ export async function POST(request: NextRequest) {
           'Instrumentation',
           'Composer',
           'Piece Title',
+          'No Key Movement',
           'Duration',
           ...memberHeaders,
           'Coach Name',
@@ -113,6 +115,7 @@ export async function POST(request: NextRequest) {
       'Instrumentation': data.instrumentation,
       'Composer': data.composer,
       'Piece Title': data.pieceTitle,
+      'No Key Movement': data.noKeyMovement,
       'Duration': data.duration,
       'Coach Name': data.coachName,
       'Coach Phone': data.coachPhone,

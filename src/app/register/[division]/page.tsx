@@ -101,6 +101,7 @@ export default function DivisionRegistrationPage({
   }
 
   const isVocal = divisionId.startsWith('vocal-')
+  const isString = divisionId.startsWith('strings')
 
   return (
     <div className="min-h-screen bg-cream py-12">
@@ -116,9 +117,11 @@ export default function DivisionRegistrationPage({
           <h1 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mt-4">
             {division.name} Registration
           </h1>
-          <p className="text-text-muted mt-2">
-            {config.currentYear} Musical Arts Competition of Orange County
-          </p>
+          {!isString && (
+            <p className="text-text-muted mt-2">
+              {config.currentYear} Musical Arts Competition of Orange County
+            </p>
+          )}
         </div>
 
         {/* Vocal Repertoire Requirements */}
@@ -128,7 +131,7 @@ export default function DivisionRegistrationPage({
         {/* Requirements (shown for all roles) */}
         {!isVocal && division.requirements.length > 0 && (
           <div className="bg-white rounded-xl p-6 mb-8 shadow-sm">
-            <h2 className="font-semibold text-navy mb-3">{division.name} Requirements</h2>
+            <h2 className="font-semibold text-navy mb-3">{division.name} {isString ? 'Rules' : 'Requirements'}</h2>
             <ul className="text-sm text-text-secondary space-y-2">
               {division.requirements.map((req, idx) => (
                 <li key={idx} className="flex items-start gap-2">

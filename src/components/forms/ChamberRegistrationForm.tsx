@@ -23,8 +23,17 @@ const INSTRUMENTATIONS = [
   'Piano sextet',
 ] as const
 
-const MIN_MEMBERS = 2
 const MAX_MEMBERS = 6
+
+function getRequiredMemberCount(instrumentation: string): number {
+  const lower = instrumentation.toLowerCase()
+  if (lower.includes('sextet')) return 6
+  if (lower.includes('quintet')) return 5
+  if (lower.includes('quartet')) return 4
+  if (lower.includes('trio') || lower === 'piano + string duo') return 3
+  if (lower.includes('duo')) return 2
+  return 0
+}
 
 interface MemberData {
   name: string
@@ -45,6 +54,7 @@ const initialFormData = {
   instrumentation: '',
   composer: '',
   pieceTitle: '',
+  noKeyMovement: '',
   duration: '',
   coachName: '',
   coachPhone: '',
@@ -72,8 +82,26 @@ export default function ChamberRegistrationForm({
   const [paymentComplete, setPaymentComplete] = useState(false)
   const [showValidation, setShowValidation] = useState(false)
 
+  const requiredMemberCount = getRequiredMemberCount(formData.instrumentation)
+  const totalFee = entryFee * (requiredMemberCount || 1)
+
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleInstrumentationChange = (value: string) => {
+    const prevCount = getRequiredMemberCount(formData.instrumentation)
+    const newCount = getRequiredMemberCount(value)
+    updateField('instrumentation', value)
+    if (newCount < prevCount) {
+      setMembers(prev => {
+        const next = [...prev]
+        for (let i = newCount; i < MAX_MEMBERS; i++) {
+          next[i] = emptyMember()
+        }
+        return next
+      })
+    }
   }
 
   const updateMember = (index: number, field: keyof MemberData, value: string) => {
@@ -96,19 +124,17 @@ export default function ChamberRegistrationForm({
       : 'border-gray-300'
 
   // Step 1 validation
-  const step1Fields = ['section', 'instrumentation', 'composer', 'pieceTitle', 'duration'] as const
+  const step1Fields = ['section', 'instrumentation', 'composer', 'pieceTitle', 'noKeyMovement', 'duration'] as const
   const canAdvanceStep1 = () => step1Fields.every(f => formData[f].trim() !== '')
 
-  // Step 2 validation: at least MIN_MEMBERS with all fields (including birth doc) filled
+  // Step 2 validation: all shown members must be complete
   const isMemberComplete = (m: MemberData) =>
     m.name.trim() && m.instrument.trim() && m.age.trim() && m.proofOfAgeUrl.trim()
-  const isMemberEmpty = (m: MemberData) =>
-    !m.name.trim() && !m.instrument.trim() && !m.age.trim() && !m.proofOfAgeUrl.trim()
-  const filledMembers = members.filter(isMemberComplete)
+  const visibleMembers = members.slice(0, requiredMemberCount || 0)
+  const filledMembers = visibleMembers.filter(isMemberComplete)
   const canAdvanceStep2 = () => {
-    if (filledMembers.length < MIN_MEMBERS) return false
-    // Ensure all partially filled members are fully complete
-    return members.every(m => isMemberEmpty(m) || isMemberComplete(m))
+    if (!requiredMemberCount) return false
+    return visibleMembers.every(isMemberComplete)
   }
 
   // Step 3 validation
@@ -121,16 +147,14 @@ export default function ChamberRegistrationForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!canAdvanceStep3()) { setShowValidation(true); return }
-    // Re-validate members: no partially filled members allowed
-    const hasPartialMembers = members.some(m => !isMemberEmpty(m) && !isMemberComplete(m))
-    if (hasPartialMembers || filledMembers.length < MIN_MEMBERS) {
+    if (!canAdvanceStep2()) {
       setStep(2)
       setShowValidation(true)
       return
     }
     setIsSubmitting(true)
     try {
-      const activeMembers = members.filter(isMemberComplete)
+      const activeMembers = visibleMembers.filter(isMemberComplete)
       const response = await fetch('/api/chamber-registration', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -176,12 +200,13 @@ export default function ChamberRegistrationForm({
           </div>
           <h2 className="text-2xl font-heading font-bold text-charcoal mb-4">Registration Submitted!</h2>
           <p className="text-text-muted mb-2">Please complete your payment below to finalize your entry.</p>
-          <p className="text-2xl font-heading font-bold text-gold-dark">${entryFee}.00</p>
+          <p className="text-2xl font-heading font-bold text-gold-dark">${totalFee}.00</p>
+          <p className="text-sm text-text-muted">${entryFee} &times; {requiredMemberCount} members</p>
         </div>
         <PayPalButton
           registrationId={submitResult.registrationId!}
           sheetName={submitResult.sheetName || division}
-          amount={entryFee}
+          amount={totalFee}
           description={`MACOC ${division} Entry`}
           onSuccess={() => setPaymentComplete(true)}
         />
@@ -208,7 +233,7 @@ export default function ChamberRegistrationForm({
       <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
         {/* Top Statement */}
         <div className="p-4 bg-gold/10 border border-gold/30 rounded-lg mb-6 text-sm text-charcoal">
-          Each group must submit one registration form listing all members, along with one payment per group.
+          Each group must submit <strong>one registration per group</strong> listing all members, along with <strong>one payment per group</strong>.
           All required birth documents must be current and submitted at the time of registration.
         </div>
 
@@ -219,7 +244,10 @@ export default function ChamberRegistrationForm({
 
             {/* Section */}
             <div>
-              <label className="block text-sm font-medium text-charcoal mb-1">Section <span className="text-red-500">*</span></label>
+              <label className="block text-sm font-medium text-charcoal mb-1">
+                Section <span className="text-red-500">*</span>
+              </label>
+              <p className="text-xs text-text-muted mb-1">(by the oldest member in a group as of April 30)</p>
               <select value={formData.section} onChange={(e) => updateField('section', e.target.value)}
                 className={`w-full px-4 py-2 border ${validationBorder('section')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required>
                 <option value="">Select your section</option>
@@ -232,7 +260,7 @@ export default function ChamberRegistrationForm({
             {/* Instrumentation */}
             <div>
               <label className="block text-sm font-medium text-charcoal mb-1">Instrumentation <span className="text-red-500">*</span></label>
-              <select value={formData.instrumentation} onChange={(e) => updateField('instrumentation', e.target.value)}
+              <select value={formData.instrumentation} onChange={(e) => handleInstrumentationChange(e.target.value)}
                 className={`w-full px-4 py-2 border ${validationBorder('instrumentation')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required>
                 <option value="">Select instrumentation</option>
                 {INSTRUMENTATIONS.map((inst) => (
@@ -255,7 +283,12 @@ export default function ChamberRegistrationForm({
                   className={`w-full px-4 py-2 border ${validationBorder('pieceTitle')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required />
               </div>
               <div>
-                <label className="block text-sm font-medium text-charcoal mb-1">Duration <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-medium text-charcoal mb-1">No, Key and Movement <span className="text-red-500">*</span></label>
+                <input type="text" placeholder="e.g. No 3 in F Major 1st Movement" value={formData.noKeyMovement} onChange={(e) => updateField('noKeyMovement', e.target.value)}
+                  className={`w-full px-4 py-2 border ${validationBorder('noKeyMovement')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-charcoal mb-1">Duration (min) <span className="text-red-500">*</span></label>
                 <input type="text" placeholder="e.g. 5 min" value={formData.duration} onChange={(e) => updateField('duration', e.target.value)}
                   className={`w-full px-4 py-2 border ${validationBorder('duration')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required />
               </div>
@@ -280,26 +313,25 @@ export default function ChamberRegistrationForm({
           <div className="space-y-6">
             <h2 className="text-xl font-heading font-semibold text-charcoal mb-2">Group Members</h2>
             <p className="text-sm text-text-muted mb-6">
-              Enter information for each group member (minimum {MIN_MEMBERS}, maximum {MAX_MEMBERS}).
+              Enter information for each group member ({requiredMemberCount} members for {formData.instrumentation}).
             </p>
 
-            {members.map((member, i) => (
+            {visibleMembers.map((member, i) => (
               <fieldset key={i} className="space-y-4 p-4 bg-cream/50 rounded-lg">
                 <legend className="text-sm font-semibold text-navy">
-                  Member {i + 1} {i < MIN_MEMBERS && <span className="text-red-500">*</span>}
-                  {i >= MIN_MEMBERS && <span className="text-text-muted font-normal"> (optional)</span>}
+                  Member {i + 1} <span className="text-red-500">*</span>
                 </legend>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-charcoal mb-1">
-                      Name {i < MIN_MEMBERS && <span className="text-red-500">*</span>}
+                      Name <span className="text-red-500">*</span>
                     </label>
                     <input type="text" value={member.name} onChange={(e) => updateMember(i, 'name', e.target.value)}
                       className={`w-full px-4 py-2 border ${memberValidationBorder(i, 'name')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-charcoal mb-1">
-                      Instrument {i < MIN_MEMBERS && <span className="text-red-500">*</span>}
+                      Instrument <span className="text-red-500">*</span>
                     </label>
                     <input type="text" value={member.instrument} onChange={(e) => updateMember(i, 'instrument', e.target.value)}
                       placeholder="e.g. Violin, Piano"
@@ -307,7 +339,7 @@ export default function ChamberRegistrationForm({
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-charcoal mb-1">
-                      Age <span className="text-text-muted font-normal">(as of April 30)</span> {i < MIN_MEMBERS && <span className="text-red-500">*</span>}
+                      Age <span className="text-text-muted font-normal">(as of April 30)</span> <span className="text-red-500">*</span>
                     </label>
                     <input type="number" min="4" max="25" value={member.age} onChange={(e) => updateMember(i, 'age', e.target.value)}
                       className={`w-full px-4 py-2 border ${memberValidationBorder(i, 'age')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} />
@@ -315,15 +347,19 @@ export default function ChamberRegistrationForm({
                 </div>
                 <FileUpload
                   label={`Birth Document (Member ${i + 1})`}
-                  required={i < MIN_MEMBERS}
+                  required
                   onUpload={(url) => updateMember(i, 'proofOfAgeUrl', url)}
                 />
               </fieldset>
             ))}
 
+            {!requiredMemberCount && (
+              <p className="text-sm text-text-muted">Please select an instrumentation in Step 1 first.</p>
+            )}
+
             {showValidation && !canAdvanceStep2() && (
               <p className="text-sm text-red-600">
-                Please fill in at least {MIN_MEMBERS} members with name, instrument, age, and birth document.
+                Please fill in all {requiredMemberCount} members with name, instrument, age, and birth document.
               </p>
             )}
 
@@ -396,14 +432,16 @@ export default function ChamberRegistrationForm({
                 <p className="text-sm text-text-secondary">
                   {division} &mdash; {formData.section}<br />
                   {formData.instrumentation}<br />
-                  {formData.composer} &mdash; {formData.pieceTitle} ({formData.duration})
+                  {formData.composer} &mdash; {formData.pieceTitle}<br />
+                  {formData.noKeyMovement}<br />
+                  Duration: {formData.duration}{!formData.duration.includes('min') ? ' min' : ''}
                 </p>
               </div>
 
               <div className="p-4 bg-cream/50 rounded-lg">
                 <h4 className="font-semibold text-navy mb-2">Group Members ({filledMembers.length})</h4>
                 <div className="space-y-1">
-                  {members.map((m, i) => {
+                  {visibleMembers.map((m, i) => {
                     if (!m.name.trim()) return null
                     return (
                       <p key={i} className="text-sm text-text-secondary">
@@ -430,8 +468,11 @@ export default function ChamberRegistrationForm({
 
               <div className="p-4 bg-gold/10 border border-gold/30 rounded-lg">
                 <h4 className="font-semibold text-navy mb-2">Entry Fee</h4>
-                <p className="text-2xl font-heading font-bold text-gold-dark">${entryFee}.00</p>
-                <p className="text-sm text-text-muted mt-1">Payment will be processed after submission via PayPal.</p>
+                <p className="text-2xl font-heading font-bold text-gold-dark">${totalFee}.00</p>
+                <p className="text-sm text-text-muted mt-1">
+                  ${entryFee} &times; {requiredMemberCount} members = ${totalFee}
+                </p>
+                <p className="text-sm text-text-muted">Payment will be processed after submission via PayPal.</p>
               </div>
             </div>
 

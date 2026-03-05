@@ -16,6 +16,7 @@ export default function DivisionRegulationPage({
   const division = getDivisionById(params.division)
   if (!division) return notFound()
 
+  const isString = params.division.startsWith('strings')
   const contact = config.divisionContacts?.find((c) =>
     division.name.toLowerCase().includes(c.division.toLowerCase())
   )
@@ -60,7 +61,7 @@ export default function DivisionRegulationPage({
               <span className="font-semibold text-navy">Fee:</span>
               <span className="text-text-secondary">
                 ${division.feeType === 'chamber' ? config.fees.chamber.amount : config.fees.solo.amount}
-                /{division.feeType === 'chamber' ? 'group' : 'entry'}
+                /{division.feeType === 'chamber' ? (isString ? 'member' : 'group') : 'entry'}
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -106,7 +107,7 @@ export default function DivisionRegulationPage({
       {division.requirements.length > 0 && (
         <section className="section bg-cream">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="section-title">Requirements</h2>
+            <h2 className="section-title">{isString ? 'Rules' : 'Requirements'}</h2>
             <p className="section-subtitle mx-auto mb-8">
               Rules and guidelines for this division
             </p>
