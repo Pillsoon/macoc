@@ -294,7 +294,7 @@
       "icon": "🎸",
       "sections": [
         {
-          "name": "Section 2 Solo",
+          "name": "Section 2",
           "winners": [
             { "place": "1st", "name": "Darius Lee" },
             { "place": "2nd", "name": "Kathan Law" },
@@ -303,7 +303,7 @@
           ]
         },
         {
-          "name": "Section 3 Solo",
+          "name": "Section 3",
           "winners": [
             { "place": "1st", "name": "Mani Afagh" },
             { "place": "2nd", "name": "Edge Woodruff" },
@@ -312,7 +312,7 @@
           ]
         },
         {
-          "name": "Section 4 Solo",
+          "name": "Section 4",
           "winners": [
             { "place": "1st", "name": "Calvin Junsay" },
             { "place": "2nd", "name": "Matteo Paz" },
@@ -321,13 +321,19 @@
           ]
         },
         {
-          "name": "Section 5 Solo",
+          "name": "Section 5",
           "winners": [
             { "place": "1st", "name": "Gabrielle Gillen" }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "name": "Guitar Chamber Music Division",
+      "icon": "🎸",
+      "sections": [
         {
-          "name": "Section 5 Chamber",
+          "name": "Section 5",
           "winners": [
             { "place": "1st", "name": "Gillen Quartet" }
           ]

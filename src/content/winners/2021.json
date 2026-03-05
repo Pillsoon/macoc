@@ -423,22 +423,28 @@
           ]
         },
         {
-          "name": "Section 4",
+          "name": "Section 5",
           "winners": [
             { "place": "1st", "name": "Natalie Leminh" },
             { "place": "2nd", "name": "Aretha Li" },
             { "place": "3rd", "name": "Vincent Tran" },
             { "place": "HM", "name": "Ethan Borsari, Liv Hirabayashi" }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "name": "Guitar Chamber Music Division",
+      "icon": "🎸",
+      "sections": [
         {
-          "name": "Chamber Section 2",
+          "name": "Section 2",
           "winners": [
-            { "place": "1st", "name": "Kaden Hoot & Ethan Hoot" }
+            { "place": "1st", "name": "Kaden & Ethan Hoot" }
           ]
         },
         {
-          "name": "Chamber Section 3",
+          "name": "Section 3",
           "winners": [
             { "place": "1st", "name": "Bianca Sanchez, Cianna Gonzalez, Brianna Gonzalez, Tatiana Bettis & Mishca Cayetano" }
           ]

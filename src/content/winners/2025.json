@@ -404,6 +404,57 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Classical Guitar Division",
+      "icon": "🎸",
+      "sections": [
+        {
+          "name": "Section 2",
+          "winners": [
+            { "place": "1st", "name": "Kathan Law" },
+            { "place": "2nd", "name": "Duke Pak" }
+          ]
+        },
+        {
+          "name": "Section 3",
+          "winners": [
+            { "place": "1st", "name": "Avery Kan" },
+            { "place": "2nd", "name": "Dallas Pak" },
+            { "place": "3rd", "name": "Ethan Hoot" },
+            { "place": "HM", "name": "Jason Yu, Grady Gillen" }
+          ]
+        },
+        {
+          "name": "Section 4",
+          "winners": [
+            { "place": "1st", "name": "Emily Tinoco" },
+            { "place": "2nd", "name": "Hea Lee" },
+            { "place": "3rd", "name": "Edge Woodruff" },
+            { "place": "HM", "name": "Veronica Howard, Grace Gillen" }
+          ]
+        },
+        {
+          "name": "Section 5",
+          "winners": [
+            { "place": "1st", "name": "Natalie Leminh" },
+            { "place": "2nd", "name": "Vincent Tran, Seamus Bryne, Yahel Carranza" },
+            { "place": "3rd", "name": "Jesus De La Fuente" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guitar Chamber Music Division",
+      "icon": "🎸",
+      "sections": [
+        {
+          "name": "Section 5",
+          "winners": [
+            { "place": "1st", "name": "Grady & Grace Gillen" }
+          ]
+        }
+      ]
     }
   ]
 }

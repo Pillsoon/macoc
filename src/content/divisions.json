@@ -208,7 +208,7 @@
     "requirements": [
       "2 to 8 members in the ensemble",
       "Memorization is NOT required",
-      "Each ensemble should present TWO contrasting pieces",
+      "Each ensemble should present ONE or more pieces within the time limit for each age section",
       "All members must use original (not photocopied) sheet music",
       "Section is determined by the age of the OLDEST MEMBER"
     ],
@@ -227,7 +227,7 @@
       { "value": "section-3", "label": "Section III - Age 9-10 (5 min)" },
       { "value": "section-4", "label": "Section IV - Age 11-12 (5 min)" },
       { "value": "section-5", "label": "Section V - Age 13-14 (8 min)" },
-      { "value": "section-6", "label": "Section VI - Age 15-16 (8 min)" },
+      { "value": "section-6", "label": "Section VI - Age 15-16 (10 min)" },
       { "value": "section-7", "label": "Section VII - Age 17-18 (10 min)" },
       { "value": "section-8", "label": "Section VIII - Age 19-22 (12 min)" }
     ],
@@ -240,7 +240,9 @@
     "requirements": [
       "Memorization is required for all divisions",
       "Each participant should present TWO contrasting pieces",
-      "No changes in repertoire are allowed following submission of the application"
+      "No changes in repertoire are allowed following submission of the application",
+      "Use of original score or music from the public domain only. Use of photocopied music score will lead to disqualification from the competition.",
+      "First Prize winners cannot compete in the same division the following year. However, they can choose to compete in the higher age division."
     ],
     "feeType": "solo",
     "memorization": true

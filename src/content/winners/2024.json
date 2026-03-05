@@ -339,6 +339,57 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Classical Guitar Division",
+      "icon": "🎸",
+      "sections": [
+        {
+          "name": "Section 2",
+          "winners": [
+            { "place": "1st", "name": "Avery Kan" },
+            { "place": "2nd", "name": "Dallas Pak" },
+            { "place": "3rd", "name": "Shotaro Kurakake" },
+            { "place": "HM", "name": "Duke Pak, Minu Choi" }
+          ]
+        },
+        {
+          "name": "Section 3",
+          "winners": [
+            { "place": "1st", "name": "Hea Lee" },
+            { "place": "2nd", "name": "Ethan Hood" },
+            { "place": "3rd", "name": "Dylan Watanabe" },
+            { "place": "HM", "name": "Darius Lee, Grady Gillen" }
+          ]
+        },
+        {
+          "name": "Section 4",
+          "winners": [
+            { "place": "1st", "name": "Arturo Solorzano" },
+            { "place": "2nd", "name": "Emily Tinoco" },
+            { "place": "3rd", "name": "Grace Gillen" },
+            { "place": "HM", "name": "Veronica Howard, Jacob Adarlo" }
+          ]
+        },
+        {
+          "name": "Section 5",
+          "winners": [
+            { "place": "1st", "name": "Trevor Martinez" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guitar Chamber Music Division",
+      "icon": "🎸",
+      "sections": [
+        {
+          "name": "Section 3",
+          "winners": [
+            { "place": "1st", "name": "Q Han, Liam Ruidera & Lucas May" }
+          ]
+        }
+      ]
     }
   ]
 }

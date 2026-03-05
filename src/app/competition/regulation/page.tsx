@@ -45,6 +45,9 @@ export default function RegulationPage() {
               </div>
             ))}
           </div>
+          <p className="text-sm text-text-muted text-center mt-6">
+            Cash awards are received only by students 15 years of age and older.
+          </p>
         </div>
       </section>
 

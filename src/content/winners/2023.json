@@ -314,6 +314,62 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Classical Guitar Division",
+      "icon": "🎸",
+      "sections": [
+        {
+          "name": "Section 2",
+          "winners": [
+            { "place": "1st", "name": "Kathan Law" },
+            { "place": "2nd", "name": "Dallas Pak" },
+            { "place": "3rd", "name": "Duke Pak" }
+          ]
+        },
+        {
+          "name": "Section 3",
+          "winners": [
+            { "place": "1st", "name": "Veronica Howard" },
+            { "place": "2nd", "name": "Jason Yu" },
+            { "place": "3rd", "name": "Dylan Watanabe" },
+            { "place": "HM", "name": "Darius Lee, Ethan Hoot, Cynthia Liu" }
+          ]
+        },
+        {
+          "name": "Section 4",
+          "winners": [
+            { "place": "1st", "name": "Nathan Park" },
+            { "place": "2nd", "name": "Mani Afagh" },
+            { "place": "3rd", "name": "Nathan Nguyen" },
+            { "place": "HM", "name": "Emily Tinoco" }
+          ]
+        },
+        {
+          "name": "Section 5",
+          "winners": [
+            { "place": "1st", "name": "Calvin Junsay" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guitar Chamber Music Division",
+      "icon": "🎸",
+      "sections": [
+        {
+          "name": "Section 2",
+          "winners": [
+            { "place": "1st", "name": "Duke & Dallas Pak" }
+          ]
+        },
+        {
+          "name": "Section 3",
+          "winners": [
+            { "place": "1st", "name": "Mani & Mozhan Afagh" }
+          ]
+        }
+      ]
     }
   ]
 }
