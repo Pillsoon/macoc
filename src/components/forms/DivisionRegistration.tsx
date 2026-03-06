@@ -77,11 +77,13 @@ export default function DivisionRegistration({
                 <span className="text-2xl">🎵</span>
               </div>
               <h3 className="font-heading text-lg text-charcoal mb-1">
-                Student Registration
+                {isStringSolo || isChamber ? 'Applicant Registration' : 'Student Registration'}
               </h3>
               <p className="text-sm text-text-muted">
                 {available
-                  ? 'Competition entry registration for students'
+                  ? isStringSolo || isChamber
+                    ? 'Competition entry registration for applicants'
+                    : 'Competition entry registration for students'
                   : 'Coming soon'}
               </p>
               {available && (
