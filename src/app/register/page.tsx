@@ -6,7 +6,7 @@ import { getAllDivisionSummaries } from '@/content/divisions'
 const categories: { label: string; ids: string[] }[] = [
   { label: 'Keyboard', ids: ['piano'] },
   { label: 'Vocal', ids: ['vocal-classical', 'vocal-musical-theater'] },
-  { label: 'String Solo & String & Piano Chamber Music', ids: ['strings', 'strings-piano-chamber'] },
+  { label: 'String', ids: ['strings', 'strings-piano-chamber'] },
   { label: 'Guitar', ids: ['classical-guitar', 'guitar-chamber-music'] },
   { label: 'Woodwinds', ids: ['woodwinds', 'woodwinds-ensemble'] },
 ]
