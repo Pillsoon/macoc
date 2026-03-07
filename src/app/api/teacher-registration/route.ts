@@ -15,7 +15,7 @@ interface TeacherRegistrationData {
   mobileNumber: string
   phoneNumber: string
   instrument: string
-  stringInstrument?: string
+  stringInstruments?: string[]
   helpPreference: string
   subDivision?: string
   selectedProducts: string[]
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
       'Mobile Number': data.mobileNumber,
       'Phone Number': data.phoneNumber,
       'Instrument': data.instrument,
-      'String Instrument': data.stringInstrument || '',
+      'String Instrument': data.stringInstruments?.join(', ') || '',
       'Help Preference': data.helpPreference,
       'Sub Division': data.subDivision || '',
       'Selected Products': data.selectedProducts.join(', '),

@@ -43,7 +43,7 @@ function makeValidData() {
     mobileNumber: '555-0100',
     phoneNumber: '555-0200',
     instrument: 'Piano',
-    stringInstrument: 'None',
+    stringInstruments: ['Violin'],
     helpPreference: 'Morning Help',
     subDivision: 'Strings',
     selectedProducts: ['Regular Member'],

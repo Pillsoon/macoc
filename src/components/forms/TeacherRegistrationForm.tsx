@@ -24,7 +24,7 @@ const initialFormData = {
   mobileNumber: '',
   phoneNumber: '',
   instrument: '',
-  stringInstrument: '',
+  stringInstruments: [] as string[],
   helpPreference: '',
   subDivision: '',
   selectedProducts: [] as string[],
@@ -51,6 +51,15 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
 
   const updateField = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+  }
+
+  const toggleStringInstrument = (inst: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      stringInstruments: prev.stringInstruments.includes(inst)
+        ? prev.stringInstruments.filter((i) => i !== inst)
+        : [...prev.stringInstruments, inst],
+    }))
   }
 
   const toggleProduct = (label: string) => {
@@ -87,7 +96,7 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
 
   const canAdvanceStep1 =
     step1Required.every((f) => formData[f].trim() !== '') &&
-    (!isStringInstrument || formData.stringInstrument.trim() !== '')
+    (!isStringInstrument || formData.stringInstruments.length > 0)
 
   const hasNonFeeProduct = formData.selectedProducts.some(
     (p) => p !== 'Non-Available Fee'
@@ -416,13 +425,9 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
             {isStringInstrument && (
               <fieldset className="space-y-3">
                 <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
-                  String Teacher Instrument{' '}
+                  What&apos;s your instrument? (Pick all){' '}
                   <span className="text-red-500">*</span>
                 </legend>
-                <p className="text-xs text-text-muted">
-                  Pick your instrument based on your student&apos;s entry form
-                  for Solo division.
-                </p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {STRING_INSTRUMENTS.map((inst) => (
                     <label
@@ -430,14 +435,10 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
                       className="flex items-center gap-2 cursor-pointer text-sm"
                     >
                       <input
-                        type="radio"
-                        name="stringInstrument"
-                        value={inst}
-                        checked={formData.stringInstrument === inst}
-                        onChange={(e) =>
-                          updateField('stringInstrument', e.target.value)
-                        }
-                        className="text-gold focus:ring-gold"
+                        type="checkbox"
+                        checked={formData.stringInstruments.includes(inst)}
+                        onChange={() => toggleStringInstrument(inst)}
+                        className="text-gold focus:ring-gold rounded"
                       />
                       {inst}
                     </label>
@@ -569,9 +570,13 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
                 </h3>
                 <p className="text-sm text-text-secondary">
                   Instrument: {formData.instrument}
-                  <br />
-                  String Instrument:{' '}
-                  {formData.stringInstrument || 'N/A'}
+                  {formData.stringInstruments.length > 0 && (
+                    <>
+                      <br />
+                      String Instrument:{' '}
+                      {formData.stringInstruments.join(', ')}
+                    </>
+                  )}
                   <br />
                   Help Preference: {formData.helpPreference}
                   {formData.subDivision && (

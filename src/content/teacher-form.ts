@@ -22,9 +22,7 @@ export const STRING_INSTRUMENT_TRIGGERS = [
 export const STRING_INSTRUMENTS = [
   'Violin',
   'Viola',
-  'Violin & Viola',
   'Cello',
-  'None',
 ] as const
 
 export const HELP_PREFERENCES = [
