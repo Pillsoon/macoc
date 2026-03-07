@@ -8,89 +8,188 @@
         {
           "name": "Section 1",
           "winners": [
-            { "place": "1st", "name": "Ellie Yang" },
-            { "place": "2nd", "name": "Samuel Lee" },
-            { "place": "3rd", "name": "Rhyella Jo Molano, Jason Qianmo Wang" },
-            { "place": "HM", "name": "Lauren Sophia Jin" }
+            {
+              "place": "1st",
+              "name": "Ellie Yang"
+            },
+            {
+              "place": "2nd",
+              "name": "Samuel Lee"
+            },
+            {
+              "place": "3rd",
+              "name": "Rhyella Jo Molano, Jason Qianmo Wang"
+            },
+            {
+              "place": "HM",
+              "name": "Lauren Sophia Jin"
+            }
           ]
         },
         {
           "name": "Section 2",
           "winners": [
-            { "place": "1st", "name": "Leon Park" },
-            { "place": "2nd", "name": "Aiden Shi" },
-            { "place": "3rd", "name": "Jason Huang, Elise Laudenslager, William Wu" }
+            {
+              "place": "1st",
+              "name": "Leon Park"
+            },
+            {
+              "place": "2nd",
+              "name": "Aiden Shi"
+            },
+            {
+              "place": "3rd",
+              "name": "Jason Huang, Elise Laudenslager, William Wu"
+            }
           ]
         },
         {
           "name": "Section 3",
           "winners": [
-            { "place": "1st", "name": "Roy Byun" },
-            { "place": "2nd", "name": "Caden Zhang" },
-            { "place": "3rd", "name": "Dylan Li" }
+            {
+              "place": "1st",
+              "name": "Roy Byun"
+            },
+            {
+              "place": "2nd",
+              "name": "Caden Zhang"
+            },
+            {
+              "place": "3rd",
+              "name": "Dylan Li"
+            }
           ]
         },
         {
           "name": "Section 4",
           "winners": [
-            { "place": "1st", "name": "Zoey Poon" },
-            { "place": "2nd", "name": "Andrew Kang, Kensy Cuellar" },
-            { "place": "3rd", "name": "Sophie Hsieh, Amadeus Wilmoth, Jessica Wang" }
+            {
+              "place": "1st",
+              "name": "Zoey Poon"
+            },
+            {
+              "place": "2nd",
+              "name": "Andrew Kang, Kensy Cuellar"
+            },
+            {
+              "place": "3rd",
+              "name": "Sophie Hsieh, Amadeus Wilmoth, Jessica Wang"
+            }
           ]
         },
         {
           "name": "Section 5",
           "winners": [
-            { "place": "1st", "name": "Peter Noh" },
-            { "place": "2nd", "name": "Oliver Liu" },
-            { "place": "3rd", "name": "Tabitha Hannah Tio" }
+            {
+              "place": "1st",
+              "name": "Peter Noh"
+            },
+            {
+              "place": "2nd",
+              "name": "Oliver Liu"
+            },
+            {
+              "place": "3rd",
+              "name": "Tabitha Hannah Tio"
+            }
           ]
         },
         {
           "name": "Section 6",
           "winners": [
-            { "place": "1st", "name": "Grace Lam" },
-            { "place": "2nd", "name": "Evelyn Ho" },
-            { "place": "3rd", "name": "Andy Zeng" }
+            {
+              "place": "1st",
+              "name": "Grace Lam"
+            },
+            {
+              "place": "2nd",
+              "name": "Evelyn Ho"
+            },
+            {
+              "place": "3rd",
+              "name": "Andy Zeng"
+            }
           ]
         },
         {
           "name": "Section 7",
           "winners": [
-            { "place": "1st", "name": "Shalynn Choi" },
-            { "place": "2nd", "name": "Chicago Hamada" },
-            { "place": "3rd", "name": "Aven Ko, Jina Ju" }
+            {
+              "place": "1st",
+              "name": "Shalynn Choi"
+            },
+            {
+              "place": "2nd",
+              "name": "Chicago Hamada"
+            },
+            {
+              "place": "3rd",
+              "name": "Aven Ko, Jina Ju"
+            }
           ]
         },
         {
           "name": "Section 8",
           "winners": [
-            { "place": "1st", "name": "Minhka Dang Le" },
-            { "place": "2nd", "name": "Hailey Lee" },
-            { "place": "3rd", "name": "Angela Song" }
+            {
+              "place": "1st",
+              "name": "Minhka Dang Le"
+            },
+            {
+              "place": "2nd",
+              "name": "Hailey Lee"
+            },
+            {
+              "place": "3rd",
+              "name": "Angela Song"
+            }
           ]
         },
         {
           "name": "Section 9",
           "winners": [
-            { "place": "1st", "name": "Jonathan Zixiang Zhou" },
-            { "place": "2nd", "name": "Alice Baik" },
-            { "place": "3rd", "name": "Siyuan Jerry Huang" }
+            {
+              "place": "1st",
+              "name": "Jonathan Zixiang Zhou"
+            },
+            {
+              "place": "2nd",
+              "name": "Alice Baik"
+            },
+            {
+              "place": "3rd",
+              "name": "Siyuan Jerry Huang"
+            }
           ]
         },
         {
           "name": "Section 10",
           "winners": [
-            { "place": "1st", "name": "Frank Yang Lin" },
-            { "place": "2nd", "name": "Justina Cha" },
-            { "place": "3rd", "name": "Baominh Dang Le" }
+            {
+              "place": "1st",
+              "name": "Frank Yang Lin"
+            },
+            {
+              "place": "2nd",
+              "name": "Justina Cha"
+            },
+            {
+              "place": "3rd",
+              "name": "Baominh Dang Le"
+            }
           ]
         },
         {
           "name": "Section 11",
           "winners": [
-            { "place": "1st", "name": "John Daniels McPhie" },
-            { "place": "2nd", "name": "Yoonho Lee" }
+            {
+              "place": "1st",
+              "name": "John Daniels McPhie"
+            },
+            {
+              "place": "2nd",
+              "name": "Yoonho Lee"
+            }
           ]
         }
       ]
@@ -105,70 +204,142 @@
             {
               "name": "Section 1",
               "winners": [
-                { "place": "1st", "name": "Emily Luo" },
-                { "place": "2nd", "name": "Caroline Zhang" }
+                {
+                  "place": "1st",
+                  "name": "Emily Luo"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Caroline Zhang"
+                }
               ]
             },
             {
               "name": "Section 2",
               "winners": [
-                { "place": "1st", "name": "Sofia Yu" },
-                { "place": "2nd", "name": "Celia Zhang" },
-                { "place": "3rd", "name": "William MA" }
+                {
+                  "place": "1st",
+                  "name": "Sofia Yu"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Celia Zhang"
+                },
+                {
+                  "place": "3rd",
+                  "name": "William MA"
+                }
               ]
             },
             {
               "name": "Section 3",
               "winners": [
-                { "place": "1st", "name": "Ritaro Lizuka" },
-                { "place": "2nd", "name": "Kyle Poon" },
-                { "place": "3rd", "name": "Lucas Poon" }
+                {
+                  "place": "1st",
+                  "name": "Ritaro Lizuka"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Kyle Poon"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Lucas Poon"
+                }
               ]
             },
             {
               "name": "Section 4",
               "winners": [
-                { "place": "1st", "name": "MeWa Liao" },
-                { "place": "2nd", "name": "Winson Shen" },
-                { "place": "3rd", "name": "Hudson Fu" }
+                {
+                  "place": "1st",
+                  "name": "MeWa Liao"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Winson Shen"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Hudson Fu"
+                }
               ]
             },
             {
               "name": "Section 5",
               "winners": [
-                { "place": "1st", "name": "Cayla Kim" },
-                { "place": "2nd", "name": "Noel Jung" }
+                {
+                  "place": "1st",
+                  "name": "Cayla Kim"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Noel Jung"
+                }
               ]
             },
             {
               "name": "Section 6",
               "winners": [
-                { "place": "1st", "name": "Eric Shin" },
-                { "place": "2nd", "name": "Wesley Tsai" },
-                { "place": "3rd", "name": "Wayne Wang" }
+                {
+                  "place": "1st",
+                  "name": "Eric Shin"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Wesley Tsai"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Wayne Wang"
+                }
               ]
             },
             {
               "name": "Section 7",
               "winners": [
-                { "place": "1st", "name": "Kevin Wu" },
-                { "place": "2nd", "name": "KariAnne Chien" },
-                { "place": "3rd", "name": "Adam Liu" }
+                {
+                  "place": "1st",
+                  "name": "Kevin Wu"
+                },
+                {
+                  "place": "2nd",
+                  "name": "KariAnne Chien"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Adam Liu"
+                }
               ]
             },
             {
               "name": "Section 8",
               "winners": [
-                { "place": "1st", "name": "Noah Lee" },
-                { "place": "2nd", "name": "Minghao Li" },
-                { "place": "3rd", "name": "Nicholas Nguyen" }
+                {
+                  "place": "1st",
+                  "name": "Noah Lee"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Minghao Li"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Nicholas Nguyen"
+                }
               ]
             },
             {
               "name": "Section 9",
               "winners": [
-                { "place": "1st", "name": "Lena Kim" },
-                { "place": "2nd", "name": "Kyle Aiden Yeung" }
+                {
+                  "place": "1st",
+                  "name": "Lena Kim"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Kyle Aiden Yeung"
+                }
               ]
             }
           ]
@@ -179,24 +350,48 @@
             {
               "name": "Section 3",
               "winners": [
-                { "place": "1st", "name": "Logan Huynh" },
-                { "place": "2nd", "name": "Leo Lo" }
+                {
+                  "place": "1st",
+                  "name": "Logan Huynh"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Leo Lo"
+                }
               ]
             },
             {
               "name": "Section 4",
               "winners": [
-                { "place": "1st", "name": "Aiden Xu" },
-                { "place": "2nd", "name": "Owen Lo" },
-                { "place": "3rd", "name": "Jinu Kang" }
+                {
+                  "place": "1st",
+                  "name": "Aiden Xu"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Owen Lo"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Jinu Kang"
+                }
               ]
             },
             {
               "name": "Section 8",
               "winners": [
-                { "place": "1st", "name": "Sean Yeh" },
-                { "place": "2nd", "name": "Miono Quoit-Minematsu" },
-                { "place": "3rd", "name": "Eireen Lu" }
+                {
+                  "place": "1st",
+                  "name": "Sean Yeh"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Miono Quoit-Minematsu"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Eireen Lu"
+                }
               ]
             }
           ]
@@ -207,40 +402,82 @@
             {
               "name": "Section 3",
               "winners": [
-                { "place": "1st", "name": "Micah Lee" },
-                { "place": "2nd", "name": "Jamie Chang" }
+                {
+                  "place": "1st",
+                  "name": "Micah Lee"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Jamie Chang"
+                }
               ]
             },
             {
               "name": "Section 4",
               "winners": [
-                { "place": "1st", "name": "Ryan Kim" },
-                { "place": "2nd", "name": "Lioma Quoit-Minematsu" },
-                { "place": "3rd", "name": "Hannah Yoon" }
+                {
+                  "place": "1st",
+                  "name": "Ryan Kim"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Lioma Quoit-Minematsu"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Hannah Yoon"
+                }
               ]
             },
             {
               "name": "Section 5",
               "winners": [
-                { "place": "1st", "name": "Audrey Ma" },
-                { "place": "2nd", "name": "Alexander Farng" },
-                { "place": "3rd", "name": "Hyein Jeong" }
+                {
+                  "place": "1st",
+                  "name": "Audrey Ma"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Alexander Farng"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Hyein Jeong"
+                }
               ]
             },
             {
               "name": "Section 6",
               "winners": [
-                { "place": "1st", "name": "Seojun Baek" },
-                { "place": "2nd", "name": "Kathryn Loutzenheiser" },
-                { "place": "3rd", "name": "Daniel Guo" }
+                {
+                  "place": "1st",
+                  "name": "Seojun Baek"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Kathryn Loutzenheiser"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Daniel Guo"
+                }
               ]
             },
             {
               "name": "Section 7",
               "winners": [
-                { "place": "1st", "name": "Ethan Choi" },
-                { "place": "2nd", "name": "Jeremy Kang" },
-                { "place": "3rd", "name": "Olivia Choi" }
+                {
+                  "place": "1st",
+                  "name": "Ethan Choi"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Jeremy Kang"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Olivia Choi"
+                }
               ]
             }
           ]
@@ -257,23 +494,44 @@
             {
               "name": "Section 1",
               "winners": [
-                { "place": "1st", "name": "Ella Grace Larsen" },
-                { "place": "2nd", "name": "Anay Podda" },
-                { "place": "3rd", "name": "Pietà Myka Baca" }
+                {
+                  "place": "1st",
+                  "name": "Ella Grace Larsen"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Anay Podda"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Pietà Myka Baca"
+                }
               ]
             },
             {
               "name": "Section 2",
               "winners": [
-                { "place": "1st", "name": "Ella Rose Cabrera" },
-                { "place": "2nd", "name": "Katherine Huang Chen" }
+                {
+                  "place": "1st",
+                  "name": "Ella Rose Cabrera"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Katherine Huang Chen"
+                }
               ]
             },
             {
               "name": "Section 3",
               "winners": [
-                { "place": "1st", "name": "Hayeon Ryu" },
-                { "place": "2nd", "name": "Leah Margie Feigenbaum" }
+                {
+                  "place": "1st",
+                  "name": "Hayeon Ryu"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Leah Margie Feigenbaum"
+                }
               ]
             }
           ]
@@ -284,31 +542,61 @@
             {
               "name": "Section 1",
               "winners": [
-                { "place": "1st", "name": "Pietà Myka Baca" }
+                {
+                  "place": "1st",
+                  "name": "Pietà Myka Baca"
+                }
               ]
             },
             {
               "name": "Section 3",
               "winners": [
-                { "place": "1st", "name": "Ethan Kim" },
-                { "place": "2nd", "name": "John Oh" },
-                { "place": "3rd", "name": "Naomi Kim" }
+                {
+                  "place": "1st",
+                  "name": "Ethan Kim"
+                },
+                {
+                  "place": "2nd",
+                  "name": "John Oh"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Naomi Kim"
+                }
               ]
             },
             {
               "name": "Section 4",
               "winners": [
-                { "place": "1st", "name": "Michael Jun Yang" },
-                { "place": "2nd", "name": "Seohyun Kim" },
-                { "place": "3rd", "name": "Lily Elizabeth Larsen" }
+                {
+                  "place": "1st",
+                  "name": "Michael Jun Yang"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Seohyun Kim"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Lily Elizabeth Larsen"
+                }
               ]
             },
             {
               "name": "Section 5",
               "winners": [
-                { "place": "1st", "name": "Bella Hwang" },
-                { "place": "2nd", "name": "Sihongna Liu" },
-                { "place": "3rd", "name": "Lydia Kang" }
+                {
+                  "place": "1st",
+                  "name": "Bella Hwang"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Sihongna Liu"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Lydia Kang"
+                }
               ]
             }
           ]
@@ -322,20 +610,32 @@
         {
           "name": "Section 3",
           "winners": [
-            { "place": "1st", "name": "Aiden Xu, Yunfei Huang, Angela Luo" }
+            {
+              "place": "1st",
+              "name": "Aiden Xu, Yunfei Huang, Angela Luo"
+            }
           ]
         },
         {
           "name": "Section 4",
           "winners": [
-            { "place": "1st", "name": "Annabella Luo, Annabelle Jim, Roy Baek, Susan Kim, Frank Kim" },
-            { "place": "2nd", "name": "Declan Hu, Johan Sears, Yuna Noh, Elena Miyamoto, Emily Chong" }
+            {
+              "place": "1st",
+              "name": "Annabella Luo, Annabelle Jim, Roy Baek, Susan Kim, Frank Kim"
+            },
+            {
+              "place": "2nd",
+              "name": "Declan Hu, Johan Sears, Yuna Noh, Elena Miyamoto, Emily Chong"
+            }
           ]
         },
         {
           "name": "Section 5",
           "winners": [
-            { "place": "1st", "name": "Mingjin Zhang, Mattea Kim, Minji Choi" }
+            {
+              "place": "1st",
+              "name": "Mingjin Zhang, Mattea Kim, Minji Choi"
+            }
           ]
         }
       ]
@@ -347,46 +647,88 @@
         {
           "name": "Section 2",
           "winners": [
-            { "place": "1st", "name": "Avery Kan" },
-            { "place": "2nd", "name": "Dallas Pak" },
-            { "place": "3rd", "name": "Shotaro Kurakake" },
-            { "place": "HM", "name": "Duke Pak, Minu Choi" }
+            {
+              "place": "1st",
+              "name": "Avery Kan"
+            },
+            {
+              "place": "2nd",
+              "name": "Dallas Pak"
+            },
+            {
+              "place": "3rd",
+              "name": "Shotaro Kurakake"
+            },
+            {
+              "place": "HM",
+              "name": "Duke Pak, Minu Choi"
+            }
           ]
         },
         {
           "name": "Section 3",
           "winners": [
-            { "place": "1st", "name": "Hea Lee" },
-            { "place": "2nd", "name": "Ethan Hood" },
-            { "place": "3rd", "name": "Dylan Watanabe" },
-            { "place": "HM", "name": "Darius Lee, Grady Gillen" }
+            {
+              "place": "1st",
+              "name": "Hea Lee"
+            },
+            {
+              "place": "2nd",
+              "name": "Ethan Hood"
+            },
+            {
+              "place": "3rd",
+              "name": "Dylan Watanabe"
+            },
+            {
+              "place": "HM",
+              "name": "Darius Lee, Grady Gillen"
+            }
           ]
         },
         {
           "name": "Section 4",
           "winners": [
-            { "place": "1st", "name": "Arturo Solorzano" },
-            { "place": "2nd", "name": "Emily Tinoco" },
-            { "place": "3rd", "name": "Grace Gillen" },
-            { "place": "HM", "name": "Veronica Howard, Jacob Adarlo" }
+            {
+              "place": "1st",
+              "name": "Arturo Solorzano"
+            },
+            {
+              "place": "2nd",
+              "name": "Emily Tinoco"
+            },
+            {
+              "place": "3rd",
+              "name": "Grace Gillen"
+            },
+            {
+              "place": "HM",
+              "name": "Veronica Howard, Jacob Adarlo"
+            }
           ]
         },
         {
           "name": "Section 5",
           "winners": [
-            { "place": "1st", "name": "Trevor Martinez" }
+            {
+              "place": "1st",
+              "name": "Trevor Martinez"
+            }
           ]
         }
       ]
     },
     {
       "name": "Guitar Chamber Music Division",
-      "icon": "🎸",
+      "icon": "🎵",
       "sections": [
         {
           "name": "Section 3",
           "winners": [
-            { "place": "1st", "name": "Q Han, Liam Ruidera & Lucas May" }
+            {
+              "place": "1st",
+              "name": "Q Han, Liam Ruidera & Lucas May"
+            }
           ]
         }
       ]
