@@ -63,7 +63,10 @@
     },
     {
       "name": "Guitar",
-      "teachers": []
+      "teachers": [
+        "Brian Barany", "Eric Pratt", "Jennifer Kim", "Nikola Chekardzhikov",
+        "Spencer Artwick", "Vasil Chekardzhikov"
+      ]
     }
   ]
 }
