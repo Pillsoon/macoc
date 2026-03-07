@@ -59,7 +59,10 @@ export default function WinnersPage() {
                 onClick={() => {
                   if (winnersData[year]) {
                     setSelectedYear(year)
-                    setSelectedDivision(null)
+                    const newDivisions = winnersData[year]?.divisions ?? []
+                    if (selectedDivision && !newDivisions.some(d => d.name === selectedDivision)) {
+                      setSelectedDivision(null)
+                    }
                   }
                 }}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
