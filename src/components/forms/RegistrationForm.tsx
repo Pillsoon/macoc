@@ -49,6 +49,7 @@ const initialFormData = {
 export default function RegistrationForm({ division, sections, timePeriods, feeType = 'solo' }: RegistrationFormProps) {
   const entryFee = feeType === 'chamber' ? config.fees.chamber.amount : config.fees.solo.amount
   const isVocal = division.startsWith('Vocal')
+  const isWoodwinds = division.startsWith('Woodwinds')
   const [formData, setFormData] = useState({ ...initialFormData, division })
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -74,6 +75,11 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
         'repertoire1Title', 'repertoire1Composer',
         'repertoire2Title', 'repertoire2Composer',
         'needsAccompanist',
+      ] as const
+    : isWoodwinds
+    ? [
+        'section',
+        'repertoire1Title', 'repertoire1Composer', 'repertoire1TimePeriod',
       ] as const
     : [
         'section',
@@ -500,8 +506,8 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
               )}
             </fieldset>
 
-            {/* Selection B / Repertoire 2 */}
-            <fieldset className="space-y-4 p-4 bg-cream/50 rounded-lg">
+            {/* Selection B / Repertoire 2 (not shown for Woodwinds - only one piece required) */}
+            {!isWoodwinds && <fieldset className="space-y-4 p-4 bg-cream/50 rounded-lg">
               <legend className="text-sm font-semibold text-navy">
                 {isVocal ? 'Selection B' : 'Repertoire No. 2'}
               </legend>
@@ -547,7 +553,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                   </select>
                 </div>
               )}
-            </fieldset>
+            </fieldset>}
 
             {/* Accompanist (Vocal only) */}
             {isVocal && (
@@ -641,10 +647,12 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                     <strong>{isVocal ? 'A.' : '1.'}</strong> {formData.repertoire1Title} - {formData.repertoire1Composer}
                     {!isVocal && ` (${formData.repertoire1TimePeriod})`}
                   </p>
-                  <p>
-                    <strong>{isVocal ? 'B.' : '2.'}</strong> {formData.repertoire2Title} - {formData.repertoire2Composer}
-                    {!isVocal && ` (${formData.repertoire2TimePeriod})`}
-                  </p>
+                  {!isWoodwinds && (
+                    <p>
+                      <strong>{isVocal ? 'B.' : '2.'}</strong> {formData.repertoire2Title} - {formData.repertoire2Composer}
+                      {!isVocal && ` (${formData.repertoire2TimePeriod})`}
+                    </p>
+                  )}
                   {isVocal && (
                     <p>
                       <strong>Accompanist needed:</strong> {formData.needsAccompanist}
