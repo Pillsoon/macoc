@@ -25,6 +25,20 @@ export const STRING_INSTRUMENTS = [
   'Cello',
 ] as const
 
+// Instruments that trigger the Woodwind Teacher Instrument field
+export const WOODWIND_INSTRUMENT_TRIGGERS = [
+  'Woodwinds',
+  'Woodwinds Ensemble',
+] as const
+
+export const WOODWIND_INSTRUMENTS = [
+  'Flute',
+  'Clarinet',
+  'Oboe',
+  'Bassoon',
+  'Saxophone',
+] as const
+
 export const HELP_PREFERENCES = [
   'Morning Help',
   'Afternoon Help',

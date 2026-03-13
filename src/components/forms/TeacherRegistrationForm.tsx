@@ -6,6 +6,8 @@ import {
   INSTRUMENTS,
   STRING_INSTRUMENT_TRIGGERS,
   STRING_INSTRUMENTS,
+  WOODWIND_INSTRUMENT_TRIGGERS,
+  WOODWIND_INSTRUMENTS,
   HELP_PREFERENCES,
   SUB_DIVISIONS,
   MEMBERSHIP_PRODUCTS,
@@ -25,6 +27,7 @@ const initialFormData = {
   phoneNumber: '',
   instrument: '',
   stringInstruments: [] as string[],
+  woodwindInstruments: [] as string[],
   helpPreference: '',
   subDivision: '',
   selectedProducts: [] as string[],
@@ -62,6 +65,15 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
     }))
   }
 
+  const toggleWoodwindInstrument = (inst: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      woodwindInstruments: prev.woodwindInstruments.includes(inst)
+        ? prev.woodwindInstruments.filter((i) => i !== inst)
+        : [...prev.woodwindInstruments, inst],
+    }))
+  }
+
   const toggleProduct = (label: string) => {
     setFormData((prev) => ({
       ...prev,
@@ -77,6 +89,10 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
   }, 0)
 
   const isStringInstrument = (STRING_INSTRUMENT_TRIGGERS as readonly string[]).includes(
+    formData.instrument
+  )
+
+  const isWoodwindInstrument = (WOODWIND_INSTRUMENT_TRIGGERS as readonly string[]).includes(
     formData.instrument
   )
 
@@ -96,7 +112,8 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
 
   const canAdvanceStep1 =
     step1Required.every((f) => formData[f].trim() !== '') &&
-    (!isStringInstrument || formData.stringInstruments.length > 0)
+    (!isStringInstrument || formData.stringInstruments.length > 0) &&
+    (!isWoodwindInstrument || formData.woodwindInstruments.length > 0)
 
   const hasNonFeeProduct = formData.selectedProducts.some(
     (p) => p !== 'Non-Available Fee'
@@ -447,6 +464,32 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
               </fieldset>
             )}
 
+            {/* Woodwind Teacher Instrument - only shown for woodwind instruments */}
+            {isWoodwindInstrument && (
+              <fieldset className="space-y-3">
+                <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
+                  What&apos;s your instrument? (Pick all){' '}
+                  <span className="text-red-500">*</span>
+                </legend>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  {WOODWIND_INSTRUMENTS.map((inst) => (
+                    <label
+                      key={inst}
+                      className="flex items-center gap-2 cursor-pointer text-sm"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={formData.woodwindInstruments.includes(inst)}
+                        onChange={() => toggleWoodwindInstrument(inst)}
+                        className="text-gold focus:ring-gold rounded"
+                      />
+                      {inst}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            )}
+
             {/* Help Preference */}
             <fieldset className="space-y-3">
               <legend className="text-sm font-semibold text-navy uppercase tracking-wider">
@@ -575,6 +618,13 @@ export default function TeacherRegistrationForm({ defaultInstrument }: TeacherRe
                       <br />
                       String Instrument:{' '}
                       {formData.stringInstruments.join(', ')}
+                    </>
+                  )}
+                  {formData.woodwindInstruments.length > 0 && (
+                    <>
+                      <br />
+                      Woodwind Instrument:{' '}
+                      {formData.woodwindInstruments.join(', ')}
                     </>
                   )}
                   <br />
