@@ -5,6 +5,7 @@ import ChamberRegistrationForm from './ChamberRegistrationForm'
 import RegistrationForm from './RegistrationForm'
 import StringRegistrationForm from './StringRegistrationForm'
 import TeacherRegistrationForm from './TeacherRegistrationForm'
+import WoodwindsEnsembleRegistrationForm from './WoodwindsEnsembleRegistrationForm'
 import { config } from '@/lib/config'
 
 type Role = 'select' | 'teacher' | 'student'
@@ -27,6 +28,7 @@ export default function DivisionRegistration({
   const [role, setRole] = useState<Role>('select')
   const isStringSolo = divisionName === 'String Solo'
   const isChamber = divisionName === 'String + Piano Chamber Music'
+  const isWoodwindsEnsemble = divisionName === 'Woodwinds Ensemble'
 
   if (role === 'select') {
     return (
@@ -77,18 +79,18 @@ export default function DivisionRegistration({
                 <span className="text-2xl">🎵</span>
               </div>
               <h3 className="font-heading text-lg text-charcoal mb-1">
-                {isStringSolo || isChamber ? 'Applicant Registration' : 'Student Registration'}
+                {isStringSolo || isChamber || isWoodwindsEnsemble ? 'Applicant Registration' : 'Student Registration'}
               </h3>
               <p className="text-sm text-text-muted">
                 {available
-                  ? isStringSolo || isChamber
+                  ? isStringSolo || isChamber || isWoodwindsEnsemble
                     ? 'Competition entry registration for applicants'
                     : 'Competition entry registration for students'
                   : 'Coming soon'}
               </p>
               {available && (
                 <p className="text-xs font-medium text-gold-dark mt-2">
-                  {isStringSolo || isChamber
+                  {isStringSolo || isChamber || isWoodwindsEnsemble
                     ? `$${feeType === 'solo' ? config.fees.solo.amount : config.fees.chamber.amount}/per person`
                     : feeType === 'solo'
                       ? `$${config.fees.solo.amount}/entry`
@@ -118,6 +120,11 @@ export default function DivisionRegistration({
 
       {role === 'teacher' ? (
         <TeacherRegistrationForm defaultInstrument={divisionName} />
+      ) : isWoodwindsEnsemble ? (
+        <WoodwindsEnsembleRegistrationForm
+          division={divisionName}
+          sections={sections}
+        />
       ) : isChamber ? (
         <ChamberRegistrationForm
           division={divisionName}

@@ -9,7 +9,7 @@ interface MemberData {
   proofOfAgeUrl: string
 }
 
-interface ChamberRegistrationData {
+interface WoodwindsEnsembleRegistrationData {
   section: string
   instrumentation: string
   composer: string
@@ -28,7 +28,7 @@ interface ChamberRegistrationData {
 
 export async function POST(request: NextRequest) {
   try {
-    const data: ChamberRegistrationData = await request.json()
+    const data: WoodwindsEnsembleRegistrationData = await request.json()
 
     const requiredFields = [
       'section', 'instrumentation', 'composer', 'pieceTitle', 'noKeyMovement', 'duration',
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     ]
 
     for (const field of requiredFields) {
-      if (!data[field as keyof ChamberRegistrationData]) {
+      if (!data[field as keyof WoodwindsEnsembleRegistrationData]) {
         return NextResponse.json(
           { error: `Missing required field: ${field}` },
           { status: 400 }
@@ -45,14 +45,13 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    if (!data.members || data.members.length < 2 || data.members.length > 6) {
+    if (!data.members || data.members.length < 2 || data.members.length > 5) {
       return NextResponse.json(
-        { error: 'Group must have 2 to 6 members' },
+        { error: 'Group must have 2 to 5 members' },
         { status: 400 }
       )
     }
 
-    // Validate each member has required fields
     for (let i = 0; i < data.members.length; i++) {
       const m = data.members[i]
       if (!m.name || !m.instrument || !m.age || !m.proofOfAgeUrl) {
@@ -76,9 +75,9 @@ export async function POST(request: NextRequest) {
 
     await doc.loadInfo()
 
-    const sheetTitle = 'String + Piano Chamber Music'
+    const sheetTitle = 'Woodwinds Ensemble'
     const memberHeaders: string[] = []
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 5; i++) {
       memberHeaders.push(
         `Member${i} Name`, `Member${i} Instrument`, `Member${i} Age`, `Member${i} ProofOfAge`
       )
@@ -126,8 +125,7 @@ export async function POST(request: NextRequest) {
       'Contact Email': data.contactEmail,
     }
 
-    // Fill member columns (1-6)
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       const m = data.members[i]
       rowData[`Member${i + 1} Name`] = m?.name || ''
       rowData[`Member${i + 1} Instrument`] = m?.instrument || ''
@@ -141,10 +139,10 @@ export async function POST(request: NextRequest) {
       success: true,
       registrationId: newRow.rowNumber,
       sheetName: sheetTitle,
-      message: 'Chamber registration submitted successfully',
+      message: 'Woodwinds Ensemble registration submitted successfully',
     })
   } catch (error) {
-    console.error('Chamber registration error:', error)
+    console.error('Woodwinds Ensemble registration error:', error)
     return NextResponse.json(
       { error: 'Failed to submit registration' },
       { status: 500 }

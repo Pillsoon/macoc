@@ -96,12 +96,21 @@ export async function POST(request: NextRequest) {
 
           if (row && row.get('Payment Status') !== 'Paid') {
             row.set('Payment Status', 'Paid')
+            row.set('Payment Date', new Date().toISOString())
             await row.save()
           }
+        } else {
+          console.error(`Sheet or row not found: sheetName=${sheetName}, rowNumber=${rowNumber}`)
         }
       } catch (sheetError) {
         console.error('Failed to update sheet:', sheetError)
+        return NextResponse.json(
+          { status: captureData.status, sheetError: 'Payment captured but failed to update records. Please contact support.' },
+          { status: 207 }
+        )
       }
+    } else {
+      console.error('PayPal capture response missing custom_id:', JSON.stringify(captureData.purchase_units))
     }
 
     return NextResponse.json({ status: captureData.status })

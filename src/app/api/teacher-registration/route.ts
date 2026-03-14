@@ -77,6 +77,7 @@ export async function POST(request: NextRequest) {
         headerValues: [
           'Timestamp',
           'Payment Status',
+          'Payment Date',
           'First Name',
           'Middle Name',
           'Last Name',

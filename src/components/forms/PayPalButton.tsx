@@ -56,7 +56,12 @@ export default function PayPalButton({
             body: JSON.stringify({ orderID: data.orderID }),
           })
           const result = await res.json()
-          if (res.ok && result.status === 'COMPLETED') {
+          if (result.status === 'COMPLETED') {
+            if (result.sheetError) {
+              // Payment captured but Sheets update failed — still show success
+              // Admin will need to manually update the record
+              console.error('Sheet update failed after capture:', result.sheetError)
+            }
             onSuccess()
           }
         }}
