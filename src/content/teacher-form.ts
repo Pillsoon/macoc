@@ -9,8 +9,8 @@ export const INSTRUMENTS = [
   'String Solo',
   'Guitar Chamber Music',
   'Classical Guitar',
-  'Woodwinds',
-  'Woodwinds Ensemble',
+  'Woodwind',
+  'Woodwind Ensemble',
 ] as const
 
 // Instruments that trigger the String Teacher Instrument field
@@ -27,8 +27,8 @@ export const STRING_INSTRUMENTS = [
 
 // Instruments that trigger the Woodwind Teacher Instrument field
 export const WOODWIND_INSTRUMENT_TRIGGERS = [
-  'Woodwinds',
-  'Woodwinds Ensemble',
+  'Woodwind',
+  'Woodwind Ensemble',
 ] as const
 
 export const WOODWIND_INSTRUMENTS = [
@@ -49,7 +49,7 @@ export const HELP_PREFERENCES = [
 export const SUB_DIVISIONS = [
   'String',
   'Vocal',
-  'Woodwinds',
+  'Woodwind',
   'Guitar',
   'Chamber Music',
 ] as const

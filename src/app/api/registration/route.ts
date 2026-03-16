@@ -30,12 +30,15 @@ interface RegistrationData {
   division: string
   section: string
 
+  // Competition - Woodwind specific
+  instrument?: string
+
   // Repertoire
   repertoire1Title: string
   repertoire1Composer: string
   repertoire1TimePeriod?: string
-  repertoire2Title: string
-  repertoire2Composer: string
+  repertoire2Title?: string
+  repertoire2Composer?: string
   repertoire2TimePeriod?: string
 
   // Vocal-specific
@@ -48,13 +51,15 @@ export async function POST(request: NextRequest) {
 
     // Validate required fields
     const isVocal = data.division?.startsWith('Vocal')
+    const isWoodwind = data.division === 'Woodwind'
     const requiredFields = [
       'teacherFirstName', 'teacherLastName', 'teacherEmail', 'teacherPhone',
       'studentFirstName', 'studentLastName', 'studentEmail', 'dateOfBirth',
       'studentAge', 'division', 'section',
       'repertoire1Title', 'repertoire1Composer',
-      'repertoire2Title', 'repertoire2Composer',
-      ...(isVocal ? ['needsAccompanist'] : ['repertoire1TimePeriod', 'repertoire2TimePeriod']),
+      ...(isWoodwind ? ['instrument'] : []),
+      ...(isWoodwind ? [] : ['repertoire2Title', 'repertoire2Composer']),
+      ...(isVocal ? ['needsAccompanist'] : isWoodwind ? [] : ['repertoire1TimePeriod', 'repertoire2TimePeriod']),
     ]
 
     for (const field of requiredFields) {
@@ -108,6 +113,7 @@ export async function POST(request: NextRequest) {
           'Zip Code',
           'Division',
           'Section',
+          'Instrument',
           'Repertoire 1 Title',
           'Repertoire 1 Composer',
           'Repertoire 1 Time Period',
@@ -141,11 +147,12 @@ export async function POST(request: NextRequest) {
       'Zip Code': data.zipCode,
       'Division': data.division,
       'Section': data.section,
+      'Instrument': data.instrument || '',
       'Repertoire 1 Title': data.repertoire1Title,
       'Repertoire 1 Composer': data.repertoire1Composer,
       'Repertoire 1 Time Period': data.repertoire1TimePeriod || '',
-      'Repertoire 2 Title': data.repertoire2Title,
-      'Repertoire 2 Composer': data.repertoire2Composer,
+      'Repertoire 2 Title': data.repertoire2Title || '',
+      'Repertoire 2 Composer': data.repertoire2Composer || '',
       'Repertoire 2 Time Period': data.repertoire2TimePeriod || '',
       'Needs Accompanist': data.needsAccompanist || '',
     })

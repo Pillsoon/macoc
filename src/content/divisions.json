@@ -476,7 +476,7 @@
   },
   {
     "id": "woodwinds",
-    "name": "Woodwinds",
+    "name": "Woodwind",
     "icon": "/images/divisions/woodwinds.jpeg",
     "description": "Woodwind instrument solo performance",
     "available": true,
@@ -535,7 +535,7 @@
   },
   {
     "id": "woodwinds-ensemble",
-    "name": "Woodwinds Ensemble",
+    "name": "Woodwind Ensemble",
     "icon": "/images/divisions/woodwinds.jpeg",
     "description": "Woodwind ensemble performance",
     "available": true,

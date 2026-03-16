@@ -12,6 +12,8 @@ interface RegistrationFormProps {
   feeType?: 'solo' | 'chamber'
 }
 
+const WOODWIND_INSTRUMENTS = ['Flute', 'Clarinet', 'Oboe', 'Bassoon', 'Saxophone'] as const
+
 const initialFormData = {
   // Teacher
   teacherFirstName: '',
@@ -35,6 +37,7 @@ const initialFormData = {
   // Competition
   division: '',
   section: '',
+  instrument: '',
   // Repertoire
   repertoire1Title: '',
   repertoire1Composer: '',
@@ -49,7 +52,7 @@ const initialFormData = {
 export default function RegistrationForm({ division, sections, timePeriods, feeType = 'solo' }: RegistrationFormProps) {
   const entryFee = feeType === 'chamber' ? config.fees.chamber.amount : config.fees.solo.amount
   const isVocal = division.startsWith('Vocal')
-  const isWoodwinds = division.startsWith('Woodwinds')
+  const isWoodwind = division === 'Woodwind'
   const [formData, setFormData] = useState({ ...initialFormData, division })
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -76,10 +79,11 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
         'repertoire2Title', 'repertoire2Composer',
         'needsAccompanist',
       ] as const
-    : isWoodwinds
+    : isWoodwind
     ? [
         'section',
-        'repertoire1Title', 'repertoire1Composer', 'repertoire1TimePeriod',
+        'instrument',
+        'repertoire1Title', 'repertoire1Composer',
       ] as const
     : [
         'section',
@@ -457,6 +461,26 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
               </select>
             </div>
 
+            {/* Instrument (Woodwind only) */}
+            {isWoodwind && (
+              <div>
+                <label className="block text-sm font-medium text-charcoal mb-1">
+                  Instrument <span className="text-red-500">*</span>
+                </label>
+                <select
+                  value={formData.instrument}
+                  onChange={(e) => updateField('instrument', e.target.value)}
+                  className={`w-full px-4 py-2 border ${validationBorder('instrument')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`}
+                  required
+                >
+                  <option value="">Select your instrument</option>
+                  {WOODWIND_INSTRUMENTS.map((inst) => (
+                    <option key={inst} value={inst}>{inst}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+
             {/* Selection A / Repertoire 1 */}
             <fieldset className="space-y-4 p-4 bg-cream/50 rounded-lg">
               <legend className="text-sm font-semibold text-navy">
@@ -486,7 +510,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                   required
                 />
               </div>
-              {!isVocal && (
+              {!isVocal && !isWoodwind && (
                 <div>
                   <label className="block text-sm font-medium text-charcoal mb-1">
                     Time Period <span className="text-red-500">*</span>
@@ -506,8 +530,8 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
               )}
             </fieldset>
 
-            {/* Selection B / Repertoire 2 (not shown for Woodwinds - only one piece required) */}
-            {!isWoodwinds && <fieldset className="space-y-4 p-4 bg-cream/50 rounded-lg">
+            {/* Selection B / Repertoire 2 (not shown for Woodwind - only one piece required) */}
+            {!isWoodwind && <fieldset className="space-y-4 p-4 bg-cream/50 rounded-lg">
               <legend className="text-sm font-semibold text-navy">
                 {isVocal ? 'Selection B' : 'Repertoire No. 2'}
               </legend>
@@ -637,6 +661,7 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                 <h3 className="font-semibold text-navy mb-2">Competition</h3>
                 <p className="text-sm text-text-secondary">
                   {division} - {formData.section}
+                  {isWoodwind && formData.instrument && <><br />Instrument: {formData.instrument}</>}
                 </p>
               </div>
 
@@ -645,9 +670,9 @@ export default function RegistrationForm({ division, sections, timePeriods, feeT
                 <div className="text-sm text-text-secondary space-y-2">
                   <p>
                     <strong>{isVocal ? 'A.' : '1.'}</strong> {formData.repertoire1Title} - {formData.repertoire1Composer}
-                    {!isVocal && ` (${formData.repertoire1TimePeriod})`}
+                    {!isVocal && !isWoodwind && ` (${formData.repertoire1TimePeriod})`}
                   </p>
-                  {!isWoodwinds && (
+                  {!isWoodwind && (
                     <p>
                       <strong>{isVocal ? 'B.' : '2.'}</strong> {formData.repertoire2Title} - {formData.repertoire2Composer}
                       {!isVocal && ` (${formData.repertoire2TimePeriod})`}

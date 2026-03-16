@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
 
     await doc.loadInfo()
 
-    const sheetTitle = 'Woodwinds Ensemble'
+    const sheetTitle = 'Woodwind Ensemble'
     const memberHeaders: string[] = []
     for (let i = 1; i <= 5; i++) {
       memberHeaders.push(
@@ -139,10 +139,10 @@ export async function POST(request: NextRequest) {
       success: true,
       registrationId: newRow.rowNumber,
       sheetName: sheetTitle,
-      message: 'Woodwinds Ensemble registration submitted successfully',
+      message: 'Woodwind Ensemble registration submitted successfully',
     })
   } catch (error) {
-    console.error('Woodwinds Ensemble registration error:', error)
+    console.error('Woodwind Ensemble registration error:', error)
     return NextResponse.json(
       { error: 'Failed to submit registration' },
       { status: 500 }

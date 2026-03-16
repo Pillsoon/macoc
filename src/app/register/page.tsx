@@ -8,7 +8,7 @@ const categories: { label: string; ids: string[] }[] = [
   { label: 'Vocal', ids: ['vocal-classical', 'vocal-musical-theater'] },
   { label: 'String', ids: ['strings', 'strings-piano-chamber'] },
   { label: 'Guitar', ids: ['classical-guitar', 'guitar-chamber-music'] },
-  { label: 'Woodwinds', ids: ['woodwinds', 'woodwinds-ensemble'] },
+  { label: 'Woodwind', ids: ['woodwinds', 'woodwinds-ensemble'] },
 ]
 
 export default function RegisterPage() {
