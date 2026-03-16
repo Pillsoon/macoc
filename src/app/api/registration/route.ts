@@ -86,7 +86,8 @@ export async function POST(request: NextRequest) {
     await doc.loadInfo()
 
     // Get or create the division-specific sheet
-    const sheetTitle = data.division
+    // google-spreadsheet library has a bug with colons in sheet titles
+    const sheetTitle = data.division.replace(/:/g, ' -')
     let sheet = doc.sheetsByTitle[sheetTitle]
     if (!sheet) {
       sheet = await doc.addSheet({
