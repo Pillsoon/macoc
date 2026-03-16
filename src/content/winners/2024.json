@@ -641,26 +641,6 @@
       ]
     },
     {
-      "name": "Woodwind Division",
-      "icon": "🎺",
-      "subsections": [
-        {
-          "name": "Clarinet",
-          "sections": [
-            {
-              "name": "Section 1",
-              "winners": [
-                {
-                  "place": "1st",
-                  "name": "Adrian Kang"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Classical Guitar Division",
       "icon": "🎸",
       "sections": [
@@ -748,6 +728,26 @@
             {
               "place": "1st",
               "name": "Q Han, Liam Ruidera & Lucas May"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Woodwind Division",
+      "icon": "🎺",
+      "subsections": [
+        {
+          "name": "Clarinet",
+          "sections": [
+            {
+              "name": "Section 1",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Adrian Kang"
+                }
+              ]
             }
           ]
         }
