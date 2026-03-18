@@ -1,6 +1,8 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 const FROM_EMAIL = 'MACOC <noreply@musicalartsoc.org>'
 
@@ -108,7 +110,7 @@ export async function sendConfirmationEmail(sheetName: string, row: Registration
 
   const html = buildConfirmationHtml(sheetName, row)
 
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: FROM_EMAIL,
     to: recipients,
     subject,
