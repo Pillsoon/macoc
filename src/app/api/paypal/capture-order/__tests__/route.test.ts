@@ -14,6 +14,7 @@ vi.mock('google-spreadsheet', () => ({
       sheetsByTitle: {
         Registrations: {
           getRows: mockGetRows,
+          headerValues: ['Payment Status', 'Payment Date', 'Student Email', 'Teacher Email'],
         },
       },
     }
@@ -22,6 +23,10 @@ vi.mock('google-spreadsheet', () => ({
 
 vi.mock('google-auth-library', () => ({
   JWT: vi.fn().mockImplementation(function () { return {} }),
+}))
+
+vi.mock('@/lib/email', () => ({
+  sendConfirmationEmail: vi.fn(),
 }))
 
 const mockFetch = vi.fn()

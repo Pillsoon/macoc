@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 import { JWT } from 'google-auth-library'
+import { sendConfirmationEmail } from '@/lib/email'
 
 const PAYPAL_API = process.env.PAYPAL_MODE === 'sandbox'
   ? 'https://api-m.sandbox.paypal.com'
@@ -98,6 +99,18 @@ export async function POST(request: NextRequest) {
             row.set('Payment Status', 'Paid')
             row.set('Payment Date', new Date().toISOString())
             await row.save()
+
+            // Send confirmation email
+            try {
+              const rowData: Record<string, string> = {}
+              for (const key of sheet.headerValues) {
+                rowData[key] = row.get(key) || ''
+              }
+              await sendConfirmationEmail(sheetName, rowData)
+            } catch (emailError) {
+              console.error('Failed to send confirmation email:', emailError)
+              // Don't fail the payment capture for email errors
+            }
           }
         } else {
           console.error(`Sheet or row not found: sheetName=${sheetName}, rowNumber=${rowNumber}`)
