@@ -1,6 +1,13 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import TeacherRegistrationForm from '@/components/forms/TeacherRegistrationForm'
 import { config } from '@/lib/config'
+
+export const metadata: Metadata = {
+  title: 'Teacher Registration',
+  description: 'Register as a teacher member for the Musical Arts Competition of Orange County.',
+  alternates: { canonical: '/register/teacher' },
+}
 
 export default function TeacherRegistrationPage() {
   return (

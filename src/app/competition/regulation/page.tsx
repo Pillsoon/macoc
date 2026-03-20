@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllDivisions } from '@/content/divisions'
+
+export const metadata: Metadata = {
+  title: 'Regulations',
+  description: 'Competition regulations, awards, and general rules for all divisions of the Musical Arts Competition of Orange County.',
+  alternates: { canonical: '/competition/regulation' },
+}
 
 const awards = [
   { place: '1st Place', desc: 'Cash award + Trophy + invitation to Winners\' Concert', icon: '🥇', color: 'text-gold-dark' },

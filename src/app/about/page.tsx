@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllDivisionSummaries } from '@/content/divisions'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Learn about the Musical Arts Competition of Orange County, nurturing musical excellence since 1932.',
+  alternates: { canonical: '/about' },
+}
 
 const history = [
   {

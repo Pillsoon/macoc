@@ -1,7 +1,14 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { config } from '@/lib/config'
 import { getAllDivisionSummaries } from '@/content/divisions'
+
+export const metadata: Metadata = {
+  title: 'Competition',
+  description: 'Competition details, divisions, schedule, and regulations for the Musical Arts Competition of Orange County.',
+  alternates: { canonical: '/competition' },
+}
 
 const quickLinks = [
   {

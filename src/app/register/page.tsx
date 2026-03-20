@@ -1,7 +1,14 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { config } from '@/lib/config'
 import { getAllDivisionSummaries } from '@/content/divisions'
+
+export const metadata: Metadata = {
+  title: 'Register',
+  description: 'Choose your division and register for the Musical Arts Competition of Orange County.',
+  alternates: { canonical: '/register' },
+}
 
 const categories: { label: string; ids: string[] }[] = [
   { label: 'Keyboard', ids: ['piano'] },

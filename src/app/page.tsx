@@ -1,7 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { config } from '@/lib/config'
 import { getAllDivisionSummaries } from '@/content/divisions'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 const divisionCategories = [
   { label: 'Keyboard', ids: ['piano'] },

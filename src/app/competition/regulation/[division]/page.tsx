@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -6,6 +7,16 @@ import { config } from '@/lib/config'
 
 export function generateStaticParams() {
   return getAllDivisions().map((d) => ({ division: d.id }))
+}
+
+export function generateMetadata({ params }: { params: { division: string } }): Metadata {
+  const division = getDivisionById(params.division)
+  if (!division) return {}
+  return {
+    title: `${division.name} Regulations`,
+    description: `Rules, requirements, and regulations for the ${division.name} division of the Musical Arts Competition of Orange County.`,
+    alternates: { canonical: `/competition/regulation/${params.division}` },
+  }
 }
 
 export default function DivisionRegulationPage({

@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { config } from '@/lib/config'
+
+export const metadata: Metadata = {
+  title: 'Schedule',
+  description: 'Key dates and schedule for the Musical Arts Competition of Orange County including registration deadlines and competition day.',
+  alternates: { canonical: '/competition/schedule' },
+}
 
 export default function SchedulePage() {
   const { competition, winnersConcert, currentYear, fees } = config

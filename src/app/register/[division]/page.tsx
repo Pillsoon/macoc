@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import DivisionRegistration from '@/components/forms/DivisionRegistration'
@@ -6,6 +7,16 @@ import { config } from '@/lib/config'
 
 export function generateStaticParams() {
   return getAllDivisions().map((d) => ({ division: d.id }))
+}
+
+export function generateMetadata({ params }: { params: { division: string } }): Metadata {
+  const division = getDivisionById(params.division)
+  if (!division) return {}
+  return {
+    title: `${division.name} Registration`,
+    description: `Register for the ${division.name} division of the Musical Arts Competition of Orange County.`,
+    alternates: { canonical: `/register/${params.division}` },
+  }
 }
 
 function VocalClassicalRequirements() {

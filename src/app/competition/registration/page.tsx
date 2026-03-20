@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { config } from '@/lib/config'
+
+export const metadata: Metadata = {
+  title: 'Registration',
+  description: 'Register for the Musical Arts Competition of Orange County. View fees, deadlines, and division requirements.',
+  alternates: { canonical: '/competition/registration' },
+}
 
 export default function RegistrationPage() {
   const { competition, fees, currentYear } = config
