@@ -4,6 +4,7 @@ import { NextRequest } from 'next/server'
 const mockAddRow = vi.fn()
 const mockAddSheet = vi.fn()
 const mockLoadInfo = vi.fn()
+const mockLoadHeaderRow = vi.fn()
 
 vi.mock('google-spreadsheet', () => ({
   GoogleSpreadsheet: vi.fn().mockImplementation(function () {
@@ -12,6 +13,8 @@ vi.mock('google-spreadsheet', () => ({
       sheetsByTitle: {
         'String + Piano Chamber Music': {
           addRow: mockAddRow,
+          loadHeaderRow: mockLoadHeaderRow,
+          headerValues: ['Timestamp', 'Payment Status'],
         },
       },
       addSheet: mockAddSheet,
