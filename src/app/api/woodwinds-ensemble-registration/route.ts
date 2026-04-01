@@ -109,8 +109,14 @@ export async function POST(request: NextRequest) {
         headerValues: expectedHeaders,
       })
     } else {
-      await sheet.loadHeaderRow()
-      if (!sheet.headerValues || sheet.headerValues.length === 0 || !sheet.headerValues.some(h => h !== '')) {
+      let hasHeaders = false
+      try {
+        await sheet.loadHeaderRow()
+        hasHeaders = sheet.headerValues && sheet.headerValues.length > 0 && sheet.headerValues.some(h => h !== '')
+      } catch {
+        hasHeaders = false
+      }
+      if (!hasHeaders) {
         if (sheet.columnCount < expectedHeaders.length) {
           await sheet.resize({ rowCount: sheet.rowCount, columnCount: expectedHeaders.length })
         }

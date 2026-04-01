@@ -13,7 +13,7 @@ vi.mock('google-spreadsheet', () => ({
       sheetsByTitle: {
         'String + Piano Chamber Music': {
           addRow: mockAddRow,
-          loadHeaderRow: mockLoadHeaderRow,
+          loadHeaderRow: mockLoadHeaderRow.mockResolvedValue(undefined),
           headerValues: ['Timestamp', 'Payment Status'],
         },
       },
