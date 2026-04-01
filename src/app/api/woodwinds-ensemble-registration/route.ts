@@ -83,29 +83,39 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const expectedHeaders = [
+      'Timestamp',
+      'Payment Status',
+      'Payment Date',
+      'Section',
+      'Instrumentation',
+      'Composer',
+      'Piece Title',
+      'No Key Movement',
+      'Duration',
+      ...memberHeaders,
+      'Coach Name',
+      'Coach Phone',
+      'Coach Email',
+      'Contact Name',
+      'Contact Phone',
+      'Contact Email',
+    ]
+
     let sheet = doc.sheetsByTitle[sheetTitle]
     if (!sheet) {
       sheet = await doc.addSheet({
         title: sheetTitle,
-        headerValues: [
-          'Timestamp',
-          'Payment Status',
-          'Payment Date',
-          'Section',
-          'Instrumentation',
-          'Composer',
-          'Piece Title',
-          'No Key Movement',
-          'Duration',
-          ...memberHeaders,
-          'Coach Name',
-          'Coach Phone',
-          'Coach Email',
-          'Contact Name',
-          'Contact Phone',
-          'Contact Email',
-        ]
+        headerValues: expectedHeaders,
       })
+    } else {
+      await sheet.loadHeaderRow()
+      if (!sheet.headerValues || sheet.headerValues.length === 0 || !sheet.headerValues.some(h => h !== '')) {
+        if (sheet.columnCount < expectedHeaders.length) {
+          await sheet.resize({ rowCount: sheet.rowCount, columnCount: expectedHeaders.length })
+        }
+        await sheet.setHeaderRow(expectedHeaders)
+      }
     }
 
     const rowData: Record<string, string> = {
