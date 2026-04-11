@@ -27,7 +27,7 @@ export default function DivisionRegistration({
 }: DivisionRegistrationProps) {
   const [role, setRole] = useState<Role>('select')
   const isStringSolo = divisionName === 'String Solo'
-  const isChamber = divisionName === 'String + Piano Chamber Music'
+  const isChamber = divisionName === 'String + Piano Chamber Music' || divisionName === 'Guitar Chamber Music'
   const isWoodwindsEnsemble = divisionName === 'Woodwind Ensemble'
 
   if (role === 'select') {

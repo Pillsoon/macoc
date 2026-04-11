@@ -90,18 +90,15 @@ export default function RegistrationPage() {
               <h3 className="font-heading text-xl text-charcoal mb-2">Chamber Entry</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="text-4xl font-heading font-bold text-navy">${fees.chamber.amount}</span>
-                <span className="text-text-muted">/entry</span>
+                <span className="text-text-muted">/per person</span>
               </div>
-              <p className="text-text-muted text-sm mb-6">Per group entry</p>
+              <p className="text-text-muted text-sm mb-6">Per member, per group</p>
 
               <div className="mb-8" />
 
-              <button className="btn btn-secondary w-full opacity-50 cursor-not-allowed" disabled>
-                Coming Soon
-              </button>
-              <p className="text-center text-xs text-text-muted mt-4">
-                <Link href="/contact" className="text-gold hover:underline">Contact us</Link> for chamber registration inquiries.
-              </p>
+              <Link href="/register" className="btn btn-secondary w-full text-center">
+                Select Division
+              </Link>
             </div>
           </div>
 

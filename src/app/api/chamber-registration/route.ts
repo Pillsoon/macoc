@@ -26,9 +26,22 @@ interface ChamberRegistrationData {
   division: string
 }
 
+const DIVISION_CONFIG: Record<string, { maxMembers: number; sheetTitle: string }> = {
+  'String + Piano Chamber Music': { maxMembers: 6, sheetTitle: 'String + Piano Chamber Music' },
+  'Guitar Chamber Music': { maxMembers: 8, sheetTitle: 'Guitar Chamber Music' },
+}
+
 export async function POST(request: NextRequest) {
   try {
     const data: ChamberRegistrationData = await request.json()
+
+    const divisionCfg = DIVISION_CONFIG[data.division]
+    if (!divisionCfg) {
+      return NextResponse.json(
+        { error: 'Invalid division' },
+        { status: 400 }
+      )
+    }
 
     const requiredFields = [
       'section', 'instrumentation', 'composer', 'pieceTitle', 'noKeyMovement', 'duration',
@@ -45,9 +58,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    if (!data.members || data.members.length < 2 || data.members.length > 6) {
+    if (!data.members || data.members.length < 2 || data.members.length > divisionCfg.maxMembers) {
       return NextResponse.json(
-        { error: 'Group must have 2 to 6 members' },
+        { error: `Group must have 2 to ${divisionCfg.maxMembers} members` },
         { status: 400 }
       )
     }
@@ -76,9 +89,9 @@ export async function POST(request: NextRequest) {
 
     await doc.loadInfo()
 
-    const sheetTitle = 'String + Piano Chamber Music'
+    const sheetTitle = divisionCfg.sheetTitle
     const memberHeaders: string[] = []
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= divisionCfg.maxMembers; i++) {
       memberHeaders.push(
         `Member${i} Name`, `Member${i} Instrument`, `Member${i} Age`, `Member${i} ProofOfAge`
       )
@@ -142,8 +155,8 @@ export async function POST(request: NextRequest) {
       'Contact Email': data.contactEmail,
     }
 
-    // Fill member columns (1-6)
-    for (let i = 0; i < 6; i++) {
+    // Fill member columns
+    for (let i = 0; i < divisionCfg.maxMembers; i++) {
       const m = data.members[i]
       rowData[`Member${i + 1} Name`] = m?.name || ''
       rowData[`Member${i + 1} Instrument`] = m?.instrument || ''

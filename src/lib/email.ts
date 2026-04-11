@@ -15,7 +15,7 @@ function getRecipients(sheetName: string, row: RegistrationRow): string[] {
 
   if (sheetName === 'Teacher Memberships') {
     if (row['Email']) emails.push(row['Email'])
-  } else if (sheetName === 'String + Piano Chamber Music' || sheetName === 'Woodwind Ensemble') {
+  } else if (sheetName === 'String + Piano Chamber Music' || sheetName === 'Guitar Chamber Music' || sheetName === 'Woodwind Ensemble') {
     if (row['Coach Email']) emails.push(row['Coach Email'])
     if (row['Contact Email']) emails.push(row['Contact Email'])
   } else {
@@ -31,7 +31,7 @@ function getStudentName(sheetName: string, row: RegistrationRow): string {
   if (sheetName === 'Teacher Memberships') {
     return [row['First Name'], row['Last Name']].filter(Boolean).join(' ')
   }
-  if (sheetName === 'String + Piano Chamber Music' || sheetName === 'Woodwind Ensemble') {
+  if (sheetName === 'String + Piano Chamber Music' || sheetName === 'Guitar Chamber Music' || sheetName === 'Woodwind Ensemble') {
     return row['Member 1 Name'] || 'Group'
   }
   const middle = row['Student Middle Name'] ? ` ${row['Student Middle Name']}` : ''
@@ -41,7 +41,7 @@ function getStudentName(sheetName: string, row: RegistrationRow): string {
 function buildConfirmationHtml(sheetName: string, row: RegistrationRow): string {
   const name = getStudentName(sheetName, row)
   const isTeacher = sheetName === 'Teacher Memberships'
-  const isChamber = sheetName === 'String + Piano Chamber Music' || sheetName === 'Woodwind Ensemble'
+  const isChamber = sheetName === 'String + Piano Chamber Music' || sheetName === 'Guitar Chamber Music' || sheetName === 'Woodwind Ensemble'
 
   let details = ''
 
@@ -53,7 +53,7 @@ function buildConfirmationHtml(sheetName: string, row: RegistrationRow): string 
     `
   } else if (isChamber) {
     const members: string[] = []
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 8; i++) {
       const memberName = row[`Member ${i} Name`]
       if (memberName) members.push(memberName)
     }

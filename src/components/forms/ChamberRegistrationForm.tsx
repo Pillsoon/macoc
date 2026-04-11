@@ -10,7 +10,7 @@ interface ChamberRegistrationFormProps {
   sections: { value: string; label: string }[]
 }
 
-const INSTRUMENTATIONS = [
+const STRING_INSTRUMENTATIONS = [
   'String duo',
   'String trio',
   'String quartet',
@@ -23,10 +23,30 @@ const INSTRUMENTATIONS = [
   'Piano sextet',
 ] as const
 
-const MAX_MEMBERS = 6
+const GUITAR_INSTRUMENTATIONS = [
+  'Guitar duo',
+  'Guitar trio',
+  'Guitar quartet',
+  'Guitar quintet',
+  'Guitar sextet',
+  'Guitar septet',
+  'Guitar octet',
+] as const
+
+function getInstrumentations(division: string): readonly string[] {
+  if (division === 'Guitar Chamber Music') return GUITAR_INSTRUMENTATIONS
+  return STRING_INSTRUMENTATIONS
+}
+
+function getMaxMembers(division: string): number {
+  if (division === 'Guitar Chamber Music') return 8
+  return 6
+}
 
 export function getRequiredMemberCount(instrumentation: string): number {
   const lower = instrumentation.toLowerCase()
+  if (lower.includes('octet')) return 8
+  if (lower.includes('septet')) return 7
   if (lower.includes('sextet')) return 6
   if (lower.includes('quintet')) return 5
   if (lower.includes('quartet')) return 4
@@ -70,9 +90,11 @@ export default function ChamberRegistrationForm({
   sections,
 }: ChamberRegistrationFormProps) {
   const entryFee = config.fees.chamber.amount
+  const maxMembers = getMaxMembers(division)
+  const instrumentations = getInstrumentations(division)
   const [formData, setFormData] = useState({ ...initialFormData, division })
   const [members, setMembers] = useState<MemberData[]>(
-    Array.from({ length: MAX_MEMBERS }, emptyMember)
+    Array.from({ length: maxMembers }, emptyMember)
   )
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -96,7 +118,7 @@ export default function ChamberRegistrationForm({
     if (newCount < prevCount) {
       setMembers(prev => {
         const next = [...prev]
-        for (let i = newCount; i < MAX_MEMBERS; i++) {
+        for (let i = newCount; i < maxMembers; i++) {
           next[i] = emptyMember()
         }
         return next
@@ -263,7 +285,7 @@ export default function ChamberRegistrationForm({
               <select value={formData.instrumentation} onChange={(e) => handleInstrumentationChange(e.target.value)}
                 className={`w-full px-4 py-2 border ${validationBorder('instrumentation')} rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent`} required>
                 <option value="">Select instrumentation</option>
-                {INSTRUMENTATIONS.map((inst) => (
+                {instrumentations.map((inst) => (
                   <option key={inst} value={inst}>{inst}</option>
                 ))}
               </select>

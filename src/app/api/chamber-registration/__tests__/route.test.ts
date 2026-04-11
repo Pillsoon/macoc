@@ -16,6 +16,11 @@ vi.mock('google-spreadsheet', () => ({
           loadHeaderRow: mockLoadHeaderRow.mockResolvedValue(undefined),
           headerValues: ['Timestamp', 'Payment Status'],
         },
+        'Guitar Chamber Music': {
+          addRow: mockAddRow,
+          loadHeaderRow: mockLoadHeaderRow.mockResolvedValue(undefined),
+          headerValues: ['Timestamp', 'Payment Status'],
+        },
       },
       addSheet: mockAddSheet,
     }
@@ -162,7 +167,7 @@ describe('POST /api/chamber-registration', () => {
     expect(json.error).toContain('2 to 6')
   })
 
-  it('returns 400 when more than 6 members', async () => {
+  it('returns 400 for String division when more than 6 members', async () => {
     const data = makeValidData({
       members: Array.from({ length: 7 }, () => makeMember()),
     })
@@ -181,12 +186,42 @@ describe('POST /api/chamber-registration', () => {
     expect(res.status).toBe(200)
   })
 
-  it('accepts exactly 6 members (maximum)', async () => {
+  it('accepts exactly 6 members (String division maximum)', async () => {
     const data = makeValidData({
       members: Array.from({ length: 6 }, (_, i) => makeMember({ name: `Member${i + 1}` })),
     })
     const res = await POST(createRequest(data))
     expect(res.status).toBe(200)
+  })
+
+  it('returns 400 for invalid division', async () => {
+    const data = makeValidData({ division: 'Fake Division' })
+    const res = await POST(createRequest(data))
+    const json = await res.json()
+
+    expect(res.status).toBe(400)
+    expect(json.error).toContain('Invalid division')
+  })
+
+  it('accepts up to 8 members for Guitar Chamber Music', async () => {
+    const data = makeValidData({
+      division: 'Guitar Chamber Music',
+      members: Array.from({ length: 8 }, (_, i) => makeMember({ name: `Member${i + 1}` })),
+    })
+    const res = await POST(createRequest(data))
+    expect(res.status).toBe(200)
+  })
+
+  it('rejects 9 members for Guitar Chamber Music', async () => {
+    const data = makeValidData({
+      division: 'Guitar Chamber Music',
+      members: Array.from({ length: 9 }, () => makeMember()),
+    })
+    const res = await POST(createRequest(data))
+    const json = await res.json()
+
+    expect(res.status).toBe(400)
+    expect(json.error).toContain('2 to 8')
   })
 
   it('returns 400 when a member is missing name', async () => {
