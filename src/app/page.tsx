@@ -23,7 +23,7 @@ export default function Home() {
 
   const keyDates = [
     { icon: '📝', date: competition.registration.open, title: 'Registration Opens', desc: 'Begin submitting entries' },
-    { icon: '📅', date: competition.registration.close, title: 'Registration Closes', desc: 'Last day for regular registration' },
+    { icon: '📅', date: competition.registration.close, title: 'Registration Closes', desc: 'Last day for regular registration — late fee applies after' },
     { icon: '🎹', date: competition.date, title: 'Competition Day', desc: competition.location, highlight: true },
     { icon: '🏆', date: winnersConcert.date, title: "Winners' Concert", desc: winnersConcert.location, highlight: true },
   ]

@@ -63,6 +63,10 @@ export default function RegistrationPage() {
               <Link href="/register" className="btn btn-primary w-full text-center">
                 Select Division
               </Link>
+
+              <p className="text-center text-xs text-text-muted mt-4">
+                Late fee: $50 after {competition.registration.close}
+              </p>
             </div>
 
             {/* Solo Entry */}
