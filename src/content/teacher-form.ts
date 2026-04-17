@@ -55,7 +55,7 @@ export const SUB_DIVISIONS = [
 ] as const
 
 export const MEMBERSHIP_PRODUCTS = [
-  { label: 'Regular Member', price: 40, description: 'Regular Member' },
+  { label: 'Regular Member', price: 50, description: 'Regular Member' },
   { label: 'Patron Member', price: 50, description: 'Patron Member' },
   { label: 'Contributing Member', price: 60, description: 'Contributing Member' },
   { label: 'Sponsor Member', price: 100, description: 'Sponsor Member' },

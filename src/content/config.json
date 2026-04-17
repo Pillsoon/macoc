@@ -27,11 +27,11 @@
   },
   "fees": {
     "membership": {
-      "amount": 40,
+      "amount": 50,
       "label": "Teacher's Membership"
     },
     "solo": {
-      "amount": 60,
+      "amount": 70,
       "label": "Solo Entry"
     },
     "chamber": {
