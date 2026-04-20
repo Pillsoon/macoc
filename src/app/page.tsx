@@ -23,7 +23,8 @@ export default function Home() {
 
   const keyDates = [
     { icon: '📝', date: competition.registration.open, title: 'Registration Opens', desc: 'Begin submitting entries' },
-    { icon: '📅', date: competition.registration.close, title: 'Registration Closes', desc: 'Last day for regular registration — late fee applies after' },
+    { icon: '📅', date: competition.registration.close, title: 'Registration Deadline', desc: 'Late fee applies after this date' },
+    { icon: '⏰', date: `${competition.registration.lateDeadline} at 11:59pm`, title: 'Registration Closes', desc: 'No entries accepted after' },
     { icon: '🎹', date: competition.date, title: 'Competition Day', desc: competition.location, highlight: true },
     { icon: '🏆', date: winnersConcert.date, title: "Winners' Concert", desc: winnersConcert.location, highlight: true },
   ]
@@ -72,7 +73,7 @@ export default function Home() {
             <p className="section-subtitle mx-auto">Mark your calendar for these important dates</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {keyDates.map((item, idx) => (
               <div
                 key={idx}
