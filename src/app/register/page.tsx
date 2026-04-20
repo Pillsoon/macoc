@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { config } from '@/lib/config'
-import { getAllDivisionSummaries } from '@/content/divisions'
+import { getAllDivisionSummaries, getClosureDate } from '@/content/divisions'
 
 export const metadata: Metadata = {
   title: 'Register',
@@ -74,6 +74,7 @@ export default function RegisterPage() {
                     const division = summaryMap.get(id)
                     if (!division) return null
                     const isClosed = !division.available
+                    const closedOn = isClosed ? getClosureDate(division.id) : undefined
                     const cardContent = (
                       <div className="flex items-center gap-4">
                         {division.icon.startsWith('/') ? (
@@ -89,6 +90,9 @@ export default function RegisterPage() {
                           <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
                           <p className="text-sm text-text-muted">{division.description}</p>
                           <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
+                          {closedOn && (
+                            <p className="text-xs text-text-muted mt-1">Registration closed on {closedOn}</p>
+                          )}
                         </div>
                         <div className="flex-shrink-0">
                           {isClosed ? (
