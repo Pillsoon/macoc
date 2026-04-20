@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import DivisionRegistration from '@/components/forms/DivisionRegistration'
-import { getDivisionById, getAllDivisions, getClosureDate } from '@/content/divisions'
+import { getDivisionById, getAllDivisions } from '@/content/divisions'
 import { config } from '@/lib/config'
 
 export function generateStaticParams() {
@@ -159,7 +159,6 @@ export default function DivisionRegistrationPage({
           timePeriods={division.timePeriods}
           feeType={division.feeType}
           available={division.available}
-          closedOn={getClosureDate(division.id)}
         />
       </div>
     </div>

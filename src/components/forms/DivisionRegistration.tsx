@@ -16,7 +16,6 @@ interface DivisionRegistrationProps {
   timePeriods: { value: string; label: string }[]
   feeType: 'solo' | 'chamber'
   available: boolean
-  closedOn?: string
 }
 
 export default function DivisionRegistration({
@@ -25,7 +24,6 @@ export default function DivisionRegistration({
   timePeriods,
   feeType,
   available,
-  closedOn,
 }: DivisionRegistrationProps) {
   const [role, setRole] = useState<Role>('select')
   const isStringSolo = divisionName === 'String Solo'
@@ -88,9 +86,7 @@ export default function DivisionRegistration({
                   ? isStringSolo || isChamber || isWoodwindsEnsemble
                     ? 'Competition entry registration for applicants'
                     : 'Competition entry registration for students'
-                  : closedOn
-                    ? `Registration closed on ${closedOn}`
-                    : 'Registration closed'}
+                  : 'Registration closed'}
               </p>
               {available && (
                 <p className="text-xs font-medium text-gold-dark mt-2">

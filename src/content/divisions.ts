@@ -30,17 +30,11 @@ export interface DivisionSummary {
 
 // Web-only registration closures. Keeps Google Sheets as source of truth;
 // listed IDs are forced closed at runtime without touching the sheet.
-const CLOSURES: Record<string, { closedOn: string }> = {
-  strings: { closedOn: 'April 23, 2026 at 11:59pm' },
-}
+const CLOSED_DIVISION_IDS = new Set<string>(['strings'])
 
 const divisions: Division[] = ((divisionsData as Division[]) || []).map((d) =>
-  d.id in CLOSURES ? { ...d, available: false } : d
+  CLOSED_DIVISION_IDS.has(d.id) ? { ...d, available: false } : d
 )
-
-export function getClosureDate(id: string): string | undefined {
-  return CLOSURES[id]?.closedOn
-}
 
 export function getDivisionById(id: string): Division | undefined {
   return divisions.find((d) => d.id === id)
