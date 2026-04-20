@@ -73,32 +73,48 @@ export default function RegisterPage() {
                   {category.ids.map((id) => {
                     const division = summaryMap.get(id)
                     if (!division) return null
-                    return (
-                      <div
-                        key={division.id}
-                        className="bg-white rounded-xl p-6 shadow-sm border-2 border-transparent hover:border-gold cursor-pointer transition-all"
-                      >
-                        <Link href={`/register/${division.id}`} className="flex items-center gap-4">
-                          {division.icon.startsWith('/') ? (
-                            <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
-                              <Image src={division.icon} alt={division.name} width={56} height={56} className="w-full h-full object-contain" />
-                            </div>
-                          ) : (
-                            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
-                              <span className={division.icon.length > 2 ? 'text-xl' : 'text-3xl'}>{division.icon}</span>
-                            </div>
-                          )}
-                          <div className="flex-1">
-                            <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
-                            <p className="text-sm text-text-muted">{division.description}</p>
-                            <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
+                    const isClosed = !division.available
+                    const cardContent = (
+                      <div className="flex items-center gap-4">
+                        {division.icon.startsWith('/') ? (
+                          <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+                            <Image src={division.icon} alt={division.name} width={56} height={56} className="w-full h-full object-contain" />
                           </div>
-                          <div className="flex-shrink-0">
+                        ) : (
+                          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span className={division.icon.length > 2 ? 'text-xl' : 'text-3xl'}>{division.icon}</span>
+                          </div>
+                        )}
+                        <div className="flex-1">
+                          <h3 className="font-heading text-lg text-charcoal">{division.name}</h3>
+                          <p className="text-sm text-text-muted">{division.description}</p>
+                          <p className="text-xs text-navy mt-1">{division.sectionCount}</p>
+                        </div>
+                        <div className="flex-shrink-0">
+                          {isClosed ? (
+                            <span className="inline-block text-sm py-2 px-4 rounded-md bg-gray-200 text-gray-500 font-medium">
+                              Closed
+                            </span>
+                          ) : (
                             <span className="btn btn-gold text-sm py-2 px-4">
                               Register
                             </span>
-                          </div>
-                        </Link>
+                          )}
+                        </div>
+                      </div>
+                    )
+                    return (
+                      <div
+                        key={division.id}
+                        className={`bg-white rounded-xl p-6 shadow-sm border-2 border-transparent transition-all ${
+                          isClosed ? 'opacity-60 cursor-not-allowed' : 'hover:border-gold cursor-pointer'
+                        }`}
+                      >
+                        {isClosed ? cardContent : (
+                          <Link href={`/register/${division.id}`}>
+                            {cardContent}
+                          </Link>
+                        )}
                       </div>
                     )
                   })}

@@ -28,7 +28,13 @@ export interface DivisionSummary {
   available: boolean
 }
 
-const divisions: Division[] = (divisionsData as Division[]) || []
+// Web-only registration closures. Keeps Google Sheets as source of truth;
+// listed IDs are forced closed at runtime without touching the sheet.
+const CLOSED_DIVISION_IDS = new Set<string>(['strings'])
+
+const divisions: Division[] = ((divisionsData as Division[]) || []).map((d) =>
+  CLOSED_DIVISION_IDS.has(d.id) ? { ...d, available: false } : d
+)
 
 export function getDivisionById(id: string): Division | undefined {
   return divisions.find((d) => d.id === id)

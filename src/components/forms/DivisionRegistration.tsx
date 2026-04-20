@@ -86,7 +86,7 @@ export default function DivisionRegistration({
                   ? isStringSolo || isChamber || isWoodwindsEnsemble
                     ? 'Competition entry registration for applicants'
                     : 'Competition entry registration for students'
-                  : 'Coming soon'}
+                  : 'Registration closed'}
               </p>
               {available && (
                 <p className="text-xs font-medium text-gold-dark mt-2">
