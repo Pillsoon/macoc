@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MACOC Website Refresh &mdash; Results</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    max-width: 820px;
+    margin: 32px auto;
+    padding: 0 20px;
+    color: #222;
+    line-height: 1.5;
+    font-size: 10.5pt;
+  }
+  h1 {
+    font-size: 20pt;
+    color: #1a1a1a;
+    border-bottom: 2px solid #333;
+    padding-bottom: 6px;
+    margin: 0 0 4px 0;
+  }
+  h2 {
+    font-size: 13pt;
+    color: #1a1a1a;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+    margin: 22px 0 8px 0;
+  }
+  .subtitle {
+    color: #555;
+    font-size: 10pt;
+    margin: 0 0 18px 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 6px 0 8px 0;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 9.5pt;
+    vertical-align: top;
+  }
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .cost-old td { background-color: #f7f7f7; }
+  .cost-new td { background-color: #e8f5e9; }
+  .cost-save td {
+    background-color: #c8e6c9;
+    font-weight: bold;
+    font-size: 11pt;
+  }
+  .headline {
+    background-color: #e3f2fd;
+    border-left: 4px solid #1976d2;
+    padding: 10px 14px;
+    margin: 10px 0 18px 0;
+    font-size: 11pt;
+  }
+  .headline strong { color: #1565c0; }
+  ul { margin: 4px 0 4px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media print {
+    body { margin: 12mm auto; }
+    h2 { margin-top: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>MACOC Website Refresh &mdash; Results</h1>
+<p class="subtitle">
+  Musical Arts Competition of Orange County &middot;
+  <a href="https://www.musicalartsoc.org">www.musicalartsoc.org</a> &middot;
+  2026 season fully launched
+</p>
+
+<div class="headline">
+  Replaced Wix + Jotform with a self-hosted Next.js site backed by Google Sheets and PayPal.
+  <strong>Saving ~$1,500/year</strong> while unifying registration, content, and payment status
+  into a single Google Sheet.
+</div>
+
+<h2>What changed</h2>
+<table>
+  <tr><th></th><th>Before (Wix + Jotform)</th><th>After</th></tr>
+  <tr><td>Registration UX</td><td>Separate Jotform page per division (off-site)</td><td>Built into the site &mdash; consistent branding, mobile-first, division-specific flows (ensembles, multi-instrument selection, file upload)</td></tr>
+  <tr><td>Where data lives</td><td>Wix, Jotform, PayPal (3 places)</td><td><strong>Google Sheets</strong> (single source of truth)</td></tr>
+  <tr><td>Editing content</td><td>Wix editor</td><td>Edit a Google Sheet cell &rarr; site updates automatically</td></tr>
+  <tr><td>Design &amp; structure</td><td>Generic Wix template; information spread across many pages</td><td>Redesigned, mobile-first site; scattered content consolidated into clear sections (About, Competition, Divisions, Winners, Directory); SEO-optimized (sitemap, JSON-LD, OG)</td></tr>
+</table>
+
+<h2>Savings</h2>
+<table>
+  <tr><th>Service</th><th>Before (annual)</th><th>After (annual)</th></tr>
+  <tr class="cost-old"><td>Wix Core (hosting + editor)</td><td>$348</td><td>$0</td></tr>
+  <tr class="cost-old"><td>Jotform Gold (registration forms)</td><td>$1,188</td><td>$0</td></tr>
+  <tr class="cost-save"><td>Total saved per year</td><td colspan="2">~$1,500/year &mdash; recurring</td></tr>
+</table>
+
+<h2>Ongoing costs (unchanged from before)</h2>
+<table>
+  <tr><th>Item</th><th>Cost</th><th>Note</th></tr>
+  <tr><td>Domain (musicalartsoc.org)</td><td>~$15&ndash;20/year</td><td>Already registered with an outside registrar &mdash; unchanged, no new cost</td></tr>
+  <tr><td>PayPal transaction fee</td><td>2.9% + $0.30 per payment</td><td>Same rate as before; only when a registration is paid</td></tr>
+</table>
+
+<h2>Possible future costs (currently $0)</h2>
+<table>
+  <tr><th>Service</th><th>Today</th><th>Paid tier kicks in when&hellip;</th></tr>
+  <tr><td>Vercel (hosting)</td><td>Free (Hobby)</td><td>Traffic grows ~10&times; (then ~$20/mo)</td></tr>
+  <tr><td>Cloudinary (uploaded ID files)</td><td>Free (25 GB)</td><td>Multi-year storage approaches the cap</td></tr>
+  <tr><td>Resend (confirmation emails)</td><td>Free (3,000/mo)</td><td>Volume exceeds 3k emails per month</td></tr>
+  <tr><td>Google Sheets API</td><td>Free</td><td>No realistic cap for our usage</td></tr>
+</table>
+<p style="font-size:9.5pt; color:#555; margin-top:4px;">
+  At current volume, no additional spend is expected for the next 1&ndash;2 seasons.
+</p>
+
+<h2>How it&rsquo;s managed going forward</h2>
+<div class="two-col">
+  <div>
+    <strong>Chairs / Admins (no developer needed)</strong>
+    <ul>
+      <li>Edit dates, fees, contacts, winners &rarr; Google Sheets</li>
+      <li>See who registered &rarr; <em>Registrations</em> tabs in the Sheet</li>
+      <li>Verify payments &rarr; PayPal dashboard + Sheet&rsquo;s <em>Paid</em> column</li>
+      <li>View uploaded birth certificates &rarr; Cloudinary link in each row</li>
+    </ul>
+  </div>
+  <div>
+    <strong>Developer support (occasional)</strong>
+    <ul>
+      <li>Adding/removing divisions or form fields</li>
+      <li>Opening/closing registration per division</li>
+      <li>Yearly season rollover and design updates</li>
+    </ul>
+  </div>
+</div>
+<p style="font-size:9.5pt; color:#555; margin-top:6px;">
+  All accounts &mdash; domain, Google Sheets, PayPal, Cloudinary &mdash; are owned by MACOC. No vendor lock-in.
+</p>
+
+<h2>Recommended next steps</h2>
+<ul>
+  <li><strong>Date-based auto-close</strong> for registration (today, deadlines require a code change).</li>
+  <li><strong>Email on submit</strong> in addition to email on payment, so applicants always get a receipt.</li>
+  <li><strong>Optional admin dashboard</strong> for board members who prefer not to use Google Sheets directly.</li>
+</ul>
+
+</body>
+</html>
