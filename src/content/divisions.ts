@@ -30,7 +30,17 @@ export interface DivisionSummary {
 
 // Web-only registration closures. Keeps Google Sheets as source of truth;
 // listed IDs are forced closed at runtime without touching the sheet.
-const CLOSED_DIVISION_IDS = new Set<string>()
+const CLOSED_DIVISION_IDS = new Set<string>([
+  'piano',
+  'vocal-classical',
+  'vocal-musical-theater',
+  'strings-piano-chamber',
+  'strings',
+  'guitar-chamber-music',
+  'classical-guitar',
+  'woodwinds',
+  'woodwinds-ensemble',
+])
 
 const divisions: Division[] = ((divisionsData as Division[]) || []).map((d) =>
   CLOSED_DIVISION_IDS.has(d.id) ? { ...d, available: false } : d
