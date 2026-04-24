@@ -63,10 +63,6 @@ export default function RegistrationPage() {
               <Link href="/register" className="btn btn-primary w-full text-center">
                 Select Division
               </Link>
-
-              <p className="text-center text-xs text-text-muted mt-4">
-                Late fee: $50 after {competition.registration.close}
-              </p>
             </div>
 
             {/* Solo Entry */}
@@ -83,10 +79,6 @@ export default function RegistrationPage() {
               <Link href="/register" className="btn btn-secondary w-full text-center">
                 Select Division
               </Link>
-
-              <p className="text-center text-xs text-text-muted mt-4">
-                Late fee: ${fees.lateFee.amount} after {competition.registration.close}
-              </p>
             </div>
 
             {/* Chamber Entry */}
@@ -160,11 +152,7 @@ export default function RegistrationPage() {
           <ul className="space-y-2 text-amber-700 text-sm">
             <li className="flex items-start gap-2">
               <span>•</span>
-              <span>Registration: {competition.registration.open} to {competition.registration.close}</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span>•</span>
-              <span>Late registration deadline: {competition.registration.lateDeadline}</span>
+              <span>Registration: {competition.registration.open} to {competition.registration.lateDeadline}</span>
             </li>
             <li className="flex items-start gap-2">
               <span>•</span>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function SchedulePage() {
-  const { competition, winnersConcert, currentYear, fees } = config
+  const { competition, winnersConcert, currentYear } = config
 
   const events = [
     {
@@ -19,15 +19,9 @@ export default function SchedulePage() {
       icon: '📝',
     },
     {
-      date: competition.registration.close,
+      date: `${competition.registration.lateDeadline} at 11:59pm`,
       title: 'Registration Closes',
-      description: 'Last day for regular registration without late fee',
-      icon: '📅',
-    },
-    {
-      date: competition.registration.lateDeadline,
-      title: 'Late Registration Deadline',
-      description: `Final deadline with late fee ($${fees.lateFee.amount})`,
+      description: 'No entries accepted after this date',
       icon: '⏰',
     },
     {

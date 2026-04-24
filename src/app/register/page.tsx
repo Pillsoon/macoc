@@ -50,9 +50,6 @@ export default function RegisterPage() {
               <span className="text-text-secondary">Competition: <strong className="text-charcoal">{config.competition.date}</strong></span>
             </div>
           </div>
-          <p className="text-center text-xs text-text-muted mt-2">
-            Late fee applies after {config.competition.registration.close}
-          </p>
         </div>
       </section>
 
