@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { config } from '@/lib/config'
+import winners2026 from '@/content/winners/2026.json'
 import winners2025 from '@/content/winners/2025.json'
 import winners2024 from '@/content/winners/2024.json'
 import winners2023 from '@/content/winners/2023.json'
@@ -10,6 +11,7 @@ import winners2022 from '@/content/winners/2022.json'
 import winners2021 from '@/content/winners/2021.json'
 
 const winnersData: Record<string, typeof winners2025> = {
+  '2026': winners2026,
   '2025': winners2025,
   '2024': winners2024,
   '2023': winners2023,
@@ -17,10 +19,10 @@ const winnersData: Record<string, typeof winners2025> = {
   '2021': winners2021,
 }
 
-const years = ['2025', '2024', '2023', '2022', '2021']
+const years = ['2026', '2025', '2024', '2023', '2022', '2021']
 
 export default function WinnersPage() {
-  const [selectedYear, setSelectedYear] = useState('2025')
+  const [selectedYear, setSelectedYear] = useState('2026')
   const [selectedDivision, setSelectedDivision] = useState<string | null>(null)
   const currentData = winnersData[selectedYear]
   const divisions = currentData?.divisions ?? []
