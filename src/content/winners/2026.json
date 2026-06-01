@@ -637,6 +637,194 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Voice Division",
+      "icon": "🎤",
+      "subsections": [
+        {
+          "name": "Musical Theater",
+          "sections": [
+            {
+              "name": "Section 1",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Isabelle Lin"
+                }
+              ]
+            },
+            {
+              "name": "Section 2",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Stella Moon"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Elisha Kim"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Anay Poddar"
+                },
+                {
+                  "place": "HM",
+                  "name": "Nikiforos Valaskantjis"
+                }
+              ]
+            },
+            {
+              "name": "Section 3",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Aiden Baltazar"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Irene Su"
+                }
+              ]
+            },
+            {
+              "name": "Section 4",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Wynona Madison Prawira"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Hayeon Ryu"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Ishani Bhola"
+                },
+                {
+                  "place": "HM",
+                  "name": "Sophia Park"
+                }
+              ]
+            },
+            {
+              "name": "Section 5",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Anabelle Skye Green"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Lily Elizabeth Larson"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Yeonhee Choi"
+                },
+                {
+                  "place": "HM",
+                  "name": "Evelynn Yang"
+                }
+              ]
+            },
+            {
+              "name": "Section 6",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Angelina Raskin"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Classical Voice",
+          "sections": [
+            {
+              "name": "Section 1",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Jacob Wang"
+                }
+              ]
+            },
+            {
+              "name": "Section 3",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Aiden Baltazar"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Audrey Li"
+                }
+              ]
+            },
+            {
+              "name": "Section 4",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Ethan Kim"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Jace Jaehee Yoo"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Chelsea Yang"
+                },
+                {
+                  "place": "HM",
+                  "name": "Julianna LV"
+                }
+              ]
+            },
+            {
+              "name": "Section 5",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Leonardo Lin"
+                },
+                {
+                  "place": "2nd",
+                  "name": "Sydney Lyu"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Yue Li"
+                }
+              ]
+            },
+            {
+              "name": "Section 6",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Sean Kang"
+                }
+              ]
+            },
+            {
+              "name": "Section 8",
+              "winners": [
+                {
+                  "place": "1st",
+                  "name": "Joseph Wonsig Park"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
