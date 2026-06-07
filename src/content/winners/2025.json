@@ -273,6 +273,15 @@
               ]
             },
             {
+              "name": "Section 3",
+              "winners": [
+                {
+                  "place": "2nd",
+                  "name": "Seojin Kim"
+                }
+              ]
+            },
+            {
               "name": "Section 4",
               "winners": [
                 {
@@ -286,6 +295,19 @@
                 {
                   "place": "3rd",
                   "name": "Xinyuan Zhang"
+                }
+              ]
+            },
+            {
+              "name": "Section 5",
+              "winners": [
+                {
+                  "place": "2nd",
+                  "name": "Chloe Minu Chung"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Leonardo Ilian Lin"
                 }
               ]
             },
@@ -347,6 +369,15 @@
               ]
             },
             {
+              "name": "Section 5",
+              "winners": [
+                {
+                  "place": "2nd",
+                  "name": "Seohyun Kim"
+                }
+              ]
+            },
+            {
               "name": "Section 6",
               "winners": [
                 {
@@ -356,6 +387,19 @@
                 {
                   "place": "2nd",
                   "name": "Yewon Jang"
+                }
+              ]
+            },
+            {
+              "name": "Section 8",
+              "winners": [
+                {
+                  "place": "2nd",
+                  "name": "Lawrence Seiji Abbott"
+                },
+                {
+                  "place": "3rd",
+                  "name": "Sadeina Achda"
                 }
               ]
             }
